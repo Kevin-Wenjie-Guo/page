@@ -4,6 +4,7 @@ project:
 
 website:
   title: "Kevin's Place"
+  site-url: https://kevin-wenjie-guo.github.io/page
   description: "Thoughts on investing, technology, strategy, and life — by Kevin (Wenjie) Guo"
   navbar:
     title: "Kevin's Place"

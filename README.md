@@ -34,4 +34,4 @@ Create a folder inside the relevant section directory with an `index.qmd`:
 investing/my-new-post/index.qmd
 ```
 
-Push to `main` and the site will auto-deploy.
+Push to `master` and the site will auto-deploy.
