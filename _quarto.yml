@@ -34,3 +34,4 @@ format:
     css: styles.css
     toc: true
     link-external-newwindow: true
+    include-in-header: _security-headers.html
