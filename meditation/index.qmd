@@ -1,0 +1,13 @@
+---
+title: "Meditation & Life"
+listing:
+  contents: "*/index.qmd"
+  feed: true
+  sort: "date desc"
+  type: default
+  categories: true
+page-layout: full
+title-block-banner: true
+---
+
+On mindfulness, well-being, and how to live a better life.

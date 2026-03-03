@@ -1,0 +1,59 @@
+---
+title: "The Bitter Lesson"
+author: "Kevin Guo"
+date: "2026-03-03"
+categories: [AI, reflection, learning]
+description: "Reflections on Rich Sutton's famous essay — and why computation beats human cleverness in the long run."
+---
+
+## The Essay That Changed How I Think About AI
+
+In March 2019, Rich Sutton — one of the founding fathers of reinforcement learning and a Turing Award–adjacent figure in AI — published a short essay called [*The Bitter Lesson*](http://www.incompleteideas.net/IncIdeas/BitterLesson.html). It is one of the most important things written about artificial intelligence in the last decade, and it has shaped the way I think about technology, investing, and building things.
+
+The argument is simple and devastating:
+
+> The biggest lesson that can be read from 70 years of AI research is that general methods that leverage computation are ultimately the most effective, and by a large margin.
+
+In other words: **scale wins**. Not clever human-designed features. Not domain expertise baked into systems. Just more compute, more data, and general-purpose methods like search and learning.
+
+## The Pattern That Keeps Repeating
+
+Sutton walks through case after case where the same story plays out:
+
+**Chess.** For decades, AI researchers tried to encode human chess knowledge — opening books, positional heuristics, endgame tables. The system that actually beat Kasparov in 1997 (Deep Blue) relied overwhelmingly on massive brute-force search. The chess community was horrified. But search won.
+
+**Speech recognition.** Early systems were built on linguistic knowledge — phonemes, grammar rules, expert-crafted features. Modern speech recognition threw all of that away in favor of statistical methods trained on enormous datasets. The linguists were bitter. But learning won.
+
+**Computer vision.** Researchers spent decades designing hand-crafted features: edge detectors, SIFT, HOG descriptors. Then deep learning arrived, and convolutional neural networks trained on millions of images obliterated everything that came before. The vision researchers were bitter. But learning won.
+
+**Go.** Perhaps the most dramatic example. For decades, Go was considered too complex for brute-force methods. Researchers insisted you needed to encode human intuition about the game. Then AlphaGo — and later AlphaZero — showed that pure self-play and search could achieve superhuman performance from scratch. The Go experts were bitter. But search and learning won.
+
+The lesson is "bitter" because it means that **what researchers personally find satisfying — building in human knowledge and clever tricks — is ultimately not what works**. What works is letting computation do the heavy lifting.
+
+## Why This Matters Beyond AI
+
+I keep coming back to this essay because the principle extends far beyond machine learning:
+
+**In investing**, the temptation is always to build complex models with lots of human judgment baked in. But systematic, data-driven approaches that scale — quantitative strategies, index funds — have a long track record of beating the stock-pickers. The active managers are bitter. But scale wins.
+
+**In building software**, the temptation is to over-engineer clever solutions. But often the best approach is the simplest one that leverages the most compute and the most data. Ship fast, measure everything, iterate. Elegance is overrated; results are not.
+
+**In strategy**, leaders want to believe their unique insight is the competitive advantage. Sometimes it is. But more often, the companies that win are the ones that build scalable systems and processes — the ones that let the machine compound.
+
+## The Meta-Lesson
+
+Sutton ends with a profound observation. He argues that we should stop trying to build the *contents* of human knowledge into our systems. Instead, we should build in the **meta-methods** — the ability to search and learn — and let the systems discover what we would have tried to hand-code.
+
+> We want AI agents that can discover like we can, not which contain what we have discovered.
+
+This is also a lesson about humility. Our understanding is always incomplete. The world is irreducibly complex. The best strategy is not to pretend we can capture that complexity in our heads, but to build systems that can navigate it on their own.
+
+## My Takeaway
+
+The Bitter Lesson is a reminder to bet on the trend, not the trick. Bet on the approach that scales, not the one that feels clever right now. In AI, in markets, in life — the thing that compounds wins.
+
+This is the first post on this blog, and I chose it deliberately. It captures the spirit I want to bring to everything I write here: look for the underlying dynamics, resist the temptation of satisfying-but-wrong shortcuts, and think on a long enough timeline.
+
+---
+
+*Rich Sutton's original essay: [The Bitter Lesson](http://www.incompleteideas.net/IncIdeas/BitterLesson.html) (March 13, 2019)*

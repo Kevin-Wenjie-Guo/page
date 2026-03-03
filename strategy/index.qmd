@@ -1,0 +1,13 @@
+---
+title: "Strategy & Management"
+listing:
+  contents: "*/index.qmd"
+  feed: true
+  sort: "date desc"
+  type: default
+  categories: true
+page-layout: full
+title-block-banner: true
+---
+
+Ideas on business strategy, management, and organizational thinking.
