@@ -7,6 +7,7 @@ website:
   description: "Thoughts on investing, technology, strategy, and life — by Kevin (Wenjie) Guo"
   navbar:
     title: "Kevin's Place"
+    background: dark
     left:
       - href: index.qmd
         text: Home
@@ -20,9 +21,11 @@ website:
         text: Strategy
       - href: meditation/index.qmd
         text: Meditation
+      - href: mystory.qmd
+        text: My Story
     right:
-      - href: about.qmd
-        text: About
+      - icon: linkedin
+        href: https://www.linkedin.com/in/wenjie-guo-byu/
       - icon: github
         href: https://github.com/Kevin-Wenjie-Guo
   page-footer:
