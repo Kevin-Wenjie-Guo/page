@@ -1,41 +1,140 @@
 /* Kevin's Place - Custom Styles */
 
-/* Clean body background */
+/* Dark body background */
 body {
-  background-color: #fdfcfb;
+  background-color: #1a1a2e;
+  color: #e0e0e0;
 }
 
-/* Navbar styling */
+/* Main content area - slightly lighter for readability */
+#quarto-content {
+  background-color: #16213e;
+}
+
+.quarto-title-banner {
+  background-color: #0f3460 !important;
+  margin-bottom: 1.5rem;
+}
+
+/* Navbar - dark with subtle border */
 .navbar {
-  border-bottom: 1px solid #e5e5e5;
+  background-color: #0f0f1a !important;
+  border-bottom: 1px solid #2a2a4a;
 }
 
-/* Section listing cards */
+.navbar .navbar-brand,
+.navbar .nav-link {
+  color: #e0e0e0 !important;
+}
+
+.navbar .nav-link:hover {
+  color: #64b5f6 !important;
+}
+
+/* Content text */
+.content h1, .content h2, .content h3,
+h1, h2, h3, h4, h5, h6 {
+  color: #e8e8f0;
+}
+
+p, li {
+  color: #c8c8d8;
+}
+
+a {
+  color: #64b5f6;
+}
+
+a:hover {
+  color: #90caf9;
+}
+
+/* Cards and listing items */
 .quarto-listing {
   margin-top: 1rem;
 }
 
-/* Title banner */
-.quarto-title-banner {
-  margin-bottom: 1.5rem;
+.card {
+  background-color: #1e2a4a;
+  border: 1px solid #2a3a5a;
+}
+
+.card-title a {
+  color: #e0e0e0;
+}
+
+/* Sidebar / TOC */
+.sidebar nav[role=doc-toc] a {
+  color: #a0a0b8;
+}
+
+.sidebar nav[role=doc-toc] a:hover {
+  color: #64b5f6;
 }
 
 /* Footer */
 .nav-footer {
-  border-top: 1px solid #e5e5e5;
+  background-color: #0f0f1a;
+  border-top: 1px solid #2a2a4a;
   font-size: 0.9rem;
-  color: #6c757d;
+  color: #8888a0;
 }
 
 /* Category badges */
 .quarto-category {
   font-size: 0.75rem;
+  background-color: #2a3a5a;
+  color: #a0c4ff;
+  border: none;
 }
 
 /* Blockquotes */
 blockquote {
-  border-left: 4px solid #002E5D;
+  border-left: 4px solid #64b5f6;
   padding-left: 1rem;
-  color: #555;
+  color: #a0a0b8;
   font-style: italic;
+  background-color: rgba(100, 181, 246, 0.05);
+  padding: 0.75rem 1rem;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Code blocks */
+pre {
+  background-color: #0d1b2a !important;
+  border: 1px solid #2a3a5a;
+}
+
+code {
+  color: #90caf9;
+}
+
+/* About page profile card */
+.about-entity {
+  background-color: #16213e;
+}
+
+/* Table styling */
+table {
+  color: #c8c8d8;
+}
+
+th {
+  background-color: #1e2a4a;
+  color: #e0e0e0;
+}
+
+td {
+  border-color: #2a3a5a;
+}
+
+/* Listing page description text */
+.listing-description,
+.metadata {
+  color: #a0a0b8;
+}
+
+/* HR divider */
+hr {
+  border-color: #2a3a5a;
 }

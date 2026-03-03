@@ -6,7 +6,7 @@ about:
   links:
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: https://www.linkedin.com/in/wenjie-guo-byu/
     - icon: github
       text: GitHub
       href: https://github.com/Kevin-Wenjie-Guo

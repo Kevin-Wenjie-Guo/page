@@ -1,0 +1,32 @@
+---
+title: "My Story"
+subtitle: "From China to BYU — and everything I'm building along the way"
+title-block-banner: true
+---
+
+## Who I Am
+
+I'm Kevin (Wenjie) Guo — a student at **Brigham Young University's School of Accountancy** within the Marriott School of Business. I'm originally from China, and my journey to BYU has shaped how I see the world across cultures, markets, and disciplines.
+
+I don't fit neatly into one box. My interests span **finance and equity research**, **software and app development**, **business strategy**, and **mindfulness** — and I believe the most interesting ideas live at the intersections of these fields.
+
+## What I'm Working On
+
+**Investing & Equity Research** — I study markets and companies with the rigor of an accountant and the curiosity of an investor. I'm building a practice of deep fundamental analysis, looking for insights others miss.
+
+**App Development** — I'm actively building applications and learning the craft of software development. I believe that in today's world, the ability to build software is as fundamental as the ability to read a balance sheet.
+
+**Strategy & Management** — Through coursework and independent study at BYU's Marriott School, I'm developing my thinking about how organizations compete, grow, and create value. I'm especially drawn to the intersection of strategy and technology.
+
+**Meditation & Living Well** — I practice meditation and believe that a clear mind is the foundation for everything else. I write about mindfulness, habits, and how to live with more intention.
+
+## Why This Site Exists
+
+I started this site because I wanted a place to think in public. Writing forces clarity. Publishing forces accountability. And building a personal site from scratch — with [Quarto](https://quarto.org) and code — is itself a form of practice.
+
+Every section of this site represents a dimension of who I am and who I'm becoming. If any of it resonates, I'd love to connect.
+
+## Let's Connect
+
+- [LinkedIn](https://www.linkedin.com/in/wenjie-guo-byu/)
+- [GitHub](https://github.com/Kevin-Wenjie-Guo)
