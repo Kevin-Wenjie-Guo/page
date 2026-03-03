@@ -1,29 +1,36 @@
 project:
   type: website
-  output-dir: _site  # 构建输出目录（GitHub Pages 识别此目录）
+  output-dir: _site
 
 website:
-  title: "Kevin's Place"  # 改成你的博客名
-  description: "Learn More about Kevin（wenjie）Guo"
+  title: "Kevin's Place"
+  description: "Thoughts on investing, technology, strategy, and life — by Kevin (Wenjie) Guo"
   navbar:
-    title: "我Kevin's Place博客"
+    title: "Kevin's Place"
     left:
       - href: index.qmd
         text: Home
-      - href: posts.qmd
-        text: Post
+      - href: daily/index.qmd
+        text: Daily Writing
+      - href: investing/index.qmd
+        text: Investing
+      - href: appdev/index.qmd
+        text: App Dev
+      - href: strategy/index.qmd
+        text: Strategy
+      - href: meditation/index.qmd
+        text: Meditation
+    right:
+      - href: about.qmd
+        text: About
+      - icon: github
+        href: https://github.com/Kevin-Wenjie-Guo
   page-footer:
-    center: "© Kevin Guo | 基于 Quarto 构建"
+    center: "© 2026 Kevin Guo — Built with [Quarto](https://quarto.org)"
 
-# 选择主题（推荐默认的 journal，也可以换 bootstrap/solar）
 format:
   html:
-    theme: bootstrap
-    css: styles.css  # 自定义样式文件（可选）
-    toc: true  # 文章侧边目录
-
-# 关键：配置 GitHub Pages 部署
-deploy:
-  type: gh-pages
-  repo: https://github.com/你的用户名/你的用户名.github.io.git  # 替换成你的仓库地址
-  branch: main  # 部署到 main 分支（GitHub Pages 默认）
+    theme: cosmo
+    css: styles.css
+    toc: true
+    link-external-newwindow: true

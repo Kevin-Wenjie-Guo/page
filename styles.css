@@ -1,1 +1,41 @@
-/* css styles */
+/* Kevin's Place - Custom Styles */
+
+/* Clean body background */
+body {
+  background-color: #fdfcfb;
+}
+
+/* Navbar styling */
+.navbar {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* Section listing cards */
+.quarto-listing {
+  margin-top: 1rem;
+}
+
+/* Title banner */
+.quarto-title-banner {
+  margin-bottom: 1.5rem;
+}
+
+/* Footer */
+.nav-footer {
+  border-top: 1px solid #e5e5e5;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+/* Category badges */
+.quarto-category {
+  font-size: 0.75rem;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid #002E5D;
+  padding-left: 1rem;
+  color: #555;
+  font-style: italic;
+}

@@ -1,0 +1,13 @@
+---
+title: "App Development"
+listing:
+  contents: "*/index.qmd"
+  feed: true
+  sort: "date desc"
+  type: default
+  categories: true
+page-layout: full
+title-block-banner: true
+---
+
+Building applications — what I'm working on and what I'm learning about software.

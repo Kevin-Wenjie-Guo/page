@@ -1,0 +1,13 @@
+---
+title: "Investing & Equity Research"
+listing:
+  contents: "*/index.qmd"
+  feed: true
+  sort: "date desc"
+  type: default
+  categories: true
+page-layout: full
+title-block-banner: true
+---
+
+Analysis, investment theses, and market thinking.

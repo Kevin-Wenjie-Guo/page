@@ -1,15 +1,31 @@
 ---
-title: "Site"
-listing:
-  contents: posts
-  feed: true
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: false
-  filter-ui: false
+title: "Kevin's Place"
+subtitle: "Investing · Technology · Strategy · Life"
 page-layout: full
 title-block-banner: true
 ---
 
+Welcome to my corner of the internet. I'm Kevin (Wenjie) Guo — I write about the things I spend my time thinking about.
 
+This site is organized into five areas:
+
+- **[Daily Writing](daily/index.qmd)** — Posts, reflections, and things I'm learning day to day
+- **[Investing & Equity Research](investing/index.qmd)** — Analysis, investment theses, and market thinking
+- **[App Development](appdev/index.qmd)** — Building applications and what I'm working on
+- **[Strategy & Management](strategy/index.qmd)** — Ideas on business strategy and organizational thinking
+- **[Meditation & Life](meditation/index.qmd)** — On mindfulness, well-being, and living better
+
+---
+
+## Recent Posts
+
+::: {#recent-posts}
+:::
+
+```{=html}
+<style>
+#recent-posts {
+  margin-top: 1rem;
+}
+</style>
+```
