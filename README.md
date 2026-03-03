@@ -2,7 +2,7 @@
 
 Personal website and blog by Kevin (Wenjie) Guo.
 
-**Live site:** [https://kevin-wenjie-guo.github.io/page.github.io/](https://kevin-wenjie-guo.github.io/page.github.io/)
+**Live site:** [https://kevin-wenjie-guo.github.io/page/](https://kevin-wenjie-guo.github.io/page)
 
 ## Sections
 
