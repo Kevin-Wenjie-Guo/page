@@ -1,0 +1,93 @@
+---
+title: "SpaceX 财务深度分析：超越 IS / BS / SCF 的 16 页拆解"
+date: "2026-05-24"
+author: "Kevin Guo"
+categories: [SpaceX, IPO, US Equity, Equity Research, Financial Analysis]
+description: "16 页幻灯片格式的 SpaceX 财务深度分析。超越损益表 / 资产负债表 / 现金流量表，每个分析后都给出 So What。包含三段加总估值、表外承诺、隐藏杠杆、Forensics 红旗清单。"
+toc: false
+page-layout: full
+---
+
+这是一份 16 页幻灯片格式的 SpaceX 财务深度分析。基于 S-1 招股书原文，超越传统 IS / BS / SCF 三张表的视角，每个分析后都给出 So What 的投资含义。
+
+## 内容索引
+
+1. **30 秒速览** — 三段套娃公司
+2. **损益表** — 增长 vs 利润的剪刀差
+3. **资产负债表** — 账面 1020 亿美元的"内核"
+4. **现金流量表** — OCF 看着 OK，FCF 深度负
+5. **分部财务** — 三段交叉补贴机制
+6. **单位经济** — Starlink 用户增长 vs ARPU 腰斩
+7. **资本支出强度** — AI 段吞噬一切
+8. **现金跑道** — 5 个月烧光，靠融资续命
+9. **Adj EBITDA 魔术** — 9.2B 的黑箱拆解
+10. **表外义务** — 800 亿+ 隐藏承诺
+11. **隐藏杠杆** — 调整后净债务 490 亿
+12. **收入质量** — 政府 20% + Anthropic 80% AI 段集中度
+13. **Anthropic 大单** — 双刃剑分析
+14. **Forensics 红旗** — 10 大注意事项
+15. **估值含义** — SOTP $300-500B vs 市场 $2T
+16. **结语** — 三种情景
+
+## 完整 Slide Deck
+
+::: {.callout-tip}
+点击下方链接打开完整的 16 页 HTML deck（深色主题，适合演示模式 / PDF 导出）。
+:::
+
+<div style="text-align: center; margin: 30px 0;">
+  <a href="deck.html" target="_blank" style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #00d4ff 0%, #ffb84d 100%); color: #0a0e1a; font-weight: 700; text-decoration: none; border-radius: 6px; font-size: 18px;">
+    📊 打开完整 Deck（新窗口）
+  </a>
+</div>
+
+或直接嵌入查看：
+
+<iframe src="deck.html" width="100%" height="800" style="border: 1px solid #ccc; border-radius: 6px;" loading="lazy"></iframe>
+
+---
+
+## 关键数据快速参考
+
+### 财务核心
+
+| 指标 | 2025 | Q1'26 |
+|---|---:|---:|
+| 营收 | $18.7B | $4.7B |
+| 净亏损 | $(4.9)B | $(4.3)B |
+| Adj EBITDA | $6.6B | $1.1B |
+| 自由现金流 | $(13.9)B | $(9.1)B |
+| 总有息债务 | $29.1B | — |
+| 累计亏损 | $(41.3)B | — |
+
+### Capex 强度
+
+| 项 | 2025 |
+|---|---:|
+| 总 Capex | $20.7B |
+| AI 段 Capex 占比 | **61%** |
+| Capex / 营收 | **111%** |
+
+行业对照：Microsoft ~30%，Meta ~33%，AT&T ~16%，NVIDIA ~3%。
+
+### 估值情景（SOTP）
+
+| 分部 | 估值范围 |
+|---|---|
+| Connectivity | $144-180B |
+| Space | $40B |
+| AI | $60-100B |
+| 长期期权价值 | $50-200B |
+| **合计** | **$294-520B** |
+
+vs 市场传言 $2T+。差额来自 orbital AI compute 卫星星座的远期 TAM 折现 + Musk 估值溢价。
+
+---
+
+::: {.callout-note}
+本分析基于 SpaceX S-1 招股书原文（SEC EDGAR Accession 0001628280-26-036936，2026/05/20 提交）。
+:::
+
+::: {.callout-warning}
+**免责声明**：本分析仅代表个人观点，不构成任何投资建议。情景估值包含主观判断，实际结果可能显著不同。
+:::
