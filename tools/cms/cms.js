@@ -132,6 +132,49 @@ async function deletePost(section, slug) {
   await fsp.rm(dir, { recursive: true, force: true });
 }
 
+// ─── Markdown import (drag-and-drop) ──────────────────────────────────────
+
+// Find all local image references in markdown.
+// Returns array of { full, alt, path, basename }
+// Skips http(s):// and data: URIs.
+function extractImageRefs(markdown) {
+  const refs = [];
+  // Matches ![alt](path) and ![alt](path "title"), allowing relative paths
+  const re = /!\[([^\]]*)\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g;
+  let m;
+  while ((m = re.exec(markdown)) !== null) {
+    const fullPath = m[2];
+    if (/^(https?:|data:|\/\/)/i.test(fullPath)) continue;
+    const basename = path.posix.basename(fullPath.split('?')[0].split('#')[0]);
+    refs.push({ full: m[0], alt: m[1], path: fullPath, basename });
+  }
+  return refs;
+}
+
+// Rewrite image references in markdown to use bare basenames (co-located).
+function rewriteImagePaths(markdown, refs) {
+  let out = markdown;
+  for (const r of refs) {
+    if (r.path === r.basename) continue; // already bare
+    const newRef = `![${r.alt}](${r.basename})`;
+    out = out.split(r.full).join(newRef);
+  }
+  return out;
+}
+
+// Write a post imported from drag-and-drop along with its images.
+async function importPost(section, slug, frontmatter, body, images) {
+  const dir = path.join(REPO_PATH, section, slug);
+  await fsp.mkdir(dir, { recursive: true });
+  const content = serializeFrontmatter(frontmatter, body);
+  await fsp.writeFile(path.join(dir, 'index.qmd'), content, 'utf8');
+  for (const img of images || []) {
+    const safeName = path.basename(img.filename); // strip any path traversal
+    const buf = Buffer.from(img.base64, 'base64');
+    await fsp.writeFile(path.join(dir, safeName), buf);
+  }
+}
+
 // ─── Git operations ───────────────────────────────────────────────────────
 
 async function gitStatus() {
@@ -149,6 +192,78 @@ async function gitStatus() {
 async function gitPull() {
   const { stdout, stderr } = await execP('git pull', { cwd: REPO_PATH });
   return { output: stdout + stderr };
+}
+
+// Read the title field from a .qmd file's frontmatter (best-effort).
+async function readQmdTitle(relPath) {
+  try {
+    const abs = path.join(REPO_PATH, relPath);
+    const content = await fsp.readFile(abs, 'utf8');
+    const { frontmatter } = parseFrontmatter(content);
+    return frontmatter.title || path.basename(path.dirname(relPath));
+  } catch (e) {
+    return null;
+  }
+}
+
+// Build a sensible commit message from current `git status` output.
+async function suggestCommitMessage() {
+  const { stdout } = await execP('git status --porcelain', { cwd: REPO_PATH });
+  const lines = stdout.split('\n').filter(l => l.trim());
+  if (lines.length === 0) return { message: '', summary: 'nothing to commit' };
+
+  const added = [];
+  const modified = [];
+  const deleted = [];
+  const otherFiles = [];
+
+  for (const line of lines) {
+    const status = line.substring(0, 2).trim();
+    const filePath = line.substring(3).trim();
+    // Match post index.qmd files
+    const postMatch = filePath.match(/^([^/]+)\/([^/]+)\/index\.qmd$/);
+    if (postMatch) {
+      const [, section, slug] = postMatch;
+      if (status.includes('A') || status === '??') {
+        const title = await readQmdTitle(filePath);
+        added.push({ section, slug, title });
+      } else if (status.includes('M')) {
+        const title = await readQmdTitle(filePath);
+        modified.push({ section, slug, title });
+      } else if (status.includes('D')) {
+        deleted.push({ section, slug });
+      }
+    } else {
+      otherFiles.push({ status, filePath });
+    }
+  }
+
+  // Construct message
+  const parts = [];
+  if (added.length === 1) {
+    parts.push(`Add post: ${added[0].title}`);
+  } else if (added.length > 1) {
+    parts.push(`Add ${added.length} posts: ${added.map(p => p.title).join(', ')}`);
+  }
+  if (modified.length === 1) {
+    parts.push(`Update post: ${modified[0].title}`);
+  } else if (modified.length > 1) {
+    parts.push(`Update ${modified.length} posts: ${modified.map(p => p.title).join(', ')}`);
+  }
+  if (deleted.length > 0) {
+    parts.push(`Delete ${deleted.length} post(s)`);
+  }
+  if (parts.length === 0 && otherFiles.length > 0) {
+    // Other files only (e.g. config, images, CMS code)
+    parts.push(`Update site files (${otherFiles.length} change${otherFiles.length > 1 ? 's' : ''})`);
+  }
+
+  const message = parts.join('; ').slice(0, 200); // keep reasonable
+  return {
+    message,
+    summary: `${added.length} added, ${modified.length} modified, ${deleted.length} deleted, ${otherFiles.length} other`,
+    added, modified, deleted, otherFiles,
+  };
 }
 
 async function gitPublish(message) {
@@ -202,6 +317,29 @@ async function handleApi(req, res, urlPath) {
       const body = await readBody(req);
       const { message } = body ? JSON.parse(body) : {};
       return jsonResponse(res, 200, await gitPublish(message));
+    }
+    if (urlPath === '/api/git/suggest-message' && req.method === 'GET') {
+      return jsonResponse(res, 200, await suggestCommitMessage());
+    }
+    if (urlPath === '/api/post/import' && req.method === 'POST') {
+      const body = JSON.parse(await readBody(req));
+      const { section, slug, title, date, categories, description, content, images } = body;
+      const fm = {
+        title, date,
+        author: 'Kevin Guo',
+        categories: categories || [],
+        description: description || '',
+      };
+      // Normalize image paths in body before writing
+      const refs = extractImageRefs(content);
+      const rewritten = rewriteImagePaths(content, refs);
+      await importPost(section, slug, fm, rewritten, images || []);
+      return jsonResponse(res, 200, {
+        ok: true,
+        slug,
+        imagesWritten: (images || []).length,
+        imageRefsFound: refs.length,
+      });
     }
     if (urlPath === '/api/post' && req.method === 'POST') {
       const body = JSON.parse(await readBody(req));
@@ -313,6 +451,15 @@ label { display: block; font-size: 12px; color: var(--fg-dim); text-transform: u
 .section-pill { display: inline-block; background: var(--bg3); padding: 2px 8px; border-radius: 4px; font-size: 11px; color: var(--accent); margin-right: 8px; }
 .muted { color: var(--fg-dim); }
 hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+.dropzone { border: 2px dashed var(--border); border-radius: 8px; padding: 24px; text-align: center; color: var(--fg-dim); margin-bottom: 16px; transition: all 0.15s; cursor: pointer; }
+.dropzone:hover, .dropzone.drag-over { border-color: var(--accent); background: rgba(56, 189, 248, 0.05); color: var(--fg); }
+.dropzone .hint { font-size: 12px; margin-top: 6px; }
+.dropzone strong { color: var(--accent); }
+.import-summary { background: var(--bg2); border: 1px solid var(--accent); border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: 13px; }
+.import-summary .file-row { padding: 4px 0; color: var(--fg-dim); }
+.import-summary .file-row.image::before { content: "🖼 "; }
+.import-summary .file-row.markdown::before { content: "📄 "; color: var(--accent); }
+.import-summary .file-row.warn::before { content: "⚠ "; color: var(--accent2); }
 </style>
 </head>
 <body>
@@ -327,6 +474,11 @@ hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
 </header>
 
 <div id="git-status" class="git-status">Loading git status...</div>
+
+<div id="dropzone" class="dropzone">
+  📥 <strong>拖拽 Markdown 文件 + 图片</strong> 到这里直接导入
+  <div class="hint">把 .md / .qmd 文件和它引用的所有图片（PNG / JPG / SVG / GIF）一起选中，拖进来。系统会自动转换为 Quarto post，图片随之入库。</div>
+</div>
 
 <div id="posts-container"></div>
 
@@ -561,10 +713,19 @@ async function syncPull() {
   }
 }
 
-function openPublishModal() {
-  document.getElementById('commit-msg').value = '';
+async function openPublishModal() {
+  const msgInput = document.getElementById('commit-msg');
+  msgInput.value = '';
+  msgInput.placeholder = '正在生成建议...';
   document.getElementById('publish-output').style.display = 'none';
   document.getElementById('publish-modal').classList.add('open');
+  try {
+    const r = await api('/api/git/suggest-message');
+    msgInput.value = r.message || '';
+    msgInput.placeholder = r.summary || '可空，自动生成';
+  } catch (e) {
+    msgInput.placeholder = '可空，自动生成';
+  }
 }
 
 function closePublish() {
@@ -586,6 +747,209 @@ async function publishNow() {
     toast('发布失败', 'error');
   }
 }
+
+// ─── Markdown drag-and-drop import ─────────────────────────────────────
+
+const MD_EXTS = ['.md', '.qmd', '.markdown'];
+const IMG_EXTS = ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.bmp'];
+
+const dropzone = document.getElementById('dropzone');
+let importBuffer = null; // { markdown, images, refs, missing }
+
+dropzone.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  dropzone.classList.add('drag-over');
+});
+dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag-over'));
+dropzone.addEventListener('drop', async (e) => {
+  e.preventDefault();
+  dropzone.classList.remove('drag-over');
+  const files = Array.from(e.dataTransfer.files);
+  await handleDroppedFiles(files);
+});
+
+function fileExt(name) {
+  const i = name.lastIndexOf('.');
+  return i >= 0 ? name.slice(i).toLowerCase() : '';
+}
+
+function readFileAsText(file) {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(r.result);
+    r.onerror = reject;
+    r.readAsText(file, 'utf-8');
+  });
+}
+
+function readFileAsBase64(file) {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => {
+      const dataUrl = r.result;
+      const base64 = dataUrl.slice(dataUrl.indexOf(',') + 1);
+      resolve(base64);
+    };
+    r.onerror = reject;
+    r.readAsDataURL(file);
+  });
+}
+
+// Parse YAML frontmatter from a markdown text (simple version, matches server)
+function parseFrontmatterClient(content) {
+  const m = content.match(/^---\\r?\\n([\\s\\S]*?)\\r?\\n---\\r?\\n([\\s\\S]*)$/);
+  if (!m) return { frontmatter: {}, body: content };
+  const yaml = m[1];
+  const body = m[2];
+  const fm = {};
+  for (const line of yaml.split(/\\r?\\n/)) {
+    if (!line.trim()) continue;
+    const kv = line.match(/^([a-zA-Z_-]+):\\s*(.*)$/);
+    if (!kv) continue;
+    let v = kv[2].trim();
+    if (v.startsWith('"') && v.endsWith('"')) v = v.slice(1, -1);
+    if (v.startsWith('[') && v.endsWith(']')) {
+      v = v.slice(1, -1).split(',').map(s => s.trim().replace(/^["']|["']$/g, ''));
+    }
+    fm[kv[1]] = v;
+  }
+  return { frontmatter: fm, body };
+}
+
+// Find image references in markdown (basenames only)
+function findImageRefs(markdown) {
+  const refs = [];
+  const re = /!\\[([^\\]]*)\\]\\(([^)\\s]+)(?:\\s+"[^"]*")?\\)/g;
+  let m;
+  while ((m = re.exec(markdown)) !== null) {
+    const p = m[2];
+    if (/^(https?:|data:|\\/\\/)/i.test(p)) continue;
+    const basename = p.split('/').pop().split('\\\\').pop().split('?')[0].split('#')[0];
+    refs.push({ alt: m[1], path: p, basename });
+  }
+  return refs;
+}
+
+async function handleDroppedFiles(files) {
+  const mdFiles = files.filter(f => MD_EXTS.includes(fileExt(f.name)));
+  const imgFiles = files.filter(f => IMG_EXTS.includes(fileExt(f.name)));
+
+  if (mdFiles.length === 0) {
+    toast('没找到 Markdown 文件 (.md / .qmd)', 'error');
+    return;
+  }
+  if (mdFiles.length > 1) {
+    toast('一次只能拖一个 Markdown 文件 (拖了 ' + mdFiles.length + ' 个)', 'error');
+    return;
+  }
+
+  const mdFile = mdFiles[0];
+  const mdText = await readFileAsText(mdFile);
+  const { frontmatter, body } = parseFrontmatterClient(mdText);
+  const refs = findImageRefs(body);
+
+  // Match images by basename
+  const imgByBasename = {};
+  for (const f of imgFiles) imgByBasename[f.name.toLowerCase()] = f;
+  const matched = [];
+  const missing = [];
+  for (const r of refs) {
+    const f = imgByBasename[r.basename.toLowerCase()];
+    if (f) matched.push({ ref: r, file: f });
+    else missing.push(r);
+  }
+
+  // Read matched images as base64
+  const images = [];
+  for (const m of matched) {
+    images.push({
+      filename: m.ref.basename,
+      base64: await readFileAsBase64(m.file),
+    });
+  }
+
+  importBuffer = {
+    markdown: body,
+    frontmatter,
+    images,
+    refsFound: refs.length,
+    missingImages: missing.map(r => r.basename),
+  };
+
+  // Open editor pre-filled
+  newPost();
+  if (frontmatter.title) document.getElementById('f-title').value = frontmatter.title;
+  else {
+    // Fallback: derive from first H1 or filename
+    const h1 = body.match(/^#\\s+(.+)$/m);
+    document.getElementById('f-title').value = h1 ? h1[1].trim() : mdFile.name.replace(/\\.(md|qmd|markdown)$/i, '');
+  }
+  if (frontmatter.date) document.getElementById('f-date').value = String(frontmatter.date).slice(0, 10);
+  if (frontmatter.categories) {
+    const cats = Array.isArray(frontmatter.categories) ? frontmatter.categories : [frontmatter.categories];
+    document.getElementById('f-categories').value = cats.join(', ');
+  }
+  if (frontmatter.description) document.getElementById('f-description').value = frontmatter.description;
+  document.getElementById('f-content').value = body;
+
+  // Show import summary at top of editor
+  const editorHeader = document.getElementById('editor-title');
+  editorHeader.textContent = '📥 Importing: ' + mdFile.name;
+  let summaryHtml = '<div class="import-summary">' +
+    '<div class="file-row markdown">' + escapeHtml(mdFile.name) + ' (' + (mdText.length / 1024).toFixed(1) + ' KB)</div>';
+  for (const m of matched) {
+    summaryHtml += '<div class="file-row image">' + escapeHtml(m.ref.basename) + ' → 将随 post 入库</div>';
+  }
+  for (const b of missing) {
+    summaryHtml += '<div class="file-row warn">引用了 ' + escapeHtml(b) + ' 但没拖进来——保存后该图片会显示为破损链接</div>';
+  }
+  summaryHtml += '</div>';
+
+  // Inject summary
+  let existing = document.getElementById('import-summary');
+  if (existing) existing.remove();
+  const div = document.createElement('div');
+  div.id = 'import-summary';
+  div.innerHTML = summaryHtml;
+  editorHeader.parentNode.parentNode.insertBefore(div, editorHeader.parentNode.nextSibling);
+
+  toast('已导入 ' + mdFile.name + '，匹配 ' + matched.length + ' / ' + refs.length + ' 张图');
+}
+
+// Override savePost to also send images when importing
+const _origSavePost = savePost;
+savePost = async function() {
+  if (!importBuffer || !importBuffer.images.length) {
+    return _origSavePost();
+  }
+  // Build payload with images
+  const title = document.getElementById('f-title').value.trim();
+  if (!title) return toast('标题不能为空', 'error');
+  const section = document.getElementById('f-section').value;
+  const date = document.getElementById('f-date').value;
+  let slug = document.getElementById('f-slug').value.trim();
+  if (!slug) slug = slugify(title);
+  const categories = document.getElementById('f-categories').value
+    .split(',').map(s => s.trim()).filter(Boolean);
+  const description = document.getElementById('f-description').value;
+  const content = document.getElementById('f-content').value;
+  try {
+    const r = await api('/api/post/import', 'POST', {
+      section, slug, title, date, categories, description, content,
+      images: importBuffer.images,
+    });
+    if (r.error) throw new Error(r.error);
+    toast('已保存 ' + section + '/' + slug + '，' + r.imagesWritten + ' 张图入库');
+    importBuffer = null;
+    const sum = document.getElementById('import-summary');
+    if (sum) sum.remove();
+    closeEditor();
+    loadPosts();
+    loadGitStatus();
+  } catch (e) {
+    toast('保存失败: ' + e.message, 'error');
+  }
+};
 
 // Init
 loadPosts();
