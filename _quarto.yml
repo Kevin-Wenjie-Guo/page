@@ -1,6 +1,12 @@
 project:
   type: website
   output-dir: _site
+  render:
+    - "**/*.qmd"
+    - "!tools/"
+    - "!_site/"
+    - "!.quarto/"
+    - "!node_modules/"
 
 website:
   title: "Kevin's Place"
