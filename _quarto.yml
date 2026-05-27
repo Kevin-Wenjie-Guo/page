@@ -9,6 +9,12 @@ project:
     - "!node_modules/"
   resources:
     - "**/*.html"
+    - "**/*.png"
+    - "**/*.jpg"
+    - "**/*.jpeg"
+    - "**/*.gif"
+    - "**/*.svg"
+    - "**/*.pdf"
     - "!tools/"
     - "!_site/"
 
