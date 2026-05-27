@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>SpaceX 概念 ETF 深度横评 | Deep Dive</title>
+<style>
+:root {
+  --bg: #0a0e1a;
+  --bg2: #131826;
+  --accent: #00d4ff;
+  --accent2: #ffb84d;
+  --good: #4ade80;
+  --bad: #ef4444;
+  --warn: #fbbf24;
+  --text: #e2e8f0;
+  --text-dim: #94a3b8;
+  --border: #1e293b;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+  line-height: 1.6;
+}
+.slide {
+  min-height: 100vh;
+  padding: 60px 80px;
+  border-bottom: 2px solid var(--border);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.slide-num {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: var(--text-dim);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+h1 {
+  font-size: 56px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+h3 { font-size: 22px; font-weight: 600; color: var(--accent2); margin: 20px 0 12px; }
+h4 { font-size: 17px; font-weight: 600; margin: 16px 0 8px; }
+p { margin-bottom: 12px; }
+.subtitle { font-size: 22px; color: var(--text-dim); margin-bottom: 40px; }
+.kicker { font-size: 13px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+th { background: var(--bg2); color: var(--accent); text-align: right; padding: 10px 12px; border-bottom: 2px solid var(--accent); font-weight: 600; }
+th:first-child { text-align: left; }
+td { padding: 8px 12px; border-bottom: 1px solid var(--border); text-align: right; }
+td:first-child { text-align: left; color: var(--text-dim); }
+tr:hover td { background: var(--bg2); }
+tr.highlight td { background: rgba(0, 212, 255, 0.08); color: var(--text); }
+tr.highlight td:first-child { color: var(--accent); font-weight: 600; }
+.metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
+.metric { background: var(--bg2); border: 1px solid var(--border); border-left: 4px solid var(--accent); padding: 16px 20px; border-radius: 6px; }
+.metric.bad { border-left-color: var(--bad); }
+.metric.good { border-left-color: var(--good); }
+.metric.warn { border-left-color: var(--warn); }
+.metric .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+.metric .value { font-size: 28px; font-weight: 700; color: var(--text); margin: 4px 0; }
+.metric .delta { font-size: 13px; color: var(--text-dim); }
+.so-what {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(255, 184, 77, 0.08));
+  border: 1px solid var(--accent);
+  border-left: 6px solid var(--accent2);
+  padding: 18px 22px;
+  margin: 24px 0;
+  border-radius: 6px;
+  position: relative;
+}
+.so-what::before {
+  content: "💡 SO WHAT";
+  position: absolute;
+  top: -10px;
+  left: 14px;
+  background: var(--bg);
+  padding: 0 8px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--accent2);
+  font-weight: 700;
+}
+.so-what p:last-child { margin-bottom: 0; }
+.flag, .green-flag, .warn-flag {
+  padding: 12px 16px;
+  margin: 12px 0;
+  border-radius: 4px;
+}
+.flag { background: rgba(239, 68, 68, 0.06); border-left: 4px solid var(--bad); }
+.green-flag { background: rgba(74, 222, 128, 0.06); border-left: 4px solid var(--good); }
+.warn-flag { background: rgba(251, 191, 36, 0.06); border-left: 4px solid var(--warn); }
+.bar-chart { margin: 20px 0; }
+.bar-row { display: grid; grid-template-columns: 220px 1fr 100px; align-items: center; margin: 6px 0; gap: 10px; }
+.bar-label { font-size: 13px; color: var(--text-dim); }
+.bar-track { background: var(--bg2); height: 24px; border-radius: 3px; overflow: hidden; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 3px; }
+.bar-fill.bad { background: linear-gradient(90deg, var(--bad), #f97316); }
+.bar-fill.good { background: linear-gradient(90deg, var(--good), #22d3ee); }
+.bar-value { font-size: 13px; color: var(--text); text-align: right; font-weight: 600; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+.callout { background: var(--bg2); padding: 16px 20px; border-radius: 6px; margin: 16px 0; border-left: 4px solid var(--accent); }
+.big-stat {
+  font-size: 80px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  margin: 20px 0;
+}
+.cover {
+  background: radial-gradient(ellipse at top right, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at bottom left, rgba(255, 184, 77, 0.1) 0%, transparent 50%),
+              var(--bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.cover h1 { font-size: 84px; }
+.cover .subtitle { font-size: 28px; }
+.disclaimer { margin-top: auto; font-size: 12px; color: var(--text-dim); border-top: 1px solid var(--border); padding-top: 16px; margin-top: 60px; }
+.tag { display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-right: 6px; }
+.tag-good { background: rgba(74, 222, 128, 0.15); color: var(--good); border: 1px solid var(--good); }
+.tag-bad { background: rgba(239, 68, 68, 0.15); color: var(--bad); border: 1px solid var(--bad); }
+.tag-warn { background: rgba(251, 191, 36, 0.15); color: var(--warn); border: 1px solid var(--warn); }
+.note { font-size: 13px; color: var(--text-dim); font-style: italic; margin-top: 8px; }
+@media print { .slide { page-break-after: always; min-height: auto; } }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ SLIDE 1: COVER ═══════════════ -->
+<section class="slide cover">
+  <div class="kicker">EQUITY RESEARCH · ETF DEEP DIVE</div>
+  <h1>SpaceX 概念 ETF<br>深度横评</h1>
+  <div class="subtitle">8 只受益 ETF 拆解到底<br>"看仓位 DXYZ 更纯，看真实暴露 NASA 是 DXYZ 的 2.5 倍"</div>
+  <div style="margin-top:40px; font-size: 15px; color: var(--text-dim);">
+    <div>📊 数据源：Bloomberg Terminal + cefconnect.com</div>
+    <div>📅 数据截止：2026/05/27</div>
+    <div>🎯 用途：老虎证券新加坡客户直播筹备</div>
+  </div>
+  <div class="disclaimer">
+    本报告仅供研究用途，不构成投资建议。CEF 折溢价、ETF 集中度、流动性差异是真实风险。
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 2: TL;DR ═══════════════ -->
+<section class="slide">
+  <div class="slide-num">02 / 12</div>
+  <h2>30 秒看懂</h2>
+  <p style="font-size: 18px; margin-bottom: 24px;">
+    8 只号称"SpaceX 受益"的 ETF 拆开看，结论让人意外。
+  </p>
+
+  <div class="metric-grid">
+    <div class="metric good">
+      <div class="label">NASA ETF 期间涨幅</div>
+      <div class="value">+73%</div>
+      <div class="delta">$24 → $41.61（4 月-5 月）</div>
+    </div>
+    <div class="metric good">
+      <div class="label">NASA 持 SpaceX SPV</div>
+      <div class="value">7.77%</div>
+      <div class="delta">第 2 大持仓，市值 $129.7M</div>
+    </div>
+    <div class="metric warn">
+      <div class="label">DXYZ 名义 SpaceX 仓位</div>
+      <div class="value">17.4%</div>
+      <div class="delta">两笔 SPV 加起来</div>
+    </div>
+    <div class="metric bad">
+      <div class="label">DXYZ 当前溢价</div>
+      <div class="value">~5x</div>
+      <div class="delta">市价 $60.21 vs NAV ~$11-12</div>
+    </div>
+    <div class="metric warn">
+      <div class="label">DXYZ 现金占比</div>
+      <div class="value">47%</div>
+      <div class="delta">第一持仓是国债基金</div>
+    </div>
+    <div class="metric good">
+      <div class="label">NASA 真实 SpaceX 暴露</div>
+      <div class="value">$7.77</div>
+      <div class="delta">每 $100 投入</div>
+    </div>
+    <div class="metric bad">
+      <div class="label">DXYZ 真实 SpaceX 暴露</div>
+      <div class="value">$3.16</div>
+      <div class="delta">17.4% ÷ 5.5x 溢价</div>
+    </div>
+    <div class="metric good">
+      <div class="label">NASA / DXYZ 真实暴露比</div>
+      <div class="value">2.46×</div>
+      <div class="delta">NASA 反而更"纯"</div>
+    </div>
+  </div>
+
+  <div class="so-what">
+    <p><strong>核心反转</strong>：表面看 DXYZ 仓位 17.4% 比 NASA 7.77% 高一倍多，但 DXYZ 5x 溢价 + 47% 现金稀释后，真实暴露只有 $3.16。NASA 没有溢价稀释，<strong>真实暴露 $7.77 反而是 DXYZ 的 2.46 倍</strong>。</p>
+    <p>"看仓位百分比"是散户最常见的认知陷阱。CEF 不能用 ETF 的方法读。</p>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 3: NASA Performance ═══════════════ -->
+<section class="slide">
+  <div class="slide-num">03 / 12</div>
+  <h2>NASA 表现 — 从默默无闻到机构追捧</h2>
+
+  <h3>累计涨幅时间线</h3>
+
+  <table>
+    <thead>
+      <tr><th>事件</th><th>日期</th><th>价格</th><th>距上市累计</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>NASA 上市</td><td>2024/06</td><td>$13.50（52w 低点）</td><td>—</td></tr>
+      <tr><td>2026 Q1 末</td><td>2026/03/31</td><td>~$24</td><td>+78%</td></tr>
+      <tr class="highlight"><td><strong>SpaceX 秘密递交 IPO</strong></td><td><strong>2026/04/01</strong></td><td><strong>~$24</strong></td><td><strong>启动信号</strong></td></tr>
+      <tr><td>SpaceX S-1 公开</td><td>2026/05/20</td><td>~$38</td><td>+181%</td></tr>
+      <tr><td>近期最高</td><td>2026/05/26</td><td><strong>$42.68</strong></td><td>+216%</td></tr>
+      <tr><td>截止数据日</td><td>2026/05/26</td><td>$41.61</td><td>+208%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>vs 基准（4 月起算，约 2 个月窗口）</h3>
+
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-label">NASA</div>
+      <div class="bar-track"><div class="bar-fill good" style="width: 100%;"></div></div>
+      <div class="bar-value">+41.82%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">XAR (航空航天)</div>
+      <div class="bar-track"><div class="bar-fill" style="width: 27%;"></div></div>
+      <div class="bar-value">~+12%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">B3000I (工业)</div>
+      <div class="bar-track"><div class="bar-fill" style="width: 19%;"></div></div>
+      <div class="bar-value">~+8%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">SPX (大盘)</div>
+      <div class="bar-track"><div class="bar-fill" style="width: 12%;"></div></div>
+      <div class="bar-value">~+5%</div>
+    </div>
+  </div>
+
+  <p class="note">数据来源：Bloomberg COMP 命令对照，时间窗口 2026/04/01 - 2026/05/26</p>
+
+  <div class="so-what">
+    <p>NASA 的超额收益从 4/1 开始爆发，远早于 5/20 S-1 公开。说明<strong>市场在 SpaceX 正式披露前就开始定价 IPO 预期</strong>——这是典型的"信息差先发型"行情。</p>
+    <p>5/20 S-1 当天 NASA 单日成交量 2,322 万股，是平时 5 倍以上，是机构进场的明确信号。</p>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 4: NASA Holdings ═══════════════ -->
+<section class="slide">
+  <div class="slide-num">04 / 12</div>
+  <h2>NASA 持仓拆开看</h2>
+
+  <h3>Bloomberg MHD 前 15 大持仓（AUM $1.5B / 持仓 38 只）</h3>
+
+  <table>
+    <thead>
+      <tr><th>排名</th><th>持仓</th><th>Ticker</th><th>%Net</th><th>市值</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Rocket Lab USA</td><td>RKLB US</td><td><strong>10.62%</strong></td><td>$177.1M</td></tr>
+      <tr class="highlight"><td><strong>2</strong></td><td><strong>太空探索技术公司（SpaceX SPV）</strong></td><td><strong>1398495D US</strong></td><td><strong>7.77%</strong></td><td><strong>$129.7M</strong></td></tr>
+      <tr><td>3</td><td>Planet Labs PBC</td><td>PL US</td><td>6.19%</td><td>$103.4M</td></tr>
+      <tr><td>4</td><td>Firefly Aerospace</td><td>FLY US</td><td>6.14%</td><td>$102.5M</td></tr>
+      <tr><td>5</td><td>AST SpaceMobile</td><td>ASTS US</td><td>5.18%</td><td>$86.5M</td></tr>
+      <tr><td>6</td><td>Intuitive Machines</td><td>LUNR US</td><td>5.11%</td><td>$85.2M</td></tr>
+      <tr><td>7</td><td>Filtronic（英）</td><td>FTC LN</td><td>4.53%</td><td>$75.5M</td></tr>
+      <tr><td>8</td><td>现金（USD）</td><td>USD Curncy</td><td>4.11%</td><td>$68.5M</td></tr>
+      <tr><td>9</td><td>5N Plus（加）</td><td>VNP CN</td><td>4.07%</td><td>$67.8M</td></tr>
+      <tr><td>10</td><td>BlackSky Technology</td><td>BKSY US</td><td>3.90%</td><td>$65.1M</td></tr>
+      <tr><td>11</td><td>ViaSat</td><td>VSAT US</td><td>3.67%</td><td>$61.2M</td></tr>
+      <tr><td>12</td><td>MDA Space（加）</td><td>MDA CN</td><td>3.26%</td><td>$54.2M</td></tr>
+      <tr><td>13</td><td>Astroscale Holdings（日）</td><td>186A JP</td><td>3.03%</td><td>$49.5M</td></tr>
+      <tr><td>14</td><td>昇达科技（台）</td><td>3491 TT</td><td>2.85%</td><td>$47.6M</td></tr>
+      <tr><td>15</td><td>York Space Systems</td><td>YSS US</td><td>2.62%</td><td>$43.6M</td></tr>
+    </tbody>
+  </table>
+
+  <h3>关键观察</h3>
+
+  <div class="green-flag">
+    <strong>① NASA 直接持有 SpaceX SPV 7.77%</strong> — 这是同类公开 ETF 里<strong>唯一直接持有 SpaceX 私募份额的可买可卖产品</strong>。Bloomberg 用内部代号 `1398495D US` 标识（因为 SpaceX 没有公开股票代号）。市值约 $129.7M，仓位变动 0（说明是稳定配置，不是临时仓位）。
+  </div>
+
+  <div class="callout">
+    <strong>② 配套主动重仓 SpaceX 联动股</strong><br>
+    RKLB 10.62% 是第一大持仓 + Firefly / ASTS / LUNR / PL 全在前 6。Tema 主动选了"SpaceX 板块联动度最高"的标的——这是被动指数化 ETF 学不来的。
+  </div>
+
+  <div class="callout">
+    <strong>③ 真正全球化</strong><br>
+    Filtronic（英）/ 5N Plus（加）/ MDA Space（加）/ Astroscale（日）/ 昇达科技（台）。降低了单一地区监管风险，但部分非美标的流动性较弱。
+  </div>
+
+  <div class="callout">
+    <strong>④ 集中度</strong><br>
+    前 6 大持仓累计 41%（RKLB 10.62 + SpaceX 7.77 + PL 6.19 + Firefly 6.14 + ASTS 5.18 + LUNR 5.11 = 41.01%）。任意单一标的暴跌（比如 RKLB 试飞失败、ASTS 频谱审批不过）都会显著传导到 ETF 净值。
+  </div>
+
+  <div class="so-what">
+    <p>NASA 是"<strong>SpaceX SPV 直接持仓 + 全球公开太空股板块篮子</strong>"的双重组合。这是它跑赢同类 ETF 的核心原因：</p>
+    <ul style="margin-left: 30px;">
+      <li>SpaceX 上市后直接吃估值上调（7.77% SPV → 公允价值重估）</li>
+      <li>板块联动通过 RKLB / ASTS / PL / Firefly 等持仓二次放大</li>
+      <li>没有 CEF 溢价稀释问题，市价贴近 NAV</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 5: NASA Detail ═══════════════ -->
+<section class="slide">
+  <div class="slide-num">05 / 12</div>
+  <h2>NASA ETF 全面剖析</h2>
+
+  <h3>基本信息（Bloomberg DES）</h3>
+
+  <div class="metric-grid">
+    <div class="metric">
+      <div class="label">类型</div>
+      <div class="value" style="font-size: 18px;">主动管理</div>
+      <div class="delta">无跟踪指数</div>
+    </div>
+    <div class="metric">
+      <div class="label">总资产</div>
+      <div class="value" style="font-size: 18px;">$1.5B</div>
+      <div class="delta">38 只持仓</div>
+    </div>
+    <div class="metric">
+      <div class="label">区域</div>
+      <div class="value" style="font-size: 18px;">全球</div>
+      <div class="delta">含韩国 / 以色列 / 欧洲 / 日本</div>
+    </div>
+    <div class="metric">
+      <div class="label">上市日</div>
+      <div class="value" style="font-size: 18px;">2024/06</div>
+      <div class="delta">运营约 2 年</div>
+    </div>
+    <div class="metric">
+      <div class="label">最新收盘</div>
+      <div class="value" style="font-size: 18px;">$41.61</div>
+      <div class="delta">2026/05/26</div>
+    </div>
+    <div class="metric">
+      <div class="label">52 周高 / 低</div>
+      <div class="value" style="font-size: 18px;">$42.68 / $13.50</div>
+      <div class="delta">区间约 3.2x</div>
+    </div>
+    <div class="metric">
+      <div class="label">5/20 单日成交量</div>
+      <div class="value" style="font-size: 18px;">2,322 万股</div>
+      <div class="delta">S-1 公开日，平时 5x</div>
+    </div>
+    <div class="metric">
+      <div class="label">现金比例</div>
+      <div class="value" style="font-size: 18px;">4.11%</div>
+      <div class="delta">几乎满仓</div>
+    </div>
+  </div>
+
+  <h3>组合特点</h3>
+
+  <div class="callout">
+    <strong>① "ETF + SPV" 罕见结构</strong><br>
+    一般 ETF 不能持私募证券。NASA 通过其 80% 公开股票投资条款下的灵活空间，配置了 7.77% SpaceX SPV，让散户在 ETF 形态下间接拿到 SpaceX 份额。这是 Tema 的产品创新点。
+  </div>
+
+  <div class="callout">
+    <strong>② 主动管理选股的优势</strong><br>
+    被动指数 ETF 通常按市值加权，会把 BA / LMT 等大型航空航天公司放第一。但 RKLB / ASTS 这些"小 SpaceX"在指数化基金里权重会被稀释。Tema 主动选权重 = 押注 SpaceX 板块联动 = 这次 IPO 行情中最优解。
+  </div>
+
+  <div class="callout">
+    <strong>③ 几乎满仓（现金 4%）</strong><br>
+    对比 DXYZ 47% 现金，NASA 仅 4% 现金。意味着每一块钱都在工作。
+  </div>
+
+  <div class="so-what">
+    <p>NASA 的产品设计在 SpaceX IPO 行情里几乎是最优解：</p>
+    <ul style="margin-left: 30px;">
+      <li>有 SpaceX SPV 直接暴露</li>
+      <li>有主动选股的 SpaceX 联动股篮子</li>
+      <li>没有 CEF 的溢价稀释</li>
+      <li>没有 47% 现金拖累</li>
+    </ul>
+    <p>从结构上看，<strong>它是为这次行情量身打造的</strong>。</p>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 6: DXYZ Structure ═══════════════ -->
+<section class="slide">
+  <div class="slide-num">06 / 12</div>
+  <h2>DXYZ 结构拆解 — 47% 是现金</h2>
+
+  <h3>DXYZ 是什么</h3>
+
+  <div class="callout">
+    <strong>Destiny Tech100 Inc</strong>（NYSE: DXYZ），2024 年 3 月上市的<strong>封闭式基金（Closed-End Fund）</strong>。<br><br>
+    招募说明书原文：<em>"Operates as a closed-end management investment company. Invests in a portfolio of venture-backed private technology companies, as well as a platform giving everyday investors access to private market institutional investors."</em><br><br>
+    简单说：它是给散户买 SpaceX 等私募明星公司的"代持工具"。
+  </div>
+
+  <h3>实际前十大持仓（截至 2025/12/31）</h3>
+
+  <table>
+    <thead>
+      <tr><th>排名</th><th>持仓</th><th>占比</th><th>类型</th></tr>
+    </thead>
+    <tbody>
+      <tr class="highlight"><td>1</td><td>First American Treasury Obligations Fund Class I</td><td><strong style="color:var(--bad);">46.83%</strong></td><td>短期国债 = 现金</td></tr>
+      <tr><td>2</td><td><strong>DXYZ SpaceX I LLC</strong></td><td><strong style="color:var(--good);">13.51%</strong></td><td>SpaceX 直接持仓</td></tr>
+      <tr><td>3</td><td>Snowpoint Growth 2.5 LLC（投 Shield AI）</td><td>4.30%</td><td>AI 防务</td></tr>
+      <tr><td>4</td><td><strong>MNAM VC SpaceX-II LLC</strong></td><td><strong style="color:var(--good);">3.88%</strong></td><td>SpaceX 第二份</td></tr>
+      <tr><td>5</td><td>Beast Industries Co Series C Pref</td><td>3.79%</td><td>食品科技</td></tr>
+      <tr><td>6</td><td>SP21Z Opportunities LLC（投 OpenEvidence）</td><td>3.51%</td><td>医疗 AI</td></tr>
+      <tr><td>7</td><td>Snowpoint Growth 2.6 LLC（投 KAI Comp）</td><td>3.16%</td><td>—</td></tr>
+      <tr><td>8</td><td>Revolut Group Holdings</td><td>2.46%</td><td>金融科技</td></tr>
+      <tr><td>9</td><td>MCTC Investments Holdings</td><td>2.14%</td><td>—</td></tr>
+      <tr><td>10</td><td>Skild AI Inc Series C Pref</td><td>1.79%</td><td>机器人 AI</td></tr>
+    </tbody>
+  </table>
+
+  <h3>结构分类（直观版）</h3>
+
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-label">现金（国债基金）</div>
+      <div class="bar-track"><div class="bar-fill bad" style="width: 100%;"></div></div>
+      <div class="bar-value">46.83%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">SpaceX（合计）</div>
+      <div class="bar-track"><div class="bar-fill good" style="width: 37%;"></div></div>
+      <div class="bar-value">17.39%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">其他 VC 资产</div>
+      <div class="bar-track"><div class="bar-fill warn" style="width: 76%;"></div></div>
+      <div class="bar-value">~36%</div>
+    </div>
+  </div>
+
+  <div class="so-what">
+    <p>每 $100 投入 DXYZ：</p>
+    <ul style="margin-left: 30px;">
+      <li>$46.83 在国债（基本是现金，年化 4-5%）</li>
+      <li>$17.39 是 SpaceX 直接份额</li>
+      <li>$35.78 是 Shield AI / OpenEvidence / Revolut / Skild AI 等其他独角兽</li>
+    </ul>
+    <p><strong>"我买 DXYZ = 我买 SpaceX"是误读</strong>。真实是"我买的是一个 47% 现金 + 17% SpaceX + 36% 其他独角兽的混合 VC 包"。</p>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 7: DXYZ Premium ═══════════════ -->
+<section class="slide">
+  <div class="slide-num">07 / 12</div>
+  <h2>DXYZ 折溢价 — 散户最大陷阱</h2>
+
+  <h3>什么是 CEF 折溢价</h3>
+
+  <div class="callout">
+    <strong>ETF 和 CEF 的关键差异</strong>：<br><br>
+    - <strong>ETF</strong>（如 NASA）：通过申赎机制贴近 NAV，市价 ≈ 底层资产净值<br>
+    - <strong>CEF</strong>（如 DXYZ）：份额固定，市价跟 NAV 可以大幅偏离<br><br>
+    DXYZ 长期溢价交易，溢价幅度极端剧烈。
+  </div>
+
+  <h3>历史溢价记录（基于 Bloomberg + cefconnect）</h3>
+
+  <table>
+    <thead>
+      <tr><th>时间</th><th>市价</th><th>NAV</th><th>溢价 %</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2024/03 IPO 后 1 周</td><td>~$99+</td><td>~$5-10</td><td><strong style="color:var(--bad);">+1,000%+</strong></td></tr>
+      <tr><td>2024 年中</td><td>~$30</td><td>~$8</td><td>+275%</td></tr>
+      <tr><td>2025/06 初</td><td>$38</td><td>$7</td><td>+443%</td></tr>
+      <tr><td>2025/06 末</td><td>$22</td><td>$11</td><td>+100%</td></tr>
+      <tr class="highlight"><td><strong>2026/05/26（当前）</strong></td><td><strong>$60.21</strong></td><td><strong>~$11-12</strong></td><td><strong style="color:var(--bad);">~+440%</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>当前溢价的含义</h3>
+
+  <div class="big-stat" style="font-size: 70px;">每 $60 → $11 资产</div>
+
+  <p>今天买 1 股 DXYZ（$60.21），账面只对应大约 $11-12 的底层资产价值。</p>
+  <p>剩下 $48-49 是<strong>市场情绪溢价</strong>。SpaceX 上市后这部分会怎么动是开放问题，但 CEF 长期重力是市价回归 NAV。</p>
+
+  <h3>极端情景</h3>
+
+  <div class="warn-flag">
+    <strong>情景 A：SpaceX 上市后 NAV 大涨</strong><br>
+    假设 SpaceX 上市后 DXYZ NAV 从 $11 涨到 $20（受底层 SpaceX 估值上调推动）。<br>
+    若市价保持 $60 不变 → 溢价从 440% 降到 200%。市价没动，但溢价在"吸收"NAV 涨幅。<br>
+    <span class="tag tag-warn">市价不一定跟涨</span>
+  </div>
+
+  <div class="flag">
+    <strong>情景 B：溢价回归</strong><br>
+    若市场情绪降温，市价向 NAV 收敛。比如市价跌到 $30，对应 NAV 还是 $11，溢价仍然 +172%（已经"温和"了）。<br>
+    但市价已经从 $60 跌一半 → 持有者亏 50%。<br>
+    <span class="tag tag-bad">单边跌幅风险</span>
+  </div>
+
+  <div class="so-what">
+    <p>DXYZ 是 CEF，<strong>它的市价波动跟它持有的 SpaceX 是脱钩的</strong>。市场情绪决定溢价宽度。</p>
+    <p>对今天考虑 DXYZ 的散户：<strong>你买的不是"SpaceX 暴露"，你买的是"市场对 SpaceX 的情绪溢价"</strong>。情绪可以走任何方向。</p>
+    <p>对比之下，NASA 作为 ETF 没有这层不确定性 — 市价贴近 NAV，SpaceX 涨多少 NASA 的 7.77% 仓位就跟多少。</p>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 8: Real Exposure Math ═══════════════ -->
+<section class="slide">
+  <div class="slide-num">08 / 12</div>
+  <h2>真实 SpaceX 暴露 — 数学反转</h2>
+
+  <h3>三种工具的"每 $100 真实 SpaceX 暴露"</h3>
+
+  <table>
+    <thead>
+      <tr><th>工具</th><th>名义 SpaceX 仓位</th><th>市价 / NAV 倍数</th><th>"真实"暴露</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>打新 SpaceX</strong>（中签）</td>
+        <td>100%</td>
+        <td>1.0x（IPO 价 = 公允价值）</td>
+        <td><strong style="color:var(--good);">$100.00</strong></td>
+      </tr>
+      <tr class="highlight">
+        <td><strong>NASA ETF</strong></td>
+        <td><strong>7.77%</strong></td>
+        <td><strong>1.0x（ETF 贴近 NAV）</strong></td>
+        <td><strong style="color:var(--good);">$7.77</strong></td>
+      </tr>
+      <tr>
+        <td><strong>DXYZ 封闭式基金</strong></td>
+        <td>17.39%</td>
+        <td>~5.5x（5/26 当前溢价）</td>
+        <td><strong style="color:var(--bad);">$3.16</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>NASA vs DXYZ 数学拆解</h3>
+
+  <div class="two-col">
+    <div class="callout" style="border-left-color: var(--good);">
+      <h4 style="color: var(--good);">NASA（ETF）</h4>
+      <pre style="font-family: monospace; font-size: 13px; line-height: 1.8; white-space: pre-wrap;">每 $100 投入 NASA
+× 7.77% SpaceX SPV
+÷ 1.0x（市价 ≈ NAV）
+= $7.77 真实 SpaceX 价值</pre>
+      <p style="margin-top: 12px;"><span class="tag tag-good">无溢价稀释</span></p>
+    </div>
+
+    <div class="callout" style="border-left-color: var(--bad);">
+      <h4 style="color: var(--bad);">DXYZ（CEF）</h4>
+      <pre style="font-family: monospace; font-size: 13px; line-height: 1.8; white-space: pre-wrap;">每 $100 投入 DXYZ
+× 17.39% SpaceX 仓位
+÷ 5.5x 溢价倍数
+= $3.16 真实 SpaceX 价值</pre>
+      <p style="margin-top: 12px;"><span class="tag tag-bad">5x 溢价稀释</span></p>
+    </div>
+  </div>
+
+  <h3>关键比率</h3>
+
+  <div class="big-stat" style="font-size: 70px;">NASA / DXYZ = 2.46×</div>
+
+  <p>NASA 名义仓位虽然只有 DXYZ 的不到一半（7.77% vs 17.39%），但因为它是 ETF 且贴近 NAV，<strong>真实暴露反而是 DXYZ 的 2.46 倍</strong>。</p>
+
+  <div class="so-what">
+    <p>这张表想说清楚一件事：<strong>"看名义仓位"是散户最常见的认知陷阱</strong>。在 5x 溢价下，DXYZ 表面 17.4% SpaceX 实际只剩 3.16%。</p>
+    <p>"NASA + 打新"是数学上最干净的组合：</p>
+    <ul style="margin-left: 30px;">
+      <li>NASA 提供 7.77% 真实 SpaceX 直接暴露 + 板块联动</li>
+      <li>打新提供 100% 直接暴露的潜在机会（中签率 0.5%）</li>
+    </ul>
+    <p>对 DXYZ 的合理态度：<strong>关注它的折溢价波动作为情绪指标，但不当配置工具</strong>。</p>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 9: ETF Comparison ═══════════════ -->
+<section class="slide">
+  <div class="slide-num">09 / 12</div>
+  <h2>7 只 SpaceX 概念 ETF 横评表</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Ticker</th>
+        <th>类型</th>
+        <th>SpaceX 直接</th>
+        <th>主要持仓</th>
+        <th>关键特点</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td><strong>NASA</strong></td>
+        <td>主动 ETF</td>
+        <td><strong style="color:var(--good);">7.77%</strong></td>
+        <td>SpaceX SPV + RKLB / Firefly / PL / ASTS / LUNR</td>
+        <td><span class="tag tag-good">真实暴露 $7.77</span> 唯一直接持 SPV 的可买可卖 ETF</td>
+      </tr>
+      <tr>
+        <td><strong>DXYZ</strong></td>
+        <td>CEF / 私募包</td>
+        <td>17.4%</td>
+        <td>47% 国债 + SpaceX + 多家独角兽</td>
+        <td><span class="tag tag-bad">5x 溢价</span> 真实暴露仅 $3.16</td>
+      </tr>
+      <tr>
+        <td><strong>UFO</strong></td>
+        <td>被动 ETF</td>
+        <td>0%</td>
+        <td>全球航天股（含老牌 GEO）</td>
+        <td>2019 老牌纯太空</td>
+      </tr>
+      <tr>
+        <td><strong>ARKX</strong></td>
+        <td>主动 ETF</td>
+        <td>0%</td>
+        <td>木头姐主题（含 3D Print / 卫星）</td>
+        <td>主题更宽，纯度低</td>
+      </tr>
+      <tr>
+        <td><strong>ORBX</strong></td>
+        <td>被动 ETF</td>
+        <td>0%</td>
+        <td>太空科技（具体待披露）</td>
+        <td>Global X 出品，被动指数化</td>
+      </tr>
+      <tr>
+        <td><strong>UFOX</strong></td>
+        <td>被动 ETF</td>
+        <td>0%</td>
+        <td><strong>5G + 卫星 + IoT 混合</strong></td>
+        <td>"Connective Tech"主题宽，纯度最低</td>
+      </tr>
+      <tr>
+        <td><strong>DIPR</strong></td>
+        <td>被动 ETF</td>
+        <td>0%</td>
+        <td>卫星通信专题</td>
+        <td>小发行商，AUM 流动性可能弱</td>
+      </tr>
+      <tr>
+        <td>ARKVX</td>
+        <td>Interval Fund</td>
+        <td>有（具体不披露）</td>
+        <td>VC 包，含 SpaceX</td>
+        <td><span class="tag tag-warn">每季度赎回 5% 上限</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>按"投资者画像"分组</h3>
+
+  <div class="three-col">
+    <div class="callout" style="border-left-color: var(--good);">
+      <h4 style="color: var(--good);">🎯 SpaceX 直接 + 板块联动</h4>
+      <p><strong>NASA（推荐）</strong></p>
+      <p>7.77% SpaceX SPV + 主动重仓 RKLB / Firefly / ASTS / PL。一站式打包整个 SpaceX 概念，没有溢价稀释。</p>
+    </div>
+    <div class="callout" style="border-left-color: var(--accent);">
+      <h4>📡 纯板块联动（无 SpaceX 直持）</h4>
+      <p><strong>UFO / ARKX / ORBX</strong></p>
+      <p>买"公开上市太空篮子"，吃 SpaceX IPO 板块溢价。流动性 OK，溢价低，但没有 SpaceX 直接暴露。</p>
+    </div>
+    <div class="callout" style="border-left-color: var(--bad);">
+      <h4 style="color: var(--bad);">⚠ 高名义仓位但被稀释</h4>
+      <p><strong>DXYZ（散户陷阱）</strong></p>
+      <p>17% SpaceX 名义但 5x 溢价 + 47% 现金。流动性高但情绪驱动，真实暴露反而比 NASA 低。</p>
+    </div>
+  </div>
+
+  <div class="so-what">
+    <p>没有一个产品是"所有维度都最优"的，但<strong>NASA 是当前数据下"SpaceX 概念配置"最干净的工具</strong>：</p>
+    <ul style="margin-left: 30px;">
+      <li>有真实的 SpaceX 直接暴露（7.77%）</li>
+      <li>有主动选股的板块联动篮子</li>
+      <li>没有 CEF 溢价问题</li>
+      <li>没有 47% 现金拖累</li>
+      <li>普通券商可买可卖</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 10: Decision Tree ═══════════════ -->
+<section class="slide">
+  <div class="slide-num">10 / 12</div>
+  <h2>投资者决策树</h2>
+
+  <p>不构成投资建议，仅作分类参考。</p>
+
+  <div class="callout" style="font-family: monospace; font-size: 14px; line-height: 2;">
+    Q1: 你想要 100% 直接 SpaceX 暴露吗？<br>
+    &nbsp;&nbsp;├─ 是 → <strong>打新 SPCX</strong>（中签率 0.5%，唯一 100% 暴露途径）<br>
+    &nbsp;&nbsp;└─ 否 / 接受部分暴露 → Q2<br>
+    <br>
+    Q2: 你能承受 CEF 5x 溢价 + 情绪波动吗？<br>
+    &nbsp;&nbsp;├─ 不能 → Q3<br>
+    &nbsp;&nbsp;└─ 能（赌情绪持续）→ <strong>DXYZ</strong>（但要清楚每 $100 真实只有 $3.16 SpaceX）<br>
+    <br>
+    Q3: 你想要 SpaceX SPV 直接暴露 + 板块联动吗？<br>
+    &nbsp;&nbsp;├─ 是 → <strong>NASA</strong>（7.77% SpaceX + 主动选 SpaceX 联动股，目前最干净）<br>
+    &nbsp;&nbsp;└─ 否（只要板块联动，不强求 SpaceX 直接持）→ Q4<br>
+    <br>
+    Q4: 你接受集中度高吗？<br>
+    &nbsp;&nbsp;├─ 接受 → <strong>UFO</strong>（老牌纯太空 ETF）<br>
+    &nbsp;&nbsp;├─ 想分散 → <strong>ARKX</strong>（含 3D Print 等更宽主题）<br>
+    &nbsp;&nbsp;└─ 想要被动指数化 → <strong>ORBX</strong>（Global X，被动）<br>
+    <br>
+    特殊情况：<br>
+    机构 / 高净值 + 流动性受限可接受 → <strong>ARKVX</strong>（每季度赎回 5%）<br>
+  </div>
+
+  <h3>组合搭配思路（不构成配置建议）</h3>
+
+  <div class="callout">
+    <strong>稳健参与型</strong>：NASA 主仓 + 打新 SPCX（NASA 当 7.77% 直接 SpaceX 暴露 + 板块联动篮子，打新当 alpha）<br><br>
+    <strong>分散主题型</strong>：NASA + UFO 分两份，避免单 ETF 集中度<br><br>
+    <strong>赌徒型</strong>：DXYZ 高仓位<br>
+    （但要清楚：CEF 溢价历史显示，散户高位接盘亏损案例不少）
+  </div>
+
+  <div class="so-what">
+    <p>笔者的核心建议：<strong>先看真实暴露，再看名义仓位</strong>。</p>
+    <p>NASA 是当前数据下"SpaceX 直接暴露 + 板块联动 + 流动性 + 无溢价"四维度都过线的产品，所以会成为很多人的默认选择。</p>
+    <p>但这不是 fit-all 答案——具体配置取决于你的风险偏好、是否打新、是否能接受 CEF 溢价波动等。</p>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 11: Risk Factors ═══════════════ -->
+<section class="slide">
+  <div class="slide-num">11 / 12</div>
+  <h2>风险清单</h2>
+
+  <h3>对 NASA</h3>
+
+  <div class="flag">
+    <strong>① 集中度</strong>：前 6 大持仓占 41%。任意单一标的暴跌（RKLB 试飞失败 / ASTS 频谱审批不过 / Firefly 异常）都会显著拖累净值
+  </div>
+
+  <div class="flag">
+    <strong>② SpaceX SPV 估值滞后</strong>：NASA 的 SpaceX SPV 仓位估值是季度更新（基于最近一轮融资 / 公允估值），不是实时市价。SpaceX 上市后第一份季报才会反映 IPO 公允价值
+  </div>
+
+  <div class="flag">
+    <strong>③ SpaceX 上市后情绪降温</strong>：4-5 月涨幅源于 IPO 预期。一旦 SpaceX 实际定价 / 表现不及预期，整个板块可能多杀多
+  </div>
+
+  <h3>对 DXYZ</h3>
+
+  <div class="flag">
+    <strong>④ 溢价回归风险（最大风险）</strong>：当前 5x 溢价历史上多次大幅收窄。只要溢价从 5x → 3x，市价会跌 40%（即使 NAV 不变）
+  </div>
+
+  <div class="flag">
+    <strong>⑤ NAV 计算的不透明性</strong>：DXYZ 持有的 SpaceX SPV 估值是季度更新，不是实时市价
+  </div>
+
+  <div class="flag">
+    <strong>⑥ 47% 现金的稀释</strong>：上市后即使 SpaceX 估值上调 50%，DXYZ NAV 只能涨约 8.7%（17.4% × 50%），剩下国债 + 其他独角兽不会同步动
+  </div>
+
+  <h3>对 UFO / ARKX / ORBX 等</h3>
+
+  <div class="flag">
+    <strong>⑦ 没有 SpaceX 直接暴露</strong>：完全依赖板块联动。SpaceX 上市后如果板块情绪降温，这些 ETF 跌幅可能不输 SpaceX 本身
+  </div>
+
+  <h3>对 ARKVX</h3>
+
+  <div class="flag">
+    <strong>⑧ 流动性</strong>：每季度只有 5% 净资产可以赎回。极端情况下你想退出可能要排队多个季度
+  </div>
+
+  <h3>所有"概念 ETF"都有的共性风险</h3>
+
+  <div class="warn-flag">
+    <strong>⑨ "概念" ≠ "因果关系"</strong>：这些 ETF 的涨幅是市场情绪驱动 + SpaceX 板块溢价。<strong>SpaceX 公司本身的现金流跟它们零关系</strong>。如果板块情绪转向，这些 ETF 可能比 SpaceX 直接股本还跌得多。
+  </div>
+
+  <div class="warn-flag">
+    <strong>⑩ 锁定期解禁</strong>：SpaceX 上市后 6 个月解禁期前后（约 12/2026），原始股东抛售压力可能传导到整个太空赛道（板块情绪）
+  </div>
+
+  <div class="so-what">
+    <p>风险清单的核心信息：<strong>"我买 ETF 比打新安全"是错觉</strong>。</p>
+    <p>ETF 的下行波动可能比 SpaceX 直接股本更剧烈，因为它叠加了：(1) 多家持仓股的相互拖累 (2) 板块情绪 (3) DXYZ 的溢价情绪 (4) 流动性差异。</p>
+    <p>真实的风险管理是：<strong>清楚自己买的是什么，而不是依赖 ETF 标签</strong>。</p>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 12: Bottom Line ═══════════════ -->
+<section class="slide">
+  <div class="slide-num">12 / 12</div>
+  <h2>结语 + 接下来 12 个月可以盯的数据点</h2>
+
+  <h3>三句话总结</h3>
+
+  <div class="callout">
+    <p style="font-size: 18px; line-height: 1.8;">
+      ① <strong>NASA ETF 涨 73%</strong>，靠的是 <strong>7.77% SpaceX SPV 直接暴露</strong> + RKLB / Firefly / PL / ASTS 等板块联动股的双击效应。<br><br>
+      ② <strong>DXYZ 名义 17.4% SpaceX 仓位</strong>，但 <strong>47% 是现金 + 5x NAV 溢价</strong>，每 $100 真实 SpaceX 暴露只有 $3.16，仅是 NASA 的 40%。<br><br>
+      ③ 想真要 100% SpaceX 暴露，<strong>只能打新</strong>。中签率 0.5%。
+    </p>
+  </div>
+
+  <h3>接下来 12 个月可以盯的数据</h3>
+
+  <table>
+    <thead>
+      <tr><th>指标</th><th>解读价值</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>DXYZ 市价 / NAV 比率</strong></td>
+        <td>SpaceX 上市后是否 NAV 大涨而市价收敛</td>
+      </tr>
+      <tr>
+        <td><strong>NASA SpaceX SPV 仓位变动</strong></td>
+        <td>Tema 是否在 IPO 后调整 SpaceX 仓位（季度披露）</td>
+      </tr>
+      <tr>
+        <td><strong>NASA 与 SPCX 上市后日股价相关系数</strong></td>
+        <td>"板块联动 + 直接持仓"的双击效应有多强</td>
+      </tr>
+      <tr>
+        <td><strong>SpaceX 锁定期解禁前后（~12/2026）</strong></td>
+        <td>原始股东抛压传导到太空板块的程度</td>
+      </tr>
+      <tr>
+        <td><strong>ORBX / UFOX / DIPR 是否调整持仓</strong></td>
+        <td>新发 ETF 在 SpaceX 上市后是否会抢配 RKLB / ASTS</td>
+      </tr>
+      <tr>
+        <td>SEC 是否允许更多 ETF 持非上市份额</td>
+        <td>类似 NASA 的"ETF + SPV"产品会不会更多</td>
+      </tr>
+      <tr>
+        <td>DXYZ 季度 NAV 报告</td>
+        <td>SpaceX 估值变化的滞后体现</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="so-what">
+    <p>这些数据点比股价本身更能告诉你：<strong>SpaceX 概念行情是结构性的，还是情绪性的</strong>。</p>
+    <p>结构性 → 公开太空股长期重估，NASA / UFO 类 ETF 长期跑赢</p>
+    <p>情绪性 → IPO 后 3-6 个月内回归，板块大幅波动</p>
+    <p>笔者下一篇会拆 <strong>NASA ETF 集中度风险</strong> 和 <strong>RKLB / ASTS 单股深度</strong>，敬请关注。</p>
+  </div>
+
+  <div class="disclaimer" style="margin-top: 40px;">
+    <strong>Disclaimer</strong>：本报告仅供研究用途，不构成投资建议。所有数字截至 2026/05/26-27，源自 Bloomberg Terminal（DES / MHD / TRA / GP / COMP）、cefconnect.com、SpaceX S-1（SEC EDGAR Accession 0001628280-26-036936）。CEF 折溢价、ETF 集中度、流动性都是真实风险。投资有风险，入市需谨慎。
+  </div>
+</section>
+
+</body>
+</html>
