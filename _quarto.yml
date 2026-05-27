@@ -7,6 +7,10 @@ project:
     - "!_site/"
     - "!.quarto/"
     - "!node_modules/"
+  resources:
+    - "**/*.html"
+    - "!tools/"
+    - "!_site/"
 
 website:
   title: "Kevin's Place"
