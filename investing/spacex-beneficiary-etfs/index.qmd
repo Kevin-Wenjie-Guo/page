@@ -1,219 +1,141 @@
 ---
-title: "SpaceX 概念 ETF 横评：NASA 真实暴露 7.77%，DXYZ 拆开看只有 3.16%"
+title: "SpaceX 受益标的怎么选：NASA 上市申请后涨 41%，13 只 ETF 和股票一表看清"
 date: "2026-05-27"
 author: "Kevin Guo"
 categories: [SpaceX, IPO, ETF, US Equity, Equity Research]
-description: "SpaceX 6/12 上市，散户中签率 0.5%。两大主流工具 NASA ETF 和 DXYZ 表面看 DXYZ 仓位更高，但拆开溢价后 NASA 真实暴露 $7.77 / $100，DXYZ 只剩 $3.16。本文用 Bloomberg 一手数据拆给你看。"
+description: "SpaceX 4/1 秘密递交 IPO 后两个月，NASA ETF 涨 41.82%，是标普 500 同期的 8 倍。本文先看 NASA 表现，再拆 NASA 持仓（含 7.77% SpaceX SPV），最后一张大表把 8 只 ETF + 5 只 related party 股票按风险 / 适合投资者分类。"
 toc: true
 ---
 
 SpaceX 6 月 12 日上市。打新中签率传闻 0.5%。
 
-朋友圈刷屏的太空 ETF 里，第一档绕不开两只：
+普通人想参与，市面上至少有 8 只 ETF 自称"SpaceX 概念"，加上 RKLB、ASTS、PL 这些"小 SpaceX"型个股，总共 13 个标的可选。
 
-- **NASA** — Tema Space Innovators ETF，2024/6 上市，主打"全球太空主题"
-- **DXYZ** — Destiny Tech100，封闭式基金，号称"散户也能买 SpaceX"
+本文做三件事：
 
-笔者把 Bloomberg 一手数据拉了一遍。
+1. 看 NASA ETF 在 SpaceX 申报 IPO 之后这两个月的表现
+2. 拆 NASA 持仓结构（**7.77% SpaceX SPV 是第二大持仓**）
+3. 一张大表把 13 个标的按"SpaceX 关系 / 主要持仓 / 风险 / 适合投资者"分类
 
-第一眼看数字会以为 DXYZ 更"纯"——它的 SpaceX 直接持仓占 17.4%，NASA 只有 7.77%。
-
-但加上溢价计算之后结论反转：**每 $100 投入 NASA，真实拿到 $7.77 的 SpaceX 价值；同样 $100 投入 DXYZ，真实只剩 $3.16**。
-
-本文拆清楚两件事 + 横向对比 7 只 SpaceX 概念 ETF。
-
-## 一、NASA 自上市以来的表现
+## 一、NASA 在 SpaceX 申报 IPO 之后的表现
 
 NASA 是 Tema ETFs 2024 年 6 月推出的太空主题 ETF。前 9 个月默默无闻，跟着大盘走。
 
-从 2026 年 4 月 1 日 SpaceX 秘密递交 IPO 申请那天开始变了。
+转折点是 **2026 年 4 月 1 日 SpaceX 秘密递交 IPO 申请**。
 
-Bloomberg 总收益（TRA）数据显示，NASA 从 $24 左右一路涨到 5 月 26 日的 **$41.61**，期间累计涨幅约 **+73%**。Bloomberg COMP 期间对照显示 +41.82%（取标的不同时间窗口）。
+那天之后两个月，NASA 累计涨幅 **+41.82%**（截至 5/26 收盘 $41.61）。同期对照：
 
-期间对照：
+| 标的 | 同期涨幅 |
+|---|---:|
+| **NASA**（Tema Space Innovators ETF）| **+41.82%** |
+| XAR（SPDR 航空航天与国防 ETF）| ~+12% |
+| B3000I（彭博美国 3000 工业板块）| ~+8% |
+| SPX（标普 500）| ~+5% |
 
-- 标普 500（SPX）：约 +5%
-- 彭博美国 3000 工业板块（B3000I）：约 +8%
-- SPDR 航空航天与国防 ETF（XAR）：约 +12%
+数据来源：Bloomberg COMP 命令对照，时间窗口 2026/04/01 - 2026/05/26。
 
-NASA 跑赢大盘 8 倍以上，跑赢同行业基准 4-5 倍。
+NASA 跑赢标普 500 约 **8 倍**，跑赢同板块 ETF 3-4 倍。
 
-5 月 20 日 SpaceX 正式公开 S-1，那一天 NASA 单日成交量约 **2,322 万股**，是平时 5 倍以上。市场用真金白银告诉你这是个事件型受益标。
+更关键的是 5 月 20 日 SpaceX 正式公开 S-1 那天，NASA 单日成交量 **2,322 万股**，是平时的 5 倍以上。这是机构资金进场的明确信号。
 
-{图表占位 1：NASA 累计涨幅 vs SPX / B3000I / XAR | 来源：Bloomberg COMP | 标注重点：4/1 IPO 申报日 + 5/20 S-1 公开日两条竖线}
+{图表占位 1：NASA 累计涨幅 vs SPX / B3000I / XAR | 来源：Bloomberg COMP | 标注 4/1 IPO 申报日 + 5/20 S-1 公开日}
 
-## 二、NASA 持仓拆开看
+NASA 这种涨法不是巧合，下一段拆它的持仓就明白原因了。
 
-Bloomberg MHD 持仓表（截至最近披露日，AUM $1.5B，持仓 38 只）前 15 大：
+## 二、NASA 持仓结构解读
+
+Bloomberg MHD 持仓表（数据截至最近披露日，AUM 15 亿美元，38 只持仓）前 15 大：
 
 | 排名 | 持仓 | Ticker | %Net | 市值 |
 |---:|---|---|---:|---:|
 | 1 | Rocket Lab USA | RKLB US | **10.62%** | $177.1M |
-| **2** | **太空探索技术公司（SpaceX）** | **1398495D US** | **7.77%** | **$129.7M** |
+| **2** | **太空探索技术公司（SpaceX SPV）** | **1398495D US** | **7.77%** | **$129.7M** |
 | 3 | Planet Labs PBC | PL US | 6.19% | $103.4M |
 | 4 | Firefly Aerospace | FLY US | 6.14% | $102.5M |
 | 5 | AST SpaceMobile | ASTS US | 5.18% | $86.5M |
 | 6 | Intuitive Machines | LUNR US | 5.11% | $85.2M |
-| 7 | Filtronic | FTC LN | 4.53% | $75.5M |
+| 7 | Filtronic（英）| FTC LN | 4.53% | $75.5M |
 | 8 | 现金（USD）| USD Curncy | 4.11% | $68.5M |
-| 9 | 5N Plus | VNP CN | 4.07% | $67.8M |
+| 9 | 5N Plus（加）| VNP CN | 4.07% | $67.8M |
 | 10 | BlackSky Technology | BKSY US | 3.90% | $65.1M |
 | 11 | ViaSat | VSAT US | 3.67% | $61.2M |
-| 12 | MDA Space | MDA CN | 3.26% | $54.2M |
-| 13 | Astroscale Holdings | 186A JP | 3.03% | $49.5M |
-| 14 | 昇达科技 | 3491 TT | 2.85% | $47.6M |
+| 12 | MDA Space（加）| MDA CN | 3.26% | $54.2M |
+| 13 | Astroscale Holdings（日）| 186A JP | 3.03% | $49.5M |
+| 14 | 昇达科技（台）| 3491 TT | 2.85% | $47.6M |
 | 15 | York Space Systems | YSS US | 2.62% | $43.6M |
 
-第二大持仓 **太空探索技术公司**（Bloomberg 用一个内部代号 `1398495D US` 标识，因为 SpaceX 没公开股票代号）就是 SpaceX 的 SPV 份额。**仓位 7.77%，市值约 1.3 亿美元**。
+三个关键观察：
 
-这是 NASA ETF 的核心差异化——它是同类公开 ETF 里**唯一直接持有 SpaceX SPV 的可买可卖产品**。
+**第一，第二大持仓是 SpaceX SPV，仓位 7.77%**。Bloomberg 用内部代号 `1398495D US` 标识（因为 SpaceX 没有公开股票代号），市值约 $129.7M。NASA 是同类公开 ETF 里**唯一直接持 SpaceX 私募份额的可买可卖产品**——这是它跑赢的根本原因。
 
-剩下的持仓也不水：
+**第二，前 6 大持仓是"SpaceX + 联动股全家桶"**。RKLB（10.62%）+ SpaceX SPV（7.77%）+ PL（6.19%）+ Firefly（6.14%）+ ASTS（5.18%）+ LUNR（5.11%）= 41.01%。Tema 主动管理选了"SpaceX 板块联动度最高"的标的，这是被动指数化 ETF 学不来的。
 
-- **Rocket Lab（RKLB）10.62%** — "小 SpaceX"，板块联动度最高
-- **Planet Labs（PL）6.19%** — 地球观测卫星，SpaceX 是其发射服务商
-- **Firefly Aerospace（FLY）6.14%** — 小型火箭，SpaceX 直接竞争对手
-- **AST SpaceMobile（ASTS）5.18%** — 直连卫星，Starlink Mobile 的竞争方
-- **Intuitive Machines（LUNR）5.11%** — 月球登陆器
-- 还有 Filtronic（英）、5N Plus（加）、Astroscale（日）、昇达科技（台）等全球航天链 — 真正全球化的太空篮子
+**第三，全球化分散**。Filtronic（英国）、5N Plus（加拿大）、MDA Space（加拿大）、Astroscale（日本）、昇达科技（台湾）。降低了单一地区监管风险，但部分非美标的流动性较弱。
 
-加起来：**SpaceX 直接 + RKLB / ASTS / PL / Firefly 等强联动股 = NASA 一键打包整个 SpaceX 概念**。
+NASA 的产品设计是"**直接持 SpaceX SPV + 主动重仓 SpaceX 联动股**"的双重组合。这是它在这次 IPO 行情里跑赢同业的结构性原因。
 
-NASA 基本信息：
+{图表占位 2：NASA 前 10 大持仓权重柱状图 | 来源：Bloomberg MHD | 标注 SpaceX 7.77% 第 2 位}
 
-- 上市日：2024 年 6 月
-- 类型：主动管理 ETF（无跟踪指数）
-- 主题区域：全球
-- AUM：约 15 亿美元
-- 持仓数：38
-- 5 月 26 日收盘：$41.61
-- 52 周高 / 低：$42.68 / $13.50
+## 三、13 个 SpaceX 受益标的全表
 
-{图表占位 2：NASA 前 10 大持仓权重柱状图 | 来源：Bloomberg MHD | 标注重点：SpaceX 7.77% 第 2 位}
+下面这张表覆盖：
 
-## 三、DXYZ — 表面更"纯"，拆开看坑很深
+- 8 只 SpaceX 概念 ETF / 基金
+- 5 只 SpaceX related party 个股（NASA 持仓里的"小 SpaceX"型公司）
 
-DXYZ 是 Destiny Tech100 Inc，2024 年上市的**封闭式基金（CEF）**，专门投资风险投资支持的私营科技公司。
+按"SpaceX 关系强度"从高到低排：
 
-它最早被市场叫"散户的 SpaceX 替代品"。
+### A. ETF / 基金（8 只）
 
-但拆开看，它有三个折扣。
+| 标的 | 类型 | 与 SpaceX 关系 | 主要持仓 | 风险 | 适合投资者 |
+|---|---|---|---|---|---|
+| **DXYZ** | CEF（封闭式）| 直接持 **17.4%** SpaceX SPV（13.51% + 3.88% 两笔）| 47% 国债 + SpaceX + Shield AI / Revolut / Skild AI 等独角兽 | **市价 / NAV 溢价 ~5x**，溢价回归即跌 40-60% | 相信独角兽集合概念 + 能承受 5x 高溢价 + 接受短期情绪驱动波动的投资者 |
+| **NASA** | 主动 ETF | 直接持 **7.77%** SpaceX SPV + 重仓 RKLB / Firefly / PL / ASTS / LUNR | RKLB 10.62% / SpaceX 7.77% / PL 6.19% / Firefly 6.14% / ASTS 5.18% / LUNR 5.11%，38 只全球太空股 | 集中度（前 6 占 41%）/ 主动管理人风险 / SpaceX SPV 估值季度更新滞后 | **核心配置型**：想要 SpaceX 直接暴露 + 板块联动双击 + 不愿承受 CEF 溢价的投资者 |
+| **ARKVX** | Interval Fund | 持有 SpaceX（具体仓位不公开披露）| 木头姐 ARK 风险投资基金，含 SpaceX 等多家私募独角兽 | **流动性极差**：每季度赎回上限 5% 净资产 + 普通券商账户通常买不到 | 高净值 / 机构 / 长线持有 + 接受多年锁定 + 信任 ARK 选股的投资者 |
+| **UFO** | 被动 ETF | **0% 直接** SpaceX，板块联动 | 全球航天股，含 GEO 卫星 / 国防 / 火箭，2019 年发行的老牌纯太空 ETF | 持仓偏老牌 GEO 卫星，错过 LEO 新势力部分涨幅 | 想要分散纯太空主题 + 偏好被动指数化 + 不强求 SpaceX 直接持仓的投资者 |
+| **ARKX** | 主动 ETF | **0% 直接** SpaceX | 木头姐主题选股，含火箭 / 卫星 / 3D 打印 / 物联网等"广义太空" | 主题更宽，纯度低（含非太空主线标的）| 信任 ARK 主动管理风格 + 接受跨主题混合的投资者 |
+| **ORBX** | 被动 ETF | **0% 直接** SpaceX | Global X 太空科技指数化产品，被动跟踪太空主题指数 | 大发行商被动产品，灵活性最低，难捕捉短期事件型机会 | 偏好大发行商 + 低成本被动指数化 + 长线持有的投资者 |
+| **UFOX** | 被动 ETF | **0% 直接** SpaceX | Defiance "Connective Technologies" 主题：5G + 卫星 + IoT 混合 | "纯度最低"——真正的太空敞口可能只有 30-40%，剩下是 5G / IoT | 想要"广义连接科技"敞口 + 不在意太空纯度的投资者 |
+| **DIPR** | 被动 ETF | **0% 直接** SpaceX | Corgi 卫星通信专题，聚焦 D2C 卫星 + Starlink 同业 | 小发行商，AUM 较小，流动性 / 价差风险高 | 专注卫星通信细分赛道 + 接受小盘 ETF 流动性风险的投资者 |
 
-### 折扣一：47% 是现金
+### B. Related Party 个股（5 只，NASA 持仓里的同业）
 
-Bloomberg MHD 显示 DXYZ 截至 2025 年 12 月 31 日的前十大持仓：
+| 标的 | 类型 | 与 SpaceX 关系 | 主要业务 | 风险 | 适合投资者 |
+|---|---|---|---|---|---|
+| **RKLB** | 美股 | "**小 SpaceX**"，中型可重复使用火箭直接竞争方 | Electron 小型火箭 + Neutron 中型火箭 + 卫星制造 | 单股波动大 / Neutron 试飞失败风险 / 烧钱亏损 | 信仰多发射方案 + 接受单股高波动 + 想吃 SpaceX 板块溢价的投资者 |
+| **ASTS** | 美股 | Starlink Mobile 直接竞争方（AT&amp;T 阵营 D2C 卫星）| BlueWalker 3 测试 + 商用 BlueBird 直连卫星星座 | 频谱审批风险 / 卫星部署延期 / 烧钱融资稀释 | 信仰直连卫星赛道 + 接受押注单一技术路线的投资者 |
+| **PL** | 美股 | SpaceX **客户**（用 Falcon 9 发射 SkySat / Dove）| 全球地球观测卫星星座，每天拍全球一遍 | 单一应用市场 / 政府订单依赖 / 商业化进度慢 | 看好商业卫星图像 + 数据 SaaS 模式的投资者 |
+| **LUNR** | 美股 | NASA 商业月球合作方（与 SpaceX 在月球任务上既合作又竞争）| Nova-C 月球登陆器 / IM-1 / IM-2 任务 | 政府合同集中 / 任务失败风险（IM-1 已侧翻一次）| 看好月球经济 + 接受发射任务高失败概率的投资者 |
+| **Firefly** | 美股 | SpaceX **小型火箭直接竞争方** | Alpha 小型火箭 + Blue Ghost 月球登陆器 | 早期商业化阶段 / 现金流脆弱 / 试飞失败风险 | 信仰小型火箭赛道 + 早期投资风格 + 接受高失败率的投资者 |
 
-| 排名 | 持仓 | 占比 |
-|---:|---|---:|
-| 1 | First American Treasury Obligations Fund Class I | **46.83%** |
-| 2 | DXYZ SpaceX I LLC | **13.51%** |
-| 3 | Snowpoint Growth 2.5 LLC（投 Shield AI）| 4.30% |
-| 4 | MNAM VC SpaceX-II LLC | **3.88%** |
-| 5 | Beast Industries Series C Pref | 3.79% |
-| 6 | SP21Z Opportunities LLC（投 OpenEvidence）| 3.51% |
-| 7 | Snowpoint Growth 2.6 LLC（投 KAI Comp）| 3.16% |
-| 8 | Revolut Group Holdings | 2.46% |
-| 9 | MCTC Investments Holdings | 2.14% |
-| 10 | Skild AI Series C Pref | 1.79% |
+## 四、写在最后
 
-第一大持仓是个**短期国债基金**，本质就是现金。占了 47%。
+13 个标的没有"哪个最好"的答案，只有"哪个适合你"。
 
-SpaceX 直接持仓两条加起来 **17.39%**（13.51% + 3.88%）。
+笔者把上面这张表的核心选择维度提炼一下：
 
-剩下是一堆其他 VC 投资：Shield AI、OpenEvidence、Revolut、Skild AI 等等。
+**想要直接持 SpaceX 份额**：
 
-所以你买 DXYZ，不是"100% SpaceX 暴露"，是"17% SpaceX + 47% 现金 + 36% 其他独角兽"。
+- 接受 5x 溢价 → DXYZ（但要清楚每 $100 真实只买到约 $3 SpaceX）
+- 不愿溢价 → NASA（7.77% 直接 SPV + 板块联动，没有 CEF 溢价问题）
+- 高净值 / 机构 → ARKVX（流动性受限）
 
-### 折扣二：5 倍 NAV 溢价
+**想要纯板块联动（不强求 SpaceX 直接持仓）**：
 
-封闭式基金的市价不等于底层资产价值（NAV）。这点 ETF 不一样——ETF 通过市场做市机制贴近 NAV，CEF 不是。
+- 主动管理 → ARKX
+- 被动指数化 → UFO / ORBX
+- 跨主题混合 → UFOX
+- 卫星通信细分 → DIPR
 
-Bloomberg 历史数据 + cefconnect 显示：
+**想要单股弹性**：
 
-- 2024 年 3 月 IPO 后 1 周：市价 $99+，NAV $5-10。**溢价 1,000%+**
-- 2025 年 6 月初：市价 $38，NAV $7。**溢价 443%**
-- 2025 年 6 月底：市价 $22，NAV $11。**溢价 100%**
-- **2026 年 5 月 26 日：市价 $60.21，NAV ~$11-12。溢价仍在 ~440%**
+- "小 SpaceX" 火箭 → RKLB / Firefly
+- D2C 卫星 → ASTS
+- 卫星应用 → PL / LUNR
 
-翻译过来：**今天你花 $60 买 DXYZ，账面只对应大约 $11 的底层资产**。剩下 $49 是付给市场情绪。
+**真要 100% SpaceX 暴露**：
 
-### 折扣三：算下来的"真实 SpaceX 暴露"
-
-把上面两个数字合起来：
-
-```
-DXYZ 名义 SpaceX 仓位 = 17.39%
-DXYZ 当前溢价倍数 = ~5.5 倍
-
-每 $100 投入 DXYZ 真实买到的 SpaceX 价值
-= $100 × (17.39% / 5.5)
-= $3.16
-```
-
-也就是 **3.16% 的"真实"SpaceX 暴露**。
-
-DXYZ 基本信息：
-
-- 上市日：2024 年 3 月
-- 类型：Closed-End Fund（封闭式 / 私募股权基金）
-- 5 月 26 日收盘：$60.21
-- 总资产：约 9 亿美元
-
-## 四、关键对比 — 真实 SpaceX 暴露的数学
-
-| 工具 | 名义 SpaceX 仓位 | 市价/NAV 倍数 | **每 $100 真实暴露** |
-|---|---:|---:|---:|
-| **NASA ETF** | **7.77%** | 1.0x（ETF 贴近 NAV）| **$7.77** ✅ |
-| **DXYZ CEF** | 17.39% | ~5.5x | **$3.16** |
-| 打新 SPCX（中签）| 100% | 1.0x | $100 |
-
-NASA 名义仓位虽然只有 DXYZ 的不到一半（7.77% vs 17.39%），但因为它是 ETF 且贴近 NAV，**真实暴露反而是 DXYZ 的 2.46 倍**。
-
-更重要的是，NASA **没有溢价回归风险**。DXYZ 5x 溢价历史上多次大幅收窄——只要溢价从 5x 降到 3x，市价跌 40%（即使 NAV 不动）。
-
-加上 NASA 还有 RKLB / ASTS / PL / Firefly 等同业股的板块联动，组合的"SpaceX 概念敞口"实际上比单看 SpaceX 仓位更厚。
-
-## 五、其他几只 SpaceX 概念 ETF 速览
-
-按"SpaceX 暴露强度"从高到低：
-
-**直接持 SpaceX 私募份额**：
-
-- **NASA**（Tema Space Innovators）：7.77% 直接 + 全球公开太空股，主动管理。本文重点
-- **DXYZ**（Destiny Tech100）：17.4% 直接，但 47% 现金 + 5x 溢价。**散户陷阱**
-- **ARKVX**（ARK Venture Fund）：Interval Fund，每季度只能赎回 5%。流动性差，普通券商账户也买不到
-
-**纯公开上市太空 ETF（无 SpaceX 直接持仓，板块联动）**：
-
-- **UFO**（Procure Space ETF）：2019 上市，老牌纯太空 ETF
-- **ARKX**（ARK Space Exploration & Innovation）：木头姐主动管理
-- **ORBX**（Global X Space Tech）：Global X 大发行商，被动指数化
-- **UFOX**（Defiance Connective Technologies）：主题更广，含 5G + 卫星 + IoT，纯度低
-- **DIPR**（Corgi Space & Satellite Communications）：小发行商，专注卫星通信
-
-NASA 跑得最快有它的原因——**直接持 SpaceX SPV + 主动重仓 RKLB / ASTS / PL 这些 SpaceX 联动度最高的标的**。这两点是 UFO / ARKX / ORBX 这类被动指数化或主题更宽的 ETF 学不来的。
-
-## 写在最后
-
-笔者想说清楚一件事：**ETF 不是看仓位百分比哪个高就买哪个**。
-
-ETF 看的是"每一块钱真实买到了多少底层资产"。
-
-- DXYZ 表面 17.4% SpaceX，溢价稀释后真实 3.16%
-- NASA 表面 7.77% SpaceX，因为没有溢价，真实就是 7.77%
-- ARKX / UFO / ORBX 等不直接持 SpaceX，但通过板块联动也有效果
-- 打新 SPCX 是唯一 100% 直接暴露，中签率 0.5%
-
-不同选择适合不同投资者。本文只负责把数字摆出来，让读者根据自己的画像判断。
-
-笔者下一篇会拆 **NASA ETF 集中度风险**：前 5 大持仓 33% 暴露，单个标的暴跌如何连累 ETF。
-
-接下来 12 个月可以盯的几个数据点：
-
-- DXYZ 市价 / NAV 比率（IPO 后是否回归）
-- NASA 与 SpaceX 上市后日股价的相关系数
-- ORBX、UFOX 等新发 ETF 是否会调整持仓加大太空板块权重
-- 是否有新的"含 SpaceX 直接份额"的 ETF 申报
+只能打新 SPCX。中签率 0.5%。
 
 ---
 
@@ -223,4 +145,8 @@ ETF 看的是"每一块钱真实买到了多少底层资产"。
 
 ::: {.callout-warning}
 **免责声明**：本文仅代表个人观点，不构成任何投资建议。CEF 折溢价、ETF 集中度、流动性都是真实的风险，投资前请根据自身情况判断。
+:::
+
+::: {.callout-tip}
+深度版 12 页 deck 见 [deck.html](deck.html)，含 NASA 真实暴露数学计算 / DXYZ 折溢价历史 / 投资者决策树等更详细分析。
 :::
