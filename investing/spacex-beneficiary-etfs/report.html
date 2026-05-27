@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>SpaceX Beneficiary Securities Analysis | Equity Research Report</title>
+<meta name="description" content="Equity research report on SpaceX beneficiary ETFs and related-party stocks, including NASA, DXYZ, ARKVX, UFO, ARKX, ORBX, UFOX, DIPR.">
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-alt: #f7f5f0;
+  --text: #1a1a1a;
+  --text-dim: #555;
+  --border: #c8c4bc;
+  --link: #0033a0;
+  --accent: #8b0000;
+  --highlight: #fff3a8;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Times New Roman", "Georgia", "SimSun", "宋体", serif;
+  font-size: 13pt;
+  line-height: 1.6;
+}
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 60px 50px 80px;
+}
+.cover {
+  text-align: center;
+  border-top: 3px double var(--text);
+  border-bottom: 3px double var(--text);
+  padding: 30px 0;
+  margin-bottom: 40px;
+}
+.cover .doc-type {
+  font-size: 10pt;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+.cover h1 {
+  font-size: 22pt;
+  font-weight: bold;
+  margin: 12px 0;
+  line-height: 1.35;
+}
+.cover .subtitle {
+  font-style: italic;
+  font-size: 13pt;
+  color: var(--text-dim);
+  margin: 12px 0 20px;
+}
+.cover .meta {
+  font-size: 10pt;
+  color: var(--text-dim);
+  font-family: "Helvetica", "Arial", sans-serif;
+  letter-spacing: 0.5px;
+  line-height: 1.7;
+}
+h2 {
+  font-size: 14pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 50px 0 18px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--text);
+}
+h3 {
+  font-size: 12.5pt;
+  font-weight: bold;
+  margin: 28px 0 12px;
+  font-style: italic;
+}
+p {
+  margin: 0 0 14px;
+  text-align: justify;
+  text-indent: 0;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0;
+  font-size: 10.5pt;
+}
+th, td {
+  border: 1px solid var(--border);
+  padding: 7px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  background: var(--bg-alt);
+  font-weight: bold;
+  font-size: 10pt;
+  letter-spacing: 0.5px;
+}
+td.num, th.num { text-align: right; font-family: "Courier New", monospace; }
+.figure {
+  margin: 28px 0;
+  text-align: center;
+  page-break-inside: avoid;
+}
+.figure img {
+  max-width: 100%;
+  border: 1px solid var(--border);
+  background: white;
+  padding: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.figure .caption {
+  font-size: 10pt;
+  font-style: italic;
+  color: var(--text-dim);
+  margin-top: 10px;
+  padding: 0 30px;
+  text-align: center;
+}
+.exhibit-label {
+  font-weight: bold;
+  font-style: normal;
+  color: var(--text);
+}
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 30px 0;
+}
+.footnote {
+  font-size: 10pt;
+  color: var(--text-dim);
+  margin: 8px 0;
+  font-style: italic;
+}
+.disclaimer {
+  background: var(--bg-alt);
+  border-left: 4px solid var(--accent);
+  padding: 18px 22px;
+  margin: 24px 0;
+  font-size: 10.5pt;
+  font-style: italic;
+}
+.disclaimer p { margin-bottom: 10px; }
+.disclaimer p:last-child { margin-bottom: 0; }
+.disclaimer strong { font-style: normal; }
+.toc {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  padding: 18px 28px;
+  margin: 30px 0;
+}
+.toc h3 {
+  margin: 0 0 10px;
+  font-size: 11pt;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-style: normal;
+}
+.toc ol {
+  margin: 0;
+  padding-left: 22px;
+  font-size: 11pt;
+  line-height: 1.9;
+}
+.toc li::marker { font-weight: bold; }
+a { color: var(--link); text-decoration: underline; }
+strong { font-weight: bold; }
+.highlight { background: var(--highlight); padding: 0 2px; }
+ul { margin: 8px 0 14px 24px; padding-left: 8px; }
+ul li { margin-bottom: 6px; }
+code {
+  font-family: "Courier New", monospace;
+  background: var(--bg-alt);
+  padding: 1px 5px;
+  font-size: 11pt;
+  border: 1px solid var(--border);
+}
+.section-marker {
+  font-size: 11pt;
+  letter-spacing: 4px;
+  color: var(--text-dim);
+  font-family: "Helvetica", "Arial", sans-serif;
+  margin-bottom: 4px;
+}
+@media print {
+  body { font-size: 11pt; }
+  .container { max-width: 100%; padding: 40px; }
+  .figure { page-break-inside: avoid; }
+  h2 { page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- COVER -->
+<div class="cover">
+  <div class="doc-type">EQUITY RESEARCH REPORT</div>
+  <h1>SpaceX 受益标的解读：<br>NASA ETF 与同业 ETF 对比分析</h1>
+  <div class="subtitle">8 只概念 ETF + 5 只 Related Party 个股 全维度横评</div>
+  <div class="meta">
+    REPORT DATE: MAY 27, 2026<br>
+    AUTHOR: KEVIN GUO<br>
+    DATA SOURCES: BLOOMBERG TERMINAL · CEFCONNECT.COM · SEC EDGAR<br>
+    REFERENCE FILING: SPACEX S-1, ACCESSION 0001628280-26-036936
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <h3>Table of Contents</h3>
+  <ol>
+    <li>NASA ETF 在 SpaceX 申报 IPO 之后的表现</li>
+    <li>NASA 持仓结构解读</li>
+    <li>13 个 SpaceX 受益标的全表</li>
+    <li>选择维度速查</li>
+    <li>Disclosures and Limitations</li>
+  </ol>
+</div>
+
+<!-- ────────── SECTION I ────────── -->
+<div class="section-marker">SECTION I</div>
+<h2>I. NASA ETF 在 SpaceX 申报 IPO 之后的表现</h2>
+
+<p>NASA（Tema Space Innovators ETF）是 Tema ETFs 于 2024 年 6 月发行的太空主题 ETF。该基金前 9 个月默默无闻，跟随大盘走势波动。</p>
+
+<p>转折点出现在 <strong>2026 年 4 月 1 日</strong>，TechCrunch 报道 SpaceX（Space Exploration Technologies Corp.）已秘密向 SEC 递交 IPO 申请。该日之后两个月，NASA 累计涨幅达到 <strong>+41.82%</strong>（截至 2026/05/26 收盘价 $41.61）。</p>
+
+<table>
+<thead>
+<tr><th>标的</th><th class="num">同期涨幅</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>NASA</strong>（Tema Space Innovators ETF）</td><td class="num"><strong>+41.82%</strong></td></tr>
+<tr><td>XAR（SPDR 航空航天与国防 ETF）</td><td class="num">~+12%</td></tr>
+<tr><td>B3000I（彭博美国 3000 工业板块）</td><td class="num">~+8%</td></tr>
+<tr><td>SPX（标普 500）</td><td class="num">~+5%</td></tr>
+</tbody>
+</table>
+
+<p class="footnote">数据来源：Bloomberg Terminal COMP 命令对照，时间窗口 2026/04/01 — 2026/05/26。</p>
+
+<p>NASA 跑赢标普 500 约 <strong>8 倍</strong>，跑赢同板块 ETF 约 3-4 倍。</p>
+
+<div class="figure">
+  <img src="exhibit-1-nasa-comp.png" alt="NASA performance vs benchmarks">
+  <div class="caption"><span class="exhibit-label">Exhibit 1.</span> NASA ETF（顶部黄线）与基准累计涨幅对照图，时间窗口 2026/04/01 — 2026/05/26。期间收益 +41.82%。Source: Bloomberg COMP.</div>
+</div>
+
+<p>更具说明意义的是，<strong>2026 年 5 月 20 日</strong>（SpaceX S-1 招股书在 SEC EDGAR 公开发布日）当天，NASA 单日成交量达到 23,220,839 股，是平时日均成交量的 5 倍以上。本报告认为该交易量异动反映了机构资金的明确进场信号。</p>
+
+<div class="figure">
+  <img src="exhibit-2-nasa-tra.png" alt="NASA total return analysis">
+  <div class="caption"><span class="exhibit-label">Exhibit 2.</span> NASA ETF 总收益走势及成交量分布。区间高 $42.68（2026/05/26），区间低 $13.50（2026/03/31）。底部柱状图为成交量。Source: Bloomberg TRA.</div>
+</div>
+
+<!-- ────────── SECTION II ────────── -->
+<div class="section-marker">SECTION II</div>
+<h2>II. NASA 持仓结构解读</h2>
+
+<p>NASA ETF 截至最近披露日的基本属性：</p>
+
+<table>
+<thead><tr><th>项目</th><th>数值</th></tr></thead>
+<tbody>
+<tr><td>总资产 (AUM)</td><td>~ $1.5 billion</td></tr>
+<tr><td>持仓数</td><td>38</td></tr>
+<tr><td>类型</td><td>主动管理 ETF（无跟踪指数）</td></tr>
+<tr><td>区域</td><td>全球 / Broad Market</td></tr>
+<tr><td>上市日</td><td>2024 年 6 月</td></tr>
+<tr><td>收盘价（2026/05/26）</td><td>$41.61</td></tr>
+<tr><td>52 周高 / 低</td><td>$42.68 / $13.50</td></tr>
+<tr><td>现金头寸</td><td>$68.52M（4.11%）</td></tr>
+</tbody>
+</table>
+
+<p>下表呈现 Bloomberg MHD 命令拉取的前 15 大持仓数据：</p>
+
+<table>
+<thead>
+<tr><th class="num">#</th><th>持仓</th><th>Ticker</th><th class="num">% Net</th><th class="num">市值 (USD)</th></tr>
+</thead>
+<tbody>
+<tr><td class="num">1</td><td>Rocket Lab USA Inc Common Shares</td><td>RKLB US</td><td class="num"><strong>10.62%</strong></td><td class="num">$177.13M</td></tr>
+<tr style="background: var(--highlight);"><td class="num"><strong>2</strong></td><td><strong>太空探索技术公司（Space Exploration Technologies Corp. SPV）</strong></td><td><strong>1398495D US</strong></td><td class="num"><strong>7.77%</strong></td><td class="num"><strong>$129.69M</strong></td></tr>
+<tr><td class="num">3</td><td>Planet Labs PBC Class A</td><td>PL US</td><td class="num">6.19%</td><td class="num">$103.35M</td></tr>
+<tr><td class="num">4</td><td>Firefly Aerospace Common Shares</td><td>FLY US</td><td class="num">6.14%</td><td class="num">$102.51M</td></tr>
+<tr><td class="num">5</td><td>AST SpaceMobile Class A</td><td>ASTS US</td><td class="num">5.18%</td><td class="num">$86.50M</td></tr>
+<tr><td class="num">6</td><td>Intuitive Machines Class A</td><td>LUNR US</td><td class="num">5.11%</td><td class="num">$85.24M</td></tr>
+<tr><td class="num">7</td><td>Filtronic plc</td><td>FTC LN</td><td class="num">4.53%</td><td class="num">$75.53M</td></tr>
+<tr><td class="num">8</td><td>USD Currency (Cash)</td><td>USD Curncy</td><td class="num">4.11%</td><td class="num">$68.52M</td></tr>
+<tr><td class="num">9</td><td>5N Plus Inc</td><td>VNP CN</td><td class="num">4.07%</td><td class="num">$67.81M</td></tr>
+<tr><td class="num">10</td><td>BlackSky Technology Class A</td><td>BKSY US</td><td class="num">3.90%</td><td class="num">$65.10M</td></tr>
+<tr><td class="num">11</td><td>ViaSat Inc</td><td>VSAT US</td><td class="num">3.67%</td><td class="num">$61.21M</td></tr>
+<tr><td class="num">12</td><td>MDA Space Ltd</td><td>MDA CN</td><td class="num">3.26%</td><td class="num">$54.22M</td></tr>
+<tr><td class="num">13</td><td>Astroscale Holdings Inc</td><td>186A JP</td><td class="num">3.03%</td><td class="num">$49.53M</td></tr>
+<tr><td class="num">14</td><td>昇达科技股份有限公司</td><td>3491 TT</td><td class="num">2.85%</td><td class="num">$47.59M</td></tr>
+<tr><td class="num">15</td><td>York Space Systems</td><td>YSS US</td><td class="num">2.62%</td><td class="num">$43.64M</td></tr>
+</tbody>
+</table>
+
+<div class="figure">
+  <img src="exhibit-3-nasa-holdings.png" alt="NASA holdings table from Bloomberg">
+  <div class="caption"><span class="exhibit-label">Exhibit 3.</span> NASA ETF 持仓人所有权报告，第二行（黄色高亮）为 Space Exploration Technologies Corp. SPV，权重 7.77%，市值 $129.69M。Source: Bloomberg MHD.</div>
+</div>
+
+<h3>关键观察</h3>
+
+<p><strong>第一，第二大持仓为 SpaceX SPV，权重 7.77%。</strong>Bloomberg 使用内部代号 <code>1398495D US</code> 标识该持仓（SpaceX 尚未公开上市，无标准股票代号），市值约 $129.69M，仓位变动为 0（说明为稳定配置）。NASA 是同类公开 ETF 中<strong>唯一直接持有 SpaceX 私募份额的可买可卖产品</strong>。</p>
+
+<p><strong>第二，前 6 大持仓为"SpaceX + 联动股全家桶"。</strong>RKLB（10.62%）+ SpaceX SPV（7.77%）+ PL（6.19%）+ Firefly（6.14%）+ ASTS（5.18%）+ LUNR（5.11%）合计权重 41.01%。Tema 的主动管理选股偏向 SpaceX 板块联动度最高的标的——这是被动指数化产品难以复制的结构。</p>
+
+<p><strong>第三，全球化分散。</strong>持仓涵盖英国（Filtronic）、加拿大（5N Plus、MDA Space）、日本（Astroscale）、台湾（昇达科技）。该地理分散降低了单一监管区域的集中风险，但部分非美标的的二级市场流动性较弱。</p>
+
+<p>本报告认为，NASA 的产品设计组合了"SpaceX SPV 直接持仓 + 主动重仓 SpaceX 联动股"的双重敞口。这是 NASA 在 IPO 前夜行情中跑赢同业的结构性原因。</p>
+
+<!-- ────────── SECTION III ────────── -->
+<div class="section-marker">SECTION III</div>
+<h2>III. 13 个 SpaceX 受益标的全表</h2>
+
+<p>本节列示市场上主要的 SpaceX 受益标的，按"SpaceX 关系强度"自高至低排序。</p>
+
+<h3>A. ETF / 基金（8 只）</h3>
+
+<table>
+<thead>
+<tr><th>标的</th><th>类型</th><th>与 SpaceX 关系</th><th>主要持仓</th><th>风险</th><th>适合投资者</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>DXYZ</strong></td><td>CEF（封闭式）</td><td>直接持 17.4% SpaceX SPV（13.51% + 3.88% 两笔）</td><td>47% 国债 + SpaceX + Shield AI / Revolut / Skild AI 等独角兽</td><td>市价 / NAV 溢价 ~5x，溢价回归即跌 40-60%</td><td>相信独角兽集合概念 + 能承受 5x 高溢价 + 接受短期情绪驱动波动的投资者</td></tr>
+<tr style="background:#f0f7ff;"><td><strong>NASA</strong></td><td>主动 ETF</td><td>直接持 7.77% SpaceX SPV + 重仓 RKLB / Firefly / PL / ASTS / LUNR</td><td>RKLB 10.62% / SpaceX 7.77% / PL 6.19% / Firefly 6.14% / ASTS 5.18% / LUNR 5.11%，38 只全球太空股</td><td>集中度（前 6 占 41%）/ 主动管理人风险 / SpaceX SPV 估值季度更新滞后</td><td>核心配置型：想要 SpaceX 直接暴露 + 板块联动双击 + 不愿承受 CEF 溢价的投资者</td></tr>
+<tr><td><strong>ARKVX</strong></td><td>Interval Fund</td><td>持有 SpaceX（具体仓位不公开披露）</td><td>木头姐 ARK 风险投资基金，含 SpaceX 等多家私募独角兽</td><td>流动性极差：每季度赎回上限 5% 净资产 + 普通券商账户通常买不到</td><td>高净值 / 机构 / 长线持有 + 接受多年锁定 + 信任 ARK 选股的投资者</td></tr>
+<tr><td><strong>UFO</strong></td><td>被动 ETF</td><td>0% 直接 SpaceX，板块联动</td><td>全球航天股，含 GEO 卫星 / 国防 / 火箭，2019 年发行的老牌纯太空 ETF</td><td>持仓偏老牌 GEO 卫星，错过 LEO 新势力部分涨幅</td><td>想要分散纯太空主题 + 偏好被动指数化 + 不强求 SpaceX 直接持仓的投资者</td></tr>
+<tr><td><strong>ARKX</strong></td><td>主动 ETF</td><td>0% 直接 SpaceX</td><td>木头姐主题选股，含火箭 / 卫星 / 3D 打印 / 物联网等"广义太空"</td><td>主题更宽，纯度低（含非太空主线标的）</td><td>信任 ARK 主动管理风格 + 接受跨主题混合的投资者</td></tr>
+<tr><td><strong>ORBX</strong></td><td>被动 ETF</td><td>0% 直接 SpaceX</td><td>Global X 太空科技指数化产品，被动跟踪太空主题指数</td><td>大发行商被动产品，灵活性最低，难捕捉短期事件型机会</td><td>偏好大发行商 + 低成本被动指数化 + 长线持有的投资者</td></tr>
+<tr><td><strong>UFOX</strong></td><td>被动 ETF</td><td>0% 直接 SpaceX</td><td>Defiance "Connective Technologies" 主题：5G + 卫星 + IoT 混合</td><td>"纯度最低"——真正的太空敞口可能只有 30-40%，剩下是 5G / IoT</td><td>想要"广义连接科技"敞口 + 不在意太空纯度的投资者</td></tr>
+<tr><td><strong>DIPR</strong></td><td>被动 ETF</td><td>0% 直接 SpaceX</td><td>Corgi 卫星通信专题，聚焦 D2C 卫星 + Starlink 同业</td><td>小发行商，AUM 较小，流动性 / 价差风险高</td><td>专注卫星通信细分赛道 + 接受小盘 ETF 流动性风险的投资者</td></tr>
+</tbody>
+</table>
+
+<h3>DXYZ 折溢价机制说明（封闭式基金重要风险）</h3>
+
+<p>DXYZ 作为封闭式基金（Closed-End Fund），其市价与底层资产净值（NAV）之间的溢价 / 折价幅度可能极端剧烈。下方两图展示该结构性风险。</p>
+
+<div class="figure">
+  <img src="exhibit-4-dxyz-summary.png" alt="DXYZ summary page">
+  <div class="caption"><span class="exhibit-label">Exhibit 4.</span> DXYZ（Destiny Tech100 Inc）基本资料页。市价 $60.21，总资产 $901.6M，运营为封闭式管理投资公司，投资于风险投资支持的私营科技公司组合。Source: Bloomberg DES.</div>
+</div>
+
+<div class="figure">
+  <img src="exhibit-5-dxyz-history.png" alt="DXYZ historical price vs NAV">
+  <div class="caption"><span class="exhibit-label">Exhibit 5.</span> DXYZ 自 2024 年 3 月 IPO 至今的市价历史。蓝线为市价，2024 年 3 月一度突破 $99（同期 NAV 仅 $5-10，溢价超过 1,000%），随后大幅回落，多次出现剧烈情绪驱动的价格脉冲。Source: Bloomberg GP.</div>
+</div>
+
+<div class="figure">
+  <img src="exhibit-6-dxyz-premium.png" alt="DXYZ price vs NAV — June 2025 zoom">
+  <div class="caption"><span class="exhibit-label">Exhibit 6.</span> DXYZ 市价（深色）与 NAV（浅色）2025 年 6 月走势聚焦。期初市价 $38 vs NAV ~$7（溢价 +443%），期末市价 $22 vs NAV ~$11（溢价仍达 +100%）。Source: cefconnect.com.</div>
+</div>
+
+<p class="footnote">截至 2026/05/26，DXYZ 市价 $60.21，估算 NAV 约 $11-12，对应溢价幅度约 +400-450%。CEF 长期重力为市价回归 NAV，散户在高溢价位买入存在显著下行风险。</p>
+
+<h3>B. Related Party 个股（5 只，NASA 持仓里的同业）</h3>
+
+<table>
+<thead>
+<tr><th>标的</th><th>类型</th><th>与 SpaceX 关系</th><th>主要业务</th><th>风险</th><th>适合投资者</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>RKLB</strong></td><td>美股</td><td>"小 SpaceX"，中型可重复使用火箭直接竞争方</td><td>Electron 小型火箭 + Neutron 中型火箭 + 卫星制造</td><td>单股波动大 / Neutron 试飞失败风险 / 烧钱亏损</td><td>信仰多发射方案 + 接受单股高波动 + 想吃 SpaceX 板块溢价的投资者</td></tr>
+<tr><td><strong>ASTS</strong></td><td>美股</td><td>Starlink Mobile 直接竞争方（AT&amp;T 阵营 D2C 卫星）</td><td>BlueWalker 3 测试 + 商用 BlueBird 直连卫星星座</td><td>频谱审批风险 / 卫星部署延期 / 烧钱融资稀释</td><td>信仰直连卫星赛道 + 接受押注单一技术路线的投资者</td></tr>
+<tr><td><strong>PL</strong></td><td>美股</td><td>SpaceX 客户（用 Falcon 9 发射 SkySat / Dove）</td><td>全球地球观测卫星星座，每天拍全球一遍</td><td>单一应用市场 / 政府订单依赖 / 商业化进度慢</td><td>看好商业卫星图像 + 数据 SaaS 模式的投资者</td></tr>
+<tr><td><strong>LUNR</strong></td><td>美股</td><td>NASA 商业月球合作方（与 SpaceX 在月球任务上既合作又竞争）</td><td>Nova-C 月球登陆器 / IM-1 / IM-2 任务</td><td>政府合同集中 / 任务失败风险（IM-1 已侧翻一次）</td><td>看好月球经济 + 接受发射任务高失败概率的投资者</td></tr>
+<tr><td><strong>Firefly</strong></td><td>美股</td><td>SpaceX 小型火箭直接竞争方</td><td>Alpha 小型火箭 + Blue Ghost 月球登陆器</td><td>早期商业化阶段 / 现金流脆弱 / 试飞失败风险</td><td>信仰小型火箭赛道 + 早期投资风格 + 接受高失败率的投资者</td></tr>
+</tbody>
+</table>
+
+<!-- ────────── SECTION IV ────────── -->
+<div class="section-marker">SECTION IV</div>
+<h2>IV. 选择维度速查</h2>
+
+<p><strong>想要直接持 SpaceX 份额：</strong></p>
+<ul>
+<li>接受 5x 溢价 → DXYZ（每 $100 真实仅约 $3 SpaceX）</li>
+<li>不愿溢价 → NASA（7.77% 直接 SPV + 板块联动，无 CEF 溢价问题）</li>
+<li>高净值 / 机构 → ARKVX（流动性受限）</li>
+</ul>
+
+<p><strong>想要纯板块联动（不强求 SpaceX 直接持仓）：</strong></p>
+<ul>
+<li>主动管理 → ARKX</li>
+<li>被动指数化 → UFO / ORBX</li>
+<li>跨主题混合 → UFOX</li>
+<li>卫星通信细分 → DIPR</li>
+</ul>
+
+<p><strong>想要单股弹性：</strong></p>
+<ul>
+<li>"小 SpaceX" 火箭 → RKLB / Firefly</li>
+<li>D2C 卫星 → ASTS</li>
+<li>卫星应用 → PL / LUNR</li>
+</ul>
+
+<p><strong>真要 100% SpaceX 暴露：</strong>仅可通过打新 SPCX。中签率约 0.5%。</p>
+
+<!-- ────────── SECTION V — DISCLOSURES ────────── -->
+<div class="section-marker">SECTION V</div>
+<h2>V. Disclosures and Limitations</h2>
+
+<div class="disclaimer">
+<p><strong>数据来源：</strong>本报告所有数据采集自 Bloomberg Terminal（NASA / DXYZ 的 DES、MHD、TRA、GP、COMP 命令）、cefconnect.com（DXYZ 折溢价历史），以及 SEC EDGAR（SpaceX S-1 Accession 0001628280-26-036936）。数据截止时间：2026 年 5 月 26-27 日。</p>
+
+<p><strong>免责声明：</strong>本报告仅代表笔者个人观点，仅供研究及信息参考用途，<strong>不构成任何投资建议</strong>。报告中讨论的标的存在多种风险，包括但不限于：CEF 折溢价回归、ETF 持仓集中度、Interval Fund 流动性受限、单股高波动、商业化进度不及预期、监管风险等。投资者应根据自身财务状况、风险承受能力与投资目标独立判断。</p>
+
+<p><strong>方法学限制：</strong>NASA 持有的 SpaceX SPV 估值采用季度公允价值更新方法，可能与 SpaceX 实际市场价值存在时间差。DXYZ 作为封闭式基金，市价与 NAV 之间的溢价 / 折价幅度受市场情绪驱动，历史波动剧烈。本报告未对 ORBX / UFOX / DIPR 等较新发行的小盘 ETF 完整披露其历史持仓变化，相关分析基于发行商公开资料推断。</p>
+
+<p><strong>前瞻性陈述：</strong>本报告中关于 SpaceX IPO 时间、定价区间、上市后表现等的讨论涉及前瞻性陈述，受多种不确定因素影响，包括但不限于市场条件、监管审批、SpaceX 经营业绩等。实际结果可能与本报告所讨论之情景显著不同。</p>
+</div>
+
+<hr>
+
+<p class="footnote" style="text-align: center; margin-top: 30px;">— END OF REPORT —</p>
+
+</div>
+</body>
+</html>

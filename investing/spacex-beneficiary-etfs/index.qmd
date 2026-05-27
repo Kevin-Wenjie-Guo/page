@@ -148,5 +148,8 @@ NASA 的产品设计是"**直接持 SpaceX SPV + 主动重仓 SpaceX 联动股**
 :::
 
 ::: {.callout-tip}
-深度版 12 页 deck 见 [deck.html](deck.html)，含 NASA 真实暴露数学计算 / DXYZ 折溢价历史 / 投资者决策树等更详细分析。
+**深度阅读**：
+
+- [完整研究报告（含 6 张 Bloomberg 截图）](report.html) — SEC filing 风格版式
+- [12 页演示 deck](deck.html) — 现代视觉风格，含 NASA 真实暴露数学 / 投资者决策树
 :::
