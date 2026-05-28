@@ -15,6 +15,7 @@ project:
     - "**/*.gif"
     - "**/*.svg"
     - "**/*.pdf"
+    - "home.js"
     - "!tools/"
     - "!_site/"
 
@@ -24,7 +25,8 @@ website:
   description: "Thoughts on investing, technology, strategy, and life — by Kevin (Wenjie) Guo"
   navbar:
     title: "Kevin's Place"
-    background: dark
+    background: light
+    pinned: true
     left:
       - href: index.qmd
         text: Home

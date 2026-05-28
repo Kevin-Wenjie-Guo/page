@@ -1,32 +1,104 @@
 ---
-title: "Kevin's Place"
-subtitle: "Investing · Technology · Strategy · Life"
+pagetitle: "Kevin's Place"
 page-layout: full
-title-block-banner: true
+title-block-style: none
+toc: false
+sidebar: false
+listing:
+  - id: recent-posts
+    contents:
+      - "daily/*/index.qmd"
+      - "investing/*/index.qmd"
+      - "appdev/*/index.qmd"
+      - "strategy/*/index.qmd"
+      - "meditation/*/index.qmd"
+    sort: "date desc"
+    max-items: 6
+    type: default
+    fields: [date, title, categories]
+    date-format: "MMM D, YYYY"
+    feed: true
+format:
+  html:
+    css:
+      - styles.css
+      - home.css
+    include-after-body:
+      text: |
+        <script src="home.js"></script>
 ---
 
-Welcome to my corner of the internet. I'm Kevin (Wenjie) Guo — I write about the things I spend my time thinking about.
+```{=html}
+<section class="hero">
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <h1 class="hero-title">
+      <span class="word" style="animation-delay: 0.1s">Notes</span>
+      <span class="word" style="animation-delay: 0.28s">from</span>
+      <span class="word accent" style="animation-delay: 0.46s">a</span>
+      <span class="word accent" style="animation-delay: 0.64s">curious</span>
+      <span class="word accent" style="animation-delay: 0.82s">mind.</span>
+    </h1>
+    <p class="hero-sub">Kevin Wenjie Guo</p>
+  </div>
+  <div class="hero-scroll" role="button" tabindex="0">scroll ↓</div>
+</section>
 
-This site is organized into six areas:
+<section class="modules-section">
+  <div class="modules-inner">
+    <div class="section-eyebrow">Six places I think</div>
+    <h2 class="section-title">What I write <em>about</em></h2>
+    <div class="modules">
+      <a class="module-card" href="daily/index.html">
+        <div class="module-num">01 / DAILY</div>
+        <h3>Daily Writing</h3>
+        <p>Posts and reflections, day to day. Whatever I'm learning.</p>
+        <span class="module-arrow">→</span>
+      </a>
+      <a class="module-card" href="investing/index.html">
+        <div class="module-num">02 / INVESTING</div>
+        <h3>Investing &amp; Equity Research</h3>
+        <p>Theses, deep dives, and market thinking.</p>
+        <span class="module-arrow">→</span>
+      </a>
+      <a class="module-card" href="appdev/index.html">
+        <div class="module-num">03 / APP DEV</div>
+        <h3>App Development</h3>
+        <p>Building things and learning by shipping.</p>
+        <span class="module-arrow">→</span>
+      </a>
+      <a class="module-card" href="strategy/index.html">
+        <div class="module-num">04 / STRATEGY</div>
+        <h3>Strategy &amp; Management</h3>
+        <p>Business strategy and organizational thinking.</p>
+        <span class="module-arrow">→</span>
+      </a>
+      <a class="module-card" href="meditation/index.html">
+        <div class="module-num">05 / MEDITATION</div>
+        <h3>Meditation &amp; Life</h3>
+        <p>Mindfulness, well-being, and living better.</p>
+        <span class="module-arrow">→</span>
+      </a>
+      <a class="module-card" href="mystory.html">
+        <div class="module-num">06 / STORY</div>
+        <h3>My Story</h3>
+        <p>Who I am and how I got here.</p>
+        <span class="module-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-- **[Daily Writing](daily/index.qmd)** — Posts, reflections, and things I'm learning day to day
-- **[Investing & Equity Research](investing/index.qmd)** — Analysis, investment theses, and market thinking
-- **[App Development](appdev/index.qmd)** — Building applications and what I'm working on
-- **[Strategy & Management](strategy/index.qmd)** — Ideas on business strategy and organizational thinking
-- **[Meditation & Life](meditation/index.qmd)** — On mindfulness, well-being, and living better
-- **[My Story](mystory.qmd)** — Who I am and how I got here
-
----
-
-## Recent Posts
+<section class="recent-section">
+  <div class="recent-inner">
+    <div class="section-eyebrow">Latest writing</div>
+    <h2 class="section-title">Recent <em>posts</em></h2>
+```
 
 ::: {#recent-posts}
 :::
 
 ```{=html}
-<style>
-#recent-posts {
-  margin-top: 1rem;
-}
-</style>
+  </div>
+</section>
 ```
