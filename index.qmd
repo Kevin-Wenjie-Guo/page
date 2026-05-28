@@ -32,13 +32,13 @@ format:
 <section class="hero">
   <canvas id="stars" aria-hidden="true"></canvas>
   <div class="hero-inner">
-    <h1 class="hero-title">
+    <div class="hero-title" role="heading" aria-level="1">
       <span class="word" style="animation-delay: 0.1s">Notes</span>
       <span class="word" style="animation-delay: 0.28s">from</span>
       <span class="word accent" style="animation-delay: 0.46s">a</span>
       <span class="word accent" style="animation-delay: 0.64s">curious</span>
       <span class="word accent" style="animation-delay: 0.82s">mind.</span>
-    </h1>
+    </div>
     <p class="hero-sub">Kevin Wenjie Guo</p>
   </div>
   <div class="hero-scroll" role="button" tabindex="0">scroll ↓</div>

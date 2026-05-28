@@ -88,7 +88,7 @@ body.home .navbar.scrolled .nav-link:hover {
   max-width: 1000px;
 }
 
-.hero-title {
+body.home .hero-title {
   font-family: var(--serif);
   font-weight: 300;
   font-size: clamp(2.5rem, 7vw, 5.5rem);
@@ -96,27 +96,35 @@ body.home .navbar.scrolled .nav-link:hover {
   color: #F5F1E8;
   letter-spacing: -0.025em;
   margin: 0;
+  text-align: center;
 }
-.hero-title .word {
+body.home .hero-title .word {
   display: inline-block;
   margin-right: 0.18em;
+  color: #F5F1E8;
   opacity: 0;
   transform: translateY(24px);
   filter: blur(8px);
   animation: heroFade 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  -webkit-animation: heroFade 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
-.hero-title .accent {
+body.home .hero-title .word.accent {
   font-style: italic;
   color: var(--gold);
   font-weight: 400;
 }
 @keyframes heroFade {
-  to { opacity: 1; transform: none; filter: blur(0); }
+  from { opacity: 0; transform: translateY(24px); filter: blur(8px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
+@-webkit-keyframes heroFade {
+  from { opacity: 0; -webkit-transform: translateY(24px); filter: blur(8px); }
+  to   { opacity: 1; -webkit-transform: translateY(0);    filter: blur(0); }
 }
 
-.hero-sub {
+body.home .hero-sub {
   margin-top: 2.5rem;
-  color: rgba(245, 241, 232, 0.55);
+  color: rgba(245, 241, 232, 0.55) !important;
   font-size: 0.78rem;
   letter-spacing: 0.4em;
   text-transform: uppercase;
@@ -124,6 +132,7 @@ body.home .navbar.scrolled .nav-link:hover {
   font-weight: 400;
   opacity: 0;
   animation: heroFade 1s 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  -webkit-animation: heroFade 1s 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 .hero-scroll {
