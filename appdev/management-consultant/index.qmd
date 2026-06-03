@@ -1,0 +1,25 @@
+---
+title: "Management Consultant 技能：给 Claude 装上 MBB 的结构化思考（原作者 DogInfantry）"
+date: "2026-06-03"
+author: "Kevin Guo"
+categories: [App Dev, Claude Skill, Tooling, 咨询]
+description: "也是别人的作品，我装来用。它让 Claude 在处理商业问题时，用咨询顾问那套结构化方法来拆解，而不是随口答。"
+toc: true
+---
+
+> **声明**：非我原创，来自 [DogInfantry/claude-skill-management-consultant-B1](https://github.com/DogInfantry/claude-skill-management-consultant-B1)。这里记录我为什么用它。
+
+## 它解决什么
+
+让 AI 答商业类问题（市场规模、盈利分析、进入策略、定价……），默认输出往往是「列几条」，不够结构化、也不够可信。
+
+这个技能给 Claude 装上了一套 **MBB（麦肯锡/贝恩/BCG）级的方法论**：MECE、议题树、假设驱动、80/20、各种经典框架（波特五力、价值链等）。于是它会先**结构化拆解问题**，再分层论证，产出更像一份顾问交付物，而不是随口的清单。
+
+## 为什么我推荐
+
+- 把「结构化思考」变成默认行为，分析更有章法。
+- 做市场估算、案例拆解时，过程可追、结论可信。
+
+## 原项目
+
+<https://github.com/DogInfantry/claude-skill-management-consultant-B1>

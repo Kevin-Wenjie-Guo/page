@@ -1,0 +1,29 @@
+---
+title: "Context Vocab Reader（网页版）：把 PDF / EPUB 也变成能划词查词的阅读器"
+date: "2026-06-03"
+author: "Kevin Guo"
+categories: [App Dev, Web App, 英语, PDF, EPUB, PWA]
+description: "Chrome 扩展只能在网页上划词，可我大量阅读其实是 PDF 外刊和 EPUB 小说。于是做了配套的网页阅读器，把同一套查词体验搬进一个能开 PDF/EPUB 的阅读器里。"
+toc: true
+---
+
+## 为什么做它
+
+[Context Vocab 扩展](../context-vocab-extension/) 解决了「读网页」的查词，但我的英文输入有一大半根本不在网页上——是**下载的 PDF 外刊**和**EPUB 英文小说**。扩展在那里使不上力。
+
+所以我做了它的「网页版」：一个**自带阅读器**的查词工具。同一套「上下文 + DeepSeek 释义 + 一键存欧陆」的体验，只是包在一个能打开 PDF / EPUB 的阅读界面里。
+
+## 它做什么
+
+- **PDF / EPUB 阅读**：本地选文件即读。
+- **点词/划词查词**：和扩展一样的释义面板 + 一键存欧陆。
+- **批量模式**：一页生词太多时，先沉浸式读、点词只标记不打断；读完一次性批量生成释义，再进「两栏复习窗」逐个过。
+- **平板适配**：单击单词即查（Kindle 式）、左右滑动翻 EPUB、可「添加到主屏」当 App 用。
+- **纯前端**：DeepSeek / 欧陆 均支持网页直连，零后端。
+
+## 在线试用 & 代码
+
+- 在线：<https://kevinguo0351.github.io/context-vocab-reader/>
+- 代码：<https://github.com/kevinguo0351/context-vocab-reader>
+
+> 配套：[Context Vocab 扩展](../context-vocab-extension/) 负责「网页划词」那一半。

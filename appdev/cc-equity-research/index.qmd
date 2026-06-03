@@ -1,0 +1,26 @@
+---
+title: "cc-equity-research：我在用的股票研究工作流（原作者 prof-little-bear）"
+date: "2026-06-03"
+author: "Kevin Guo"
+categories: [App Dev, Tooling, Claude Code, Investing]
+description: "先说清楚：这不是我写的，是 prof-little-bear 的开源项目，我装来日常用。记录一下它解决了什么、为什么我推荐。"
+toc: true
+---
+
+> **声明**：这个项目不是我原创的，来自 [prof-little-bear/cc-equity-research](https://github.com/prof-little-bear/cc-equity-research)。这里只记录我作为使用者的体验和推荐理由。
+
+## 它解决什么
+
+做股票研究时，我经常重复搭同一套流程：找数据、按固定框架分析单公司、扫板块、盯宏观。每次都从零开口让 AI 做，既慢又不一致。
+
+cc-equity-research 把这套研究流程**固化成了 Claude Code 的 slash command** —— 单公司分析、想法发现、宏观、持仓监控等几个命令，配上 drillr 数据 MCP 取数。一句命令就能跑一套结构稳定的研究，省去每次重搭流程的功夫。
+
+## 为什么我推荐
+
+- 把「研究方法论」沉淀成可复用命令，输出格式稳定。
+- 接了数据 MCP，不用手动找数。
+- 适合像我这样需要反复做个股/板块研究的人。
+
+## 原项目
+
+<https://github.com/prof-little-bear/cc-equity-research>

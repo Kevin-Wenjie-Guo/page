@@ -1,0 +1,26 @@
+---
+title: "CodeGraph：让 Claude 秒查代码结构（原作者 colbymchenry）"
+date: "2026-06-03"
+author: "Kevin Guo"
+categories: [App Dev, Tooling, Claude Code, MCP]
+description: "同样先声明：这是别人的开源工具，我从源码构建、接进了 Claude Code。它让 AI 理解代码库的方式从「grep 文本」升级成「查知识图谱」。"
+toc: true
+---
+
+> **声明**：非我原创，来自 [colbymchenry/codegraph](https://github.com/colbymchenry/codegraph)。我从源码构建并接入了自己的 Claude Code。这里记录我为什么用它。
+
+## 它解决什么
+
+让 AI 改一个稍大点的代码库时，最大的痛点是它「看不全」——靠 `grep` 找符号既慢、又容易漏、还烧 token。
+
+CodeGraph 把整个代码库用 tree-sitter 解析成一张**知识图谱**：每个符号、每条调用关系、每个文件都进了库。于是「X 在哪定义」「谁调用了 X」「改 Y 会影响什么」都是毫秒级查询，而且来自真实的 AST 解析，比文本搜索准得多。
+
+## 为什么我推荐
+
+- 结构性问题（调用关系、影响面）查询又快又准。
+- 省 token：不用反复 grep + 读整文件。
+- 接进 Claude Code 后，AI 回答架构类问题明显更靠谱。
+
+## 原项目
+
+<https://github.com/colbymchenry/codegraph>

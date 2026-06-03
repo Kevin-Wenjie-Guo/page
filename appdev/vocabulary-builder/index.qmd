@@ -1,0 +1,25 @@
+---
+title: "Vocabulary Builder：把任意词表，变成你自己的词汇学习网站"
+date: "2026-06-03"
+author: "Kevin Guo"
+categories: [App Dev, Claude Skill, 英语, Quarto]
+description: "做完词源书后我发现，「把一份词表变成讲解网站」这套流程完全可以复用。于是把它沉淀成一个 Claude Code 技能：任何词表，一键生成个人词汇学习站。"
+toc: true
+---
+
+## 为什么做它
+
+做 [词源词汇书](../etymology-book/) 时，我趟通了一整套流程：拿到一份词表 → 逐词查词源/语境 → 组织成结构化讲解 → 用 Quarto 生成网站 → 发布。做完我意识到——**这套流程不该只用一次**，它对任何词表都成立。
+
+于是我把它抽象成一个可复用的 **Claude Code 技能**，针对两种典型场景设计了两种模式：
+
+- **探索模式（EXPLORE）**：面向「学新词」（如 GRE/GMAT 词表），用词源、词根、主题语境来讲。
+- **复习模式（REVIEW）**：面向「唤醒旧词」（如欧陆/Anki 导出的生词本），把每个词重新织进一段自然语境短文里，配上加粗词悬停弹释义。
+
+产出是一本 Quarto 书并发布到 GitHub Pages，还会维护一个累积词库，让新学的词进入日后的复习。
+
+## 代码
+
+<https://github.com/kevinguo0351/vocabulary-builder>
+
+> 它是 [词源词汇书](../etymology-book/) 的「方法论沉淀版」——从「我做了一本书」变成「我做了一台造书的机器」。
