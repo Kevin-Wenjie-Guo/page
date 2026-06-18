@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 CPA《会计》第一章 总论 · 深入浅出讲义</title>
+<style>
+:root{
+  --ink:#1a1a1a;
+  --paper:#fbf8f3;
+  --paper-warm:#f5efe4;
+  --accent:#c8302d;
+  --accent-2:#1f5f8b;
+  --gold:#b08a3e;
+  --green:#3a6b3e;
+  --muted:#6b6b6b;
+  --line:#d8d2c4;
+  --hl:#fff3a3;
+  --soft:#f0e9d8;
+  --shadow: 0 1px 0 rgba(0,0,0,.04), 0 12px 32px -16px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);
+  font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC", Georgia, serif;
+  line-height:1.75;}
+.toolbar{position:sticky;top:0;z-index:50;display:flex;gap:8px;align-items:center;
+  padding:10px 18px;background:rgba(251,248,243,.94);backdrop-filter: blur(10px);
+  border-bottom:1px solid var(--line);}
+.toolbar .title{font-family:"PingFang SC","Helvetica Neue",system-ui,sans-serif;
+  font-weight:600;font-size:14px;letter-spacing:.04em;color:var(--muted);margin-right:auto;}
+.btn{font-family:"PingFang SC",system-ui,sans-serif;font-size:13px;font-weight:500;
+  padding:7px 14px;border-radius:999px;border:1px solid var(--ink);
+  background:var(--ink);color:var(--paper);cursor:pointer;transition:all .18s;}
+.btn.secondary{background:transparent;color:var(--ink)}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+.wrap{max-width:1000px;margin:0 auto;padding:48px 32px 120px;}
+.cover{position:relative;padding:80px 48px 64px;margin-bottom:48px;
+  background:radial-gradient(ellipse at 20% 0%, rgba(200,48,45,.10), transparent 55%),
+    radial-gradient(ellipse at 100% 100%, rgba(31,95,139,.10), transparent 60%),var(--paper-warm);
+  border:1px solid var(--line);border-radius:6px;overflow:hidden;}
+.cover::before{content:"總論";position:absolute;right:-30px;top:-20px;
+  font-size:280px;font-weight:900;color:rgba(200,48,45,.06);letter-spacing:-.05em;
+  font-family:"Songti SC",serif;line-height:1;pointer-events:none;}
+.cover .kicker{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;
+  letter-spacing:.32em;color:var(--accent);text-transform:uppercase;font-weight:600;margin-bottom:14px;}
+.cover h1{font-size:clamp(36px,5.4vw,60px);font-weight:700;margin:0 0 8px;letter-spacing:.02em;line-height:1.15;}
+.cover .sub{font-size:clamp(18px,2vw,22px);color:var(--muted);margin-bottom:24px;font-weight:400;}
+.cover .meta{display:flex;gap:18px;flex-wrap:wrap;font-family:"PingFang SC",system-ui,sans-serif;
+  font-size:13px;color:var(--muted);border-top:1px dashed var(--line);padding-top:18px;margin-top:18px;}
+.cover .meta span b{color:var(--ink);font-weight:600}
+
+section{margin:64px 0;scroll-margin-top:60px}
+.section-no{display:inline-block;font-family:"PingFang SC",system-ui,sans-serif;
+  font-size:11px;letter-spacing:.3em;color:var(--accent);font-weight:600;margin-bottom:6px;}
+h2{font-size:30px;margin:0 0 24px;letter-spacing:.02em;
+  border-bottom:2px solid var(--ink);padding-bottom:10px;}
+h3{font-size:22px;margin:32px 0 14px;color:var(--accent-2);}
+h4{font-size:17px;margin:22px 0 10px;font-family:"PingFang SC",sans-serif;font-weight:600;}
+p{margin:.6em 0}
+ul,ol{padding-left:1.4em}
+li{margin:.3em 0}
+strong{color:var(--accent);font-weight:600}
+em{color:var(--accent-2);font-style:normal;font-weight:600}
+
+/* Callouts */
+.callout{margin:18px 0;padding:16px 20px;border-left:4px solid var(--accent);
+  background:#fff8f4;border-radius:0 4px 4px 0;}
+.callout.blue{border-left-color:var(--accent-2);background:#f1f7fb;}
+.callout.green{border-left-color:var(--green);background:#f1f7f1;}
+.callout.gold{border-left-color:var(--gold);background:#faf5e8;}
+.callout .label{font-family:"PingFang SC",sans-serif;font-size:11px;letter-spacing:.2em;
+  font-weight:700;text-transform:uppercase;color:var(--accent);margin-bottom:6px;display:block;}
+.callout.blue .label{color:var(--accent-2)}
+.callout.green .label{color:var(--green)}
+.callout.gold .label{color:var(--gold)}
+
+/* Tables */
+table{width:100%;border-collapse:collapse;margin:18px 0;
+  font-family:"PingFang SC",sans-serif;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:10px 14px;text-align:left;vertical-align:top;line-height:1.6;}
+th{background:var(--soft);font-weight:600;color:var(--ink);}
+tbody tr:nth-child(even){background:rgba(245,239,228,.45);}
+td code{font-size:13px;color:var(--accent);background:rgba(200,48,45,.06);
+  padding:2px 6px;border-radius:3px;}
+
+/* Highlight key concept */
+.hl{background:linear-gradient(transparent 55%, var(--hl) 55%);padding:0 2px;}
+mark{background:linear-gradient(transparent 55%, var(--hl) 55%);padding:0 2px;color:inherit;}
+
+/* Key formula card */
+.formula{margin:20px 0;padding:18px 24px;background:var(--paper-warm);
+  border:1px dashed var(--gold);border-radius:6px;text-align:center;
+  font-family:"PingFang SC",sans-serif;font-size:16px;font-weight:500;letter-spacing:.04em;}
+.formula b{color:var(--accent);font-size:18px;}
+
+/* Q&A example */
+.qa{margin:22px 0;padding:18px 22px;background:#fff;border:1px solid var(--line);
+  border-radius:6px;box-shadow:var(--shadow);}
+.qa .qa-tag{display:inline-block;font-family:"PingFang SC",sans-serif;font-size:11px;
+  letter-spacing:.18em;padding:3px 10px;background:var(--accent);color:#fff;
+  border-radius:3px;margin-bottom:10px;font-weight:600;}
+.qa .stem{font-weight:500;margin:8px 0 10px;}
+.qa .opts{font-family:"PingFang SC",sans-serif;font-size:14.5px;}
+.qa .opts li{margin:.2em 0;}
+.qa .ans{margin-top:12px;padding:10px 14px;background:#f4f7ee;
+  border-left:3px solid var(--green);font-family:"PingFang SC",sans-serif;font-size:14px;}
+.qa .ans b{color:var(--green);}
+
+/* Mindmap-like box tree */
+.tree{margin:18px 0;padding:18px 24px;background:#fff;border:1px solid var(--line);
+  border-radius:6px;font-family:"PingFang SC",sans-serif;}
+.tree ul{list-style:none;padding-left:1.2em;}
+.tree>ul{padding-left:0;}
+.tree li{position:relative;padding:4px 0 4px 18px;}
+.tree li::before{content:"";position:absolute;left:0;top:14px;width:12px;height:1px;background:var(--line);}
+.tree li::after{content:"";position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--line);}
+.tree li:last-child::after{height:14px;}
+.tree li b{color:var(--accent);}
+
+/* TOC */
+.toc{margin:24px 0 48px;padding:24px 28px;background:#fff;border:1px solid var(--line);border-radius:6px;}
+.toc h3{margin-top:0;color:var(--ink);font-size:16px;letter-spacing:.16em;
+  font-family:"PingFang SC",sans-serif;border-bottom:1px solid var(--line);padding-bottom:8px;}
+.toc ol{font-family:"PingFang SC",sans-serif;font-size:14.5px;padding-left:1.6em;}
+.toc a{color:var(--ink);text-decoration:none;border-bottom:1px dotted transparent;}
+.toc a:hover{color:var(--accent);border-bottom-color:var(--accent);}
+
+/* Collapsible */
+details{margin:14px 0;border:1px solid var(--line);border-radius:6px;background:#fff;}
+details summary{cursor:pointer;padding:12px 18px;font-weight:600;font-family:"PingFang SC",sans-serif;
+  background:var(--soft);border-radius:6px;list-style:none;}
+details[open] summary{border-bottom:1px solid var(--line);border-radius:6px 6px 0 0;}
+details summary::-webkit-details-marker{display:none;}
+details summary::before{content:"▸ ";color:var(--accent);}
+details[open] summary::before{content:"▾ ";}
+details .inner{padding:14px 20px;}
+
+/* Editor */
+[contenteditable="true"]:focus{outline:2px dashed var(--accent-2);outline-offset:4px;}
+
+/* Badge */
+.badge{display:inline-block;padding:2px 10px;font-size:11px;letter-spacing:.14em;
+  font-family:"PingFang SC",sans-serif;border-radius:999px;background:var(--gold);color:#fff;
+  font-weight:600;margin-left:8px;vertical-align:middle;}
+.badge.red{background:var(--accent);}
+.badge.blue{background:var(--accent-2);}
+.badge.green{background:var(--green);}
+
+@media print{
+  .toolbar{display:none;}
+  .wrap{max-width:none;padding:0;}
+  section{page-break-inside:avoid;}
+  .qa,.callout,.formula{page-break-inside:avoid;}
+}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <span class="title">2026 CPA《会计》· 第一章 总论 · 深入浅出讲义</span>
+  <button class="btn secondary" onclick="window.print()">🖨️ 打印 / PDF</button>
+  <button class="btn" onclick="saveDoc()">💾 保存 HTML</button>
+</div>
+
+<div class="wrap" contenteditable="true" id="doc">
+
+<header class="cover">
+  <div class="kicker">CHAPTER 01 · 总论 · GENERAL INTRODUCTION</div>
+  <h1>第一章 总论</h1>
+  <p class="sub">会计的"宪法层" —— 一切会计处理都从这里出发</p>
+  <div class="meta">
+    <span><b>章节定位</b> 基础章节(必考)</span>
+    <span><b>分值</b> 近 2 年平均 2 分左右</span>
+    <span><b>难度</b> ★★☆☆☆</span>
+    <span><b>题型</b> 单选 / 多选(客观题为主)</span>
+    <span><b>建议学时</b> 4–6 小时</span>
+  </div>
+</header>
+
+<!-- ============ 导读 ============ -->
+<section id="intro">
+  <span class="section-no">PREFACE · 导读</span>
+  <h2>一句话看懂第一章</h2>
+
+  <p>第一章叫《总论》,听名字就知道——<strong>是会计这门学科的"游戏规则总册"</strong>。后面 30 章讲的全是"具体怎么做账",而这一章告诉你:</p>
+  <ol>
+    <li><b>会计到底是干什么的?</b>(定义、作用、职业道德)</li>
+    <li><b>做账前要先承认哪些"前提"?</b>(四大基本假设)</li>
+    <li><b>做出来的报表要满足什么"质量标准"?</b>(8 项质量要求)</li>
+    <li><b>会计核算的"零件"有哪些?</b>(6 大会计要素)</li>
+    <li><b>除了财务数字,还要披露什么?</b>(可持续信息 + AI 应用)</li>
+  </ol>
+
+  <div class="callout gold">
+    <span class="label">📌 学习提示</span>
+    本章是<strong>送分章</strong>,客观题为主,核心是"<strong>对号入座</strong>"——给你一段情景,你能说出它体现了哪条质量要求 / 哪个假设 / 哪个会计要素特征。<strong>不需要算账,纯粹背 + 理解</strong>。
+  </div>
+
+  <div class="callout">
+    <span class="label">⚠️ 2026 年教材变化</span>
+    <ol>
+      <li>新增"<strong>会计工作责任</strong>"相关表述(财会〔2025〕25 号文件)</li>
+      <li>新增"<strong>可持续信息披露</strong>"相关例则问题</li>
+      <li>新增"<strong>第七节 人工智能在会计审计领域的应用</strong>"</li>
+      <li>对部分文字进行了修订</li>
+    </ol>
+  </div>
+
+  <div class="toc">
+    <h3>本章目录</h3>
+    <ol>
+      <li><a href="#s1">第一节 会计概述</a>(定义 + 作用 + 职业道德 + 会计工作责任 + 准则体系)</li>
+      <li><a href="#s2">第二节 财务报告目标、会计基本假设和会计基础</a></li>
+      <li><a href="#s3">第三节 会计信息质量要求</a> <span class="badge red">高频</span></li>
+      <li><a href="#s4">第四节 会计要素及其确认与计量</a> <span class="badge red">高频</span></li>
+      <li><a href="#s5">第五节 财务报告(教材略)</a></li>
+      <li><a href="#s6">第六节 可持续信息披露</a> <span class="badge">新增</span></li>
+      <li><a href="#s7">第七节 人工智能在会计审计领域的应用</a> <span class="badge">新增</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 第一节 ============ -->
+<section id="s1">
+  <span class="section-no">SECTION 01</span>
+  <h2>第一节 会计概述</h2>
+
+  <h3>一、会计的定义</h3>
+  <div class="formula">
+    会计 = 以 <b>货币</b> 为主要计量单位,<b>反映和监督</b> 一个单位经济活动的一种 <b>经济管理工作</b>
+  </div>
+  <p>三个关键词必须记牢:</p>
+  <ul>
+    <li><strong>货币</strong>——不是"件数""米数",所以一个公司管财务用的是"元",不是"500 斤大米"。</li>
+    <li><strong>反映 + 监督</strong>——"反映"是把交易记下来给别人看;"监督"是审查是否合法合规。</li>
+    <li><strong>经济管理工作</strong>——会计不是只算账的"账房先生",它是<em>管理</em>活动的一环。</li>
+  </ul>
+
+  <h3>二、会计的作用(三句话)</h3>
+  <ol>
+    <li><strong>提供</strong>决策有用信息,<strong>提高</strong>企业透明度,<strong>规范</strong>企业行为。</li>
+    <li><strong>加强</strong>经营管理,<strong>提高</strong>经济效益,<strong>促进</strong>企业可持续发展。</li>
+    <li><strong>考核</strong>企业管理层经济责任的履行情况。</li>
+  </ol>
+  <div class="callout green">
+    <span class="label">💡 记忆口诀</span>
+    "<strong>提加考</strong>"——<b>提</b>供信息、<b>加</b>强管理、<b>考</b>核责任。
+  </div>
+
+  <h3>三、会计人员职业道德和会计工作责任</h3>
+
+  <h4>(一)会计人员职业道德 —— "三坚三守"</h4>
+  <table>
+    <thead><tr><th width="30%">三坚三守</th><th>具体内容</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>坚持诚信,守法奉公</strong><br><em>(自律要求)</em></td>
+        <td>① 牢固树立诚信理念,以诚立身、以信立业,<mark>严于律己</mark>、心存敬畏<br>② 学法知法守法,公私分明、克己奉公,树立良好职业形象,<mark>维护</mark>会计行业声誉</td>
+      </tr>
+      <tr>
+        <td><strong>坚持准则,守责敬业</strong><br><em>(履职要求)</em></td>
+        <td>① <mark>严格执行</mark>准则制度,<mark>保证</mark>会计信息真实完整<br>② 勤勉尽责、爱岗敬业、忠于职守、敢于斗争,自觉<mark>抵制</mark>会计造假行为,<mark>维护</mark>国家财经纪律和经济秩序</td>
+      </tr>
+      <tr>
+        <td><strong>坚持学习,守正创新</strong><br><em>(发展要求)</em></td>
+        <td>① 始终秉持专业精神,勤于学习、锐意进取,<mark>持续提升</mark>会计专业能力<br>② 不断适应新形势新要求,与时俱进、开拓创新</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>(二)中国注册会计师职业道德 —— 6 条</h4>
+  <div class="tree"><ul>
+    <li><b>1. 诚信</b> —— 真实、不欺骗</li>
+    <li><b>2. 客观公正</b> —— 不偏不倚</li>
+    <li><b>3. 独立性</b> —— 形式独立 + 实质独立(CPA 的"灵魂")</li>
+    <li><b>4. 专业胜任能力和勤勉尽责</b> —— 会干 + 认真干</li>
+    <li><b>5. 保密</b> —— 客户信息不外泄</li>
+    <li><b>6. 良好职业行为</b> —— 维护行业声誉</li>
+  </ul></div>
+
+  <h4>(三)会计工作责任 <span class="badge">新增</span></h4>
+  <p>依据:财政部《关于进一步压实会计工作责任 加强会计法律法规和国家统一的会计制度贯彻实施的意见》(<strong>财会〔2025〕25 号</strong>)。<br>主要内容 5 大方面:</p>
+
+  <details open><summary>1. 全面落实<strong>单位</strong>会计主体责任</summary><div class="inner">
+    <p><b>(1) 单位应依法办理会计事务,保证会计资料真实完整</b>。</p>
+    <p>关键句:<mark>不得要求</mark>所聘用开展财务会计报告审计工作的会计师事务所<mark>代为编制</mark>财务会计报告。<br>(说人话:你不能让审计你的会计师事务所同时帮你做账——既当裁判又当运动员,不行。)</p>
+    <p><b>(2) 单位应加强会计工作组织和会计人员配备,确保会计工作有序规范开展</b>:</p>
+    <ul>
+      <li>① 单位依法设置的会计岗位,应做到<mark>不相容岗位</mark>相分离。<br>(出纳人员<mark>不得兼任</mark>稽核、会计档案保管、收入支出费用债权债务账目的登记和会计软件管理工作。)</li>
+      <li>② <mark>记账人员</mark>与经济业务事项和会计事项的审批人员、经办人员、财物保管人员的职责权限应当明确,并<mark>相互分离、相互制约</mark>。</li>
+      <li>③ 单位任用的会计人员<mark>应具备</mark>从事会计工作所需要的<mark>专业能力</mark>。</li>
+    </ul>
+    <p><b>(3) 单位应加强内部会计监督,配合依法实施的外部监督</b>。</p>
+  </div></details>
+
+  <details><summary>2. 明确单位<strong>相关人员</strong>会计工作责任</summary><div class="inner">
+    <ul>
+      <li>(1) <mark>单位负责人</mark>应对本单位会计工作和会计资料的<mark>真实性、完整性</mark>负责。</li>
+      <li>(2) 单位主管会计工作的<mark>负责人(总会计师)</mark>应履行好<mark>协助</mark>单位负责人管理本单位会计工作的职责。</li>
+    </ul>
+  </div></details>
+
+  <details><summary>3. 强化<strong>会计服务机构</strong>相关责任</summary><div class="inner">
+    <p>会计师事务所、注册会计师应切实发挥社会审计作用,<mark>不得</mark>:</p>
+    <ul>
+      <li>未履行必要的审计程序、未获取相应审计证据的情况下出具审计报告;</li>
+      <li>对同一委托单位的<mark>同一事项</mark>,依据<mark>相同</mark>的审计证据出具<mark>不同结论</mark>的审计报告。</li>
+    </ul>
+  </div></details>
+
+  <details><summary>4. 依法履行<strong>政府部门</strong>监管职责</summary><div class="inner">
+    <p><mark>财政部门</mark>应加强对会计工作的监督管理。</p>
+  </div></details>
+
+  <details><summary>5. 发挥<strong>行业协会</strong>自律监督作用</summary></details>
+
+  <h3>四、企业会计准则的制定与企业会计准则体系</h3>
+  <div class="formula">
+    中国现行企业会计准则体系 = <b>基本准则</b> + <b>具体准则</b> + <b>解释</b> + <b>应用指南</b>
+  </div>
+  <p>类比:基本准则是"宪法",具体准则是"刑法/民法",解释是"司法解释",应用指南是"案例汇编"。</p>
+</section>
+
+<!-- ============ 第二节 ============ -->
+<section id="s2">
+  <span class="section-no">SECTION 02</span>
+  <h2>第二节 财务报告目标、会计基本假设和会计基础</h2>
+
+  <h3>一、财务报告目标(两观)</h3>
+  <table>
+    <thead><tr><th width="22%">观点</th><th>含义</th></tr></thead>
+    <tbody>
+      <tr><td><strong>决策有用观</strong></td><td>向财务报告使用者<mark>提供</mark>与企业财务状况、经营成果和现金流量等<mark>有关的</mark>会计信息,<mark>有助于</mark>财务会计报告使用者<mark>作出</mark>经济决策。</td></tr>
+      <tr><td><strong>受托责任观</strong></td><td><mark>反映</mark>企业管理层受托责任<mark>履行情况</mark>。</td></tr>
+    </tbody>
+  </table>
+  <div class="callout blue">
+    <span class="label">🔑 一句话区分</span>
+    决策有用观——看报表的人是"<strong>未来要做决定的人</strong>"(投资者、债权人);<br>
+    受托责任观——看报表的人是"<strong>把钱托付给管理层的老板</strong>"(股东对管理层考评)。
+  </div>
+
+  <h3>二、会计基本假设(4 个)</h3>
+  <p><strong>会计基本假设</strong> = 企业会计确认、计量和报告的<mark>前提</mark>,是指对会计核算所处<mark>时间、空间环境</mark>等所作的<mark>合理设定</mark>。</p>
+
+  <h4>(1) 会计主体 —— "给谁当会计,谁就是会计主体"</h4>
+  <p>含义:企业会计确认、计量、报告的<strong>空间范围</strong>。</p>
+  <div class="callout">
+    <span class="label">⚠️ 易错点</span>
+    <ul>
+      <li>会计主体 <strong>≠</strong> 法律主体。</li>
+      <li>一般来说,法律主体 <strong>必然</strong> 是会计主体;但从报告角度看,会计主体 <strong>不一定</strong> 是法律主体。</li>
+      <li>当一个会计主体不是法律主体,并且不是仅由具有母子公司关系的法律主体构成的情况下,会计主体的边界主要由财务报表<strong>主要使用者</strong>的信息需求来确定。<br>例:由企业管理的<mark>证券投资基金</mark>、<mark>企业年金基金</mark>,尽管不属于法律主体,但属于会计主体,应当对每项基金进行会计确认、计量和报告。</li>
+    </ul>
+  </div>
+
+  <details open><summary>📖 手写板 1:法律主体 vs 会计主体(3 种情形)</summary><div class="inner">
+    <table>
+      <thead><tr><th>情形</th><th>法律主体</th><th>会计主体</th></tr></thead>
+      <tbody>
+        <tr><td>① 一对一</td><td>A 公司</td><td>= A 公司</td></tr>
+        <tr><td>② 法律主体 > 会计主体(分部报告)</td><td>A 公司</td><td>一车间 / 二车间</td></tr>
+        <tr><td>③ 法律主体 &lt; 会计主体(合并报表)</td><td>A 母公司(控制 100% B 子公司)</td><td>A 公司 + B 公司(合并集团)</td></tr>
+      </tbody>
+    </table>
+  </div></details>
+
+  <h4>(2) 持续经营</h4>
+  <p>假设企业在可预见的未来,会按当前规模和状况持续经营下去——不会马上倒闭、清算。<br>(否则就要按"清算基础"做账,所有资产按变现价值计量。)</p>
+
+  <h4>(3) 会计分期</h4>
+  <ul>
+    <li>会计期间分为<strong>年度</strong>和<strong>中期</strong>(月度、季度、半年度)。</li>
+    <li>正是因为有会计分期,才产生了"当期"与"以前/以后期间"的区别,才产生了 <mark>折旧、摊销</mark> 等会计处理方法。<br>(如果企业从开张到关门是一个会计期间,根本不需要折旧——直接把固定资产成本一次性计入费用就完了。)</li>
+  </ul>
+
+  <h4>(4) 货币计量</h4>
+  <p>会计的主要计量尺度是<strong>货币</strong>;在中国境内通常以<strong>人民币</strong>为记账本位币。</p>
+
+  <h3>三、会计基础(归属期)</h3>
+
+  <h4>(1) 权责发生制 —— 企业会计采用</h4>
+  <p>原则:企业会计的确认、计量和报告应当以<strong>权责发生制</strong>为基础。</p>
+  <table>
+    <thead><tr><th>判断对象</th><th>规则</th></tr></thead>
+    <tbody>
+      <tr><td>当期 <strong>已实现</strong> 的收入</td><td><mark>无论款项是否收到</mark>,均作为当期收入</td></tr>
+      <tr><td>不属于当期的收入</td><td>即使款项已经在当期收到,<mark>也不作为</mark>当期收入</td></tr>
+      <tr><td>当期 <strong>已发生或应当负担</strong> 的费用</td><td>无论款项是否支付,均作为当期费用</td></tr>
+      <tr><td>不属于当期的费用</td><td>即使在当期支付,<mark>也不能作为</mark>当期费用</td></tr>
+    </tbody>
+  </table>
+  <div class="callout green">
+    <span class="label">🧭 一句话理解</span>
+    权责发生制只问一件事:<strong>"这件事的经济实质归不归当期管?"</strong> 钱有没有付,不重要。
+  </div>
+
+  <details open><summary>📖 手写板 2:三种发货 - 收款 - 确认收入的时序</summary><div class="inner">
+    <p>背景:甲公司在 <strong>7 月销售给乙公司</strong>(7 月发出商品 → 符合收入确认条件)。</p>
+    <table>
+      <thead><tr><th>情形</th><th>1 月</th><th>3 月</th><th>4 月</th><th>5 月</th><th>6 月</th><th>7 月</th></tr></thead>
+      <tbody>
+        <tr><td>第一种</td><td colspan="6">7 月: 发出商品 + 收款 + 确认收入<br>借:应收账款/合同资产 &nbsp; 贷:主营业务收入</td></tr>
+        <tr><td>第二种</td><td>发出商品<br>(暂不确认收入)</td><td></td><td></td><td>收款<br>借:银行存款<br>贷:合同负债</td><td></td><td>确认收入<br>借:合同负债<br>贷:主营业务收入</td></tr>
+        <tr><td>第三种</td><td></td><td>收款</td><td></td><td></td><td></td><td>发出商品 + 确认收入</td></tr>
+      </tbody>
+    </table>
+    <p>不管钱什么时候到,只要"7 月发出商品 + 控制权转移",收入就归 7 月。这就是权责发生制。</p>
+  </div></details>
+
+  <h4>(2) 收付实现制 —— 行政事业单位预算会计采用</h4>
+  <ul>
+    <li>我国行政事业单位<strong>预算会计</strong>通常采用<strong>收付实现制</strong>;<br>行政事业单位<strong>财务会计</strong>通常采用<strong>权责发生制</strong>(双轨制)。</li>
+    <li>含义:以<strong>收到</strong>或<strong>支付</strong>的现金作为确认收入和费用等的依据。</li>
+  </ul>
+</section>
+
+<!-- ============ 第三节 ============ -->
+<section id="s3">
+  <span class="section-no">SECTION 03 · 高频</span>
+  <h2>第三节 会计信息质量要求(8 项)<span class="badge red">必考</span></h2>
+
+  <div class="callout gold">
+    <span class="label">🎯 考点速记</span>
+    8 项口诀:<strong>"可相理比 — 实重谨及"</strong><br>
+    <b>可</b>靠性 / <b>相</b>关性 / 可<b>理</b>解性 / 可<b>比</b>性 —— 实质重于形式 / <b>重</b>要性 / <b>谨</b>慎性 / <b>及</b>时性。<br>
+    考试做题套路:读题→匹配关键词→对号入座。
+  </div>
+
+  <h3>一、可靠性 —— 强调"真实"</h3>
+  <table>
+    <thead><tr><th width="20%">维度</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td><strong>原则</strong></td><td>强调<mark>真实</mark>:诚信为本、操守为重、坚持准则、<strong>不做假账</strong></td></tr>
+      <tr><td><strong>三项要求</strong></td><td>
+        ① 以<mark>实际发生</mark>的交易或事项为依据进行确认、计量和报告(<em>真实可靠</em>)<br>
+        ② 在符合<mark>重要性和成本效益</mark>原则的前提下,保证会计信息的<mark>完整性</mark>(<em>内容完整</em>)<br>
+        ③ 包括在财务报告中的会计信息应当是<mark>中立的</mark>,无偏的(<em>中立无偏</em>)
+      </td></tr>
+    </tbody>
+  </table>
+
+  <h3>二、相关性 —— 强调"有用"</h3>
+  <table>
+    <thead><tr><th width="20%">维度</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td><strong>原则</strong></td><td>强调<mark>有用</mark>:具有<strong>预测价值</strong>、<strong>反馈价值</strong></td></tr>
+      <tr><td><strong>举例</strong></td><td>提升预测价值的做法:<br>① 区分收入和利得、费用和损失<br>② 区分流动资产和非流动资产、流动负债和非流动负债<br>③ 适度引入<mark>公允价值</mark></td></tr>
+      <tr><td><strong>要求</strong></td><td>会计信息在可靠性前提下,尽可能地做到相关性,以满足投资者等财务报告使用者的<mark>决策需要</mark></td></tr>
+    </tbody>
+  </table>
+
+  <div class="qa">
+    <span class="qa-tag">补充例题 · 单选 · 2024</span>
+    <p class="stem">为消除会计错配,企业在金融资产初始计量时指定为以公允价值计量且其变动计入<u>当期损益</u>的金融资产,体现的会计信息质量要求为( )。</p>
+    <ol class="opts" type="A"><li>相关性</li><li>谨慎性</li><li>及时性</li><li>可比性</li></ol>
+    <div class="ans"><b>答案:A</b>。消除会计错配 → 有助于报告使用者决策 → 属于<strong>相关性</strong>。</div>
+  </div>
+
+  <div class="qa">
+    <span class="qa-tag">补充例题 · 单选 · 2024</span>
+    <p class="stem">公允价值套期中的被套期项目按<u>公允价值</u>计量,体现的企业会计信息质量要求是( )。</p>
+    <ol class="opts" type="A"><li>重要性</li><li>及时性</li><li>相关性</li><li>谨慎性</li></ol>
+    <div class="ans"><b>答案:C</b>。相关的会计信息应具有<strong>预测价值</strong>,适度引入<strong>公允价值</strong>可提升预测价值 → <strong>相关性</strong>。</div>
+  </div>
+
+  <h3>三、可理解性 —— "清晰明了"</h3>
+  <p>会计信息应当清晰明了,便于使用者理解和使用。一句话:别写得跟天书一样。</p>
+
+  <h3>四、可比性</h3>
+  <table>
+    <thead><tr><th width="20%">类别</th><th>含义</th></tr></thead>
+    <tbody>
+      <tr><td><strong>纵向可比</strong><br>(同一企业、不同时期)</td><td>同一企业对于不同时期发生的<mark>相同或相似</mark>的交易或者事项,应当采用<mark>一致</mark>的会计政策,不得随意变更(<em>自愿变更、法定变更</em>除外)</td></tr>
+      <tr><td><strong>横向可比</strong><br>(不同企业、同一时期)</td><td>不同企业相同会计期间发生相同或相似交易或事项所采用的会计政策相互可比</td></tr>
+    </tbody>
+  </table>
+
+  <div class="qa">
+    <span class="qa-tag">补充例题 · 单选</span>
+    <p class="stem">2×26 年 1 月 1 日开始,甲公司按照会计准则的规定采用<u>新的</u>财务报表格式进行列报。因部分财务报表<u>列报项目</u>发生变更,甲公司对 2×26 年度财务报表<u>可比期间</u>的数据按照变更后的财务报表列报项目进行了调整。甲公司的上述会计处理体现的会计信息质量要求是( )。</p>
+    <ol class="opts" type="A"><li>可比性</li><li>权责发生制</li><li>实质重于形式</li><li>会计主体</li></ol>
+    <div class="ans"><b>答案:A</b>。满足"同一企业不同期间可比"的要求 → <strong>可比性</strong>。</div>
+  </div>
+
+  <h3>五、实质重于形式</h3>
+  <p>要求企业按照交易或者事项的<strong>经济实质</strong>进行会计确认、计量和报告,<strong>不仅仅以</strong>交易或者事项的<strong>法律形式</strong>为依据。<br>典型场景:<mark>售后回购</mark>、企业合并中的<mark>控制的判断</mark>、<mark>关联方的判断</mark>等。</p>
+
+  <details open><summary>📖 手写板 3:售后回购的本质 = 质押借款</summary><div class="inner">
+    <p>(企业)甲 ──销售──▶ 乙(客户):甲取得控制权了吗?<br>
+    形式:销售;<strong>实质:质押借款</strong>。</p>
+    <p>背景:1.1 销售商品给乙,售价 100 万,约定 3 个月后以 <strong>160 万元</strong>回购(收款)。</p>
+    <table>
+      <thead><tr><th>日期</th><th>分录</th></tr></thead>
+      <tbody>
+        <tr><td>1.1 收款</td><td>借:银行存款 100<br>贷:其他应付款 100</td></tr>
+        <tr><td>1.31<br>(月底计提利息: 60÷3 = 20)</td><td>借:财务费用 20<br>贷:其他应付款 20</td></tr>
+        <tr><td>3.31 回购</td><td>借:其他应付款 160<br>贷:银行存款 160</td></tr>
+      </tbody>
+    </table>
+    <p>本质上是"用商品做抵押,借了 100 万,3 个月还 160 万(利息 60 万)"——所以不确认收入,确认<strong>财务费用</strong>。</p>
+  </div></details>
+
+  <div class="qa">
+    <span class="qa-tag">补充例题 · 多选</span>
+    <p class="stem">下列各项交易事项的会计处理中,体现<u>实质重于形式</u>原则的有( )。</p>
+    <ol class="opts" type="A">
+      <li>将发行的附有强制付息义务的优先股确认为负债</li>
+      <li>将附有追索权的商业承兑汇票出售确认为质押借款</li>
+      <li>关联方关系的判断</li>
+      <li>将企业未持有权益但能够控制的结构化主体纳入合并范围</li>
+    </ol>
+    <div class="ans"><b>答案:ABCD</b>。这 4 种情形都是"形式与实质不一致,按实质处理"的典型案例。</div>
+  </div>
+
+  <h3>六、重要性</h3>
+  <table>
+    <thead><tr><th width="20%">维度</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td><strong>原则</strong></td><td>从项目的<mark>金额</mark>和<mark>性质</mark>两方面加以判断</td></tr>
+      <tr><td><strong>举例</strong></td><td>差错更正的处理原则(区分:<mark>重要的</mark>前期差错、<mark>不重要的</mark>前期差错)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="qa">
+    <span class="qa-tag">补充例题 · 单选</span>
+    <p class="stem">甲公司在编制 2×25 年度财务报表时,发现 2×24 年度某项管理用无形资产<u>未摊销</u>,应摊销金额 20 万元,甲公司将该 20 万元补记的摊销额计入了 2×25 年度的管理费用。甲公司 2×24 和 2×25 年实现的净利润分别为 20 000 万元和 18 000 万元。不考虑其他因素,甲公司上述会计处理体现的会计信息质量要求是( )。</p>
+    <ol class="opts" type="A"><li>重要性</li><li>相关性</li><li>可比性</li><li>及时性</li></ol>
+    <div class="ans"><b>答案:A</b>。20 万 vs 净利润 18 000-20 000 万 → 整体影响不大 → 作为<strong>不重大</strong>的前期差错处理,在 2×25 年确认为当期管理费用 → <strong>重要性</strong>原则。</div>
+  </div>
+
+  <h3>七、谨慎性</h3>
+  <table>
+    <thead><tr><th width="20%">维度</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td><strong>原则</strong></td><td>应当保持应有的谨慎:<mark>不应高估</mark>资产或者收益,<mark>不应低估</mark>负债或者费用。<br>(<strong>注意:不允许设置秘密准备</strong>!)</td></tr>
+      <tr><td rowspan="2"><strong>举例</strong></td><td>
+        1. 要求企业对可能发生的资产减值损失计提<strong>资产减值准备</strong><br>
+        2. 对售出商品可能发生的保修义务等确认<strong>预计负债</strong><br>
+        3. 采用<strong>双倍余额递减法</strong>和<strong>年数总和法</strong>计提折旧(加速折旧法)<br>
+        4. 或有事项:<br>
+        &nbsp;&nbsp;(1) 或有负债满足"<mark>很可能</mark>"(不考虑其他因素) → <strong>预计负债</strong><br>
+        &nbsp;&nbsp;(2) 或有资产达到"<mark>基本确定</mark>" → <strong>其他应收款</strong>
+      </td></tr>
+      <tr><td>5. 所得税会计:<br>
+        (1) 只有未来很可能取得<strong>足够的</strong>应纳税所得额来抵扣可抵扣暂时性差异时,才能确认<strong>递延所得税资产</strong>;(<em>有条件的确认</em>)<br>
+        (2) 除企业会计准则规定外,<strong>只要发生</strong>应纳税暂时性差异,就应当确认<strong>递延所得税负债</strong>。(<em>几乎无条件的确认</em>)
+      </td></tr>
+    </tbody>
+  </table>
+
+  <details open><summary>📖 手写板 4:坏账准备分录(应收账款减值)</summary><div class="inner">
+    <p>甲对乙:应收账款 100 万元(账面余额) − 坏账准备 20 万元 = 账面价值 80 万元</p>
+    <div class="formula">借:信用减值损失(损益类)20<br>贷:坏账准备 20</div>
+    <p>谨慎性的体现:不等到真的收不回来再损失,提前把"很可能收不回"的 20 万确认成费用——<strong>不高估资产</strong>(应收账款由 100 调整到账面价值 80)、<strong>不低估费用</strong>(信用减值损失 20)。</p>
+  </div></details>
+
+  <details open><summary>📖 手写板 5:预计负债分录(售后保修)</summary><div class="inner">
+    <p>A 公司销售甲产品给消费者,承诺销售当期 3 年内免费维修,估计未来维修支出 20 万元。</p>
+    <div class="formula">借:主营业务成本(损益类)20<br>贷:预计负债 20</div>
+    <p>谨慎性体现:虽然现在还没真的发生维修,但"很可能要花",所以先确认<strong>预计负债</strong>——<strong>不低估负债、不低估费用</strong>。</p>
+  </div></details>
+
+  <h3>八、及时性</h3>
+  <table>
+    <thead><tr><th width="20%">维度</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td><strong>含义</strong></td><td>对于已经发生的交易或者事项,应当及时进行确认、计量和报告,<mark>不得提前或者延后</mark></td></tr>
+      <tr><td><strong>说明</strong></td><td>
+        对<strong>相关性</strong>和<strong>可靠性</strong>起到<strong>制约作用</strong>:<br>
+        1. 为了及时提供会计信息,可能需要在有关交易或者事项的信息<mark>全部获得之前</mark>即进行会计处理(满足了及时性,但可能会影响可靠性)<br>
+        2. 如果企业等到与交易或者事项有关的全部信息<mark>获得之后</mark>再进行会计处理(提高了可靠性,但可能会因时效性问题降低对决策的有用性)
+      </td></tr>
+      <tr><td><strong>结论</strong></td><td>需要在<strong>及时性</strong>和<strong>可靠性</strong>之间作相应权衡,以投资者等财务报告使用者的经济决策需要为判断标准</td></tr>
+    </tbody>
+  </table>
+
+  <div class="qa">
+    <span class="qa-tag">补充例题 · 单选 · 2022</span>
+    <p class="stem">下列各项关于企业会计信息质量要求的表述中,<u>正确的</u>是( )。</p>
+    <ol class="opts" type="A">
+      <li>企业提供具有反馈价值的会计信息体现了会计信息的相关性</li>
+      <li>不同企业同一会计期间发生的相同或相似的交易或事项采用不同的会计政策体现了会计信息的可理解性</li>
+      <li>对交易或事项的信息应在全部获取之后进行会计处理体现了会计信息的重要性</li>
+      <li>企业不得高估资产或收益,可以高估负债或费用体现了会计信息的谨慎性</li>
+    </ol>
+    <div class="ans"><b>答案:A</b><br>
+    B 错:不同企业同期相同事项采用<strong>相同</strong>政策才体现可<strong>比性</strong>。<br>
+    C 错:及时性要求"不得提前或延后",等全部获取再处理 ≠ 重要性。<br>
+    D 错:谨慎性是"不高估资产或收益、<strong>不低估</strong>负债或费用",<strong>也不能高估</strong>。</div>
+  </div>
+</section>
+
+<!-- ============ 第四节 ============ -->
+<section id="s4">
+  <span class="section-no">SECTION 04 · 高频</span>
+  <h2>第四节 会计要素及其确认与计量<span class="badge red">必考</span></h2>
+
+  <div class="formula">
+    <b>反映财务状况(资产负债表)</b> &nbsp;&nbsp;&nbsp; <b>反映经营成果(利润表)</b><br>
+    资产 = 负债 + 所有者权益 &nbsp;&nbsp;|&nbsp;&nbsp; 收入 − 费用 = 利润
+  </div>
+
+  <details open><summary>📖 手写板 1:记账规则(借贷一图懂)</summary><div class="inner">
+    <p>记账规则:借:会计科目 20 万元 / 贷:会计科目 20 万元</p>
+    <table>
+      <thead><tr><th width="50%">借方(↑)</th><th>贷方(↑)</th></tr></thead>
+      <tbody>
+        <tr><td>资产类 ↑<br>费用类 ↑<br>成本类 ↑(半成品)</td><td>负债类 ↑<br>所有者权益类 ↑<br>收入类 ↑</td></tr>
+      </tbody>
+    </table>
+    <p>做分录三步:① 选科目 ② 类别 ③ 增加/减少。<br>记忆口诀:<strong>"资费成借增,负权收贷增"</strong>。</p>
+  </div></details>
+
+  <h3>一、会计要素定义及其确认条件</h3>
+
+  <h4>(一)资产</h4>
+  <table>
+    <thead><tr><th width="22%">类别</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td><strong>特征</strong></td><td>
+        1. 资产预期会给企业带来经济利益(<em>有用</em>)<br>
+        2. 资产应为企业<mark>拥有</mark>或者<mark>控制</mark>的资源<br>
+        3. 资产是由企业<mark>过去的</mark>交易或者事项形成的
+      </td></tr>
+      <tr><td><strong>确认条件</strong></td><td>
+        在符合定义的前提下,<mark>同时满足</mark>以下两个条件:<br>
+        1. 与该资源有关的经济利益<mark>很可能</mark>流入企业<br>
+        2. 该资源的成本或者价值<mark>能够</mark>可靠地计量
+      </td></tr>
+    </tbody>
+  </table>
+
+  <h4>可能性程度表(背)</h4>
+  <table>
+    <thead><tr><th width="30%">用语</th><th>可能性区间</th></tr></thead>
+    <tbody>
+      <tr><td><strong>基本确定</strong></td><td>95% &lt; 发生的可能性 &lt; 100%</td></tr>
+      <tr><td><strong>很可能</strong></td><td>50% &lt; 发生的可能性 ≤ 95%</td></tr>
+      <tr><td><strong>可能</strong></td><td>5% &lt; 发生的可能性 ≤ 50%</td></tr>
+      <tr><td><strong>极小可能</strong></td><td>0% &lt; 发生的可能性 ≤ 5%</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <span class="label">💡 提示</span>
+    在某些情况下,企业取得的资产<strong>没有发生</strong>实际成本或者发生的实际成本<strong>很小</strong>(例如企业持有的某些衍生金融工具形成的资产)——尽管没有实际成本,但如果其<mark>公允价值</mark>能够可靠计量,也被认为符合资产可计量性的确认条件。
+  </div>
+
+  <h4>(二)负债</h4>
+  <table>
+    <thead><tr><th width="22%">类别</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td><strong>现时义务</strong></td><td>
+        1. 是指企业在现行条件下<mark>已承担</mark>的义务<br>
+        2. 现时义务可以是 <strong>法定义务</strong>(因合同、法规或其他司法解释等产生的义务),也可以是 <strong>推定义务</strong>(根据企业以往的<mark>习惯做法</mark>、<mark>已公开</mark>的承诺或声明、<mark>已公开宣布</mark>的经营政策而<mark>将承担</mark>的义务)<br>
+        <em>例</em>:某企业多年来制定一项<strong>销售政策</strong>,即对于售出商品提供一定期限的<mark>售后保修服务</mark>。预期为售出商品提供的保修服务属于<strong>推定义务</strong>,应当将其确认为一项负债。<br>
+        借:主营业务成本 / 贷:预计负债
+      </td></tr>
+      <tr><td><strong>特征</strong></td><td>
+        1. 负债是企业承担的<mark>现时义务</mark><br>
+        2. 负债的清偿预期会<mark>导致</mark>经济利益<mark>流出</mark>企业(现金、实物资产、提供劳务、转为资本等)<br>
+        3. 负债是由企业<mark>过去的</mark>交易或者事项形成的
+      </td></tr>
+      <tr><td><strong>确认条件</strong></td><td>
+        同时满足:<br>
+        1. 与该义务有关的经济利益<mark>很可能</mark>流出企业<br>
+        2. 未来流出的经济利益的金额<mark>能够可靠地计量</mark>
+      </td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <span class="label">💡 提示</span>
+    企业将<strong>在未来发生</strong>的承诺、签订的合同等交易或者事项,<strong>不形成</strong>负债。<br>
+    (说人话:还没发生的事 ≠ 现时义务。)
+  </div>
+
+  <h4>(三)所有者权益</h4>
+  <table>
+    <thead><tr><th width="22%">类别</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td><strong>含义</strong></td><td>所有者权益是指企业资产<mark>扣除</mark>负债后,由所有者享有的<mark>剩余权益</mark>。公司的所有者权益又称为<mark>股东权益</mark>。<br>所有者权益 = 资产 − 负债</td></tr>
+      <tr><td><strong>来源</strong></td><td><mark>所有者投入的资本</mark>、<mark>直接计入</mark>所有者权益的利得和损失(<mark>其他综合收益</mark>)、<mark>留存收益</mark>等</td></tr>
+      <tr><td><strong>内容</strong></td><td>实收资本(或<strong>股本</strong>)、资本公积(含<strong>资本溢价或股本溢价、其他资本公积</strong>)、其他综合收益、盈余公积、未分配利润等</td></tr>
+      <tr><td><strong>确认条件</strong></td><td>所有者权益的确认<mark>主要依赖</mark>于其他会计要素,尤其是<strong>资产和负债</strong>的确认;所有者权益金额的确认<mark>也主要取决于</mark>资产和负债的计量</td></tr>
+    </tbody>
+  </table>
+
+  <details open><summary>📖 手写板 2:成立 A 公司(有限) - 所有者权益构成</summary><div class="inner">
+    <p>张三 20 万,20% / 李四 30 万,30% / 王五 50 万,50%。<br>实收资本(份额)/股本(面值)100 万,发行 100 万股,每股面值 1 元,发行价 1.5 元,A 所有者投入资本。</p>
+    <ol>
+      <li><strong>实收资本/股本</strong>:100 万(面值 × 股数)</li>
+      <li><strong>资本公积</strong>
+        <ul>
+          <li>溢价 — 资本溢价 50 万元(有限责任公司)</li>
+          <li>股本溢价 = (1.5 − 1) × 100 万股 = 50 万元(股份有限公司)</li>
+          <li>其他资本公积:权益结算、权益法等</li>
+        </ul>
+      </li>
+      <li><strong>其他综合收益</strong>(B. 直接计入所有者权益的利得和损失)</li>
+      <li><strong>盈余公积</strong> ① 净利润 100 万 × 10% = 10 万元</li>
+      <li><strong>未分配利润</strong> ③ 50 万元(净利润 100 − ② 分红 40 = 60,其中转盈余公积 10 → 留存收益 60 = 盈余公积 10 + 未分配利润 50)</li>
+    </ol>
+    <p>留存收益 C = 60 万元(盈余公积 + 未分配利润)</p>
+    <p>留存收益用途:① 转增资本(溢价)/留存收益 &nbsp; ② 弥补亏损(以后年度/盈余公积)</p>
+  </div></details>
+
+  <details><summary>📖 手写板 3:所有者权益<strong>不变</strong>的几种业务</summary><div class="inner">
+    <ol>
+      <li>转增资本(溢价/留存收益)— 内部腾挪</li>
+      <li>弥补亏损(以后年度/盈余公积)— 内部腾挪</li>
+      <li>发放股票股利<br>借:利润分配 ↓<br>贷:股本 ↑</li>
+      <li>提取盈余公积<br>借:利润分配 ↓<br>贷:盈余公积 ↑</li>
+    </ol>
+    <p>发放<strong>现金股利</strong>(对比):<br>借:利润分配 ↓ / 贷:应付股利 → <strong>所有者权益 ↓</strong>(钱真的流出企业)</p>
+  </div></details>
+
+  <h4>关于利得和损失</h4>
+  <table>
+    <thead><tr><th width="22%">类别</th><th>含义 / 处理</th></tr></thead>
+    <tbody>
+      <tr><td><strong>含义</strong></td><td>
+        (1) <strong>利得</strong>:指由企业<mark>非日常活动</mark>所形成的、会导致所有者权益增加的、与所有者<mark>投入资本无关</mark>的经济利益的流入。<br>
+        (2) <strong>损失</strong>:指由企业<mark>非日常活动</mark>所发生的、会导致所有者权益减少的、与向所有者<mark>分配利润无关</mark>的经济利益的流出。
+      </td></tr>
+      <tr><td><strong>处理原则</strong></td><td>利得或损失分别计入<strong>所有者权益(其他综合收益)</strong>和<strong>当期损益(营业外收入或营业外支出等)</strong></td></tr>
+    </tbody>
+  </table>
+
+  <details open><summary>📖 手写板 4:利得 / 损失 两个去向(看图记住)</summary><div class="inner">
+    <p>利得 / 损失 → 二选一:</p>
+    <table>
+      <thead><tr><th>路径 1:其他综合收益</th><th>路径 2:当期损益(利润表)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>直接计入所有者权益</strong>的利/损<br>(资产负债表 → 其他综合收益)</td><td>营业外收入 / 营业外支出<br>↓<br>所有者权益(盈余/未分配)</td></tr>
+      </tbody>
+    </table>
+    <p>这两条路最终都会"沉淀"到所有者权益,但路径不一样:第 1 条直接落到所有者权益项目"其他综合收益";第 2 条要先走利润表的"营业外收支",经过净利润再到留存收益。</p>
+  </div></details>
+
+  <h4>(四)收入</h4>
+  <table>
+    <thead><tr><th width="22%">类别</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td><strong>定义</strong></td><td>收入:指企业在<mark>日常活动中</mark>形成的、会导致所有者权益<mark>增加的</mark>、与所有者<mark>投入资本无关</mark>的经济利益的总流入</td></tr>
+      <tr><td><strong>特征</strong></td><td>
+        1. 收入是企业在<mark>日常活动中</mark>形成的(与利得的核心区别)<br>
+        2. 收入应当会导致经济利益的流入,该流入<mark>不包括</mark>所有者投入的资本<br>
+        3. 收入会导致所有者权益的<mark>增加</mark>
+      </td></tr>
+      <tr><td><strong>确认条件</strong></td><td>收入应当在企业<mark>履行了</mark>合同中的<mark>履约义务</mark>,即<mark>客户取得</mark>相关商品或服务<mark>控制权</mark>时确认</td></tr>
+    </tbody>
+  </table>
+
+  <h4>(五)费用</h4>
+  <table>
+    <thead><tr><th width="22%">类别</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td><strong>含义</strong></td><td>费用:指企业在<mark>日常活动中</mark>发生的、会导致所有者权益减少的、与向所有者分配利润<mark>无关的</mark>经济利益的总流出</td></tr>
+      <tr><td><strong>特征</strong></td><td>
+        1. 费用是企业在<mark>日常活动中</mark>形成的<br>
+        2. 费用是与向所有者分配利润<mark>无关的</mark>经济利益的总流出<br>
+        3. 费用会导致所有者权益的<mark>减少</mark>
+      </td></tr>
+      <tr><td><strong>确认条件</strong></td><td>
+        除符合费用的定义外,至少应当同时满足:<br>
+        1. 与费用相关的经济利益应当<mark>很可能</mark>流出企业<br>
+        2. 经济利益流出企业的结果<mark>会导致</mark>资产的减少或者负债的增加<br>
+        3. 经济利益的流出额能够<mark>可靠地计量</mark>
+      </td></tr>
+    </tbody>
+  </table>
+
+  <h4>(六)利润</h4>
+  <table>
+    <thead><tr><th width="22%">类别</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td><strong>含义</strong></td><td>利润:指企业在一定会计期间的<mark>经营成果</mark></td></tr>
+      <tr><td><strong>来源构成</strong></td><td>利润包括<mark>收入</mark>减去<mark>费用</mark>后的净额、<mark>直接计入</mark>当期利润的<mark>利得和损失</mark>等</td></tr>
+      <tr><td><strong>确认条件</strong></td><td>利润的确认主要依赖于<mark>收入和费用</mark>以及<mark>利得和损失</mark>的确认,其金额的确定也主要取决于收入、费用、利得和损失金额的计量</td></tr>
+    </tbody>
+  </table>
+
+  <h3>二、会计要素计量属性及其应用原则</h3>
+
+  <h4>(一)会计要素计量属性(属于<strong>会计政策</strong>)</h4>
+  <table>
+    <thead><tr><th width="22%">计量属性</th><th>相关说明</th></tr></thead>
+    <tbody>
+      <tr><td><strong>历史成本</strong></td><td>强调<mark>当时</mark>(实际成本:购买时或合同金额)</td></tr>
+      <tr><td><strong>重置成本</strong></td><td>强调<mark>现在</mark>(现行成本)</td></tr>
+      <tr><td><strong>可变现净值</strong></td><td><mark>倒推</mark>(预计售价 − 预计费用)</td></tr>
+      <tr><td><strong>现值</strong></td><td>强调<mark>未来</mark>(未来现金流折现)</td></tr>
+      <tr><td><strong>公允价值</strong></td><td>是指市场参与者在<mark>计量日</mark>发生的<mark>有序交易</mark>中,出售一项资产所能收到或转移一项负债所需支付的价格,即<mark>脱手价格</mark></td></tr>
+    </tbody>
+  </table>
+
+  <h4>(二)各种计量属性之间的关系</h4>
+  <ol>
+    <li>历史成本通常反映的是资产或者负债<mark>过去的价值</mark>;</li>
+    <li>重置成本、可变现净值、现值以及公允价值通常反映的是资产或者负债的<mark>现时成本或者现时价值</mark>,是与历史成本相对应的计量属性。</li>
+  </ol>
+
+  <h4>(三)计量属性的应用原则</h4>
+  <ol>
+    <li>企业在对会计要素进行计量时,一般应当采用<strong>历史成本</strong>。</li>
+    <li>采用重置成本、可变现净值、现值、公允价值计量的,<mark>应当保证</mark>所确定的会计要素金额能够取得并可靠计量。</li>
+  </ol>
+</section>
+
+<!-- ============ 第五节 ============ -->
+<section id="s5">
+  <span class="section-no">SECTION 05</span>
+  <h2>第五节 财务报告</h2>
+  <div class="callout blue">
+    <span class="label">📝 提示</span>
+    教材本节"(略)" —— 财务报告的内容(资产负债表、利润表、现金流量表、所有者权益变动表、附注)在后续章节(第二十六、二十七章)详细学习。
+  </div>
+</section>
+
+<!-- ============ 第六节 ============ -->
+<section id="s6">
+  <span class="section-no">SECTION 06 · 新增</span>
+  <h2>第六节 可持续信息披露(ESG)<span class="badge">2026 新增</span></h2>
+
+  <h3>一、可持续信息的定义</h3>
+  <p>可持续信息(又称<strong>可持续发展信息</strong>):指企业<mark>环境</mark>、<mark>社会</mark>和<mark>治理</mark>方面的可持续议题相关风险、机遇和影响(以下简称可持续风险、机遇和影响)的<mark>信息</mark>。</p>
+  <div class="callout green">
+    <span class="label">🌱 一句话</span>
+    可持续信息就是<strong>ESG 报告</strong>(Environment 环境 / Social 社会 / Governance 治理)的"中文版",回答"这家公司除了赚钱,对地球、社会、治理结构有什么影响"。
+  </div>
+
+  <h3>二、可持续信息披露的目标与原则</h3>
+
+  <h4>(一)目标</h4>
+  <p>向<strong>投资者</strong>、<strong>债权人</strong>(可持续信息的<mark>基本使用者</mark>)、政府及其有关部门和其他利益相关方(以下统称<mark>信息使用者</mark>)提供有关于企业重要的可持续风险、机遇和影响的信息,从而使其:</p>
+  <ol>
+    <li><mark>了解</mark>可持续议题<mark>如何影响</mark>企业的未来发展、经营成果和财务状况;</li>
+    <li><mark>了解</mark>企业的经营活动<mark>如何影响</mark>环境与社会;</li>
+    <li>以便其<mark>作出</mark>资源配置等经济决策或者其他决策。</li>
+  </ol>
+
+  <h4>(二)披露原则(5 条)</h4>
+  <ol>
+    <li>为了满足信息使用者的决策需求,可持续信息披露应当符合<strong>重要性</strong>原则。</li>
+    <li>重要性原则在具体应用过程中,应按<mark>财务重要性</mark>和<mark>影响重要性</mark>(<strong>"双重重要性"</strong>)分别针对可持续风险和机遇信息与可持续影响信息进行评估。</li>
+    <li>企业在披露可持续信息时,<strong>报告期间</strong>应当与其财务报表的报告期间<mark>保持一致</mark>,报告主体范围也应当与财务报表主体<mark>保持一致</mark>。</li>
+    <li>报告主体为<strong>合并主体</strong>时,可持续信息披露<mark>所涵盖</mark>的母公司和子公司应当与合并财务报表<mark>合并范围</mark>保持一致。</li>
+    <li><mark>除了</mark>报告主体的可持续信息<mark>外</mark>,企业的可持续信息披露<mark>还应当</mark>考虑其<mark>价值链</mark>情况。</li>
+  </ol>
+
+  <h3>三、可持续信息质量要求(相似:实质重于形式、重要性、谨慎性)</h3>
+  <table>
+    <thead><tr><th width="20%">质量要求</th><th>具体要求</th></tr></thead>
+    <tbody>
+      <tr><td><strong>可靠性</strong></td><td>要求企业<mark>如实反映</mark>重要的可持续风险、机遇和影响,保证可持续信息:<br>1. <strong>完整</strong>(避免重要信息被省略、漏报)<br>2. <strong>中立</strong>(尽可能做到不偏不倚地反映积极和消极的方面,并在作出重大判断时<mark>保持</mark>应有的审慎)<br>3. <strong>准确</strong>(并不要求一项信息在所有方面都完美精确)</td></tr>
+      <tr><td><strong>相关性</strong></td><td>1. 要求企业披露的可持续信息与信息使用者的<mark>决策</mark>相关,有助于信息使用者作出<mark>评价</mark>或者<mark>预测</mark>。<br>2. <mark>重要性</mark>原则是相关性在特定企业应用的体现,其考虑了一项可持续信息的<mark>性质</mark>和<mark>规模</mark>,从而确定哪些可持续信息对企业而言是<mark>重要的而应当予以披露</mark>。</td></tr>
+      <tr><td><strong>可比性</strong></td><td>要求企业披露的可持续信息可以与企业<mark>不同时期</mark>提供的信息<mark>进行比较</mark>,以及与<mark>其他企业</mark>特别是<mark>同一行业</mark>企业或者<mark>从事相似</mark>经营活动、具有<mark>相似业务模式</mark>的企业提供的信息<mark>进行比较</mark>。</td></tr>
+      <tr><td><strong>可验证性</strong> <span class="badge blue">新增独有</span></td><td>要求企业披露的可持续信息<mark>能够通过</mark>该信息本身或者生成该信息的输入值<mark>加以证实</mark>。</td></tr>
+      <tr><td><strong>可理解性</strong></td><td>要求企业披露的可持续信息<mark>内容清晰明了</mark>,便于信息使用者理解和使用。<br><b>【提示】</b>根据相关规定或实务惯例,企业会将披露的可持续信息<mark>作为独立的报告</mark>对外公告;但<mark>不意味着</mark>企业对于在<mark>其他报告中</mark>已披露的信息<mark>还需要</mark>在可持续信息中进行<mark>重复披露</mark>,企业可以通过<mark>交叉索引</mark>的方式从企业的<mark>其他报告</mark>(如财务报表)中<mark>获取</mark>相关信息,并披露相关信息所来源的报告。</td></tr>
+      <tr><td><strong>及时性</strong></td><td>要求企业披露的可持续信息<mark>能够及时满足</mark>使用者的信息需求。</td></tr>
+    </tbody>
+  </table>
+
+  <div class="qa">
+    <span class="qa-tag">补充例题 · 单选 · 2025 回忆版</span>
+    <p class="stem">下列各项表述中,满足可持续信息<u>可靠性</u>质量要求的是( )。</p>
+    <ol class="opts" type="A">
+      <li>将可持续信息披露作为独立的报告对外公告</li>
+      <li>根据可持续风险影响规模决定是否将其纳入可持续信息披露</li>
+      <li>按照本期新使用的可持续信息数据估计方法重述可比期间数据</li>
+      <li>同时披露可持续议题的积极影响和消极影响</li>
+    </ol>
+    <div class="ans"><b>答案:D</b><br>
+    A 满足<strong>可理解性</strong>要求;B 满足<strong>相关性</strong>要求;C 满足<strong>可比性</strong>要求;D"积极 + 消极同时披露" → <strong>中立</strong> → <strong>可靠性</strong>。</div>
+  </div>
+
+  <h3>四、可持续信息披露的主要内容(4 个核心要素)</h3>
+  <p>企业披露的可持续信息应当使信息使用者了解企业日常经营活动中与可持续议题相关的各个方面,通常包括 <mark>治理</mark>、<mark>战略</mark>、<mark>风险和机遇管理</mark>(或治理、战略、风险、<mark>机遇和影响管理</mark>),以及 <mark>指标和目标</mark>等四个核心要素。</p>
+  <table>
+    <thead><tr><th width="22%">要素</th><th>可持续信息披露的目标</th></tr></thead>
+    <tbody>
+      <tr><td><strong>治理方面</strong></td><td>使可持续信息基本使用者了解企业管理和监督可持续风险和机遇所采用的<mark>治理架构、控制措施和程序</mark></td></tr>
+      <tr><td><strong>战略方面</strong></td><td>使可持续信息基本使用者了解企业可持续风险和机遇所制定的<mark>战略和可能结果</mark></td></tr>
+      <tr><td><strong>风险和机遇管理方面</strong></td><td>使可持续信息基本使用者了解企业识别、评估、排序和监控可持续风险和机遇的流程(包括这些流程是否或<mark>如何融入</mark>企业的整体风险管理流程),以及评估企业的整体风险状况及其整体风险管理流程</td></tr>
+      <tr><td><strong>指标和目标方面</strong></td><td>使可持续信息基本使用者了解企业在可持续风险和机遇方面的<mark>绩效</mark>,包括企业设定的目标的进展和国家法律法规、战略规划要求企业实现的目标的进展</td></tr>
+    </tbody>
+  </table>
+
+  <h3>五、可持续信息和财务报表信息的关联和关系</h3>
+  <p>企业在编制可持续信息披露时,所披露的可持续信息<strong>应当</strong>与财务报表信息之间<mark>相互关联</mark>,从而使信息使用者能够<mark>更好地理解</mark>不同披露之间的<mark>联系</mark>。</p>
+</section>
+
+<!-- ============ 第七节 ============ -->
+<section id="s7">
+  <span class="section-no">SECTION 07 · 新增</span>
+  <h2>第七节 人工智能在会计审计领域的应用<span class="badge">2026 新增</span></h2>
+
+  <h3>一、人工智能概述</h3>
+  <p>人工智能是计算机科学的<mark>核心分支</mark>,旨在通过<mark>一系列</mark>广泛的<mark>计算机程序</mark>,让计算机<mark>模拟</mark>人类的<mark>智能行为</mark>,如语言识别、图像识别、从经验中学习以及制定决策等。</p>
+  <p>人工智能<mark>通过</mark>机器学习、专家系统、自动化决策、自然语言处理、计算机视觉和情感计算等<mark>技术</mark>,使计算机<mark>具备</mark>感知、学习和自适应能力。</p>
+
+  <h3>二、人工智能在会计领域的应用场景(4 点)</h3>
+  <p>人工智能在会计领域的应用正在<mark>快速改变</mark>传统的工作方式,让会计工作变得<mark>更智能、更高效</mark>,这<mark>主要体现在</mark>以下几个方面:</p>
+  <ol>
+    <li><strong>自动化处理</strong>(凭证、对账、结账)</li>
+    <li><strong>智能分析</strong>(数据洞察、异常识别)</li>
+    <li><strong>风险控制</strong>(欺诈检测、内控预警)</li>
+    <li><strong>效率提升</strong>(替代重复劳动)</li>
+  </ol>
+
+  <h3>三、人工智能在审计领域的应用场景(4 点)</h3>
+  <p>近年来,审计从业人员积极探索人工智能在审计工作中的应用,并取得了一定成效,主要体现在以下几个方面:</p>
+  <ol>
+    <li><strong>审计数据采集与分析</strong></li>
+    <li><strong>审计风险识别与评估</strong></li>
+    <li><strong>审计程序自动化</strong></li>
+    <li><strong>审计质量控制和复核</strong></li>
+  </ol>
+
+  <h3>四、正确开发和使用人工智能(5 点)</h3>
+  <p>会计人员在开发和使用人工智能时,应至少关注和遵循以下几点要求:</p>
+  <ol>
+    <li>以会计人员<mark>职业道德</mark>为导向</li>
+    <li><mark>压实</mark>会计人员工作责任</li>
+    <li><strong>以人为本</strong>(人类决策为主导)</li>
+    <li><strong>可解释性</strong>(AI 不能是黑箱)</li>
+    <li><strong>数据保密</strong></li>
+  </ol>
+
+  <div class="callout green">
+    <span class="label">📝 本章小结</span>
+    <ol>
+      <li>理解会计的基本概念、财务报告目标、会计基本假设和会计基础;</li>
+      <li>理解会计要素的概念、确认与计量原则;</li>
+      <li>掌握会计信息质量要求;</li>
+      <li>理解可持续信息披露;</li>
+      <li>了解人工智能在会计审计领域的应用。</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 结尾 ============ -->
+<section id="end">
+  <span class="section-no">FINALE · 终章寄语</span>
+  <h2>学完第一章,你应该能做到……</h2>
+  <ol>
+    <li>给一段情景,准确说出它体现了 <strong>8 项质量要求</strong>中的哪一项;</li>
+    <li>看到一个交易,准确判断它属于 <strong>6 大会计要素</strong>中的哪个;</li>
+    <li>能区分 <strong>权责发生制</strong> 与 <strong>收付实现制</strong>;能用 3 种发货 - 收款时序模型解释收入归属期;</li>
+    <li>能背出 <strong>可能性程度表</strong>(基本确定 / 很可能 / 可能 / 极小可能);</li>
+    <li>能解释 <strong>双重重要性</strong>(财务重要性 + 影响重要性)和可持续信息 4 个核心要素;</li>
+    <li>能给"使用 AI 做会计 / 审计"的同事提 5 条注意事项。</li>
+  </ol>
+  <p style="text-align:center;color:var(--muted);margin-top:32px;font-family:'PingFang SC',sans-serif;font-size:13px;letter-spacing:.2em;">— 第一章 完 · 下一章见 —</p>
+</section>
+
+</div>
+
+<script>
+function saveDoc(){
+  const content = document.documentElement.outerHTML;
+  const blob = new Blob([content], {type: 'text/html;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const ts = new Date().toISOString().slice(0,10);
+  a.href = url;
+  a.download = `2026-CPA-会计-第一章-总论-讲义-${ts}.html`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+// 平滑滚动 TOC
+document.querySelectorAll('.toc a').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id = a.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if(target){e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
+</body>
+</html>
