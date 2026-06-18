@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026 CPA 会计 · 第二章 存货 · 讲义</title>
+<style>
+:root{
+  --paper:#fbf7ef; --ink:#1a1814; --muted:#6b6357;
+  --brand:#a8341f; --brand-soft:#e8a294; --gold:#c89647;
+  --accent:#3e6e72; --line:#d9cfbc; --hl:#fff3c4;
+  --card:#fefcf6; --shadow:0 2px 6px rgba(60,40,20,.08);
+  --serif:"Source Han Serif SC","Noto Serif CJK SC","Songti SC","Source Serif Pro",Georgia,serif;
+  --sans:"PingFang SC","SF Pro Text","Helvetica Neue",sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.75;font-size:17px}
+.toolbar{position:sticky;top:0;z-index:50;background:rgba(251,247,239,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:10px 24px;display:flex;gap:10px;align-items:center;justify-content:space-between;font-family:var(--sans);font-size:13px}
+.toolbar .title{color:var(--brand);font-weight:600}
+.toolbar button{background:var(--brand);color:#fff;border:0;padding:7px 14px;border-radius:4px;cursor:pointer;font-size:13px;font-family:var(--sans)}
+.toolbar button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.toolbar button:hover{opacity:.85}
+main{max-width:880px;margin:0 auto;padding:48px 32px 96px}
+header.cover{text-align:center;border-bottom:2px solid var(--brand);padding-bottom:32px;margin-bottom:40px}
+header.cover .kicker{font-family:var(--sans);color:var(--brand);font-size:13px;letter-spacing:.3em;font-weight:600}
+header.cover h1{font-size:42px;margin:12px 0 8px;letter-spacing:.1em}
+header.cover .sub{color:var(--muted);font-size:15px;font-family:var(--sans)}
+header.cover .meta{margin-top:18px;display:flex;gap:24px;justify-content:center;font-size:13px;font-family:var(--sans);color:var(--muted)}
+header.cover .meta span{padding:0 12px;border-right:1px solid var(--line)}
+header.cover .meta span:last-child{border-right:0}
+h2.section{font-size:26px;margin:56px 0 18px;padding:14px 18px;background:linear-gradient(90deg,var(--brand) 0%,var(--brand) 4px,transparent 4px);border-bottom:1px solid var(--line);letter-spacing:.05em}
+h3{font-size:20px;color:var(--brand);margin:32px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+h4{font-size:17px;color:var(--accent);margin:22px 0 10px}
+p{margin:10px 0}
+mark{background:var(--hl);padding:1px 4px;border-radius:2px}
+strong{color:var(--brand)}
+.callout{background:var(--card);border-left:4px solid var(--gold);padding:14px 18px;margin:18px 0;border-radius:0 6px 6px 0;box-shadow:var(--shadow)}
+.callout.warn{border-left-color:var(--brand);background:#fdf3ef}
+.callout.tip{border-left-color:var(--accent);background:#eef5f5}
+.callout .label{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.15em;color:var(--brand);text-transform:uppercase;margin-bottom:6px}
+.callout.tip .label{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:16px 0;background:var(--card);box-shadow:var(--shadow);font-size:15px}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+th{background:#f3ead6;font-family:var(--sans);font-weight:600;color:var(--brand)}
+ul,ol{padding-left:24px;margin:10px 0}
+li{margin:6px 0}
+.entry{background:#fdfaf2;border:1px dashed var(--line);padding:14px 16px;margin:12px 0;font-family:"SF Mono","Menlo",monospace;font-size:14px;line-height:1.9;border-radius:4px}
+.entry .dr{color:var(--brand);font-weight:700}
+.entry .cr{color:var(--accent);font-weight:700;padding-left:20px}
+.formula{background:#f3ead6;padding:10px 14px;border-radius:6px;font-family:"SF Mono","Menlo",monospace;font-size:15px;margin:10px 0;color:#5a3a1a;border:1px solid var(--line)}
+.kw{background:var(--hl);padding:1px 5px;border-radius:3px;font-weight:600}
+.bento{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.bento .b{background:var(--card);padding:14px 16px;border-radius:6px;box-shadow:var(--shadow);border-top:3px solid var(--gold)}
+.bento .b .h{font-family:var(--sans);font-weight:700;color:var(--brand);font-size:14px;margin-bottom:6px}
+.example{background:#fffaf0;border:1px solid #f0d99a;padding:16px 18px;border-radius:6px;margin:18px 0}
+.example .head{font-family:var(--sans);font-size:12px;font-weight:700;color:#c4861c;letter-spacing:.15em;margin-bottom:8px}
+.qa{margin:8px 0}
+.qa .ans{color:var(--accent);font-weight:600}
+.tag{display:inline-block;background:var(--brand);color:#fff;font-size:11px;padding:2px 7px;border-radius:3px;font-family:var(--sans);font-weight:600;margin-right:6px;letter-spacing:.05em}
+.tag.gold{background:var(--gold)}
+.tag.green{background:var(--accent)}
+@media print{
+  .toolbar{display:none}
+  body{font-size:13px;background:#fff}
+  main{max-width:none;padding:24px}
+  h2.section{break-before:page}
+}
+@media (max-width:720px){
+  .bento{grid-template-columns:1fr}
+  main{padding:24px 16px}
+  header.cover h1{font-size:32px}
+}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <span class="title">2026 CPA · 会计 · 第二章 存货 · 讲义</span>
+  <span>
+    <button onclick="saveDoc()">💾 保存 HTML</button>
+    <button class="ghost" onclick="window.print()">🖨 打印 / PDF</button>
+  </span>
+</div>
+
+<main contenteditable="true">
+
+<header class="cover">
+  <div class="kicker">2026 · 注册会计师 · 会计</div>
+  <h1>第二章&nbsp;&nbsp;存&nbsp;&nbsp;货</h1>
+  <div class="sub">Inventory — 确认 · 初始计量 · 发出计量 · 期末计量 · 清查 · 列示披露</div>
+  <div class="meta">
+    <span>讲义版 / 通俗讲解</span>
+    <span>东奥 · 张敬富 · 基础精讲班</span>
+    <span>近年均分 ≈ 3 分</span>
+  </div>
+</header>
+
+<div class="callout">
+  <div class="label">本章导读 · 一句话总结</div>
+  <p>存货这一章就一条主线：<strong>进来记多少</strong>（初始计量）→ <strong>出去记多少</strong>（发出计量）→ <strong>期末还值多少</strong>（成本 vs 可变现净值，孰低）→ <strong>对不上账怎么办</strong>（清查盘点）→ <strong>最后怎么报</strong>（列示披露）。难度不大，但<mark>跨章节考点多</mark>（所得税、债务重组、非货币性资产交换、长投、合并报表都会用到），客观题为主，主观题也常考。</p>
+</div>
+
+<h2 class="section">第一节 &nbsp;存货的确认和初始计量</h2>
+
+<h3>一、什么是存货？— 定义先吃透</h3>
+
+<p>课本一句话：<mark>企业在日常活动中持有以备出售的产成品/商品、处在生产过程中的在产品、生产或提供劳务过程中耗用的材料和物料。</mark></p>
+
+<p>白话翻译：<strong>最终目的就是"卖"</strong>。不管现在是成品躺仓库、半成品在流水线上、还是原材料堆在车间角落 —— 只要终点是出售（包括卖产品、卖服务），就是存货。</p>
+
+<div class="callout tip">
+  <div class="label">易错点 8 条 · 一次记牢</div>
+  <ol>
+    <li>为<strong>建造固定资产</strong>等工程储备的物资 → <mark>不是存货</mark>，是"工程物资"。<br><span style="color:var(--muted);font-size:14px;">理由：终点是用，不是卖。</span></li>
+    <li>企业接受外来原材料加工制造的<strong>代制品</strong>、为外单位修理的<strong>代修品</strong> → 制造完成或修理验收入库后，<mark>视同企业产成品</mark>处理。</li>
+    <li>房地产开发企业购入的<strong>用于建造商品房</strong>的土地使用权 → <mark>属于企业存货</mark>。（与一般企业把土地使用权计入无形资产不一样！）</li>
+    <li><strong>在途物资</strong>（已取得所有权但还没验收入库）、<strong>发出商品</strong>（如支付手续费的委托代销、委托加工物资）→ <mark>属于企业存货</mark>。</li>
+    <li><strong>受托代销商品</strong>：受托方<mark>未获得</mark>商品控制权 → 不能确认为受托方存货。资产负债表上"受托代销商品"与"受托代销商品款"两科目<mark>一增一减相互抵销</mark>，不列为受托方存货。</li>
+    <li>企业日常活动中持有、最终目的<strong>用于出售</strong>的<mark>数据资源</mark>，符合存货定义和确认条件的 → 应当确认为存货。（这是 2024 年新增的考点）</li>
+    <li><strong>消耗性生物资产</strong>（如出售用的羊、鱼苗）→ <mark>不属于本章所述的存货范围</mark>（单独按生物资产准则核算）。</li>
+    <li>通过<strong>建造等服务合同</strong>归集的合同履约成本 → <mark>不适用本章</mark>，应按收入准则中"合同履约成本"处理。</li>
+  </ol>
+</div>
+
+<h4>存货的确认条件（必须同时满足）</h4>
+
+<p>存货在<mark>符合定义</mark>情况下，<mark>同时满足</mark>下列两条才能确认：</p>
+<ol>
+  <li>与该存货有关的<strong>经济利益很可能流入</strong>企业；</li>
+  <li>该存货的<strong>成本能够可靠地计量</strong>。</li>
+</ol>
+
+<h3>二、存货的初始计量 — 进来按多少记账？</h3>
+
+<p>核心一句话：<mark>存货按成本初始计量。</mark>存货成本 = <strong>采购成本 + 加工成本 + 其他成本</strong>（三部分）。</p>
+
+<table>
+  <tr><th>取得方式</th><th>构成</th></tr>
+  <tr><td>购买而取得</td><td>采购成本（原材料、商品、低值易耗品等）</td></tr>
+  <tr><td>进一步加工而取得</td><td>采购成本 + 加工成本 + 其他成本（如自制产品）</td></tr>
+</table>
+
+<h4>（一）外购存货的成本 = 价 + 税 + 费</h4>
+
+<table>
+  <tr><th>构成</th><th>具体内容</th></tr>
+  <tr><td><strong>价</strong></td><td>购买价款（<mark>不包括</mark>按规定<mark>可以抵扣</mark>的增值税进项税额）</td></tr>
+  <tr><td><strong>税</strong></td><td>归属该存货成本的<strong>相关税费</strong>：进口关税、消费税、资源税、<mark>不能抵扣</mark>的增值税等</td></tr>
+  <tr><td><strong>费</strong>（★★ 入库前的合理支出）</td><td>运输费、装卸费、保险费 + 其他可归属费用：<mark>采购过程中</mark>仓储费、包装费、运输途中合理损耗、入库前挑选整理费用等</td></tr>
+</table>
+
+<div class="callout">
+  <div class="label">关键分水岭 · 入库前 vs 入库后</div>
+  <p><strong>入库前</strong>发生的合理支出 → 进存货成本；<strong>入库后</strong>发生的仓储费 → 当期损益（销售费用/管理费用）。<br>
+  特例：在生产过程中为达到下一个生产阶段所必需的仓储费 → <mark>计入存货成本</mark>。</p>
+</div>
+
+<div class="example">
+  <div class="head">📌 增值税示例</div>
+  <p>A 公司购买材料：卖价 100 万元，T=13%，运杂费 10 万元，入库款付。</p>
+  <table>
+    <tr><th>可以抵扣（取得发票）</th><th>不能抵扣（未取得）</th></tr>
+    <tr>
+      <td>
+借：原材料 110（价 100 + 费 10）<br>
+&emsp;&emsp;应交税费 — 应交增值税（进项）13<br>
+贷：银行存款 123<br>
+<span style="color:var(--accent);">→ 税不计入存货成本</span>
+      </td>
+      <td>
+借：原材料 123（100 + 100×13% + 10）<br>
+贷：银行存款 123<br>
+<span style="color:var(--brand);">→ 税计入存货成本</span>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<h4>采购过程中物资毁损、短缺的处理</h4>
+<table>
+  <tr><th>情形</th><th>处理</th></tr>
+  <tr><td>合理的途中损耗</td><td><mark>计入采购成本</mark>（分摊到剩余存货）</td></tr>
+  <tr><td>从供货单位、外部运输机构等收回的物资短缺或相应赔款</td><td>应<mark>冲减</mark>所购物资的采购成本</td></tr>
+  <tr><td>因遭受意外灾害发生的损失和尚待查明原因的途中损耗</td><td>暂作"<mark>待处理财产损溢</mark>"核算；查明原因报经批准后：<br>① 自然灾害 → 营业外支出<br>② 应由相关人员赔偿 → 其他应收款<br>③ 管理原因 → 管理费用</td></tr>
+</table>
+
+<h4>不计入存货成本的费用（发生时计入当期损益）</h4>
+<ol>
+  <li><strong>非正常消耗</strong>的直接材料、直接人工、制造费用（如超定额废品损失、自然灾害损失）；</li>
+  <li>仓储费用（<mark>不包括</mark>生产过程中为达到下一阶段所必需的仓储费）；</li>
+  <li>不能归属于使存货达到目前场所和状态的其他支出；</li>
+  <li>企业采购用于<strong>广告营销活动</strong>的特定商品：向客户预付货款未取得商品时 → <mark>预付账款</mark>；取得商品时 → <mark>当期损益（销售费用）</mark>。</li>
+</ol>
+
+<div class="entry">
+<span class="dr">借：预付账款</span>　&nbsp;　<span style="color:#aaa">// 付款时</span><br>
+<span class="cr">贷：银行存款</span><br>
+<span class="dr">借：销售费用</span>　&nbsp;　<span style="color:#aaa">// 取得商品时</span><br>
+<span class="cr">贷：预付账款</span>
+</div>
+
+<div class="callout warn">
+  <div class="label">⚠️ 高频考点 · 设计费的处理</div>
+  <p>为<strong>特定客户设计产品</strong>发生的<mark>可直接确定</mark>的设计费 → 计入存货成本；<br>一般产品的设计费 → 计入<mark>当期损益</mark>。</p>
+</div>
+
+<h4>商品流通企业的规定（3 种做法）</h4>
+<ol>
+  <li>应当计入存货采购成本；</li>
+  <li>也可以先进行归集，期末根据所购商品的<strong>存销情况</strong>进行分摊：<br>① 已售商品的进货费用 → 当期损益（主营业务成本）；<br>② 未售商品的进货费用 → 期末存货成本；</li>
+  <li>金额较小的（重要性原则）→ 发生时直接计入当期销售费用。</li>
+</ol>
+
+<div class="example">
+  <div class="head">🧮 例题 · 单选</div>
+  <p>乙公司（工业制造企业）为增值税一般纳税人。本月购进原材料 200 公斤，货款为 6 000 元，增值税为 780 元，发生的保险费为 350 元，入库前的挑选整理费用为 130 元；验收入库时发现数量短缺 10%，经查属于运输途中<mark>合理损耗</mark>。乙公司该批原材料实际单位成本为每公斤？</p>
+  <p class="ans">答：购入原材料的实际总成本 = 6 000 + 350 + 130 = 6 480 元；实际入库数量 = 200 × (1−10%) = 180 公斤；实际单位成本 = 6 480 ÷ 180 = <strong>36 元/公斤</strong>。</p>
+  <p style="font-size:14px;color:var(--muted);">⚠️ 合理损耗不影响总成本，只影响单价；非合理损耗反过来要扣总成本。</p>
+</div>
+
+<h4>（二）加工取得存货的成本</h4>
+
+<table>
+  <tr><th>构成项目</th><th>具体内容</th></tr>
+  <tr><td>采购成本</td><td>所使用或消耗原材料的采购成本等</td></tr>
+  <tr><td rowspan="2"><strong>加工成本</strong>（材料以外）</td><td>(1) 直接人工</td></tr>
+  <tr><td>(2) 制造费用：生产部门管理人员的薪酬、折旧、办公费、水电费、机物料损耗、劳动保护费；<mark>季节性和修理期间</mark>的停工损失（<mark>排除</mark>非正常停工损失）；与存货生产/加工相关固定资产的日常修理费；停工停产期间计提的<mark>符合存货成本确认条件</mark>的固定资产折旧和无形资产摊销；为生产产品发生的<mark>符合资本化条件</mark>的借款费用；产品生产用的自行开发或外购的无形资产摊销等</td></tr>
+  <tr><td>其他成本</td><td>如：可直接认定的产品设计费</td></tr>
+</table>
+
+<div class="example">
+  <div class="head">🧮 例题 · 单选（2024）</div>
+  <p>2×23 年 1 月 1 日，甲公司生产车间领取成本为 100 万元的零部件，用于生产产成品。根据历史经验，正常损耗率 2%，由于生产工人操作失误，本次<strong>实际损耗率 5%</strong>。该产成品零部件成本为？</p>
+  <p class="ans">解析：2% 合理损耗 <mark>计入</mark>产品总成本，3% 非合理损耗要从总成本中<mark>扣除</mark>，零部件成本 = 100×(1−3%) = <strong>97 万元</strong>。</p>
+</div>
+
+<h4>（三）投资者投入存货的成本</h4>
+<table>
+  <tr><th>原则</th><th>处理</th></tr>
+  <tr><td>基本原则</td><td>按照投资合同或协议<mark>约定的价值</mark>确定</td></tr>
+  <tr><td>特殊情况</td><td>合同/协议约定价值<mark>不公允</mark>时，按该存货的<mark>公允价值</mark>作为入账价值。约定价值与公允价值的差额计入<mark>资本公积</mark>。</td></tr>
+</table>
+
+<div class="entry">
+<span class="dr">借：原材料（约定价值或公允价值）</span><br>
+<span class="dr">　　应交税费 — 应交增值税（进项税额）</span><br>
+<span class="cr">贷：实收资本（份额）/ 股本（面值）</span><br>
+<span class="cr">　　资本公积 — 资本溢价 / 股本溢价（倒挤）</span>
+</div>
+
+<h2 class="section">第二节 &nbsp;发出存货的计量</h2>
+
+<h3>一、四种发出存货成本的计量方法</h3>
+
+<p>课本明确：可采用<strong>先进先出法、移动加权平均法、月末一次加权平均法、个别计价法</strong>。<mark>不得采用后进先出法</mark>。</p>
+
+<div class="bento">
+  <div class="b">
+    <div class="h">① 先进先出法 FIFO</div>
+    <p>假定"<strong>先入库的存货先发出</strong>"，按这个流转次序确定发出成本。</p>
+    <p><strong>特点</strong>：可<mark>随时</mark>结转存货发出成本，但<mark>较繁琐</mark>。如果存货收发频繁、单价不稳定，工作量大。</p>
+    <p><strong>物价持续上升时</strong>：期末存货成本接近市价，发出成本偏低 → <mark>高估</mark>当期利润和库存价值；物价下降反之。</p>
+  </div>
+  <div class="b">
+    <div class="h">② 移动加权平均法</div>
+    <p><strong>每次收货后</strong>立即按"库存数量+总成本"算出<strong>新的</strong>平均单位成本。</p>
+    <p>公式：移动平均单价 = (本次进货前库存实际成本 + 本次进货实际成本) ÷ (本次进货前库存数量 + 本次进货数量)</p>
+    <p><strong>特点</strong>：管理层能<mark>及时</mark>了解结转情况，单价比较客观；但每次收货都要算，工作量大，不适合收发频繁的企业。</p>
+  </div>
+  <div class="b">
+    <div class="h">③ 月末一次加权平均法</div>
+    <p>只在<strong>月末一次</strong>计算加权平均单价。</p>
+    <p>公式：加权平均单价 = (月初库存实际成本 + Σ本月各批进货单价×数量) ÷ (月初库存数量 + Σ本月各批进货数量)</p>
+    <p><strong>特点</strong>：简化成本计算，但<mark>平时无法从账上提供发出/结存存货的单价及金额</mark>，不利于日常管理与控制。</p>
+  </div>
+  <div class="b">
+    <div class="h">④ 个别计价法</div>
+    <p>又称<strong>个别认定法、具体辨认法、分批实际法</strong>。逐一辨认各批发出存货所属批次，按当时确定的单位成本计算。</p>
+    <p><strong>特点</strong>：是<mark>★★★ 确定的存货成本最为准确</mark>的方法。适用于<strong>不能替代使用</strong>的存货、为特定项目专门购入或制造的存货、提供的劳务，如<mark>珠宝、名画</mark>等贵重物品。</p>
+  </div>
+</div>
+
+<div class="callout warn">
+  <div class="label">⚠️ 物价上升 · 各方法的影响（必记）</div>
+  <p>物价上升时：<strong>FIFO 利润最高、库存价值最高</strong>；月末一次加权平均居中；后进先出（中国不允许）利润最低。这是为什么 GAAP 改革后 IFRS 全面禁止 LIFO 的根源。</p>
+</div>
+
+<div class="example">
+  <div class="head">🧮 例题 · 计算（FIFO）</div>
+  <table style="font-size:14px;">
+    <tr><th rowspan="2">日期</th><th colspan="3">增加</th><th colspan="3">减少</th><th colspan="3">结存</th></tr>
+    <tr><th>数量</th><th>单价</th><th>金额</th><th>数量</th><th>单价</th><th>金额</th><th>数量</th><th>单价</th><th>金额</th></tr>
+    <tr><td>1.1</td><td></td><td></td><td></td><td></td><td></td><td></td><td>200</td><td>200</td><td>40 000</td></tr>
+    <tr><td>1.4</td><td>300</td><td>180</td><td>54 000</td><td></td><td></td><td></td><td>200<br>300</td><td>200<br>180</td><td>40 000<br>54 000</td></tr>
+    <tr><td>1.8</td><td></td><td></td><td></td><td>330<br>(200+130)</td><td>200<br>180</td><td>40 000<br>23 400</td><td>170</td><td>180</td><td>30 600</td></tr>
+    <tr><td>合计</td><td>300</td><td>180</td><td>54 000</td><td>330</td><td></td><td>63 400</td><td>170</td><td>180</td><td>30 600</td></tr>
+  </table>
+</div>
+
+<div class="example">
+  <div class="head">🧮 例题 · 同数据 · 月末一次加权平均</div>
+  <p>加权平均单价 = (40 000 + 54 000) ÷ (200 + 300) = <strong>188 元/吨</strong></p>
+  <p>本月发出成本 = 188 × 330 = <strong>62 040 元</strong>；月末库存 = 188 × 170 = <strong>31 960 元</strong></p>
+  <p style="font-size:14px;color:var(--muted);">对比 FIFO：发出 63 400，库存 30 600。物价下降阶段两法差异显现。</p>
+</div>
+
+<h3>二、存货成本的结转</h3>
+
+<div class="bento">
+  <div class="b">
+    <div class="h">对外销售商品</div>
+    <div class="entry" style="background:transparent;border:0;padding:0;">
+      <span class="dr">借：主营业务成本</span><br>
+      <span class="dr">　　存货跌价准备</span><br>
+      <span class="cr">贷：库存商品</span>
+    </div>
+  </div>
+  <div class="b">
+    <div class="h">对外销售材料</div>
+    <div class="entry" style="background:transparent;border:0;padding:0;">
+      <span class="dr">借：其他业务成本</span><br>
+      <span class="dr">　　存货跌价准备</span><br>
+      <span class="cr">贷：原材料</span>
+    </div>
+  </div>
+  <div class="b">
+    <div class="h">生产领用包装物</div>
+    <div class="entry" style="background:transparent;border:0;padding:0;">
+      <span class="dr">借：制造费用等</span><br>
+      <span class="cr">贷：周转材料 — 包装物</span>
+    </div>
+  </div>
+  <div class="b">
+    <div class="h">出借/随同产品出售不单独计价</div>
+    <div class="entry" style="background:transparent;border:0;padding:0;">
+      <span class="dr">借：销售费用</span><br>
+      <span class="cr">贷：周转材料 — 包装物</span>
+    </div>
+  </div>
+  <div class="b">
+    <div class="h">出租/随同产品出售单独计价</div>
+    <div class="entry" style="background:transparent;border:0;padding:0;">
+      <span class="dr">借：其他业务成本</span><br>
+      <span class="cr">贷：周转材料 — 包装物</span>
+    </div>
+  </div>
+</div>
+
+<h2 class="section">第三节 &nbsp;期末存货的计量</h2>
+
+<h3>一、存货期末计量原则 — 成本与可变现净值孰低</h3>
+
+<p>资产负债表日，存货应按<mark>成本与可变现净值孰低</mark>计量。</p>
+
+<table>
+  <tr><th>项目</th><th>含义</th></tr>
+  <tr><td>成本</td><td>期末存货的<strong>实际成本</strong>（采用计划成本法、售价金额核算法等简化方法的，则成本应为<mark>调整后的实际成本</mark>）</td></tr>
+  <tr><td>可变现净值<br>(NRV)</td><td>日常活动中，存货的<mark>估计售价</mark> − 完工时<strong>将要发生的成本</strong> − 估计的<strong>销售费用</strong>及<strong>相关税费</strong>（<mark>倒推</mark>）。<br>⚠️ 销售费用<strong>不仅包括</strong>销售存货过程中发生的<strong>增量成本</strong>，<strong>还应包括</strong>企业<mark>将在</mark>销售存货过程中必须发生的、除增量成本以外的其他成本（如销售门店发生的水电、摊销等）。</td></tr>
+</table>
+
+<p>存货成本<strong>高于</strong>其可变现净值的 → 应当计提存货跌价准备，计入<strong>当期损益</strong>：</p>
+
+<div class="entry">
+<span class="dr">借：资产减值损失</span><br>
+<span class="cr">贷：存货跌价准备</span>
+</div>
+
+<h3>二、可变现净值的确定</h3>
+
+<h4>（一）基本特征</h4>
+<ol>
+  <li>前提：企业在进行<mark>日常活动</mark>；</li>
+  <li>NRV 是存货的<strong>预计未来净现金流量</strong>，<mark>而不是</mark>存货的售价或合同价；</li>
+  <li>不同持有目的，NRV 的构成不同：</li>
+</ol>
+
+<table>
+  <tr><th>持有目的</th><th>可变现净值</th></tr>
+  <tr><td><strong>直接用于出售</strong>的产品或材料</td><td>= 自身估计售价 − 自身相关税费</td></tr>
+  <tr><td>需要<strong>加工</strong>的材料等</td><td>= <mark>产品</mark>的估计售价 − <mark>产品</mark>的相关税费 − 加工成本</td></tr>
+</table>
+
+<p>估计售价的确定：<mark>有</mark>合同约定的，按合同价格；<mark>没有</mark>合同约定的，按一般市场价格。</p>
+
+<div class="example">
+  <div class="head">🧮 经典例 · 钢板</div>
+  <p>不锈钢钢板：成本 = 100 万元。</p>
+  <p><strong>情形一：直接出售</strong>　市场价 = 90 万元，合同约定价 = 93 万元（<mark>优先</mark>），销售费用税 = 1 万元</p>
+  <p>NRV = 93 − 1 = <strong>92 万元</strong> &nbsp; → 应计提跌价准备 = 100 − 92 = <strong>8 万元</strong></p>
+  <div class="entry">
+    <span class="dr">借：资产减值损失 8</span><br>
+    <span class="cr">贷：存货跌价准备 8</span>
+  </div>
+
+  <p style="margin-top:16px;"><strong>情形二：进一步加工（不考虑其他）</strong>　加工成本 40，钢板加工成饭盒，市场价 120，销售税费 2</p>
+  <p>钢板的 NRV = 120 − 2 − 40 = <strong>78 万元</strong> &nbsp; → 应计提跌价准备 = 100 − 78 = <strong>22 万元</strong></p>
+</div>
+
+<h4>（二）确定 NRV 应考虑的因素</h4>
+<ol>
+  <li>应以<strong>取得的确凿证据</strong>为基础：<br>
+  ① 存货成本的确凿证据（外来原始凭证、生产成本账簿记录等）；<br>
+  ② 存货 NRV 的确凿证据（产品/商品的市场销售价格、销货方提供的有关资料和生产成本资料等）；</li>
+  <li>应考虑<mark>持有存货的目的</mark>（直接出售 vs 进一步加工）；</li>
+  <li>应考虑<mark>资产负债表日后事项</mark>的影响。</li>
+</ol>
+
+<div class="callout warn">
+  <div class="label">⚠️ 资产负债表日后事项 · 调整 vs 不调整</div>
+  <p>资产负债表日至财务报告批准报出日间，存货售价发生波动：<br>
+  ✅ 如有确凿证据表明对资产负债表日存货<mark>已经存在</mark>情况提供新的或进一步证据 → <strong>应当予以考虑</strong>；<br>
+  ❌ 单纯的市场价格波动（属于资产负债表日后发生的事项）→ <strong>不应予以考虑</strong>。</p>
+</div>
+
+<h3>三、存货期末计量和跌价准备的计提</h3>
+
+<h4>（一）存货估计售价的确定</h4>
+<p>总体原则：有合同的按<strong>合同价</strong>，没合同的按<strong>市场价</strong>。</p>
+
+<ol>
+  <li><strong>为执行销售合同/劳务合同而持有的存货</strong>：以合同价作为 NRV 计算基础。<br>
+  ① 已签合同的产成品/商品 → 用合同价；<br>
+  ② 合同标的物还没生产，但持有<mark>专门用于</mark>该标的生产的材料 → 用所生产<strong>产成品</strong>的合同价格作为计算基础。</li>
+  <li><strong>持有存货数量大于销售合同订购数量</strong>：分别确定。<br>
+  ① 合同约定数量部分 → 合同价；<br>
+  ② 超出部分 → 一般销售价格。</li>
+  <li><strong>持有存货数量小于销售合同订购数量</strong>：实际持有的与合同相关存货按合同价。<br>
+  如果该合同为<mark>亏损合同</mark>，还应同时按《企业会计准则第 13 号 — 或有事项》确认<strong>预计负债</strong>。</li>
+  <li><strong>没有销售合同约定的存货</strong>（不包括用于出售的材料）→ 一般销售价格（市场价）。</li>
+  <li><strong>用于出售的材料等</strong>：通常以市场价格作为基础；如存销售合同约定，按合同价格。</li>
+</ol>
+
+<div class="callout tip">
+  <div class="label">💡 提示 · 同一项存货分别确定</div>
+  <p>资产负债表日同一项存货中一部分有合同价格约定，其他部分不存在合同价格的 → 应分别确定其 NRV，并与相对应成本比较，分别确定跌价准备的计提或转回金额，<mark>不得相互抵销</mark>。</p>
+</div>
+
+<h4>（二）材料存货的期末计量（指需要加工的材料）</h4>
+<p>材料存货的期末价值应以<strong>所生产的产成品的可变现净值与成本</strong>的比较为基础加以确定。</p>
+
+<table>
+  <tr><th>情形</th><th>处理</th></tr>
+  <tr><td>用其生产的产成品 NRV <strong>≥</strong> 成本（产品没贬值）</td><td>该材料<mark>仍然按成本计量</mark>，材料不提减值</td></tr>
+  <tr><td>用其生产的产成品 NRV <strong>&lt;</strong> 成本（产品贬值了）</td><td>该材料应按 NRV 计量，按差额计提跌价准备</td></tr>
+</table>
+
+<div class="example">
+  <div class="head">🧮 例题 · 材料跌价（钢材）</div>
+  <p>2×25.12.31 甲公司库存原材料钢材账面价值 60 万元，可用于生产 C 型机器。市场购买价格总额 55 万元（不影响）。</p>
+  <p>钢材的市场销售价格下降，C 型机器市场销售价格总额从 150 万下降为 135 万，但生产成本仍为 140 万。钢材加工成 C 型机器尚需投入 80 万。估计销售费用及税金 5 万。</p>
+  <p><strong>三步法：</strong></p>
+  <ol>
+    <li>用钢材生产的 C 型机 NRV = 135 − 5 = <strong>130 万</strong></li>
+    <li>C 型机 NRV 130 < 成本 140 → <mark>钢材应按 NRV 计量</mark></li>
+    <li>钢材的 NRV = 135 − 80 − 5 = <strong>50 万</strong> &nbsp; → 钢材应按 50 万列示，计提跌价 = 60 − 50 = <strong>10 万</strong></li>
+  </ol>
+</div>
+
+<h3>四、计提存货跌价准备的方法</h3>
+
+<table>
+  <tr><th>方法</th><th>适用范围</th></tr>
+  <tr><td><strong>单项计提</strong></td><td>通常按<mark>单个存货项目</mark>计提</td></tr>
+  <tr><td><strong>分类计提</strong></td><td><strong>数量繁多、单价较低</strong>的存货，可按<strong>存货类别</strong>计提</td></tr>
+  <tr><td><strong>总体计提</strong></td><td>与在同一地区生产和销售的产品系列相关、具有<strong>相同或类似最终用途或目的</strong>，且<strong>难以与其他项目分开计量</strong>的存货，可<mark>合并</mark>计提</td></tr>
+</table>
+
+<h4>需要计提跌价准备的情形（NRV 低于成本）</h4>
+<ol>
+  <li>市场价格持续下跌，且可预见的未来无回升的希望；</li>
+  <li>使用该原材料生产的产品的成本大于产品的销售价格；</li>
+  <li>因产品更新换代，原有库存原材料已不适应新产品的需要，而该材料的市场价格又低于其账面成本；</li>
+  <li>商品/劳务过时或消费者偏好改变使得市场需求变化，导致市场价格逐渐下跌；</li>
+  <li>其他足以证明已发生减值的情形。</li>
+</ol>
+
+<h4>NRV 为零（全额计提）的情形</h4>
+<ol>
+  <li>已霉烂变质；</li>
+  <li>已过期且无转让价值；</li>
+  <li>生产中已不再需要，并且无使用价值和转让价值；</li>
+  <li>其他足以证明已无使用价值和转让价值的存货。</li>
+</ol>
+
+<h3>五、存货跌价准备的转回与结转</h3>
+
+<table>
+  <tr><th>情形</th><th>处理</th></tr>
+  <tr><td><strong>补提</strong>：应计提 > 已计提</td><td>借：资产减值损失 &nbsp;&nbsp; 贷：存货跌价准备</td></tr>
+  <tr><td><strong>转回</strong>：以前减记 NRV 的影响因素已消失，原已计提的存货跌价准备<mark>金额内转回</mark></td><td>借：存货跌价准备 &nbsp;&nbsp; 贷：资产减值损失</td></tr>
+</table>
+
+<div class="callout warn">
+  <div class="label">⚠️ 转回的两个限制条件</div>
+  <ol>
+    <li><strong>条件</strong>：必须是<mark>以前减记存货价值的影响因素消失</mark>，而<strong>不是</strong>在当期造成存货 NRV 高于成本的其他影响因素。</li>
+    <li><strong>金额</strong>：转回的金额以将存货跌价准备余额<mark>冲减至零为限</mark>。</li>
+  </ol>
+</div>
+
+<h4>存货跌价准备的结转</h4>
+<ol>
+  <li>对已售存货计提了跌价准备的，结转已计提的存货跌价准备，冲减当期主营业务成本或其他业务成本（实质：按已售产品/商品的<strong>账面价值</strong>结转至成本）；</li>
+  <li>按存货类别计提的，也应<strong>按比例</strong>结转相应的存货跌价准备。</li>
+</ol>
+
+<div class="entry">
+<span class="dr">借：主营业务成本 / 其他业务成本</span><br>
+<span class="dr">　　存货跌价准备</span><br>
+<span class="cr">贷：库存商品 / 原材料</span>
+</div>
+
+<h2 class="section">第四节 &nbsp;存货的清查盘点</h2>
+
+<h3>一、存货清查的含义</h3>
+<p>存货清查 = 通过对存货<strong>实地盘点</strong>，确定存货的实有数量，与账面结存数核对，从而确定存货实存数与账面结存数是否相符的一种专门方法。</p>
+
+<h3>二、存货清查的会计处理</h3>
+
+<h4>（一）盘亏或毁损</h4>
+
+<p><strong>1. 属于计量收发差错和管理不善等原因造成的存货短缺</strong>（人祸）：先扣除残料价值、可以收回的保险赔偿和过失人赔偿，将净损失计入<mark>管理费用</mark>。</p>
+
+<table>
+  <tr><th></th><th>计量收发差错等</th><th>管理不善</th></tr>
+  <tr><td>批准前</td>
+    <td>借：待处理财产损溢<br>　　贷：原材料/库存商品等</td>
+    <td>借：待处理财产损溢<br>　　贷：原材料/库存商品等<br>　　　　应交税费 — 应交增值税（<mark>进项税额转出</mark>）</td>
+  </tr>
+  <tr><td>批准后</td>
+    <td colspan="2">借：原材料等（残料价值）/ 银行存款（材料变现）<br>　　其他应收款<br>　　管理费用（净损失）<br>　　贷：待处理财产损溢</td>
+  </tr>
+</table>
+
+<p><strong>2. 属于自然灾害等非常原因造成的存货毁损</strong>（天灾）：先扣除处置收入、可收回保险赔偿和过失人赔偿，将净损失计入<mark>营业外支出</mark>。</p>
+
+<table>
+  <tr><th>批准前</th><td>借：待处理财产损溢<br>贷：原材料/库存商品等</td></tr>
+  <tr><th>批准后</th><td>借：原材料等（残料价值）/ 银行存款（材料变现）<br>　　其他应收款<br>　　营业外支出（净损失）<br>贷：待处理财产损溢</td></tr>
+</table>
+
+<p><strong>3.</strong> 属于<strong>重大会计差错</strong>的，按《企业会计准则第 28 号 — 会计政策、会计估计变更和差错更正》处理。</p>
+
+<h4>（二）盘盈</h4>
+<ol>
+  <li>属于<strong>自然溢余</strong>（如某些作为存货的化学品）→ 调整库存存货数量及单位成本；</li>
+  <li>属于<strong>重大会计差错</strong> → 按 28 号准则处理；</li>
+  <li>属于<strong>其他原因</strong>导致的盘盈（如属于日常收发计量且不重大的差错）→ 按重置成本<mark>冲减当期管理费用</mark>或计入营业外收入。</li>
+</ol>
+
+<h2 class="section">第五节 &nbsp;存货的列示与披露</h2>
+
+<h3>一、列示</h3>
+<ol>
+  <li>企业应当在资产负债表中<mark>单独列示</mark>存货。</li>
+  <li>确认为存货的<strong>数据资源</strong>，还应当根据<strong>重要性原则</strong>并结合本企业实际情况在"存货"项目下<mark>增设</mark>"<strong>其中：数据资源</strong>"项目，反映资产负债表日确认为存货的数据资源的<strong>期末账面价值</strong>。</li>
+</ol>
+
+<h3>二、披露（附注中）</h3>
+<ol>
+  <li>各类存货的期初和期末账面价值；</li>
+  <li>确定发出存货成本所采用的<strong>方法</strong>；</li>
+  <li>存货 NRV 的<strong>确定依据</strong>、存货跌价准备的<strong>计提方法</strong>、当期计提的存货跌价准备的金额、当期转回的存货跌价准备的金额，以及计提和转回的有关情况；</li>
+  <li>用于<strong>担保</strong>的存货账面价值。</li>
+</ol>
+
+<div class="callout tip">
+  <div class="label">补充：账面余额 vs 账面价值 — 必懂区分</div>
+  <table>
+    <tr><th>资产项目</th><th>区分</th></tr>
+    <tr><td>存货、长期股权投资等</td><td>账面余额、账面价值</td></tr>
+    <tr><td>固定资产</td><td>账面余额、<mark>账面净值（折余价值）</mark>、账面价值</td></tr>
+    <tr><td>无形资产</td><td>账面余额、摊余价值、账面价值</td></tr>
+  </table>
+  <p style="margin-top:8px;"><strong>账面余额</strong> = 账面实际余额，<mark>不扣除</mark>备抵项目（如减值准备、累计折旧、累计摊销）→ 一般指原值。</p>
+  <p><strong>账面价值</strong> = 账面余额 − 相关备抵项目后的净额。</p>
+  <p>例：固定资产原值 100，累折 20，固减 10 → 账面净值 80，<mark>账面价值 = 80 − 10 = 70</mark></p>
+</div>
+
+<h2 class="section">本章小结 · 七张思维卡</h2>
+
+<div class="bento">
+  <div class="b"><div class="h">① 理解定义</div>存货 = 日常活动中持有以备出售（最终目的：出售）。数据资源、代制品、代修品都可能是存货；建造资产用物资、消耗性生物资产不是。</div>
+  <div class="b"><div class="h">② 掌握确认条件</div>同时满足：(1) 经济利益很可能流入；(2) 成本能够可靠计量。</div>
+  <div class="b"><div class="h">③ 初始计量</div>价 + 税 + 费。入库前合理支出进成本，入库后仓储费进当期损益。投资者投入按约定价值（不公允时按公允价值，差额计资本公积）。</div>
+  <div class="b"><div class="h">④ 发出计量</div>FIFO / 移动加权 / 月末一次加权 / 个别计价。不得用 LIFO。物价上升时 FIFO 利润最高。</div>
+  <div class="b"><div class="h">⑤ 期末计量</div>成本与 NRV 孰低。直接出售：NRV = 估计售价 − 销售费用税；需加工：NRV = 产品估售价 − 产品销售费用税 − 加工成本。计提 → 资产减值损失。</div>
+  <div class="b"><div class="h">⑥ 清查盘点</div>盘亏/毁损：人祸进管理费用，天灾进营业外支出；盘盈：冲减管理费用或营业外收入。</div>
+  <div class="b"><div class="h">⑦ 列示与披露</div>资产负债表单独列示；数据资源单独列。附注披露：期初期末、方法、NRV 依据、跌价准备计提与转回、担保用存货。</div>
+</div>
+
+<div class="callout">
+  <div class="label">🎯 本章高频考点 · 一句话清单</div>
+  <ol>
+    <li>入库前后费用的归属（入库前进成本，入库后进损益，但生产为达下一阶段必需的仓储费除外）</li>
+    <li>合理损耗 → 分摊到剩余存货；非合理损耗 → 扣除总成本</li>
+    <li>广告营销特定商品 → 预付账款 → 销售费用（不入存货）</li>
+    <li>设计费：特定客户、可直接确定 → 入存货；一般产品 → 当期损益</li>
+    <li>商品流通企业进货费用 3 种做法（一般入成本 / 期末分摊 / 金额小直入销售费用）</li>
+    <li>四种发出计量方法的特点 + 不得用 LIFO + 物价上升对利润影响</li>
+    <li>NRV 公式两种（直接出售 vs 需加工），合同价优先于市场价</li>
+    <li>材料是否减值要看产品是否减值（产品没贬值 → 材料不提）</li>
+    <li>跌价转回的两限制：因素消失 + 余额冲零</li>
+    <li>跨章联动：所得税（暂时性差异）、债务重组（公允价值入账）、非货币性资产交换、长投初始成本、合并报表内部交易抵销</li>
+  </ol>
+</div>
+
+<p style="text-align:center;margin-top:48px;color:var(--muted);font-size:14px;font-family:var(--sans);border-top:1px solid var(--line);padding-top:20px;">人生如逆水行舟，不进则退；但请记住，每划一桨都比彼岸更进一步。<br>—— 张敬富老师 / 2026 CPA 会计</p>
+
+</main>
+
+<script>
+function saveDoc(){
+  const html = '<!doctype html>\n' + document.documentElement.outerHTML;
+  const blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const ts = new Date().toISOString().slice(0,10);
+  a.href = url;
+  a.download = `2026-CPA-会计-第二章-存货-讲义-${ts}.html`;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>
