@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>US GAAP · Chapter 1 — Conceptual Framework & Overview (Presentation)</title>
+<style>
+  :root{
+    --bg: #0e1217;
+    --panel: #161b22;
+    --ink: #e8ecf1;
+    --ink-soft: #aab3bf;
+    --line: #2a313a;
+    --crimson: #d23a3a;
+    --steel: #4ea1d3;
+    --gold: #d4a956;
+    --moss: #6ab17e;
+    --violet: #b083d6;
+    --bento: #1c222b;
+    --serif: "Source Serif Pro","Source Han Serif SC","Iowan Old Style","Georgia",serif;
+    --ui: -apple-system, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:var(--ui); }
+  body{ min-height:100vh; -webkit-font-smoothing:antialiased; }
+  /* Toolbar */
+  .toolbar{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; gap:12px;
+    padding:10px 18px; background:rgba(14,18,23,.85); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .toolbar .brand{ font-family:var(--serif); font-weight:600; letter-spacing:.02em; }
+  .toolbar .brand small{ color:var(--ink-soft); font-family:var(--ui); font-weight:400; margin-left:8px; }
+  .toolbar .spacer{ flex:1; }
+  .toolbar button{
+    background:transparent; color:var(--ink); border:1px solid var(--line);
+    padding:6px 12px; border-radius:6px; cursor:pointer; font-size:13px;
+    font-family:var(--ui);
+  }
+  .toolbar button:hover{ border-color:var(--steel); color:var(--steel); }
+  .counter{ color:var(--ink-soft); font-variant-numeric: tabular-nums; font-size:13px; padding:0 8px; }
+
+  /* Deck */
+  .deck{ padding-top:54px; }
+  .slide{
+    min-height: calc(100vh - 54px);
+    padding: 48px clamp(28px, 5vw, 88px) 80px;
+    display:none;
+    animation: fade .35s ease;
+  }
+  .slide.active{ display:block; }
+  @keyframes fade { from{ opacity:0; transform:translateY(6px);} to{ opacity:1; transform:translateY(0);} }
+
+  /* Headings */
+  .kicker{
+    display:inline-block; padding:4px 10px; border:1px solid var(--line);
+    border-radius:999px; color:var(--ink-soft); font-size:12px; letter-spacing:.18em; text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  h1.title{
+    font-family:var(--serif); font-weight:600; font-size: clamp(36px, 5.4vw, 64px);
+    line-height:1.08; letter-spacing:-.01em; margin: 0 0 18px;
+  }
+  h1.title em{ color:var(--gold); font-style:normal; }
+  h2.section{
+    font-family:var(--serif); font-weight:600; font-size: clamp(28px, 3.6vw, 44px);
+    line-height:1.15; margin: 0 0 14px;
+  }
+  h3.sub{
+    font-family:var(--serif); font-size:22px; margin: 0 0 10px; color:var(--steel);
+  }
+  .lede{ color:var(--ink-soft); font-size:18px; line-height:1.55; max-width:72ch; margin-bottom:22px; }
+
+  /* Bento grid */
+  .grid{ display:grid; gap:18px; }
+  .grid.cols-2{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .grid.cols-3{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .grid.cols-4{ grid-template-columns: repeat(4, minmax(0,1fr)); }
+  .grid.cols-2-1{ grid-template-columns: 2fr 1fr; }
+  .grid.cols-1-2{ grid-template-columns: 1fr 2fr; }
+  @media (max-width: 900px){
+    .grid.cols-2, .grid.cols-3, .grid.cols-4, .grid.cols-2-1, .grid.cols-1-2 {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Bento cards */
+  .card{
+    background:var(--bento); border:1px solid var(--line); border-radius:14px;
+    padding:18px 20px; position:relative; overflow:hidden;
+  }
+  .card.tall{ min-height:240px; }
+  .card .tag{
+    display:inline-block; font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--ink-soft); margin-bottom:8px;
+  }
+  .card h4{
+    font-family:var(--serif); font-size:18px; margin:0 0 6px; letter-spacing:-.005em;
+  }
+  .card p{ color:var(--ink-soft); font-size:14px; line-height:1.55; margin:0; }
+  .card.accent-crimson{ border-color: rgba(210,58,58,.35); }
+  .card.accent-crimson .tag{ color: var(--crimson); }
+  .card.accent-steel{ border-color: rgba(78,161,211,.35); }
+  .card.accent-steel .tag{ color: var(--steel); }
+  .card.accent-gold{ border-color: rgba(212,169,86,.35); }
+  .card.accent-gold .tag{ color: var(--gold); }
+  .card.accent-moss{ border-color: rgba(106,177,126,.35); }
+  .card.accent-moss .tag{ color: var(--moss); }
+  .card.accent-violet{ border-color: rgba(176,131,214,.35); }
+  .card.accent-violet .tag{ color: var(--violet); }
+
+  /* Pillars (numbered) */
+  .pillar{ display:flex; gap:14px; align-items:flex-start; }
+  .pillar .n{
+    font-family:var(--serif); font-size:42px; line-height:1; color:var(--gold);
+    width:54px; flex:none; text-align:right;
+  }
+  .pillar .body h4{ margin:6px 0 4px; font-size:17px; }
+  .pillar .body p{ font-size:14px; color:var(--ink-soft); line-height:1.5; margin:0; }
+
+  /* Table */
+  table.t{
+    width:100%; border-collapse:collapse; background:var(--bento);
+    border:1px solid var(--line); border-radius:10px; overflow:hidden;
+    font-size:14px;
+  }
+  .t th, .t td{ padding:10px 12px; text-align:left; vertical-align:top; border-bottom:1px solid var(--line); }
+  .t th{ background:#1a212b; color:var(--ink); font-weight:600; font-size:12px; letter-spacing:.12em; text-transform:uppercase; }
+  .t tr:last-child td{ border-bottom:none; }
+  .t td.k{ color:var(--gold); font-weight:600; white-space:nowrap; }
+
+  /* Callout */
+  .callout{
+    border-left:3px solid var(--crimson); background:rgba(210,58,58,.06);
+    padding:14px 18px; border-radius:0 10px 10px 0; margin:14px 0;
+  }
+  .callout.steel{ border-color:var(--steel); background:rgba(78,161,211,.06); }
+  .callout.gold{ border-color:var(--gold); background:rgba(212,169,86,.06); }
+  .callout.moss{ border-color:var(--moss); background:rgba(106,177,126,.06); }
+  .callout .lbl{ font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:4px; }
+
+  /* Code-ish chip */
+  .chip{
+    display:inline-block; padding:3px 8px; border-radius:6px;
+    background:#101620; border:1px solid var(--line); color:var(--steel);
+    font-family:var(--mono); font-size:12px;
+  }
+  .chip.gold{ color:var(--gold); }
+  .chip.moss{ color:var(--moss); }
+  .chip.crimson{ color:var(--crimson); }
+
+  /* Lists */
+  ul.tight{ margin:0; padding-left:18px; color:var(--ink-soft); font-size:14px; line-height:1.7; }
+  ul.tight li{ margin:0; }
+  ul.tight li strong{ color:var(--ink); }
+  ol.tight{ margin:0; padding-left:22px; color:var(--ink-soft); font-size:14px; line-height:1.7; }
+
+  /* Two-col compare */
+  .compare{
+    display:grid; grid-template-columns:1fr 1fr; gap:14px;
+    background:var(--bento); border:1px solid var(--line); border-radius:12px; padding:14px;
+  }
+  .compare > div{ padding:8px 10px; }
+  .compare .h{ font-family:var(--serif); font-size:16px; color:var(--steel); margin-bottom:6px; }
+  .compare ul{ margin:0; padding-left:18px; color:var(--ink-soft); font-size:14px; line-height:1.6; }
+
+  /* Diagram boxes */
+  .flow{
+    display:grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap:10px; align-items:stretch;
+  }
+  .flow .box{
+    background:var(--bento); border:1px solid var(--line); border-radius:10px;
+    padding:12px; text-align:center; font-size:13px; color:var(--ink-soft);
+  }
+  .flow .box strong{ display:block; color:var(--ink); font-family:var(--serif); font-size:15px; margin-bottom:4px; }
+  .flow .arrow{ align-self:center; color:var(--ink-soft); text-align:center; }
+  @media (max-width: 900px){ .flow{ grid-template-columns: 1fr; } }
+
+  /* Footer of slide */
+  .slide-foot{
+    margin-top:28px; color:var(--ink-soft); font-size:12px; display:flex; gap:14px;
+    border-top:1px solid var(--line); padding-top:12px;
+  }
+  .slide-foot .src{ font-family:var(--mono); }
+
+  /* Print */
+  @media print{
+    .toolbar{ display:none; }
+    body{ background:white; color:black; }
+    .slide{ display:block !important; page-break-after: always; min-height:auto; padding:24px 20px; }
+    .card, table.t, .compare, .flow .box{ background:white; color:black; border-color:#999; }
+    .card p, ul.tight, ol.tight, .lede, .compare ul, .slide-foot{ color:#333; }
+    .kicker{ color:#666; border-color:#999; }
+    h1.title, h2.section, h3.sub, .card h4{ color:#000; }
+    h1.title em{ color:#a07a30; }
+    .callout{ background:#faf5e8; }
+  }
+
+  [contenteditable="true"]{ outline:none; }
+  [contenteditable="true"]:focus{ box-shadow: inset 0 0 0 1px var(--steel); border-radius:4px; }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="brand">US GAAP · Chapter 1 <small>Conceptual Framework · Overview Deck</small></span>
+  <span class="spacer"></span>
+  <button onclick="goto(0)">Cover</button>
+  <button onclick="prev()">‹ Prev</button>
+  <span class="counter"><span id="cur">1</span> / <span id="tot">14</span></span>
+  <button onclick="next()">Next ›</button>
+  <button onclick="window.print()">🖨 Print / PDF</button>
+  <button onclick="saveDoc()">💾 Save HTML</button>
+</div>
+
+<main class="deck" id="deck" contenteditable="true" spellcheck="false">
+
+<!-- 1 · COVER -->
+<section class="slide active">
+  <span class="kicker">FASB Conceptual Framework · 2026 Reference</span>
+  <h1 class="title">Accounting in the <em>United States</em>:<br/>Framework, Reporting, and the Future</h1>
+  <p class="lede">A presentation that mirrors the seven-topic scope of a standard accounting overview chapter — but rebuilt from US authoritative sources: <strong>FASB SFAC 8</strong>, <strong>ASC Codification</strong>, <strong>AICPA</strong>, <strong>SEC</strong>, <strong>PCAOB</strong>, <strong>ISSB</strong>. No textbook material reused.</p>
+  <div class="grid cols-4">
+    <div class="card accent-crimson"><span class="tag">Topic 1</span><h4>Accounting Overview</h4><p>What accounting is, who regulates it, the public-interest mandate.</p></div>
+    <div class="card accent-steel"><span class="tag">Topic 2</span><h4>Reporting Objective & Assumptions</h4><p>SFAC 8 Ch.1, going concern, reporting entity, periodicity, monetary unit.</p></div>
+    <div class="card accent-gold"><span class="tag">Topic 3</span><h4>Accrual Basis</h4><p>Why GAAP requires accrual — and where cash basis still appears.</p></div>
+    <div class="card accent-moss"><span class="tag">Topic 4</span><h4>Qualitative Characteristics</h4><p>Two fundamental + four enhancing, plus the cost constraint.</p></div>
+    <div class="card accent-violet"><span class="tag">Topic 5</span><h4>Elements of Financial Statements</h4><p>SFAC 8 Ch.4 — assets, liabilities, equity, revenues, expenses, gains, losses.</p></div>
+    <div class="card accent-steel"><span class="tag">Topic 6</span><h4>Sustainability / ESG</h4><p>SEC Climate Rule, ISSB S1/S2, SASB, GRI — current US disclosure stack.</p></div>
+    <div class="card accent-gold"><span class="tag">Topic 7</span><h4>AI in Accounting & Audit</h4><p>AICPA Tech Q&amp;A, PCAOB technology-assisted analyses, SOX implications.</p></div>
+    <div class="card"><span class="tag">Use</span><h4>How to navigate</h4><p>← → keys to step. Click anywhere to edit. 💾 to save your edits as a new HTML.</p></div>
+  </div>
+  <div class="slide-foot"><span class="src">Sources: FASB.org · SEC.gov · AICPA.org · PCAOB.gov · ISSB / IFRS Foundation</span><span>Deck v1 · single-file, offline-ready</span></div>
+</section>
+
+<!-- 2 · TOPIC 1 - OVERVIEW -->
+<section class="slide">
+  <span class="kicker">Topic 1 · Accounting Overview</span>
+  <h2 class="section">Accounting is an <em style="color:var(--gold); font-style:normal;">information system</em> serving capital markets.</h2>
+  <p class="lede">The AICPA defines accounting as <em>"the art of recording, classifying, and summarizing in a significant manner and in terms of money, transactions and events which are, in part at least, of a financial character, and interpreting the results thereof."</em> In practice, the US system is layered: standard-setters write the rules, regulators enforce them, and the profession applies them under a public-interest mandate.</p>
+
+  <div class="grid cols-2">
+    <div class="card accent-crimson tall">
+      <span class="tag">Standard-Setting</span>
+      <h4>FASB — Private-sector authority for US GAAP</h4>
+      <ul class="tight">
+        <li><strong>FASB</strong> (Financial Accounting Standards Board, 1973) issues <strong>ASC</strong> — the single source of authoritative non-governmental GAAP.</li>
+        <li><strong>GASB</strong> sets GAAP for state &amp; local governments.</li>
+        <li><strong>FASAB</strong> sets GAAP for US federal entities.</li>
+        <li>Oversight by <strong>FAF</strong> (Financial Accounting Foundation), trustees appointed independently of preparers.</li>
+      </ul>
+    </div>
+    <div class="card accent-steel tall">
+      <span class="tag">Regulator</span>
+      <h4>SEC — Statutory authority, delegated to FASB</h4>
+      <ul class="tight">
+        <li><strong>Securities Act 1933</strong> + <strong>Exchange Act 1934</strong> give the SEC legal power over accounting for public issuers.</li>
+        <li>SEC formally recognized FASB as the designated standard-setter in <strong>Policy Statement, April 2003</strong> (Sarbanes-Oxley §108).</li>
+        <li>SEC retains rule-making power for disclosure (Reg S-X form &amp; content, Reg S-K narrative).</li>
+        <li>Staff guidance: <strong>SAB</strong> series (e.g., SAB 99 materiality, SAB 101/104 revenue legacy).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid cols-3" style="margin-top:18px">
+    <div class="card accent-gold">
+      <span class="tag">Profession</span>
+      <h4>AICPA</h4>
+      <p>Issues the <strong>Code of Professional Conduct</strong>: Integrity, Objectivity, Independence, Professional Competence &amp; Due Care, Confidentiality, Professional Behavior. Owns the CPA Exam.</p>
+    </div>
+    <div class="card accent-moss">
+      <span class="tag">Audit Regulator</span>
+      <h4>PCAOB</h4>
+      <p>Created by <strong>Sarbanes-Oxley 2002</strong>. Registers, inspects, and disciplines auditors of public companies. Sets PCAOB Auditing Standards (e.g., AS 2201 ICFR).</p>
+    </div>
+    <div class="card accent-violet">
+      <span class="tag">State</span>
+      <h4>State Boards of Accountancy / NASBA</h4>
+      <p>Licensure — the CPA designation is granted by individual states (typically 150 credit-hours + Uniform CPA Exam + 1-2 years experience). NASBA coordinates.</p>
+    </div>
+  </div>
+
+  <div class="slide-foot"><span class="src">Refs: SOX §108 · FASB ASC 105 · AICPA Code ET §0.300</span></div>
+</section>
+
+<!-- 3 · TOPIC 2A - OBJECTIVE -->
+<section class="slide">
+  <span class="kicker">Topic 2 · Reporting Objective</span>
+  <h2 class="section">The objective of general-purpose financial reporting<br/><em style="color:var(--gold);font-style:normal;">decision-usefulness for capital providers</em>.</h2>
+  <p class="lede"><strong>SFAC No. 8, Chapter 1 (OB2)</strong>: <em>"The objective of general purpose financial reporting is to provide financial information about the reporting entity that is useful to existing and potential investors, lenders, and other creditors in making decisions about providing resources to the entity."</em></p>
+
+  <div class="grid cols-2-1">
+    <div>
+      <h3 class="sub">Who is the primary user group?</h3>
+      <table class="t">
+        <thead><tr><th style="width:32%">User class</th><th>What they need</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Equity investors</td><td>Estimate amount, timing, uncertainty of future net cash inflows; assess management's stewardship.</td></tr>
+          <tr><td class="k">Lenders</td><td>Assess ability to repay principal + interest when due; evaluate collateral and covenants.</td></tr>
+          <tr><td class="k">Other creditors</td><td>Suppliers, customers (warranty), employees (pensions) — claims on the entity's resources.</td></tr>
+          <tr><td class="k">Not the primary audience</td><td>Regulators, management itself, the general public — they may use the reports but the standards are not written <em>for</em> them.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout steel">
+        <div class="lbl">Stewardship</div>
+        <strong>OB4 (2018 amendment):</strong> Decision-usefulness explicitly includes assessing how efficiently and effectively management has discharged its responsibilities. This addresses the long-running debate over whether stewardship is a separate objective — under the current framework, it is part of, not separate from, decision-usefulness.
+      </div>
+    </div>
+    <div>
+      <div class="card accent-crimson">
+        <span class="tag">Key Idea</span>
+        <h4>"General purpose"</h4>
+        <p>One set of reports for many users. The entity does not produce tailored statements per user — that would be impossibly expensive. The framework chooses a primary user group and serves them.</p>
+      </div>
+      <div class="card accent-gold" style="margin-top:14px">
+        <span class="tag">Boundary</span>
+        <h4>What financial reporting does <em>not</em> do</h4>
+        <ul class="tight">
+          <li>Does not show entity value directly.</li>
+          <li>Does not predict future cash flows — provides inputs to that prediction.</li>
+          <li>Cannot meet every user's needs.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-foot"><span class="src">SFAC No. 8 Ch.1 OB2–OB11 (2010, amended 2018, 2021)</span></div>
+</section>
+
+<!-- 4 · TOPIC 2B - ASSUMPTIONS -->
+<section class="slide">
+  <span class="kicker">Topic 2 · Basic Assumptions</span>
+  <h2 class="section">Four foundational assumptions under US GAAP.</h2>
+  <p class="lede">SFAC 8 Chapter 3 (formerly SFAC 1, 6) and various ASC sections build the report on these four implicit premises. Violate one, and the entire reporting paradigm shifts (e.g., liquidation basis).</p>
+
+  <div class="flow">
+    <div class="box"><strong>① Economic Entity</strong>Accounts of the entity are kept separate from those of its owners and from any other entity.</div>
+    <div class="arrow">→</div>
+    <div class="box"><strong>② Going Concern</strong>Entity will continue operating for the foreseeable future — at least one year past the issuance date (ASC 205-40).</div>
+    <div class="arrow">→</div>
+    <div class="box"><strong>③ Periodicity</strong>Indefinite life can be carved into discrete periods (quarter, year) for reporting.</div>
+  </div>
+  <div class="flow" style="grid-template-columns: 1fr 1fr 1fr; margin-top:14px">
+    <div class="box"><strong>④ Monetary Unit</strong>Reported in a single, stable monetary unit (USD for US issuers). Implicitly assumes inflation is not severe enough to require restatement.</div>
+    <div class="box" style="background:rgba(210,58,58,.05);border-color:rgba(210,58,58,.35)"><strong>Trigger: Liquidation Basis</strong>If liquidation is imminent and not under entity control (ASC 205-30), switch to liquidation basis: assets at estimated cash proceeds, liabilities at expected settlement, plus accrued costs through liquidation.</div>
+    <div class="box" style="background:rgba(78,161,211,.05);border-color:rgba(78,161,211,.35)"><strong>Going Concern — Management Assessment</strong>Each annual and interim period, management must evaluate whether substantial doubt exists about the entity's ability to continue as a going concern within one year of issuance.</div>
+  </div>
+
+  <div class="callout gold">
+    <div class="lbl">Practitioner note</div>
+    <strong>"Substantial doubt"</strong> = probable that the entity will be unable to meet obligations as they become due. If management's mitigation plans are <em>probable of being effectively implemented</em>, no going-concern uncertainty disclosure is required — but the analysis itself is mandatory.
+  </div>
+
+  <div class="slide-foot"><span class="src">ASC 205-30 · ASC 205-40 · SFAC 8 Ch.3</span></div>
+</section>
+
+<!-- 5 · TOPIC 3 - ACCRUAL VS CASH -->
+<section class="slide">
+  <span class="kicker">Topic 3 · Basis of Accounting</span>
+  <h2 class="section">GAAP requires <em style="color:var(--gold);font-style:normal;">accrual basis</em>. Cash basis is a permitted simplification — for very few.</h2>
+
+  <div class="compare">
+    <div>
+      <div class="h">Accrual Basis (GAAP)</div>
+      <ul>
+        <li>Recognize <strong>revenues when earned</strong> (control of goods/services transferred — ASC 606 five-step model).</li>
+        <li>Recognize <strong>expenses when incurred</strong> (when the underlying obligation arises or asset is consumed).</li>
+        <li>Cash flows are tracked separately on the <strong>Statement of Cash Flows</strong> (ASC 230).</li>
+        <li>Required for: all public registrants, virtually all GAAP-reporting private companies, all entities issuing audited statements.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="h">Cash Basis / Modified Cash / OCBOA</div>
+      <ul>
+        <li>Revenue when cash received; expense when cash paid.</li>
+        <li>Not GAAP — auditors disclose departure or report under <strong>special-purpose framework</strong> (AICPA's <em>FRF for SMEs</em>, tax basis, regulatory basis).</li>
+        <li>IRS allows cash method for many small businesses (Rev. Proc. 2002-28; expanded under TCJA §263A for taxpayers under the <strong>$30M gross receipts</strong> threshold — 2025 indexed).</li>
+        <li>Common: solo professionals, small partnerships, certain nonprofits, sole proprietors.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="sub" style="margin-top:24px">Five-Step Revenue Recognition (ASC 606) — the gold standard of accrual</h3>
+  <div class="flow">
+    <div class="box"><strong>1. Identify Contract</strong>Approval, rights, payment terms, commercial substance, collectibility probable.</div>
+    <div class="box"><strong>2. Identify Performance Obligations</strong>Each distinct good/service the customer benefits from on its own or with readily available resources.</div>
+    <div class="box"><strong>3. Determine Transaction Price</strong>Variable consideration (estimated + constrained), financing component, noncash, consideration payable.</div>
+    <div class="box"><strong>4. Allocate Price to POs</strong>Relative standalone selling price; observable, adjusted-market, expected-cost-plus-margin, or residual.</div>
+    <div class="box"><strong>5. Recognize Revenue</strong>When (or as) control transfers — point in time vs. over time (ASC 606-10-25-27).</div>
+  </div>
+
+  <div class="callout moss">
+    <div class="lbl">Worked example</div>
+    Acme Software signs a 3-year SaaS contract on Dec 1, 20X1: $360k upfront for one obligation (continuous access). Under <strong>accrual</strong>: defer the cash, recognize $10k revenue/month over 36 months ratably (control transfers over time). Under <strong>cash</strong>: book all $360k in Dec 20X1. The accrual version matches revenue to the period of value delivery — exactly what SFAC 8 Ch.1 says investors need.
+  </div>
+
+  <div class="slide-foot"><span class="src">ASC 606 · ASC 230 · IRS §448 · AICPA FRF for SMEs</span></div>
+</section>
+
+<!-- 6 · TOPIC 4 - QC OVERVIEW -->
+<section class="slide">
+  <span class="kicker">Topic 4 · Qualitative Characteristics</span>
+  <h2 class="section">What makes financial information <em style="color:var(--gold);font-style:normal;">useful</em>? Two fundamentals + four enhancers + one constraint.</h2>
+
+  <div class="grid cols-2">
+    <div class="card accent-crimson tall">
+      <span class="tag">Fundamental QC — must both be present</span>
+      <h4>① Relevance</h4>
+      <p style="margin-bottom:10px"><strong>Capable of making a difference</strong> to a user's decision. Has:</p>
+      <ul class="tight">
+        <li><strong>Predictive value</strong> — input to user's own forecasts.</li>
+        <li><strong>Confirmatory value</strong> — confirms or revises prior expectations.</li>
+        <li><strong>Materiality</strong> — entity-specific threshold below which omission/misstatement would not change a user's decision (SAB 99).</li>
+      </ul>
+    </div>
+    <div class="card accent-steel tall">
+      <span class="tag">Fundamental QC — must both be present</span>
+      <h4>② Faithful Representation</h4>
+      <p style="margin-bottom:10px">Information depicts the economic phenomenon it purports to represent. Three sub-attributes (perfectly would have, but always sought):</p>
+      <ul class="tight">
+        <li><strong>Complete</strong> — all info necessary for user understanding.</li>
+        <li><strong>Neutral</strong> — without bias in selection or presentation (with <em>prudence</em>: caution under uncertainty, not deliberate understatement).</li>
+        <li><strong>Free from error</strong> — no errors in process or description (does not mean perfectly accurate in every estimate).</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="sub" style="margin-top:18px">Enhancing Qualitative Characteristics — improve usefulness when fundamentals are met</h3>
+  <div class="grid cols-4">
+    <div class="card accent-gold"><span class="tag">Enhancer ③</span><h4>Comparability</h4><p>Similar things look similar, different things look different — across <em>entities</em> (industry peers) and <em>periods</em> (consistency). Not uniformity.</p></div>
+    <div class="card accent-gold"><span class="tag">Enhancer ④</span><h4>Verifiability</h4><p>Independent observers, using the same method, would reach consensus (not necessarily identical figures, but a reasonable range). Direct (cash count) or indirect (recalc inventory cost flow).</p></div>
+    <div class="card accent-gold"><span class="tag">Enhancer ⑤</span><h4>Timeliness</h4><p>Information available in time to influence decisions. SEC requires 10-K within 60/75/90 days of FY-end depending on filer size; 10-Q within 40/45 days.</p></div>
+    <div class="card accent-gold"><span class="tag">Enhancer ⑥</span><h4>Understandability</h4><p>Classified, characterized, presented clearly. Users are assumed to have <strong>reasonable knowledge</strong> of business and economics and willingness to study with diligence.</p></div>
+  </div>
+
+  <div class="callout">
+    <div class="lbl">The Cost Constraint</div>
+    SFAC 8 QC35: <em>Benefits of providing information must exceed the cost of providing it.</em> This is a pervasive constraint — not a QC. It explains why disclosure thresholds exist, why small entities have scaled requirements, and why FASB performs cost-benefit analysis before issuing each ASU.
+  </div>
+
+  <div class="slide-foot"><span class="src">SFAC 8 Ch.3 QC1–QC39 · SAB 99 (Materiality) · ASC 250 (consistency)</span></div>
+</section>
+
+<!-- 7 · TOPIC 4B - QC APPLIED -->
+<section class="slide">
+  <span class="kicker">Topic 4 · Applying the QCs</span>
+  <h2 class="section">Three working examples — where the QCs collide and how preparers resolve.</h2>
+
+  <div class="grid cols-3">
+    <div class="card accent-crimson tall">
+      <span class="tag">Conflict 1</span>
+      <h4>Relevance vs. Faithful Representation</h4>
+      <p style="margin-bottom:8px"><strong>Scenario:</strong> A mining company holds rare-earth reserves with no active market.</p>
+      <p style="margin-bottom:8px"><strong>Fair value</strong> = highly relevant but hard to verify (poor faithful representation).</p>
+      <p style="margin-bottom:8px"><strong>Cost</strong> = verifiable but stale (poor relevance).</p>
+      <p><strong>Resolution:</strong> GAAP uses cost with impairment testing (ASC 360, 350) — sacrifices some relevance for verifiability. Footnote disclosure restores some relevance.</p>
+    </div>
+    <div class="card accent-steel tall">
+      <span class="tag">Conflict 2</span>
+      <h4>Comparability vs. Faithful Representation</h4>
+      <p style="margin-bottom:8px"><strong>Scenario:</strong> Tech firm changes useful life of capitalized software from 3 to 5 years based on usage data.</p>
+      <p style="margin-bottom:8px">Strictly comparable would freeze the estimate. Faithful representation says reflect new evidence.</p>
+      <p><strong>Resolution:</strong> ASC 250-10 treats this as a <em>change in estimate</em> — prospective application, no retrospective restatement, but disclose the change and its current-period effect.</p>
+    </div>
+    <div class="card accent-gold tall">
+      <span class="tag">Conflict 3</span>
+      <h4>Timeliness vs. Verifiability</h4>
+      <p style="margin-bottom:8px"><strong>Scenario:</strong> Q3 close — a large tort claim filed Sep 28, no expert assessment yet.</p>
+      <p style="margin-bottom:8px">Rushing an estimate harms verifiability; waiting harms timeliness.</p>
+      <p><strong>Resolution:</strong> ASC 450-20 — if loss is <em>reasonably possible</em>, disclose range or fact that no estimate can be made; if <em>probable</em> and estimable, accrue. The framework explicitly permits "no estimate available" as faithful representation.</p>
+    </div>
+  </div>
+
+  <h3 class="sub" style="margin-top:22px">Loss Contingency Probability Ladder — ASC 450-20</h3>
+  <table class="t">
+    <thead><tr><th>Probability</th><th>Accrual</th><th>Disclosure</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Probable + estimable</td><td>Accrue best estimate; if range, accrue lower bound (no point in range more probable).</td><td>Nature + amount (or that an estimate is made).</td></tr>
+      <tr><td class="k">Probable + not estimable</td><td>No accrual.</td><td>Nature + statement that estimate cannot be made.</td></tr>
+      <tr><td class="k">Reasonably possible</td><td>No accrual.</td><td>Nature + estimate of possible loss or range, or statement that no estimate possible.</td></tr>
+      <tr><td class="k">Remote</td><td>No accrual.</td><td>No disclosure (except guarantees per ASC 460).</td></tr>
+    </tbody>
+  </table>
+
+  <div class="slide-foot"><span class="src">ASC 250 · ASC 360 · ASC 450 · SFAC 8 QC17–QC18</span></div>
+</section>
+
+<!-- 8 · TOPIC 5A - ELEMENTS -->
+<section class="slide">
+  <span class="kicker">Topic 5 · Elements (SFAC 8 Ch.4)</span>
+  <h2 class="section">Ten elements — the <em style="color:var(--gold);font-style:normal;">building blocks</em> of the financial statements.</h2>
+  <p class="lede">In December 2021, FASB issued <strong>SFAC No. 8, Chapter 4 — Elements of Financial Statements</strong>, replacing SFAC 6. Definitions were refined to clarify control-based asset definition and present-obligation liability definition.</p>
+
+  <div class="grid cols-2">
+    <div class="card accent-crimson">
+      <span class="tag">Element 1</span>
+      <h4>Assets</h4>
+      <p><strong>Present rights of an entity to an economic benefit.</strong> Three characteristics: (a) the entity has a right to a benefit, (b) the right confers an economic benefit, (c) the right exists at the reporting date. <em>(Prior definition emphasized "probable future" — current definition is sharper and present-tense.)</em></p>
+    </div>
+    <div class="card accent-crimson">
+      <span class="tag">Element 2</span>
+      <h4>Liabilities</h4>
+      <p><strong>A present obligation of an entity to transfer an economic benefit.</strong> Two characteristics: (a) entity is required to transfer an economic benefit, (b) the requirement is a <em>present obligation</em> from a past transaction or event. No more "probable future sacrifice" — emphasizes obligation exists now.</p>
+    </div>
+    <div class="card accent-steel">
+      <span class="tag">Element 3</span>
+      <h4>Equity</h4>
+      <p>Residual: <strong>Assets − Liabilities</strong>. Components per ASC 210/505: contributed capital (par + APIC), retained earnings, treasury stock, AOCI, NCI (ASC 810).</p>
+    </div>
+    <div class="card accent-steel">
+      <span class="tag">Element 4 &amp; 5</span>
+      <h4>Investments by / Distributions to Owners</h4>
+      <p>Direct equity transactions. Not income. Affect equity but bypass the income statement entirely — this is why dividends are not an expense.</p>
+    </div>
+  </div>
+
+  <div class="grid cols-2" style="margin-top:14px">
+    <div class="card accent-gold">
+      <span class="tag">Element 6</span>
+      <h4>Revenues</h4>
+      <p>Inflows or other enhancements of assets, or settlements of liabilities, from delivering or producing goods, rendering services, or other activities that constitute the entity's <em>ongoing major or central operations</em>.</p>
+    </div>
+    <div class="card accent-gold">
+      <span class="tag">Element 7</span>
+      <h4>Expenses</h4>
+      <p>Outflows, using-up of assets, or incurrence of liabilities from the entity's <em>ongoing major or central operations</em>. Matched to revenues (associated cause-and-effect, systematic allocation, or immediate recognition).</p>
+    </div>
+    <div class="card accent-moss">
+      <span class="tag">Element 8</span>
+      <h4>Gains</h4>
+      <p>Increases in equity from <em>peripheral or incidental</em> transactions — sale of a fixed asset, FX remeasurement of a non-functional currency balance, derivative MTM not in OCI.</p>
+    </div>
+    <div class="card accent-moss">
+      <span class="tag">Element 9</span>
+      <h4>Losses</h4>
+      <p>Decreases in equity from <em>peripheral or incidental</em> transactions or from circumstances affecting the entity (e.g., natural disaster write-down, impairment).</p>
+    </div>
+  </div>
+
+  <div class="callout steel" style="margin-top:14px">
+    <div class="lbl">Element 10 · Comprehensive Income</div>
+    Change in equity during a period from transactions and other events from non-owner sources. <strong>CI = Net Income + Other Comprehensive Income (OCI)</strong>. OCI captures items GAAP wants on the balance sheet but not in NI yet: FX translation (ASC 830), AFS debt securities unrealized G/L (ASC 320, post-CECL), pension G/L (ASC 715), cash-flow-hedge effective portion (ASC 815).
+  </div>
+
+  <div class="slide-foot"><span class="src">SFAC No. 8 Ch.4 (Dec 2021) · ASC 210, 220, 505, 810</span></div>
+</section>
+
+<!-- 9 · TOPIC 5B - RECOGNITION & MEASUREMENT -->
+<section class="slide">
+  <span class="kicker">Topic 5 · Recognition &amp; Measurement</span>
+  <h2 class="section">When does an element get on the books, and at what number?</h2>
+
+  <h3 class="sub">Recognition criteria — SFAC 5 (still extant) + standard-specific guidance</h3>
+  <div class="grid cols-4">
+    <div class="card accent-crimson"><span class="tag">①</span><h4>Definition</h4><p>The item meets the definition of an element of financial statements.</p></div>
+    <div class="card accent-crimson"><span class="tag">②</span><h4>Measurability</h4><p>The item has a relevant attribute measurable with sufficient reliability.</p></div>
+    <div class="card accent-crimson"><span class="tag">③</span><h4>Relevance</h4><p>The information about it is capable of making a difference in user decisions.</p></div>
+    <div class="card accent-crimson"><span class="tag">④</span><h4>Faithful Representation</h4><p>The information is complete, neutral, and free from error.</p></div>
+  </div>
+
+  <h3 class="sub" style="margin-top:22px">Five measurement attributes used by US GAAP today</h3>
+  <table class="t">
+    <thead><tr><th style="width:22%">Attribute</th><th style="width:34%">Definition</th><th>Where used (examples)</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Historical Cost</td><td>Cash or cash-equivalent amount paid to acquire the asset at the time of acquisition.</td><td>PP&amp;E (ASC 360), inventory cost (ASC 330), intangibles initial (ASC 350), most liabilities at issuance.</td></tr>
+      <tr><td class="k">Current Cost (Replacement)</td><td>Cash that would be required if the same asset were acquired currently.</td><td>Inventory LCM/LCNRV test (lower of cost vs. net realizable value, ASC 330-10-35); insurance claims (replacement cost endorsements).</td></tr>
+      <tr><td class="k">Net Realizable Value</td><td>Estimated selling price in the ordinary course of business, less reasonably predictable costs of completion, disposal, and transportation.</td><td>Inventory ceiling (ASC 330-10-35-1B); receivables net of allowance.</td></tr>
+      <tr><td class="k">Present Value of Future Cash Flows</td><td>Discounted future cash flows expected from the asset / required for the liability.</td><td>Pensions (ASC 715), leases right-of-use asset/liability (ASC 842), asset retirement obligations (ASC 410-20), impairment Step 2 (legacy).</td></tr>
+      <tr><td class="k">Fair Value</td><td>Price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date (ASC 820).</td><td>Trading &amp; AFS securities (ASC 320, 321, 825), derivatives (ASC 815), business combinations (ASC 805), goodwill impairment (ASC 350).</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout gold">
+    <div class="lbl">Fair Value Hierarchy — ASC 820</div>
+    <strong>Level 1:</strong> Quoted prices in active markets for identical assets/liabilities. <strong>Level 2:</strong> Observable inputs other than Level 1 quotes — similar instruments, observable yield curves, etc. <strong>Level 3:</strong> Unobservable inputs — entity's own assumptions about market participants' assumptions. Level 3 disclosures (roll-forward, sensitivity) are heavily scrutinized.
+  </div>
+
+  <div class="slide-foot"><span class="src">SFAC 5 · ASC 820 (Fair Value) · ASC 330, 360, 410, 715, 805, 815, 842</span></div>
+</section>
+
+<!-- 10 · TOPIC 6A - SUSTAINABILITY OVERVIEW -->
+<section class="slide">
+  <span class="kicker">Topic 6 · Sustainability / ESG Disclosure</span>
+  <h2 class="section">The US ESG disclosure stack — <em style="color:var(--gold);font-style:normal;">fragmented, evolving, partly voluntary</em>.</h2>
+  <p class="lede">Unlike financial reporting (one stack: FASB/ASC), sustainability disclosure in the US blends SEC mandatory rules, voluntary global frameworks, and state-level requirements. As of 2026, the picture is still settling.</p>
+
+  <div class="grid cols-2">
+    <div class="card accent-crimson tall">
+      <span class="tag">Mandatory — SEC</span>
+      <h4>SEC Climate-Related Disclosures (March 2024)</h4>
+      <ul class="tight">
+        <li>Final rule adopted March 6, 2024 — codified in <strong>Reg S-K Items 1500–1508</strong> and <strong>Reg S-X Article 14</strong>.</li>
+        <li>Required: <strong>Scope 1 + Scope 2 GHG</strong> emissions for LAFs and AFs (when material); climate risks &amp; their material impacts; transition plans; governance &amp; risk management.</li>
+        <li><strong>Scope 3</strong> dropped from final rule (was in proposal).</li>
+        <li>SEC <strong>stayed</strong> the rule April 2024 pending litigation (5th, 8th Circuit consolidations).</li>
+        <li>Phased compliance originally: LAF FY2025 → AF FY2026 → SRC/EGC FY2027 (now uncertain).</li>
+      </ul>
+    </div>
+    <div class="card accent-steel tall">
+      <span class="tag">Mandatory — State</span>
+      <h4>California SB 253 &amp; SB 261</h4>
+      <ul class="tight">
+        <li><strong>SB 253</strong> — Climate Corporate Data Accountability Act: companies doing business in CA with revenue &gt; $1B must disclose <strong>Scope 1, 2, AND 3</strong> emissions annually, with limited / reasonable assurance.</li>
+        <li><strong>SB 261</strong> — Climate-Related Financial Risk Act: revenue &gt; $500M must report biennial climate financial risk, aligned with TCFD/ISSB.</li>
+        <li>First reports due <strong>2026</strong> (Scope 1+2) and <strong>2027</strong> (Scope 3) after enforcement timeline adjustments.</li>
+        <li>CARB rule-making in progress — administered by California Air Resources Board.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid cols-3" style="margin-top:14px">
+    <div class="card accent-gold">
+      <span class="tag">Voluntary global</span>
+      <h4>ISSB / IFRS S1 &amp; S2</h4>
+      <p>Issued June 2023 by the International Sustainability Standards Board. <strong>S1</strong>: general sustainability-related financial info. <strong>S2</strong>: climate-specific. Adopted/being adopted in 20+ jurisdictions; <em>not</em> mandatory in the US, but US multinationals subject in subsidiaries abroad.</p>
+    </div>
+    <div class="card accent-moss">
+      <span class="tag">Voluntary US-origin</span>
+      <h4>SASB Standards</h4>
+      <p>Industry-specific (77 industries) financial-materiality lens. Now consolidated under <strong>ISSB</strong> via IFRS Foundation (2022 merger of VRF). Heavy US investor uptake; SASB metrics appear in many 10-K Item 1A and proxy statements.</p>
+    </div>
+    <div class="card accent-violet">
+      <span class="tag">Voluntary global</span>
+      <h4>GRI Standards</h4>
+      <p><em>Impact materiality</em> lens — what the entity does to the world, not just what the world does to the entity. Complements (rather than competes with) financial-materiality frameworks. Widely used in standalone sustainability reports.</p>
+    </div>
+  </div>
+
+  <div class="slide-foot"><span class="src">17 CFR 210, 229, 232, 239, 249 (SEC final rule) · CA SB 253/261 · IFRS S1/S2 · SASB · GRI</span></div>
+</section>
+
+<!-- 11 · TOPIC 6B - SUSTAINABILITY DEEP DIVE -->
+<section class="slide">
+  <span class="kicker">Topic 6 · Materiality, Pillars, Assurance</span>
+  <h2 class="section">How sustainability information enters the financial reporting orbit.</h2>
+
+  <div class="grid cols-2">
+    <div>
+      <h3 class="sub">Single vs. Double Materiality</h3>
+      <div class="compare">
+        <div>
+          <div class="h">Single (Financial) Materiality</div>
+          <ul>
+            <li>SEC, ISSB, SASB lens.</li>
+            <li>"How could the issue affect enterprise value / cash flows?"</li>
+            <li>Investor-facing.</li>
+            <li>Maps to SFAC 8 relevance + materiality (SAB 99).</li>
+          </ul>
+        </div>
+        <div>
+          <div class="h">Double Materiality</div>
+          <ul>
+            <li>EU CSRD / ESRS, GRI lens.</li>
+            <li>Includes <em>impact materiality</em>: company's effects on people/planet, regardless of financial feedback loop.</li>
+            <li>Broader stakeholder audience.</li>
+            <li>Not currently US regulatory standard.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 class="sub">TCFD Four Pillars — embedded in ISSB &amp; CA SB 261</h3>
+      <ul class="tight">
+        <li><strong>Governance</strong> — board oversight, management's role, committee structure.</li>
+        <li><strong>Strategy</strong> — actual &amp; potential impacts on businesses, strategy, financial planning; scenario analysis (e.g., 2°C, 1.5°C).</li>
+        <li><strong>Risk Management</strong> — identification, assessment, integration with overall ERM.</li>
+        <li><strong>Metrics &amp; Targets</strong> — GHG emissions (Scope 1/2/3), other climate-related metrics; targets and progress.</li>
+      </ul>
+
+      <div class="callout moss" style="margin-top:14px">
+        <div class="lbl">Assurance Trajectory</div>
+        US: <strong>limited assurance</strong> by AICPA member CPAs under <strong>SSAE 18</strong> (engagements under AT-C 105/205, 215). CA SB 253 requires limited assurance from FY2026 reports → reasonable assurance from 2030. ISSA 5000 (IAASB, 2024 final) becoming the global benchmark.
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sub" style="margin-top:22px">Four core ESG content elements expected across frameworks</h3>
+  <div class="grid cols-4">
+    <div class="card accent-crimson"><span class="tag">A</span><h4>Governance</h4><p>Board oversight, accountability lines, climate competency, executive compensation links.</p></div>
+    <div class="card accent-steel"><span class="tag">B</span><h4>Strategy</h4><p>Material risks &amp; opportunities, time horizons (short/medium/long), scenario analysis, capital allocation impact.</p></div>
+    <div class="card accent-gold"><span class="tag">C</span><h4>Risk &amp; Opportunity Management</h4><p>Identification process, prioritization criteria, integration into ERM, physical &amp; transition risks.</p></div>
+    <div class="card accent-moss"><span class="tag">D</span><h4>Metrics &amp; Targets</h4><p>Cross-industry metrics (GHG, energy, water), industry-specific SASB metrics, internal targets &amp; progress.</p></div>
+  </div>
+
+  <div class="slide-foot"><span class="src">TCFD Final Report 2017 · ISSB S1/S2 · SSAE 18 / AT-C · ISSA 5000</span></div>
+</section>
+
+<!-- 12 · TOPIC 7 - AI IN ACCOUNTING -->
+<section class="slide">
+  <span class="kicker">Topic 7 · AI in Accounting &amp; Audit</span>
+  <h2 class="section">AI is now a <em style="color:var(--gold);font-style:normal;">tool in the workpapers</em> — not an exotic add-on.</h2>
+  <p class="lede">As of 2026, AI is used across the financial reporting lifecycle. The professional guidance has caught up to the practice in three places: AICPA Technical Q&amp;A, AICPA SOC for AI guidance, and PCAOB inspection focus.</p>
+
+  <div class="grid cols-2">
+    <div class="card accent-crimson tall">
+      <span class="tag">Preparer side — Accounting</span>
+      <h4>Where AI shows up in the books</h4>
+      <ul class="tight">
+        <li><strong>Contract review (ASC 606)</strong> — LLMs extract performance obligations, variable consideration, financing components from contracts at scale.</li>
+        <li><strong>Lease ingestion (ASC 842)</strong> — auto-classify finance vs. operating, extract discount-rate-relevant terms.</li>
+        <li><strong>Expected credit losses (ASC 326)</strong> — ML models for CECL on receivables / loan portfolios; sensitive to validation.</li>
+        <li><strong>Goodwill / asset impairment (ASC 350, 360)</strong> — AI-driven trigger detection from external signals.</li>
+        <li><strong>Forecasting</strong> — going-concern (ASC 205-40), management's discussion of liquidity (MD&amp;A).</li>
+      </ul>
+    </div>
+    <div class="card accent-steel tall">
+      <span class="tag">Auditor side — Assurance</span>
+      <h4>Where AI shows up in the audit</h4>
+      <ul class="tight">
+        <li><strong>Risk assessment</strong> — anomaly detection across full population of journal entries (replaces sampling at the prelim stage).</li>
+        <li><strong>Confirmations</strong> — extraction &amp; matching of confirmation responses at scale.</li>
+        <li><strong>Substantive procedures</strong> — full-population recomputation of revenue, payroll, depreciation.</li>
+        <li><strong>Internal control testing</strong> — process-mining tools reconstruct actual control execution from log data.</li>
+        <li><strong>ESG assurance</strong> — extraction of emissions data from utility bills, fuel receipts, travel logs.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid cols-3" style="margin-top:14px">
+    <div class="card accent-gold">
+      <span class="tag">AICPA</span>
+      <h4>Professional ethics &amp; tools</h4>
+      <p><strong>ET §1.295.040</strong> — non-attest services including AI tool deployment to an attest client raise independence concerns. Practitioner must not perform management functions, design systems of internal control, etc. AICPA SOC for AI examinations (2024 conceptual framework) emerging.</p>
+    </div>
+    <div class="card accent-moss">
+      <span class="tag">PCAOB</span>
+      <h4>Technology-Assisted Analyses</h4>
+      <p>PCAOB <strong>Spotlight on Auditor Use of Technology</strong> (multiple editions); 2024 staff observations on TAAs. Auditor must still meet AS 1105 sufficient appropriate audit evidence — AI output requires <em>evaluation</em>, not blind acceptance. Documentation of model, inputs, validation, and human review is mandatory.</p>
+    </div>
+    <div class="card accent-violet">
+      <span class="tag">SEC / SOX</span>
+      <h4>ICFR over AI-generated numbers</h4>
+      <p>If AI feeds figures into the financial statements (e.g., CECL allowance), management's <strong>SOX 404</strong> assessment must cover the AI as part of ICFR: input controls, model governance, output review, change management. Auditor's AS 2201 ICFR audit must follow.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="lbl">Five requirements that show up in every AI-in-accounting framework</div>
+    <strong>① Data quality</strong> — garbage in, garbage out, plus bias control. <strong>② Model governance</strong> — version control, change approval, ownership. <strong>③ Validation</strong> — independent technical review, back-testing, challenger models. <strong>④ Explainability</strong> — output traceable to inputs; users can understand <em>why</em>. <strong>⑤ Human oversight</strong> — accountable person reviews, signs off, overrides when warranted.
+  </div>
+
+  <div class="slide-foot"><span class="src">AICPA Code ET §1.295 · PCAOB Spotlight (TAAs) · SEC Reg S-K Item 308 · SOX §404 · NIST AI RMF 1.0</span></div>
+</section>
+
+<!-- 13 · SYNTHESIS -->
+<section class="slide">
+  <span class="kicker">Synthesis · How the seven topics fit together</span>
+  <h2 class="section">From <em style="color:var(--gold);font-style:normal;">objective</em> to <em style="color:var(--gold);font-style:normal;">recognition</em> to <em style="color:var(--gold);font-style:normal;">disclosure</em>.</h2>
+
+  <div class="flow" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="box" style="background:rgba(210,58,58,.08); border-color:rgba(210,58,58,.4)">
+      <strong>The Why</strong>
+      Decision-usefulness for investors, lenders, other creditors — including stewardship assessment (SFAC 8 Ch.1).
+    </div>
+    <div class="box" style="background:rgba(78,161,211,.08); border-color:rgba(78,161,211,.4)">
+      <strong>The Lens</strong>
+      Two fundamental QCs (Relevance + Faithful Rep) filter information; four enhancers improve it; cost constrains it.
+    </div>
+    <div class="box" style="background:rgba(212,169,86,.08); border-color:rgba(212,169,86,.4)">
+      <strong>The Stuff</strong>
+      Ten elements (SFAC 8 Ch.4) categorize what is reported; recognition + measurement decide when and how much.
+    </div>
+  </div>
+  <div class="flow" style="grid-template-columns: 1fr 1fr 1fr; margin-top:14px">
+    <div class="box" style="background:rgba(106,177,126,.08); border-color:rgba(106,177,126,.4)">
+      <strong>The Discipline</strong>
+      Accrual basis, going concern, periodicity, economic entity, monetary unit assumptions hold the structure together.
+    </div>
+    <div class="box" style="background:rgba(176,131,214,.08); border-color:rgba(176,131,214,.4)">
+      <strong>The Expansion</strong>
+      Sustainability info extends financial reporting into climate/social/governance — SEC + state + global frameworks.
+    </div>
+    <div class="box" style="background:rgba(231,231,231,.04); border-color:rgba(231,231,231,.25)">
+      <strong>The Tool</strong>
+      AI shifts how preparers compute and auditors verify — but human accountability, ICFR, and professional ethics still apply.
+    </div>
+  </div>
+
+  <h3 class="sub" style="margin-top:26px">Three sentences worth memorizing</h3>
+  <ol class="tight" style="font-size:16px; line-height:1.85;">
+    <li><strong>"Decision-usefulness, not stewardship in isolation"</strong> — the modern US framework treats them as one objective, with stewardship a component.</li>
+    <li><strong>"Relevance + Faithful Representation are both required"</strong> — neither alone is sufficient; enhancers cannot fix a deficit in either.</li>
+    <li><strong>"GAAP is what FASB says it is, under SEC delegation, enforced by PCAOB-registered auditors, applied by AICPA-credentialed CPAs."</strong> The whole US apparatus in one sentence.</li>
+  </ol>
+
+  <div class="slide-foot"><span class="src">SFAC 8 · ASC 105 · SOX §108 · SEC Policy Statement (April 2003)</span></div>
+</section>
+
+<!-- 14 · APPENDIX / SELF-CHECK -->
+<section class="slide">
+  <span class="kicker">Appendix · Quick self-check &amp; sources</span>
+  <h2 class="section">Ten one-line checks. If you can answer all, you've got the chapter.</h2>
+
+  <div class="grid cols-2">
+    <div>
+      <ol class="tight" style="font-size:15px; line-height:2.0;">
+        <li>Who designates the FASB as the standard-setter for US public issuers, and under what authority?</li>
+        <li>Name the four basic assumptions and the trigger that retires the going-concern assumption.</li>
+        <li>Why is cash basis disallowed for SEC registrants?</li>
+        <li>Two fundamental QCs and three sub-attributes of faithful representation?</li>
+        <li>Cite the SFAC reference for "elements" and the year it was issued.</li>
+      </ol>
+    </div>
+    <div>
+      <ol class="tight" start="6" style="font-size:15px; line-height:2.0;">
+        <li>Five measurement attributes in US GAAP, with one example use of each.</li>
+        <li>Three levels of the fair-value hierarchy (ASC 820) and which inputs are most scrutinized?</li>
+        <li>What is the difference between Scope 1, 2, and 3 emissions, and which one did SEC drop from the final 2024 rule?</li>
+        <li>Single vs. double materiality — which lens does ISSB apply, and which does GRI apply?</li>
+        <li>Five requirements common to AI governance frameworks in financial reporting.</li>
+      </ol>
+    </div>
+  </div>
+
+  <h3 class="sub" style="margin-top:22px">Source map (no textbook used)</h3>
+  <table class="t">
+    <thead><tr><th>Topic</th><th>Primary US authoritative source</th></tr></thead>
+    <tbody>
+      <tr><td class="k">1 · Overview</td><td>SOX §108 (2002); SEC Policy Statement (April 2003); AICPA Code of Professional Conduct ET §0.300; PCAOB enabling sections of SOX.</td></tr>
+      <tr><td class="k">2 · Objective &amp; Assumptions</td><td>SFAC No. 8, Ch.1 (2010, amended 2018, 2021), Ch.3 (Aug 2021); ASC 205-30, 205-40.</td></tr>
+      <tr><td class="k">3 · Accrual</td><td>ASC 606 (2014); ASC 230; IRS §448 / Rev. Proc. 2002-28; AICPA FRF for SMEs.</td></tr>
+      <tr><td class="k">4 · Qualitative Characteristics</td><td>SFAC No. 8, Ch.3; SAB 99 (Materiality, 1999); ASC 250 (Accounting Changes &amp; Error Corrections).</td></tr>
+      <tr><td class="k">5 · Elements / Recognition / Measurement</td><td>SFAC No. 8, Ch.4 (Dec 2021); SFAC No. 5; ASC 820; ASC 330, 360, 410, 715, 805, 815, 842.</td></tr>
+      <tr><td class="k">6 · Sustainability</td><td>17 CFR Parts 210, 229, 232, 239, 249 (SEC Climate Rule, March 2024); CA SB 253 / SB 261; IFRS S1 / S2 (ISSB, June 2023); SASB Standards; GRI Standards; TCFD Final Report (2017).</td></tr>
+      <tr><td class="k">7 · AI</td><td>AICPA Code ET §1.295; AICPA SOC for AI (2024); PCAOB Spotlight on Auditor Use of Technology; SEC Reg S-K Item 308 (ICFR); SOX §404; NIST AI RMF 1.0.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout steel" style="margin-top:18px">
+    <div class="lbl">Editing tip</div>
+    The entire deck is <strong>editable</strong> — click into any text and rewrite. When you save with 💾 the current edited state is written out as a new HTML file. Use this as a teaching deck or a personal note template.
+  </div>
+
+  <div class="slide-foot"><span class="src">Deck v1 · 14 slides · single-file · 100% US-sourced</span><span>End of presentation</span></div>
+</section>
+
+</main>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  document.getElementById('tot').textContent = slides.length;
+  let idx = 0;
+  function render(){
+    slides.forEach((s,i)=> s.classList.toggle('active', i===idx));
+    document.getElementById('cur').textContent = (idx+1);
+    window.scrollTo({top:0, behavior:'instant'});
+  }
+  function goto(i){ idx = Math.max(0, Math.min(slides.length-1, i)); render(); }
+  function next(){ goto(idx+1); }
+  function prev(){ goto(idx-1); }
+  document.addEventListener('keydown', (e)=>{
+    if (e.target && e.target.isContentEditable && e.target !== document.body) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); next(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+    else if (e.key === 'Home') { goto(0); }
+    else if (e.key === 'End') { goto(slides.length-1); }
+  });
+  function saveDoc(){
+    const html = '<!doctype html>\n' + document.documentElement.outerHTML;
+    const blob = new Blob([html], {type:'text/html;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const ts = new Date().toISOString().slice(0,10);
+    a.href = url;
+    a.download = `US-GAAP-Chapter1-Overview-Presentation-${ts}.html`;
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a); URL.revokeObjectURL(url);
+  }
+  render();
+</script>
+</body>
+</html>

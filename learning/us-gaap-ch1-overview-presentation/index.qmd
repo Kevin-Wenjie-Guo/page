@@ -1,0 +1,637 @@
+---
+title: "US GAAP · Chapter 1 · Overview (Presentation)"
+author: "Kevin Guo"
+date: "2026-06-18"
+categories: [CPA, accounting, US-GAAP, English]
+description: "A presentation-style walkthrough of US GAAP Chapter 1 — conceptual framework and overall principles."
+---
+::: {.callout-note appearance="simple"}
+📄 **Also available as:** [HTML view →](us-gaap-ch1-overview-presentation.html)
+:::
+FASB Conceptual Framework · 2026 Reference
+
+Accounting in the *United States*:
+Framework, Reporting, and the Future
+====================================
+
+A presentation that mirrors the seven-topic scope of a standard accounting overview chapter — but rebuilt from US authoritative sources: **FASB SFAC 8**, **ASC Codification**, **AICPA**, **SEC**, **PCAOB**, **ISSB**. No textbook material reused.
+
+Topic 1
+
+#### Accounting Overview
+
+What accounting is, who regulates it, the public-interest mandate.
+
+Topic 2
+
+#### Reporting Objective & Assumptions
+
+SFAC 8 Ch.1, going concern, reporting entity, periodicity, monetary unit.
+
+Topic 3
+
+#### Accrual Basis
+
+Why GAAP requires accrual — and where cash basis still appears.
+
+Topic 4
+
+#### Qualitative Characteristics
+
+Two fundamental + four enhancing, plus the cost constraint.
+
+Topic 5
+
+#### Elements of Financial Statements
+
+SFAC 8 Ch.4 — assets, liabilities, equity, revenues, expenses, gains, losses.
+
+Topic 6
+
+#### Sustainability / ESG
+
+SEC Climate Rule, ISSB S1/S2, SASB, GRI — current US disclosure stack.
+
+Topic 7
+
+#### AI in Accounting & Audit
+
+AICPA Tech Q&A, PCAOB technology-assisted analyses, SOX implications.
+
+Use
+
+#### How to navigate
+
+← → keys to step. Click anywhere to edit. 💾 to save your edits as a new HTML.
+
+Sources: FASB.org · SEC.gov · AICPA.org · PCAOB.gov · ISSB / IFRS FoundationDeck v1 · single-file, offline-ready
+
+Topic 1 · Accounting Overview
+
+## Accounting is an *information system* serving capital markets.
+
+The AICPA defines accounting as *"the art of recording, classifying, and summarizing in a significant manner and in terms of money, transactions and events which are, in part at least, of a financial character, and interpreting the results thereof."* In practice, the US system is layered: standard-setters write the rules, regulators enforce them, and the profession applies them under a public-interest mandate.
+
+Standard-Setting
+
+#### FASB — Private-sector authority for US GAAP
+
+- **FASB** (Financial Accounting Standards Board, 1973) issues **ASC** — the single source of authoritative non-governmental GAAP.
+- **GASB** sets GAAP for state & local governments.
+- **FASAB** sets GAAP for US federal entities.
+- Oversight by **FAF** (Financial Accounting Foundation), trustees appointed independently of preparers.
+
+Regulator
+
+#### SEC — Statutory authority, delegated to FASB
+
+- **Securities Act 1933** + **Exchange Act 1934** give the SEC legal power over accounting for public issuers.
+- SEC formally recognized FASB as the designated standard-setter in **Policy Statement, April 2003** (Sarbanes-Oxley §108).
+- SEC retains rule-making power for disclosure (Reg S-X form & content, Reg S-K narrative).
+- Staff guidance: **SAB** series (e.g., SAB 99 materiality, SAB 101/104 revenue legacy).
+
+Profession
+
+#### AICPA
+
+Issues the **Code of Professional Conduct**: Integrity, Objectivity, Independence, Professional Competence & Due Care, Confidentiality, Professional Behavior. Owns the CPA Exam.
+
+Audit Regulator
+
+#### PCAOB
+
+Created by **Sarbanes-Oxley 2002**. Registers, inspects, and disciplines auditors of public companies. Sets PCAOB Auditing Standards (e.g., AS 2201 ICFR).
+
+State
+
+#### State Boards of Accountancy / NASBA
+
+Licensure — the CPA designation is granted by individual states (typically 150 credit-hours + Uniform CPA Exam + 1-2 years experience). NASBA coordinates.
+
+Refs: SOX §108 · FASB ASC 105 · AICPA Code ET §0.300
+
+Topic 2 · Reporting Objective
+
+The objective of general-purpose financial reporting
+*decision-usefulness for capital providers*.
+-----------------------------------------------------
+
+**SFAC No. 8, Chapter 1 (OB2)**: *"The objective of general purpose financial reporting is to provide financial information about the reporting entity that is useful to existing and potential investors, lenders, and other creditors in making decisions about providing resources to the entity."*
+
+### Who is the primary user group?
+
+| User class | What they need |
+|----|----|
+| Equity investors | Estimate amount, timing, uncertainty of future net cash inflows; assess management's stewardship. |
+| Lenders | Assess ability to repay principal + interest when due; evaluate collateral and covenants. |
+| Other creditors | Suppliers, customers (warranty), employees (pensions) — claims on the entity's resources. |
+| Not the primary audience | Regulators, management itself, the general public — they may use the reports but the standards are not written *for* them. |
+
+Stewardship
+
+**OB4 (2018 amendment):** Decision-usefulness explicitly includes assessing how efficiently and effectively management has discharged its responsibilities. This addresses the long-running debate over whether stewardship is a separate objective — under the current framework, it is part of, not separate from, decision-usefulness.
+
+Key Idea
+
+#### "General purpose"
+
+One set of reports for many users. The entity does not produce tailored statements per user — that would be impossibly expensive. The framework chooses a primary user group and serves them.
+
+Boundary
+
+#### What financial reporting does *not* do
+
+- Does not show entity value directly.
+- Does not predict future cash flows — provides inputs to that prediction.
+- Cannot meet every user's needs.
+
+SFAC No. 8 Ch.1 OB2–OB11 (2010, amended 2018, 2021)
+
+Topic 2 · Basic Assumptions
+
+## Four foundational assumptions under US GAAP.
+
+SFAC 8 Chapter 3 (formerly SFAC 1, 6) and various ASC sections build the report on these four implicit premises. Violate one, and the entire reporting paradigm shifts (e.g., liquidation basis).
+
+**① Economic Entity**Accounts of the entity are kept separate from those of its owners and from any other entity.
+
+→
+
+**② Going Concern**Entity will continue operating for the foreseeable future — at least one year past the issuance date (ASC 205-40).
+
+→
+
+**③ Periodicity**Indefinite life can be carved into discrete periods (quarter, year) for reporting.
+
+**④ Monetary Unit**Reported in a single, stable monetary unit (USD for US issuers). Implicitly assumes inflation is not severe enough to require restatement.
+
+**Trigger: Liquidation Basis**If liquidation is imminent and not under entity control (ASC 205-30), switch to liquidation basis: assets at estimated cash proceeds, liabilities at expected settlement, plus accrued costs through liquidation.
+
+**Going Concern — Management Assessment**Each annual and interim period, management must evaluate whether substantial doubt exists about the entity's ability to continue as a going concern within one year of issuance.
+
+Practitioner note
+
+**"Substantial doubt"** = probable that the entity will be unable to meet obligations as they become due. If management's mitigation plans are *probable of being effectively implemented*, no going-concern uncertainty disclosure is required — but the analysis itself is mandatory.
+
+ASC 205-30 · ASC 205-40 · SFAC 8 Ch.3
+
+Topic 3 · Basis of Accounting
+
+## GAAP requires *accrual basis*. Cash basis is a permitted simplification — for very few.
+
+Accrual Basis (GAAP)
+
+- Recognize **revenues when earned** (control of goods/services transferred — ASC 606 five-step model).
+- Recognize **expenses when incurred** (when the underlying obligation arises or asset is consumed).
+- Cash flows are tracked separately on the **Statement of Cash Flows** (ASC 230).
+- Required for: all public registrants, virtually all GAAP-reporting private companies, all entities issuing audited statements.
+
+Cash Basis / Modified Cash / OCBOA
+
+- Revenue when cash received; expense when cash paid.
+- Not GAAP — auditors disclose departure or report under **special-purpose framework** (AICPA's *FRF for SMEs*, tax basis, regulatory basis).
+- IRS allows cash method for many small businesses (Rev. Proc. 2002-28; expanded under TCJA §263A for taxpayers under the **$30M gross receipts** threshold — 2025 indexed).
+- Common: solo professionals, small partnerships, certain nonprofits, sole proprietors.
+
+### Five-Step Revenue Recognition (ASC 606) — the gold standard of accrual
+
+**1. Identify Contract**Approval, rights, payment terms, commercial substance, collectibility probable.
+
+**2. Identify Performance Obligations**Each distinct good/service the customer benefits from on its own or with readily available resources.
+
+**3. Determine Transaction Price**Variable consideration (estimated + constrained), financing component, noncash, consideration payable.
+
+**4. Allocate Price to POs**Relative standalone selling price; observable, adjusted-market, expected-cost-plus-margin, or residual.
+
+**5. Recognize Revenue**When (or as) control transfers — point in time vs. over time (ASC 606-10-25-27).
+
+Worked example
+
+Acme Software signs a 3-year SaaS contract on Dec 1, 20X1: $360k upfront for one obligation (continuous access). Under **accrual**: defer the cash, recognize $10k revenue/month over 36 months ratably (control transfers over time). Under **cash**: book all $360k in Dec 20X1. The accrual version matches revenue to the period of value delivery — exactly what SFAC 8 Ch.1 says investors need.
+
+ASC 606 · ASC 230 · IRS §448 · AICPA FRF for SMEs
+
+Topic 4 · Qualitative Characteristics
+
+## What makes financial information *useful*? Two fundamentals + four enhancers + one constraint.
+
+Fundamental QC — must both be present
+
+#### ① Relevance
+
+**Capable of making a difference** to a user's decision. Has:
+
+- **Predictive value** — input to user's own forecasts.
+- **Confirmatory value** — confirms or revises prior expectations.
+- **Materiality** — entity-specific threshold below which omission/misstatement would not change a user's decision (SAB 99).
+
+Fundamental QC — must both be present
+
+#### ② Faithful Representation
+
+Information depicts the economic phenomenon it purports to represent. Three sub-attributes (perfectly would have, but always sought):
+
+- **Complete** — all info necessary for user understanding.
+- **Neutral** — without bias in selection or presentation (with *prudence*: caution under uncertainty, not deliberate understatement).
+- **Free from error** — no errors in process or description (does not mean perfectly accurate in every estimate).
+
+### Enhancing Qualitative Characteristics — improve usefulness when fundamentals are met
+
+Enhancer ③
+
+#### Comparability
+
+Similar things look similar, different things look different — across *entities* (industry peers) and *periods* (consistency). Not uniformity.
+
+Enhancer ④
+
+#### Verifiability
+
+Independent observers, using the same method, would reach consensus (not necessarily identical figures, but a reasonable range). Direct (cash count) or indirect (recalc inventory cost flow).
+
+Enhancer ⑤
+
+#### Timeliness
+
+Information available in time to influence decisions. SEC requires 10-K within 60/75/90 days of FY-end depending on filer size; 10-Q within 40/45 days.
+
+Enhancer ⑥
+
+#### Understandability
+
+Classified, characterized, presented clearly. Users are assumed to have **reasonable knowledge** of business and economics and willingness to study with diligence.
+
+The Cost Constraint
+
+SFAC 8 QC35: *Benefits of providing information must exceed the cost of providing it.* This is a pervasive constraint — not a QC. It explains why disclosure thresholds exist, why small entities have scaled requirements, and why FASB performs cost-benefit analysis before issuing each ASU.
+
+SFAC 8 Ch.3 QC1–QC39 · SAB 99 (Materiality) · ASC 250 (consistency)
+
+Topic 4 · Applying the QCs
+
+## Three working examples — where the QCs collide and how preparers resolve.
+
+Conflict 1
+
+#### Relevance vs. Faithful Representation
+
+**Scenario:** A mining company holds rare-earth reserves with no active market.
+
+**Fair value** = highly relevant but hard to verify (poor faithful representation).
+
+**Cost** = verifiable but stale (poor relevance).
+
+**Resolution:** GAAP uses cost with impairment testing (ASC 360, 350) — sacrifices some relevance for verifiability. Footnote disclosure restores some relevance.
+
+Conflict 2
+
+#### Comparability vs. Faithful Representation
+
+**Scenario:** Tech firm changes useful life of capitalized software from 3 to 5 years based on usage data.
+
+Strictly comparable would freeze the estimate. Faithful representation says reflect new evidence.
+
+**Resolution:** ASC 250-10 treats this as a *change in estimate* — prospective application, no retrospective restatement, but disclose the change and its current-period effect.
+
+Conflict 3
+
+#### Timeliness vs. Verifiability
+
+**Scenario:** Q3 close — a large tort claim filed Sep 28, no expert assessment yet.
+
+Rushing an estimate harms verifiability; waiting harms timeliness.
+
+**Resolution:** ASC 450-20 — if loss is *reasonably possible*, disclose range or fact that no estimate can be made; if *probable* and estimable, accrue. The framework explicitly permits "no estimate available" as faithful representation.
+
+### Loss Contingency Probability Ladder — ASC 450-20
+
+| Probability | Accrual | Disclosure |
+|----|----|----|
+| Probable + estimable | Accrue best estimate; if range, accrue lower bound (no point in range more probable). | Nature + amount (or that an estimate is made). |
+| Probable + not estimable | No accrual. | Nature + statement that estimate cannot be made. |
+| Reasonably possible | No accrual. | Nature + estimate of possible loss or range, or statement that no estimate possible. |
+| Remote | No accrual. | No disclosure (except guarantees per ASC 460). |
+
+ASC 250 · ASC 360 · ASC 450 · SFAC 8 QC17–QC18
+
+Topic 5 · Elements (SFAC 8 Ch.4)
+
+## Ten elements — the *building blocks* of the financial statements.
+
+In December 2021, FASB issued **SFAC No. 8, Chapter 4 — Elements of Financial Statements**, replacing SFAC 6. Definitions were refined to clarify control-based asset definition and present-obligation liability definition.
+
+Element 1
+
+#### Assets
+
+**Present rights of an entity to an economic benefit.** Three characteristics: (a) the entity has a right to a benefit, (b) the right confers an economic benefit, (c) the right exists at the reporting date. *(Prior definition emphasized "probable future" — current definition is sharper and present-tense.)*
+
+Element 2
+
+#### Liabilities
+
+**A present obligation of an entity to transfer an economic benefit.** Two characteristics: (a) entity is required to transfer an economic benefit, (b) the requirement is a *present obligation* from a past transaction or event. No more "probable future sacrifice" — emphasizes obligation exists now.
+
+Element 3
+
+#### Equity
+
+Residual: **Assets − Liabilities**. Components per ASC 210/505: contributed capital (par + APIC), retained earnings, treasury stock, AOCI, NCI (ASC 810).
+
+Element 4 & 5
+
+#### Investments by / Distributions to Owners
+
+Direct equity transactions. Not income. Affect equity but bypass the income statement entirely — this is why dividends are not an expense.
+
+Element 6
+
+#### Revenues
+
+Inflows or other enhancements of assets, or settlements of liabilities, from delivering or producing goods, rendering services, or other activities that constitute the entity's *ongoing major or central operations*.
+
+Element 7
+
+#### Expenses
+
+Outflows, using-up of assets, or incurrence of liabilities from the entity's *ongoing major or central operations*. Matched to revenues (associated cause-and-effect, systematic allocation, or immediate recognition).
+
+Element 8
+
+#### Gains
+
+Increases in equity from *peripheral or incidental* transactions — sale of a fixed asset, FX remeasurement of a non-functional currency balance, derivative MTM not in OCI.
+
+Element 9
+
+#### Losses
+
+Decreases in equity from *peripheral or incidental* transactions or from circumstances affecting the entity (e.g., natural disaster write-down, impairment).
+
+Element 10 · Comprehensive Income
+
+Change in equity during a period from transactions and other events from non-owner sources. **CI = Net Income + Other Comprehensive Income (OCI)**. OCI captures items GAAP wants on the balance sheet but not in NI yet: FX translation (ASC 830), AFS debt securities unrealized G/L (ASC 320, post-CECL), pension G/L (ASC 715), cash-flow-hedge effective portion (ASC 815).
+
+SFAC No. 8 Ch.4 (Dec 2021) · ASC 210, 220, 505, 810
+
+Topic 5 · Recognition & Measurement
+
+## When does an element get on the books, and at what number?
+
+### Recognition criteria — SFAC 5 (still extant) + standard-specific guidance
+
+①
+
+#### Definition
+
+The item meets the definition of an element of financial statements.
+
+②
+
+#### Measurability
+
+The item has a relevant attribute measurable with sufficient reliability.
+
+③
+
+#### Relevance
+
+The information about it is capable of making a difference in user decisions.
+
+④
+
+#### Faithful Representation
+
+The information is complete, neutral, and free from error.
+
+### Five measurement attributes used by US GAAP today
+
+| Attribute | Definition | Where used (examples) |
+|----|----|----|
+| Historical Cost | Cash or cash-equivalent amount paid to acquire the asset at the time of acquisition. | PP&E (ASC 360), inventory cost (ASC 330), intangibles initial (ASC 350), most liabilities at issuance. |
+| Current Cost (Replacement) | Cash that would be required if the same asset were acquired currently. | Inventory LCM/LCNRV test (lower of cost vs. net realizable value, ASC 330-10-35); insurance claims (replacement cost endorsements). |
+| Net Realizable Value | Estimated selling price in the ordinary course of business, less reasonably predictable costs of completion, disposal, and transportation. | Inventory ceiling (ASC 330-10-35-1B); receivables net of allowance. |
+| Present Value of Future Cash Flows | Discounted future cash flows expected from the asset / required for the liability. | Pensions (ASC 715), leases right-of-use asset/liability (ASC 842), asset retirement obligations (ASC 410-20), impairment Step 2 (legacy). |
+| Fair Value | Price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date (ASC 820). | Trading & AFS securities (ASC 320, 321, 825), derivatives (ASC 815), business combinations (ASC 805), goodwill impairment (ASC 350). |
+
+Fair Value Hierarchy — ASC 820
+
+**Level 1:** Quoted prices in active markets for identical assets/liabilities. **Level 2:** Observable inputs other than Level 1 quotes — similar instruments, observable yield curves, etc. **Level 3:** Unobservable inputs — entity's own assumptions about market participants' assumptions. Level 3 disclosures (roll-forward, sensitivity) are heavily scrutinized.
+
+SFAC 5 · ASC 820 (Fair Value) · ASC 330, 360, 410, 715, 805, 815, 842
+
+Topic 6 · Sustainability / ESG Disclosure
+
+## The US ESG disclosure stack — *fragmented, evolving, partly voluntary*.
+
+Unlike financial reporting (one stack: FASB/ASC), sustainability disclosure in the US blends SEC mandatory rules, voluntary global frameworks, and state-level requirements. As of 2026, the picture is still settling.
+
+Mandatory — SEC
+
+#### SEC Climate-Related Disclosures (March 2024)
+
+- Final rule adopted March 6, 2024 — codified in **Reg S-K Items 1500–1508** and **Reg S-X Article 14**.
+- Required: **Scope 1 + Scope 2 GHG** emissions for LAFs and AFs (when material); climate risks & their material impacts; transition plans; governance & risk management.
+- **Scope 3** dropped from final rule (was in proposal).
+- SEC **stayed** the rule April 2024 pending litigation (5th, 8th Circuit consolidations).
+- Phased compliance originally: LAF FY2025 → AF FY2026 → SRC/EGC FY2027 (now uncertain).
+
+Mandatory — State
+
+#### California SB 253 & SB 261
+
+- **SB 253** — Climate Corporate Data Accountability Act: companies doing business in CA with revenue \> $1B must disclose **Scope 1, 2, AND 3** emissions annually, with limited / reasonable assurance.
+- **SB 261** — Climate-Related Financial Risk Act: revenue \> $500M must report biennial climate financial risk, aligned with TCFD/ISSB.
+- First reports due **2026** (Scope 1+2) and **2027** (Scope 3) after enforcement timeline adjustments.
+- CARB rule-making in progress — administered by California Air Resources Board.
+
+Voluntary global
+
+#### ISSB / IFRS S1 & S2
+
+Issued June 2023 by the International Sustainability Standards Board. **S1**: general sustainability-related financial info. **S2**: climate-specific. Adopted/being adopted in 20+ jurisdictions; *not* mandatory in the US, but US multinationals subject in subsidiaries abroad.
+
+Voluntary US-origin
+
+#### SASB Standards
+
+Industry-specific (77 industries) financial-materiality lens. Now consolidated under **ISSB** via IFRS Foundation (2022 merger of VRF). Heavy US investor uptake; SASB metrics appear in many 10-K Item 1A and proxy statements.
+
+Voluntary global
+
+#### GRI Standards
+
+*Impact materiality* lens — what the entity does to the world, not just what the world does to the entity. Complements (rather than competes with) financial-materiality frameworks. Widely used in standalone sustainability reports.
+
+17 CFR 210, 229, 232, 239, 249 (SEC final rule) · CA SB 253/261 · IFRS S1/S2 · SASB · GRI
+
+Topic 6 · Materiality, Pillars, Assurance
+
+## How sustainability information enters the financial reporting orbit.
+
+### Single vs. Double Materiality
+
+Single (Financial) Materiality
+
+- SEC, ISSB, SASB lens.
+- "How could the issue affect enterprise value / cash flows?"
+- Investor-facing.
+- Maps to SFAC 8 relevance + materiality (SAB 99).
+
+Double Materiality
+
+- EU CSRD / ESRS, GRI lens.
+- Includes *impact materiality*: company's effects on people/planet, regardless of financial feedback loop.
+- Broader stakeholder audience.
+- Not currently US regulatory standard.
+
+### TCFD Four Pillars — embedded in ISSB & CA SB 261
+
+- **Governance** — board oversight, management's role, committee structure.
+- **Strategy** — actual & potential impacts on businesses, strategy, financial planning; scenario analysis (e.g., 2°C, 1.5°C).
+- **Risk Management** — identification, assessment, integration with overall ERM.
+- **Metrics & Targets** — GHG emissions (Scope 1/2/3), other climate-related metrics; targets and progress.
+
+Assurance Trajectory
+
+US: **limited assurance** by AICPA member CPAs under **SSAE 18** (engagements under AT-C 105/205, 215). CA SB 253 requires limited assurance from FY2026 reports → reasonable assurance from 2030. ISSA 5000 (IAASB, 2024 final) becoming the global benchmark.
+
+### Four core ESG content elements expected across frameworks
+
+A
+
+#### Governance
+
+Board oversight, accountability lines, climate competency, executive compensation links.
+
+B
+
+#### Strategy
+
+Material risks & opportunities, time horizons (short/medium/long), scenario analysis, capital allocation impact.
+
+C
+
+#### Risk & Opportunity Management
+
+Identification process, prioritization criteria, integration into ERM, physical & transition risks.
+
+D
+
+#### Metrics & Targets
+
+Cross-industry metrics (GHG, energy, water), industry-specific SASB metrics, internal targets & progress.
+
+TCFD Final Report 2017 · ISSB S1/S2 · SSAE 18 / AT-C · ISSA 5000
+
+Topic 7 · AI in Accounting & Audit
+
+## AI is now a *tool in the workpapers* — not an exotic add-on.
+
+As of 2026, AI is used across the financial reporting lifecycle. The professional guidance has caught up to the practice in three places: AICPA Technical Q&A, AICPA SOC for AI guidance, and PCAOB inspection focus.
+
+Preparer side — Accounting
+
+#### Where AI shows up in the books
+
+- **Contract review (ASC 606)** — LLMs extract performance obligations, variable consideration, financing components from contracts at scale.
+- **Lease ingestion (ASC 842)** — auto-classify finance vs. operating, extract discount-rate-relevant terms.
+- **Expected credit losses (ASC 326)** — ML models for CECL on receivables / loan portfolios; sensitive to validation.
+- **Goodwill / asset impairment (ASC 350, 360)** — AI-driven trigger detection from external signals.
+- **Forecasting** — going-concern (ASC 205-40), management's discussion of liquidity (MD&A).
+
+Auditor side — Assurance
+
+#### Where AI shows up in the audit
+
+- **Risk assessment** — anomaly detection across full population of journal entries (replaces sampling at the prelim stage).
+- **Confirmations** — extraction & matching of confirmation responses at scale.
+- **Substantive procedures** — full-population recomputation of revenue, payroll, depreciation.
+- **Internal control testing** — process-mining tools reconstruct actual control execution from log data.
+- **ESG assurance** — extraction of emissions data from utility bills, fuel receipts, travel logs.
+
+AICPA
+
+#### Professional ethics & tools
+
+**ET §1.295.040** — non-attest services including AI tool deployment to an attest client raise independence concerns. Practitioner must not perform management functions, design systems of internal control, etc. AICPA SOC for AI examinations (2024 conceptual framework) emerging.
+
+PCAOB
+
+#### Technology-Assisted Analyses
+
+PCAOB **Spotlight on Auditor Use of Technology** (multiple editions); 2024 staff observations on TAAs. Auditor must still meet AS 1105 sufficient appropriate audit evidence — AI output requires *evaluation*, not blind acceptance. Documentation of model, inputs, validation, and human review is mandatory.
+
+SEC / SOX
+
+#### ICFR over AI-generated numbers
+
+If AI feeds figures into the financial statements (e.g., CECL allowance), management's **SOX 404** assessment must cover the AI as part of ICFR: input controls, model governance, output review, change management. Auditor's AS 2201 ICFR audit must follow.
+
+Five requirements that show up in every AI-in-accounting framework
+
+**① Data quality** — garbage in, garbage out, plus bias control. **② Model governance** — version control, change approval, ownership. **③ Validation** — independent technical review, back-testing, challenger models. **④ Explainability** — output traceable to inputs; users can understand *why*. **⑤ Human oversight** — accountable person reviews, signs off, overrides when warranted.
+
+AICPA Code ET §1.295 · PCAOB Spotlight (TAAs) · SEC Reg S-K Item 308 · SOX §404 · NIST AI RMF 1.0
+
+Synthesis · How the seven topics fit together
+
+## From *objective* to *recognition* to *disclosure*.
+
+**The Why** Decision-usefulness for investors, lenders, other creditors — including stewardship assessment (SFAC 8 Ch.1).
+
+**The Lens** Two fundamental QCs (Relevance + Faithful Rep) filter information; four enhancers improve it; cost constrains it.
+
+**The Stuff** Ten elements (SFAC 8 Ch.4) categorize what is reported; recognition + measurement decide when and how much.
+
+**The Discipline** Accrual basis, going concern, periodicity, economic entity, monetary unit assumptions hold the structure together.
+
+**The Expansion** Sustainability info extends financial reporting into climate/social/governance — SEC + state + global frameworks.
+
+**The Tool** AI shifts how preparers compute and auditors verify — but human accountability, ICFR, and professional ethics still apply.
+
+### Three sentences worth memorizing
+
+1.  **"Decision-usefulness, not stewardship in isolation"** — the modern US framework treats them as one objective, with stewardship a component.
+2.  **"Relevance + Faithful Representation are both required"** — neither alone is sufficient; enhancers cannot fix a deficit in either.
+3.  **"GAAP is what FASB says it is, under SEC delegation, enforced by PCAOB-registered auditors, applied by AICPA-credentialed CPAs."** The whole US apparatus in one sentence.
+
+SFAC 8 · ASC 105 · SOX §108 · SEC Policy Statement (April 2003)
+
+Appendix · Quick self-check & sources
+
+## Ten one-line checks. If you can answer all, you've got the chapter.
+
+1.  Who designates the FASB as the standard-setter for US public issuers, and under what authority?
+2.  Name the four basic assumptions and the trigger that retires the going-concern assumption.
+3.  Why is cash basis disallowed for SEC registrants?
+4.  Two fundamental QCs and three sub-attributes of faithful representation?
+5.  Cite the SFAC reference for "elements" and the year it was issued.
+
+6.  Five measurement attributes in US GAAP, with one example use of each.
+7.  Three levels of the fair-value hierarchy (ASC 820) and which inputs are most scrutinized?
+8.  What is the difference between Scope 1, 2, and 3 emissions, and which one did SEC drop from the final 2024 rule?
+9.  Single vs. double materiality — which lens does ISSB apply, and which does GRI apply?
+10. Five requirements common to AI governance frameworks in financial reporting.
+
+### Source map (no textbook used)
+
+| Topic | Primary US authoritative source |
+|----|----|
+| 1 · Overview | SOX §108 (2002); SEC Policy Statement (April 2003); AICPA Code of Professional Conduct ET §0.300; PCAOB enabling sections of SOX. |
+| 2 · Objective & Assumptions | SFAC No. 8, Ch.1 (2010, amended 2018, 2021), Ch.3 (Aug 2021); ASC 205-30, 205-40. |
+| 3 · Accrual | ASC 606 (2014); ASC 230; IRS §448 / Rev. Proc. 2002-28; AICPA FRF for SMEs. |
+| 4 · Qualitative Characteristics | SFAC No. 8, Ch.3; SAB 99 (Materiality, 1999); ASC 250 (Accounting Changes & Error Corrections). |
+| 5 · Elements / Recognition / Measurement | SFAC No. 8, Ch.4 (Dec 2021); SFAC No. 5; ASC 820; ASC 330, 360, 410, 715, 805, 815, 842. |
+| 6 · Sustainability | 17 CFR Parts 210, 229, 232, 239, 249 (SEC Climate Rule, March 2024); CA SB 253 / SB 261; IFRS S1 / S2 (ISSB, June 2023); SASB Standards; GRI Standards; TCFD Final Report (2017). |
+| 7 · AI | AICPA Code ET §1.295; AICPA SOC for AI (2024); PCAOB Spotlight on Auditor Use of Technology; SEC Reg S-K Item 308 (ICFR); SOX §404; NIST AI RMF 1.0. |
+
+Editing tip
+
+The entire deck is **editable** — click into any text and rewrite. When you save with 💾 the current edited state is written out as a new HTML file. Use this as a teaching deck or a personal note template.
+
+Deck v1 · 14 slides · single-file · 100% US-sourcedEnd of presentation
+
+---
+
+*Original HTML version: [us-gaap-ch1-overview-presentation.html](us-gaap-ch1-overview-presentation.html)*
