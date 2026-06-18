@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Case Interview 速记法 · Shorthand Cheatsheet</title>
+<style>
+  /* ---------- design tokens ---------- */
+  :root{
+    --ink:#1a1814;
+    --ink-soft:#3a352c;
+    --ink-mute:#7a7263;
+    --paper:#f5efe2;
+    --paper-2:#ebe3d0;
+    --rule:#d8cfb8;
+    --accent:#8a2b1f;       /* burnt vermillion — single accent */
+    --accent-soft:#c97a6a;
+    --pos:#3d6b4a;
+    --neg:#8a2b1f;
+    --code-bg:#fff8e6;
+    --serif:'Iowan Old Style','Palatino Linotype','Georgia',serif;
+    --sans:'Inter','Helvetica Neue','Arial',system-ui,sans-serif;
+    --mono:'JetBrains Mono','SF Mono','Menlo',monospace;
+    --w-text:64ch;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55}
+  body{padding:48px clamp(20px,5vw,72px) 120px}
+  .shell{max-width:1180px;margin:0 auto}
+
+  /* ---------- masthead ---------- */
+  .mast{border-top:3px double var(--ink);border-bottom:1px solid var(--rule);padding:22px 0 18px;margin-bottom:32px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end}
+  .mast h1{font-family:var(--serif);font-weight:700;font-style:italic;font-size:clamp(34px,5vw,56px);margin:0;letter-spacing:-.01em;color:var(--ink)}
+  .mast h1 .swap{font-style:normal;color:var(--accent)}
+  .mast .kicker{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--ink-mute);margin-bottom:6px}
+  .mast .by{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--ink-mute);text-align:right;max-width:280px}
+  .by b{color:var(--ink);letter-spacing:0}
+
+  /* ---------- toolbar ---------- */
+  .tools{position:sticky;top:0;z-index:10;background:rgba(245,239,226,.94);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--rule);margin:-12px -24px 28px;padding:10px 24px;display:flex;gap:8px;align-items:center}
+  .tools .lbl{font-family:var(--mono);font-size:11px;color:var(--ink-mute);margin-right:auto;letter-spacing:.08em;text-transform:uppercase}
+  button.act{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--ink);background:var(--paper);color:var(--ink);padding:6px 12px;cursor:pointer;border-radius:0;transition:all .15s}
+  button.act:hover{background:var(--ink);color:var(--paper)}
+  button.act.primary{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+  button.act.primary:hover{background:#6e1f15}
+
+  /* ---------- numbers strip ---------- */
+  .nums{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:40px}
+  .num{padding:18px 16px;border-right:1px solid var(--rule)}
+  .num:last-child{border-right:0}
+  .num .big{font-family:var(--serif);font-size:38px;font-weight:700;color:var(--accent);line-height:1}
+  .num .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);margin-top:6px}
+  .num small{display:block;font-size:12px;color:var(--ink-soft);margin-top:4px;line-height:1.35;font-family:var(--sans)}
+
+  /* ---------- section ---------- */
+  section{margin:56px 0;display:grid;grid-template-columns:200px 1fr;gap:36px}
+  @media (max-width:780px){section{grid-template-columns:1fr;gap:8px}}
+  section > .side{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);padding-top:6px;border-top:2px solid var(--ink)}
+  section > .side .roman{font-family:var(--serif);font-style:italic;font-size:18px;display:block;color:var(--accent);margin-bottom:2px;letter-spacing:0;text-transform:none}
+  section > .body h2{font-family:var(--serif);font-weight:700;font-size:30px;margin:0 0 6px;letter-spacing:-.01em;color:var(--ink)}
+  section > .body .lead{font-family:var(--serif);font-style:italic;color:var(--ink-soft);font-size:18px;margin:0 0 22px;max-width:var(--w-text)}
+  section > .body h3{font-family:var(--sans);font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);margin:28px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--rule)}
+  section > .body p,section > .body li{font-size:15.5px;color:var(--ink-soft);max-width:var(--w-text)}
+  section > .body ul,section > .body ol{padding-left:1.2em;margin:8px 0}
+
+  /* ---------- atom badge ---------- */
+  .atom{display:inline-block;font-family:var(--mono);font-weight:700;background:var(--ink);color:var(--paper);padding:1px 7px;border-radius:2px;font-size:13px;letter-spacing:.02em}
+  .atom.acc{background:var(--accent)}
+  .atom.pos{background:var(--pos)}
+  .atom.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+  code{font-family:var(--mono);background:var(--code-bg);padding:1px 5px;border:1px solid var(--rule);border-radius:2px;font-size:13.5px;color:var(--ink)}
+  kbd{font-family:var(--mono);font-size:12px;padding:1px 6px;border:1px solid var(--ink);border-bottom-width:2px;border-radius:3px;background:var(--paper);color:var(--ink)}
+
+  /* ---------- atom grid ---------- */
+  .grid-atoms{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+  .grid-atoms .cell{padding:10px 14px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--paper)}
+  .grid-atoms .cell .sym{font-family:var(--mono);font-weight:700;color:var(--accent);font-size:18px;letter-spacing:.02em}
+  .grid-atoms .cell .name{font-family:var(--serif);font-size:14px;color:var(--ink);margin-left:8px}
+  .grid-atoms .cell .ex{display:block;font-family:var(--mono);font-size:11.5px;color:var(--ink-mute);margin-top:4px;letter-spacing:.01em}
+
+  /* ---------- trigger table ---------- */
+  table.trg{width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px}
+  table.trg th,table.trg td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+  table.trg thead th{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);background:var(--paper-2);border-bottom:2px solid var(--ink)}
+  table.trg .trig{font-family:var(--mono);color:var(--ink);font-weight:700;white-space:nowrap}
+  table.trg .arrow{font-family:var(--mono);color:var(--accent);font-weight:700;font-size:18px;text-align:center;width:28px}
+  table.trg .act{font-family:var(--mono);color:var(--ink-soft);font-size:13.5px}
+  table.trg .lift{font-family:var(--mono);font-size:12px;color:var(--accent);white-space:nowrap;text-align:right}
+  table.trg tr:hover{background:#fff8e6}
+
+  /* ---------- callout boxes ---------- */
+  .box{background:var(--paper-2);border-left:4px solid var(--accent);padding:14px 18px;margin:18px 0;max-width:var(--w-text)}
+  .box .h{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  .box.dark{background:var(--ink);color:var(--paper);border-left-color:var(--accent)}
+  .box.dark .h{color:var(--accent-soft)}
+  .box.dark code{background:#2a251c;color:#f5efe2;border-color:#3a352c}
+  .box.dark .atom{background:var(--accent)}
+
+  /* ---------- 2-col compare ---------- */
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--rule);margin:14px 0;font-size:14px}
+  .compare .col{padding:14px 18px}
+  .compare .col:first-child{border-right:1px solid var(--rule);background:var(--paper-2)}
+  .compare .col h4{margin:0 0 8px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)}
+  .compare ul{margin:0;padding-left:1.1em}
+
+  /* ---------- live demo notebook ---------- */
+  .nb{background:#fffced;border:1px solid var(--rule);padding:0;margin:18px 0;font-family:var(--mono);font-size:13.5px;line-height:1.7;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 22px,#f0e4c8 22px,#f0e4c8 23px);background-position:0 14px}
+  .nb .pad{padding:14px 18px 18px 56px;position:relative}
+  .nb .pad::before{content:"";position:absolute;left:38px;top:0;bottom:0;width:1px;background:var(--accent-soft);opacity:.6}
+  .nb .ln{display:block;color:var(--ink)}
+  .nb .ln em{font-family:var(--serif);font-style:italic;color:var(--ink-mute);font-size:12.5px;margin-left:14px}
+  .nb .ln b{color:var(--accent);font-weight:700}
+  .nb .ln span.bk{color:var(--ink-mute)}
+
+  /* ---------- math card ---------- */
+  .mc{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:14px 0}
+  .mc .card{border:1px solid var(--rule);background:var(--paper);padding:14px 16px}
+  .mc .card .t{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:4px}
+  .mc .card .eq{font-family:var(--mono);font-size:15px;color:var(--ink);font-weight:700;margin-bottom:6px}
+  .mc .card .n{font-size:12.5px;color:var(--ink-soft);line-height:1.45}
+
+  /* ---------- closing recap ---------- */
+  .recap{margin-top:64px;border-top:3px double var(--ink);padding-top:24px}
+  .recap h2{font-family:var(--serif);font-style:italic;font-size:24px;margin:0 0 14px}
+  table.recap-t{width:100%;border-collapse:collapse;font-size:14px}
+  table.recap-t th,table.recap-t td{text-align:left;padding:10px;border:1px solid var(--rule);vertical-align:top}
+  table.recap-t thead th{background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+  .signoff{font-family:var(--serif);font-style:italic;color:var(--ink-mute);font-size:13px;margin-top:18px;text-align:right}
+
+  /* ---------- contenteditable polish ---------- */
+  [contenteditable="true"]:focus{outline:2px solid var(--accent-soft);outline-offset:4px}
+  [contenteditable="true"]{cursor:text}
+
+  /* ---------- print ---------- */
+  @media print{
+    body{background:#fff;padding:24px}
+    .tools{display:none}
+    section{break-inside:avoid;page-break-inside:avoid}
+    .box,.nb,.mc .card,table.trg{break-inside:avoid}
+    a{color:inherit;text-decoration:none}
+    .num .big{color:#000}
+    h1 .swap{color:#000}
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- ============ TOOLBAR ============ -->
+<div class="tools">
+  <span class="lbl">Editable · 可直接改 · 改完点 Save</span>
+  <button class="act" onclick="window.print()">Print / PDF</button>
+  <button class="act primary" onclick="saveDoc()">Save HTML</button>
+</div>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="mast">
+  <div>
+    <div class="kicker">Consulting Case Interview · 速记法 · v1.0</div>
+    <h1>The <span class="swap">First-Principles</span> Note-Taking Codex</h1>
+  </div>
+  <div class="by">
+    Source · <b>kevinguo0351 / Case-Library</b><br>
+    2,141 cases mined · all frequencies grounded<br>
+    Compiled 2026-06-17 for Kevin
+  </div>
+</header>
+
+<!-- ============ NUMBERS ============ -->
+<div class="nums">
+  <div class="num"><div class="big">87.5%</div><div class="lbl">cases have math</div><small>假设每个 case 都要算数。Per-unit 占 53%, margin 占 50%</small></div>
+  <div class="num"><div class="big">82.3%</div><div class="lbl">discuss competitive dynamics</div><small>Cm rxn 是几乎必谈项 — 第一时间留位置</small></div>
+  <div class="num"><div class="big">84.6%</div><div class="lbl">close with R·!·→</div><small>没要求也要给：Recommendation + Risks + Next steps</small></div>
+  <div class="num"><div class="big">36%</div><div class="lbl">reward "the alternative"</div><small>面试官没说的第 3 选项 — 主动抬出来 = #1 outstanding signal</small></div>
+</div>
+
+<!-- ============ I. FIRST PRINCIPLES ============ -->
+<section>
+  <div class="side"><span class="roman">I.</span>First Principles</div>
+  <div class="body" contenteditable="true">
+    <h2>速记法的 4 条根</h2>
+    <p class="lead">速记 ≠ 抄字。速记 = 把对方的话压成你能在 30 秒内复述出来的 <i>骨架 + 钩子</i>。所有 acronym 都从下面 4 条推导出来 —— 如果一个符号违反其中一条，就该删掉。</p>
+
+    <h3>1. 频率 = 压缩优先级</h3>
+    <p>说得越多的事，给越短的符号。Revenue 在每个 case 都出现 ⇒ 1 个字母 <span class="atom">R</span>。"discuss competitive dynamics / response" 出现在 <b>82.3%</b> 的 case ⇒ 它必须是 1 个 token，<span class="atom">Cm-rxn</span> 或干脆 <span class="atom">!Cm</span>。</p>
+
+    <h3>2. 自解码（Self-decoding）</h3>
+    <p>3 个月后回看，不用查 key 也能读懂。<code>R↓→P×Q×Seg</code> 读出来就是 "revenue down, decompose price-volume by segment" —— 不需要附表。</p>
+
+    <h3>3. 可组合（Compositional）</h3>
+    <p>少量原子，自由拼接。<code>R↓</code>（revenue down）+ <code>π↓</code>（profit down）+ <code>C↑</code>（cost up）+ <code>vs</code>（compared to）+ <code>∴</code>（therefore）可以拼出几乎所有诊断句。</p>
+
+    <h3>4. 对应 corpus 真实高频动作，不是自造</h3>
+    <p>本速记法所有 trigger→action 都映射 Case-Library 里 <code>trigger_to_action</code> 字段的 lift 排序。不是"听起来酷"的发明，是"答案 key 写得最多"的复刻。</p>
+
+    <div class="box dark">
+      <div class="h">底层公理 · 1 句话版</div>
+      Write the identity → name <b>Dx</b> vs <b>Dn</b> → disaggregate &amp; compare to a benchmark → quantify only what flips the answer → judge vs. the <b>T</b> → commit then bound the risk.
+    </div>
+  </div>
+</section>
+
+<!-- ============ II. ATOMS ============ -->
+<section>
+  <div class="side"><span class="roman">II.</span>Atoms · 原子符号表</div>
+  <div class="body" contenteditable="true">
+    <h2>30 个能拼出 90% 笔记的符号</h2>
+    <p class="lead">背这 30 个就够了。每个符号都对应 Case-Library 里出现频率 ≥10% 的概念。先认 column 1 (财务核心)，再叠 column 2 (动作 / 状态)。</p>
+
+    <h3>财务身份 Atoms</h3>
+    <div class="grid-atoms">
+      <div class="cell"><span class="sym">R</span><span class="name">Revenue 收入</span><span class="ex">R↓ = 收入下降</span></div>
+      <div class="cell"><span class="sym">C</span><span class="name">Cost 成本</span><span class="ex">C↑ = 成本上升</span></div>
+      <div class="cell"><span class="sym">π</span><span class="name">Profit 利润 (希腊π避开 P)</span><span class="ex">π = (P–VC)Q – FC</span></div>
+      <div class="cell"><span class="sym">P</span><span class="name">Price 单价</span><span class="ex">P×Q = revenue</span></div>
+      <div class="cell"><span class="sym">Q</span><span class="name">Volume/Quantity 量</span><span class="ex">Q↓ in Seg2 = 第二段量跌</span></div>
+      <div class="cell"><span class="sym">M</span><span class="name">Margin 毛利率</span><span class="ex">M=(P–VC)/P</span></div>
+      <div class="cell"><span class="sym">FC / VC</span><span class="name">固定 / 变动成本</span><span class="ex">"FC vs VC 第一拆" = 1.51× lift</span></div>
+      <div class="cell"><span class="sym">K</span><span class="name">Capex / Capacity 资本/产能</span><span class="ex">PB = K÷π_yr</span></div>
+      <div class="cell"><span class="sym">r / g</span><span class="name">折现率 / 永续增长</span><span class="ex">NPV=FCF/(r–g)</span></div>
+      <div class="cell"><span class="sym">T</span><span class="name">Target 目标数字 (North Star)</span><span class="ex">T=$1B by 5y</span></div>
+      <div class="cell"><span class="sym">H</span><span class="name">Horizon 时间窗</span><span class="ex">H=3y → use PB; H=10y → NPV</span></div>
+      <div class="cell"><span class="sym">⊕</span><span class="name">Synergy 协同 (M&amp;A)</span><span class="ex">⊕cost (certain) vs ⊕rev (caveat)</span></div>
+    </div>
+
+    <h3>动作 / 状态 Atoms</h3>
+    <div class="grid-atoms">
+      <div class="cell"><span class="sym">↑ ↓ →</span><span class="name">up / down / flat</span><span class="ex">π↓ R→ → 看 cost 侧</span></div>
+      <div class="cell"><span class="sym">Δ</span><span class="name">change 变化</span><span class="ex">ΔCOGS = +12% YoY</span></div>
+      <div class="cell"><span class="sym">vs</span><span class="name">compared to (Law 3)</span><span class="ex">数字单独无意义</span></div>
+      <div class="cell"><span class="sym">∥</span><span class="name">benchmark / peer</span><span class="ex">M ∥ peer = 14% vs 22%</span></div>
+      <div class="cell"><span class="sym">∴ ∵</span><span class="name">therefore / because</span><span class="ex">合成 "so what"</span></div>
+      <div class="cell"><span class="sym">?</span><span class="name">clarify 澄清</span><span class="ex">?Cm / ?T / ?Geo</span></div>
+      <div class="cell"><span class="sym">!</span><span class="name">risk / red flag</span><span class="ex">!Cmr = 竞争反应风险</span></div>
+      <div class="cell"><span class="sym">^</span><span class="name">hypothesis 假设</span><span class="ex">^cost = 我猜答案在 cost 侧</span></div>
+      <div class="cell"><span class="sym">□</span><span class="name">framework bucket</span><span class="ex">□1 □2 □3 □4 = 4 个 MECE 桶</span></div>
+      <div class="cell"><span class="sym">★</span><span class="name">recommendation 终结判断</span><span class="ex">★ Enter via JV @ $200M</span></div>
+      <div class="cell"><span class="sym">≈</span><span class="name">sanity-check 量级核对</span><span class="ex">≈ 1 大城市年消费 = 合理</span></div>
+      <div class="cell"><span class="sym">÷K</span><span class="name">per binding constraint</span><span class="ex">π÷K = 每机时利润 (容量受限时)</span></div>
+      <div class="cell"><span class="sym">2°</span><span class="name">second-order 二阶效应</span><span class="ex">2° Cm-rxn = 然后竞争会怎么反应</span></div>
+      <div class="cell"><span class="sym">S/O</span><span class="name">so-what 含义</span><span class="ex">每个数据点结尾都要 S/O</span></div>
+      <div class="cell"><span class="sym">SC</span><span class="name">sunk cost — 排除</span><span class="ex">SC ✗ (说出口才得分)</span></div>
+      <div class="cell"><span class="sym">BN</span><span class="name">bottleneck 瓶颈/binding constraint</span><span class="ex">BN = 工艺 step 3</span></div>
+      <div class="cell"><span class="sym">Cnbl</span><span class="name">cannibalization 蚕食</span><span class="ex">新 SKU 抢老 SKU 的销量</span></div>
+      <div class="cell"><span class="sym">RTW</span><span class="name">Right-to-Win 凭什么我们能赢</span><span class="ex">Entry case 必谈 (lift 1.24×)</span></div>
+    </div>
+
+    <h3>领域速记 (3 字母代号)</h3>
+    <div class="grid-atoms">
+      <div class="cell"><span class="sym">Cm</span><span class="name">Competitor 竞品</span></div>
+      <div class="cell"><span class="sym">Cx</span><span class="name">Customer 客户</span></div>
+      <div class="cell"><span class="sym">Mkt</span><span class="name">Market 市场</span></div>
+      <div class="cell"><span class="sym">Seg</span><span class="name">Segment 细分</span></div>
+      <div class="cell"><span class="sym">Geo</span><span class="name">Geography 地域</span></div>
+      <div class="cell"><span class="sym">Cap</span><span class="name">Capabilities 能力 / 资产</span></div>
+      <div class="cell"><span class="sym">Org / In</span><span class="name">Organic / Inorganic 内生/外延</span></div>
+      <div class="cell"><span class="sym">WTP</span><span class="name">Willingness-to-Pay 价值上限</span></div>
+      <div class="cell"><span class="sym">BE / PB</span><span class="name">Breakeven / Payback</span></div>
+      <div class="cell"><span class="sym">NPV / IRR</span><span class="name">净现值 / 内部回报率</span></div>
+      <div class="cell"><span class="sym">CAGR</span><span class="name">年化复合增长</span></div>
+      <div class="cell"><span class="sym">TCO</span><span class="name">Total Cost of Ownership (B2B 竞标)</span></div>
+    </div>
+
+    <div class="box">
+      <div class="h">举例 · 把句子压成一行</div>
+      <p style="margin:0">原句：&ldquo;Revenue is down 12% but only in our suburban segment, and the cost line is flat year-over-year, so I think the issue is on the revenue side, specifically a volume drop in suburbs likely due to a new competitor.&rdquo;</p>
+      <p style="margin:8px 0 0;font-family:var(--mono);background:var(--code-bg);padding:8px 12px;border:1px solid var(--rule)"><b>速记 →</b> <code>R↓ 12% (Sub only) · C→ · ∴^Rsd: Q↓ Sub ∵ new Cm</code></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ III. TRIGGER → ACTION ============ -->
+<section>
+  <div class="side"><span class="roman">III.</span>Trigger → Action</div>
+  <div class="body" contenteditable="true">
+    <h2>"看到 X → 写 Y" · 频率排序速查</h2>
+    <p class="lead">这是整个 cheatsheet 的核心。每行都来自 2,141 case 里 <code>trigger_to_action</code> 的 lift 排序。听到 trigger 就在草稿纸右上角写 action 的速记，不要重新想。</p>
+
+    <table class="trg">
+      <thead>
+        <tr><th style="width:32%">Trigger (听到 / 看到)</th><th class="arrow">→</th><th>Action 速记 + 含义</th><th style="text-align:right">Lift</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="trig">R↓ (revenue declining)</td><td class="arrow">→</td><td class="act"><b>R↓ → P×Q × Seg</b> · 拆 price × volume，按段/品分开看，<u>问数字别求平均</u></td><td class="lift">1.72×</td></tr>
+        <tr><td class="trig">π↓ (profit/margin↓)</td><td class="arrow">→</td><td class="act"><b>π↓ → P×Q + FC|VC</b> · 先拆 R = P×Q (1.71×)，再拆 C = FC vs VC (1.51×)；定位哪边动了</td><td class="lift">1.7×</td></tr>
+        <tr><td class="trig">π↓ R→ (profit down, revenue flat)</td><td class="arrow">→</td><td class="act"><b>→ C side · % of R YoY</b> · 跳到成本，每条线作 R 比例的 YoY，找走偏那条</td><td class="lift">—</td></tr>
+        <tr><td class="trig">多 Seg / SKU / Geo</td><td class="arrow">→</td><td class="act"><b>✗ avg · ask breakdown</b> · 拒绝平均；根因藏在某一个 sub-bucket (Law 4)</td><td class="lift">—</td></tr>
+        <tr><td class="trig">Cm seen (mentioned)</td><td class="arrow">→</td><td class="act"><b>Int vs Ext + Mkt/Macro</b> · 内外因区分 (1.35×) + 看大盘 (1.15×)；量化对手 share/moat/可能反应</td><td class="lift">1.35×</td></tr>
+        <tr><td class="trig">"Acquire / merge?" (M&amp;A)</td><td class="arrow">→</td><td class="act"><b>⊕fit: V_stand + V_syn ≥ Ask</b> · 独立价值 + 协同 NPV ≥ 报价；cost⊕ vs rev⊕ 分开量</td><td class="lift">1.56×</td></tr>
+        <tr><td class="trig">"Invest / build a facility?"</td><td class="arrow">→</td><td class="act"><b>NPV / PB vs r-hurdle</b> · 走数字案 (1.34×)；对比 do-nothing；先找 BN 再用产能算 R</td><td class="lift">1.34×</td></tr>
+        <tr><td class="trig">Pricing decision</td><td class="arrow">→</td><td class="act"><b>3 lenses: VC floor · Cm anchor · WTP ceiling</b>; 同时 C = FC|VC 拆解 (1.27×)</td><td class="lift">1.27×</td></tr>
+        <tr><td class="trig">C↑ (costs rising / high)</td><td class="arrow">→</td><td class="act"><b>Cap &amp; structure · FC vs VC</b> · 结构性 FC？组合调；运营 VC？谈判/替代 (1.32×)</td><td class="lift">1.32×</td></tr>
+        <tr><td class="trig">T=# (numeric ambition)</td><td class="arrow">→</td><td class="act"><b>back-calc CAGR / share / Q</b> · 反推所需增长率；先 sanity-check 再 brainstorm</td><td class="lift">—</td></tr>
+        <tr><td class="trig">"Enter market?"</td><td class="arrow">→</td><td class="act"><b>Mkt size &amp; RTW</b> · attractiveness <u>and</u> right-to-win (1.24×)；不要"市场大→进"</td><td class="lift">1.24×</td></tr>
+        <tr><td class="trig">Target underperforms peers</td><td class="arrow">→</td><td class="act"><b>Dx root + remodel post-fix</b> · 别接受现状毛利；诊断 + 修复后重算</td><td class="lift">—</td></tr>
+        <tr><td class="trig">Sunk cost mentioned</td><td class="arrow">→</td><td class="act"><b>SC ✗ (say it)</b> · 明确排除 + 说出口 (常见陷阱测试)</td><td class="lift">—</td></tr>
+        <tr><td class="trig">Exhibit appears (56% of cases)</td><td class="arrow">→</td><td class="act"><b>PROVE</b> · Picture → Ratio (normalize) → Outlier → Verdict → Effect on T</td><td class="lift">—</td></tr>
+        <tr><td class="trig">Capacity / scarcity</td><td class="arrow">→</td><td class="act"><b>rank by π÷K</b> · 每单位约束的利润排序，不是每单位产品</td><td class="lift">—</td></tr>
+        <tr><td class="trig">"Should we grow?" (587 cases)</td><td class="arrow">→</td><td class="act"><b>Ansoff 2×2 + Org vs In</b> · 拆 R = P×Q (1.19×) · 比 Org/In 的 unit econ</td><td class="lift">1.19×</td></tr>
+        <tr><td class="trig">Market sizing 直接问</td><td class="arrow">→</td><td class="act"><b>ABC</b> · Anchor 写方程 → Build bottom-up → Conclude 用结果回答真问题</td><td class="lift">1.14×</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box">
+      <div class="h">读法 · Lift = 多倒霉</div>
+      <p style="margin:0">"lift 1.72×" 的意思：在 <i>所有</i> case 里，"拆 R = P×Q" 是 42% 答案 key 会做的动作（baseline）。但<u>一旦 trigger 是 "R↓"</u>，72% 的 key 会做它 —— 即比基线高 1.72 倍，是真正 "trigger 特异性" 的动作，不是 generic prep talk。这就是为什么记 trigger→action 比记框架名字值钱。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IV. ACRONYMS ============ -->
+<section>
+  <div class="side"><span class="roman">IV.</span>Acronyms · 五个口诀</div>
+  <div class="body" contenteditable="true">
+    <h2>5 个能说出口的口诀</h2>
+    <p class="lead">这 5 个口诀覆盖：开场 / 澄清 / Exhibit / 价格 / 收尾。每个 case 至少触发 3 个。听到对方说完 prompt 的瞬间，脑里先点亮 <b>ORSCHE</b>。</p>
+
+    <h3 style="color:var(--accent)">① ORSCHE · 开场 90 秒</h3>
+    <ol>
+      <li><span class="atom acc">O</span> <b>Objective + 数字</b> · 重述目标并把 T 写在纸顶 (Law 5)</li>
+      <li><span class="atom acc">R</span> <b>Restate</b> · 用自己的话复述一遍验证理解</li>
+      <li><span class="atom acc">S</span> <b>Structure 30s</b> · 主动要 30 秒画框架</li>
+      <li><span class="atom acc">C</span> <b>Clarify ×4</b> · ?Cm (33%) / ?C&amp;P (28%) / ?T (25%) / ?Geo (23%)</li>
+      <li><span class="atom acc">H</span> <b>Hypothesis</b> · "我猜答案在 □2，因为…" (15% outstanding signal)</li>
+      <li><span class="atom acc">E</span> <b>Engage</b> · "Does that frame work for you?"</li>
+    </ol>
+
+    <h3 style="color:var(--accent)">② PROVE · Exhibit 四步 (56% 的 case 必触发)</h3>
+    <p>面试官递图，按顺序走 5 步，<u>最常见的扣分是停在 P</u>：</p>
+    <div class="mc">
+      <div class="card"><div class="t">P · Picture</div><div class="eq">一句话说图显示什么</div><div class="n">"This chart shows market share by channel for 2020–2024"</div></div>
+      <div class="card"><div class="t">R · Ratio (normalize)</div><div class="eq">把绝对值变成 % / per-unit / ratio</div><div class="n">变可比 — 否则数字孤立无意义 (Law 3)</div></div>
+      <div class="card"><div class="t">O · Outlier</div><div class="eq">找那条不一样的</div><div class="n">"Channel C grew 3× — everyone else flat"</div></div>
+      <div class="card"><div class="t">V · Verdict</div><div class="eq">说"所以 / 含义是…" S/O</div><div class="n">主动说，不要等问</div></div>
+      <div class="card"><div class="t">E · Effect on T</div><div class="eq">对客户目标的影响</div><div class="n">"这意味着我们如果不进入 Channel C，2 年内丢 30% share"</div></div>
+    </div>
+
+    <h3 style="color:var(--accent)">③ FAC · 定价/估值三镜头</h3>
+    <p><span class="atom acc">F</span> Floor (cost-based) · <span class="atom acc">A</span> Anchor (competitor) · <span class="atom acc">C</span> Ceiling (value / WTP)</p>
+    <p>Set price between Floor and Ceiling, anchored by competitor. 通用到 M&amp;A 估值 (standalone floor · comps anchor · strategic ceiling)、薪资谈判、招标。这就是 Law 9。</p>
+
+    <h3 style="color:var(--accent)">④ SAFE · M&amp;A 必问 4 件事</h3>
+    <ul>
+      <li><span class="atom acc">S</span> <b>Standalone value</b> · 不算 synergy 之前值多少</li>
+      <li><span class="atom acc">A</span> <b>⊕ synergies (cost &amp; revenue 分开)</b> · cost⊕ 是 certain，rev⊕ 要 caveat</li>
+      <li><span class="atom acc">F</span> <b>Fit + why now</b> · 战略契合 + 为什么是这家、为什么现在</li>
+      <li><span class="atom acc">E</span> <b>Exit / alt</b> · 替代方案 (license / JV / 不动) + 退出路径</li>
+    </ul>
+    <p style="font-family:var(--mono);background:var(--code-bg);padding:8px 12px;border:1px solid var(--rule);max-width:var(--w-text)">速记公式：<b>V_stand + ⊕_net ≥ Ask</b> · 总结一句话 "Max price = X vs ask = Y → +Z value"</p>
+
+    <h3 style="color:var(--accent)">⑤ RECAP · 收尾 (84.6% 的 case 期望)</h3>
+    <ol>
+      <li><span class="atom acc">R</span> <b>Recommendation</b> · 1 句 + 那个数字 (★)</li>
+      <li><span class="atom acc">E</span> <b>Evidence</b> · 支撑那个数字的 1 个关键计算</li>
+      <li><span class="atom acc">C</span> <b>Caveats / risks 2–3</b> · 从 <code>!Cmr · !Exo · !Reg · !Brd · !Cov · !Cnb</code> 里挑 (按 corpus 频率)</li>
+      <li><span class="atom acc">A</span> <b>Actions (next steps) 2–3</b> · 排好顺序：先 X 再 Y 最后 Z</li>
+      <li><span class="atom acc">P</span> <b>Pause</b> · 主动停顿等问，<u>不要继续填空</u></li>
+    </ol>
+
+    <div class="box dark">
+      <div class="h">口诀对照 · 一行回忆</div>
+      <code>ORSCHE</code> 开 · <code>PROVE</code> 看图 · <code>FAC</code> 估价 · <code>SAFE</code> 并购 · <code>RECAP</code> 收
+    </div>
+  </div>
+</section>
+
+<!-- ============ V. LIVE NOTEBOOK ============ -->
+<section>
+  <div class="side"><span class="roman">V.</span>Live Demo · 一页笔记</div>
+  <div class="body" contenteditable="true">
+    <h2>把 HBS 2014 Retailer 案例压成 12 行</h2>
+    <p class="lead">真实案例：服装+家居零售 15 家店，profit↓，cost 端已优化。下面是用本速记法在 <u>对方说完 prompt 时</u> 草稿纸应该长什么样。读它 = 复述案例 = 重做案例。</p>
+
+    <div class="nb"><div class="pad">
+      <span class="ln"><b>Dx</b> · Retail 15 stores · π↓ · C done ∴ ^Rsd <em>↑ 诊断型, cost 已经压过, 假设 R 侧</em></span>
+      <span class="ln"><b>T:</b> ↑ growth rate + π <em>↑ North Star</em></span>
+      <span class="ln"><b>?</b> Cm? · P/C? · Seg by Geo? · Mix? <em>↑ ORSCHE 的 C 步</em></span>
+      <span class="ln"><span class="bk">────────</span></span>
+      <span class="ln"><b>□1</b> R = P × Q × <u>Seg</u> (Urb vs Sub) ← <b>^</b></span>
+      <span class="ln"><b>□2</b> Cx behavior: Urb buy 衣服小件 / Sub buy 大家电高 M</span>
+      <span class="ln"><b>□3</b> Mix ∥ demo: same SKU everywhere — mismatch!</span>
+      <span class="ln"><b>□4</b> Cm ≈ same both areas <em>(对手不是因)</em></span>
+      <span class="ln"><span class="bk">────────</span></span>
+      <span class="ln"><b>∴</b> Mix 为 Sub 设计, Urb 无大家电需求 (apt vs house)</span>
+      <span class="ln"><b>S/O</b> 城里 SKU 错 → 库存浪费 + 卖场空间错配 → R↓ π↓</span>
+      <span class="ln"><span class="bk">────────</span></span>
+      <span class="ln"><b>★</b> Tailor SKU per Geo + ↑ apparel/small-item in Urb · cut 大家电 Urb</span>
+      <span class="ln"><b>!</b> !Exo (re-merch 执行) · !Brd (one-brand 形象) · !Cov (重做库存费用)</span>
+      <span class="ln"><b>→</b> (1) Cx survey by store, (2) pilot Urb 重组 3 家, (3) 6 mo PB 后 roll-out</span>
+      <span class="ln"><span class="bk">────────</span></span>
+      <span class="ln"><b>2°</b> Cm-rxn? 重组后竞争对手会跟价吗? 测试期监测</span>
+      <span class="ln"><b>△</b> alternative 没被问的: 关 N 家 worst-perf Urb 店 (divest 选项)</span>
+    </div></div>
+
+    <p style="font-size:13.5px;color:var(--ink-mute)"><i>17 行笔记 = 整个 case。下次翻到能 30 秒复述。<b>关键</b>：每一行右边的草书 italic 是给你以后自己看时的注释 —— 写笔记时不要写，复盘时补上。</i></p>
+  </div>
+</section>
+
+<!-- ============ VI. MATH ============ -->
+<section>
+  <div class="side"><span class="roman">VI.</span>Math 速记</div>
+  <div class="body" contenteditable="true">
+    <h2>87.5% 的 case 要算 · 这 7 个公式覆盖 90%</h2>
+    <p class="lead">按 corpus 频率排序。背 1–4 必背，5–7 看到就用。</p>
+
+    <div class="mc">
+      <div class="card"><div class="t">① per-unit · 53% of math cases</div><div class="eq">cost/unit · R/customer · π/store/hour</div><div class="n">所有比较前先 normalize 到单位 — 这是 Law 3 在数学里的具象</div></div>
+      <div class="card"><div class="t">② margin / profit · 50%</div><div class="eq">π = (P – VC)·Q – FC</div><div class="n">主身份。Profitability case 的诊断起点</div></div>
+      <div class="card"><div class="t">③ breakeven / payback · 19%</div><div class="eq">BE_Q = FC ÷ (P – VC) <br> PB = K ÷ π_annual</div><div class="n">PB 一定要说 "undiscounted" 以示严谨</div></div>
+      <div class="card"><div class="t">④ NPV / discounting · 19%</div><div class="eq">NPV = Σ FCFₜ/(1+r)ᵗ <br><b>perpetuity:</b> FCF/(r – g)</div><div class="n">round factors: (1.1)⁴≈1.5 · (1.1)⁷≈2.0</div></div>
+      <div class="card"><div class="t">⑤ market sizing · 18%</div><div class="eq">Pop × Cohort × Pen × Freq × Unit <br> 或 Installed Base ÷ Life + new</div><div class="n">stock→flow: 资产类要除寿命换成流量</div></div>
+      <div class="card"><div class="t">⑥ % change / CAGR · 15%</div><div class="eq">CAGR = (end/start)^(1/n) – 1</div><div class="n">把 T 反推成 required CAGR — Growth case 必动作</div></div>
+      <div class="card"><div class="t">⑦ market share math · 9%</div><div class="eq">company R = Mkt × share × ASP</div><div class="n">汇报公司收入前永远先乘 share，别报市场总量</div></div>
+    </div>
+
+    <h3>三个 LLM 经常忘但 corpus 反复奖励的 trick</h3>
+    <ul>
+      <li><b>ignore sunk costs.</b> 看到 "already spent" → 写 <code>SC ✗</code> 并念出来</li>
+      <li><b>scarce resource → rank by π÷K</b>，不是 π÷unit。容量限了 (机时/座位/平米)，按那个单位排</li>
+      <li><b>post-synergy EBITDA in M&amp;A multiples.</b> EV/EBITDA 乘的是合并后 EBITDA，不是 standalone</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ VII. PRACTICE PROTOCOL ============ -->
+<section>
+  <div class="side"><span class="roman">VII.</span>Practice · 怎么练</div>
+  <div class="body" contenteditable="true">
+    <h2>怎么把速记法练到 "看到 → 手写出来"</h2>
+    <p class="lead">速记法不是看会的，是写会的。下面是 21 天练习曲线，每天 25 分钟。最难的不是符号，是 <b>在听的同时压</b>。</p>
+
+    <div class="compare">
+      <div class="col"><h4>WEEK 1 · 认符号</h4>
+        <ul>
+          <li>D1–2 · 抄 Atoms 表 3 遍，盲默</li>
+          <li>D3 · 听 1 个 Profitability case，用<u>满字</u>记录</li>
+          <li>D4 · 重听 D3，用速记法重写一次</li>
+          <li>D5–7 · 每天 1 个新 case，speed-write 后 5 分钟自评"哪些字其实可以压"</li>
+        </ul>
+      </div>
+      <div class="col"><h4>WEEK 1 · 评估指标</h4>
+        <ul>
+          <li>能 1 秒认出 30 个 atoms 中的 25+</li>
+          <li>能写出 R↓ · π↓ · C↑ · Δ · vs · ∴ · ^ · □ · ★ · !</li>
+          <li>能用一行写 "revenue down 12% in segment 2, costs flat"</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="compare">
+      <div class="col"><h4>WEEK 2 · 触发反射</h4>
+        <ul>
+          <li>D8–10 · 只听 prompt 不看 solution，30 秒内写出 trigger→action</li>
+          <li>D11–12 · 加 PROVE 训练: 找 5 个带 exhibit 的 case，每个练 5 步</li>
+          <li>D13 · 计时：1 个 case 全程 ≤ 1 页笔记</li>
+          <li>D14 · 对照 PATTERNS.md 的 lift 表自检漏了哪些 trigger</li>
+        </ul>
+      </div>
+      <div class="col"><h4>WEEK 2 · 评估指标</h4>
+        <ul>
+          <li>看到 R↓ 立刻写 P×Q×Seg，不再想 1 秒</li>
+          <li>看到 Cm 立刻写 Int vs Ext + Mkt</li>
+          <li>Exhibit 5 步能在 90 秒内走完</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="compare">
+      <div class="col"><h4>WEEK 3 · 复述能力</h4>
+        <ul>
+          <li>D15–17 · 写完笔记封页后<u>不看 solution</u>，对着空白纸口头复述 case 全程</li>
+          <li>D18 · 用速记笔记教别人解这个 case</li>
+          <li>D19 · 把 PRINCIPLES.md 的 17 句 "money lines" 翻译成你的速记句子</li>
+          <li>D20–21 · mock interview · 评估官只看你的笔记纸能否还原过程</li>
+        </ul>
+      </div>
+      <div class="col"><h4>WEEK 3 · 通关</h4>
+        <ul>
+          <li>能凭一页速记笔记复述案例全过程</li>
+          <li>笔记纸交给完全陌生的同事能看懂 70%+</li>
+          <li>真面试时不再去抄面试官的字句，而是直接压</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="h">最常见的 3 个练习陷阱</div>
+      <ul style="margin:0">
+        <li><b>试图记下每个字。</b> 速记法的目的是<u>不</u>记字。听到一个数据点，问 "vs 什么?" 再决定记不记。</li>
+        <li><b>符号过多。</b> 30 个原子之外的符号，半年后自己都不认得。看到自己造新符号超过 5 个 → 停下重新背原子。</li>
+        <li><b>只写不复盘。</b> 写完<u>当天</u>对着笔记口述一次，第二天再口述一次。第二次能讲通的笔记才合格。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIII. OUTSTANDING REFLEXES ============ -->
+<section>
+  <div class="side"><span class="roman">VIII.</span>Outstanding 反射</div>
+  <div class="body" contenteditable="true">
+    <h2>从"做出来"到"录用"的 10 个反射 (每个对应一个速记 token)</h2>
+    <p class="lead">这 10 个反射在 33% 的 case 里被显式表扬 (corpus 数据)。每条都对应一个能写到笔记右栏的 token —— 看到笔记里这些 token 反复出现 = 你在做 outstanding-tier 的事。</p>
+
+    <table class="trg">
+      <thead><tr><th style="width:9%">Token</th><th>反射</th><th style="width:14%">频率</th></tr></thead>
+      <tbody>
+        <tr><td class="trig">△</td><td class="act"><b>抬出未被问的替代方案</b> · "divest 而不是 fix" / "license 而不是 build" / "do-nothing baseline"</td><td class="lift">36% · #1</td></tr>
+        <tr><td class="trig">#·N</td><td class="act"><b>每个 lever 旁边写数字</b> · 不是 "我们可以涨价"，是 "涨价对齐对手 = +$42M = +17% π"</td><td class="lift">21%</td></tr>
+        <tr><td class="trig">?✗</td><td class="act"><b>找会让推荐崩的那一个假设</b> + 怎么验证它 · "Only if customers absorb 10% rise; below that NPV flips"</td><td class="lift">19%</td></tr>
+        <tr><td class="trig">^</td><td class="act"><b>hypothesis-led</b> · 框架不只是覆盖，要指方向</td><td class="lift">15%</td></tr>
+        <tr><td class="trig">Cx?</td><td class="act"><b>客户/人的角度</b> · 数字回答不了的: 客户接受吗?员工执行得了吗?</td><td class="lift">12%</td></tr>
+        <tr><td class="trig">80/20</td><td class="act"><b>最大杠杆先动</b> · 不要先讨论容易但小的</td><td class="lift">11%</td></tr>
+        <tr><td class="trig">2°</td><td class="act"><b>"...然后呢?"</b> · 对手会怎么反应?品类会缩吗?裁员伤士气吗?</td><td class="lift">11%</td></tr>
+        <tr><td class="trig">Cnbl</td><td class="act"><b>蚕食 net out</b> · 新 SKU 算 total R, 不是 gross R</td><td class="lift">10%</td></tr>
+        <tr><td class="trig">≈</td><td class="act"><b>量级 sanity-check</b> · "这相当于全国人均买 3 个 — 直觉对/错因为..."</td><td class="lift">7%</td></tr>
+        <tr><td class="trig">Drv</td><td class="act"><b>自驱动</b> · 不等问就提议下一步分析 / 主动收尾</td><td class="lift">6%</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box dark">
+      <div class="h">一句话定义</div>
+      <i style="font-style:italic;font-family:var(--serif);font-size:18px;line-height:1.5">Competent solves the problem. Outstanding solves it, anticipates its consequences (<b>2°</b>), weighs the option nobody offered (<b>△</b>), sizes everything (<b>#</b>), names what would break the answer (<b>?✗</b>) — and drives there without being led (<b>Drv</b>).</i>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECAP TABLE ============ -->
+<div class="recap">
+  <h2>项目状态 · 本轮交付</h2>
+  <table class="recap-t">
+    <thead><tr><th style="width:22%">项目 / Project</th><th>现在到哪里</th><th>已完成 (本轮)</th><th>未完成 / Next</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>Consulting_Case_Notetaking</b><br>(新项目)</td>
+        <td>v1.0 速记 codex 已落地为 editable HTML，可在浏览器改+下载</td>
+        <td>
+          <ul style="margin:0;padding-left:1em">
+            <li>从 Case-Library 拉 PATTERNS / PRINCIPLES / OUTSTANDING + patterns_stats.json (2,141 cases 频率数据)</li>
+            <li>定义 30 个原子符号 (R / C / π / P / Q / FC|VC / Δ / vs / ∥ / ∴ / ^ / □ / ★ / ! / 2° 等)</li>
+            <li>给出 17 行 trigger→action 表 + lift 数据 (R↓→P×Q×Seg = 1.72× 等)</li>
+            <li>5 个口诀：<code>ORSCHE</code> · <code>PROVE</code> · <code>FAC</code> · <code>SAFE</code> · <code>RECAP</code></li>
+            <li>HBS 2014 Retailer 案例 17 行 live demo</li>
+            <li>21 天练习曲线 (3 周)</li>
+          </ul>
+        </td>
+        <td>
+          <ul style="margin:0;padding-left:1em">
+            <li>挑 5 个不同 type (Profitability / Entry / M&amp;A / Pricing / Sizing) 各做 1 页 live demo, 放进 v1.1</li>
+            <li>建一个 <code>practice-log.md</code>: 每天记录练了哪个 case + 用了多少新符号 + 哪几个还不熟</li>
+            <li>把 PRINCIPLES.md 的 17 条 "money lines" 翻译成中文 + 配速记句</li>
+            <li>给 HTML 加 dark-mode toggle (可选 · 不是优先级)</li>
+            <li>git init 这个新项目 + 第一个 commit + push 到 Project JIeyue repo (按 ~/CLAUDE.md 强制规则)</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="signoff">— for Kevin · 2026-06-17 · grounded in Case-Library n=2,141</div>
+</div>
+
+</div>
+
+<script>
+function saveDoc(){
+  const html = '<!doctype html>\n' + document.documentElement.outerHTML;
+  const blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  const d = new Date();
+  const stamp = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  a.download = 'case-shorthand-cheatsheet-' + stamp + '.html';
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(a.href);
+}
+</script>
+</body>
+</html>

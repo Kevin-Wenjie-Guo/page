@@ -1,0 +1,465 @@
+---
+title: "Consulting case shorthand — a one-page cheatsheet"
+author: "Kevin Guo"
+date: "2026-06-18"
+categories: [consulting, case-prep, productivity]
+description: "A one-page reference of the shorthand and visual conventions I use when taking notes during consulting cases."
+---
+::: {.callout-note appearance="simple"}
+📄 **Also available as:** [HTML view →](consulting-case-shorthand-cheatsheet.html)
+:::
+Editable · 可直接改 · 改完点 Save
+
+Consulting Case Interview · 速记法 · v1.0
+
+# The First-Principles Note-Taking Codex
+
+Source · **kevinguo0351 / Case-Library**
+2,141 cases mined · all frequencies grounded
+Compiled 2026-06-17 for Kevin
+
+87.5%
+
+cases have math
+
+假设每个 case 都要算数。Per-unit 占 53%, margin 占 50%
+
+82.3%
+
+discuss competitive dynamics
+
+Cm rxn 是几乎必谈项 — 第一时间留位置
+
+84.6%
+
+close with R·!·→
+
+没要求也要给：Recommendation + Risks + Next steps
+
+36%
+
+reward "the alternative"
+
+面试官没说的第 3 选项 — 主动抬出来 = \#1 outstanding signal
+
+I.First Principles
+
+## 速记法的 4 条根
+
+速记 ≠ 抄字。速记 = 把对方的话压成你能在 30 秒内复述出来的 *骨架 + 钩子*。所有 acronym 都从下面 4 条推导出来 —— 如果一个符号违反其中一条，就该删掉。
+
+### 1. 频率 = 压缩优先级
+
+说得越多的事，给越短的符号。Revenue 在每个 case 都出现 ⇒ 1 个字母 R。"discuss competitive dynamics / response" 出现在 **82.3%** 的 case ⇒ 它必须是 1 个 token，Cm-rxn 或干脆 !Cm。
+
+### 2. 自解码（Self-decoding）
+
+3 个月后回看，不用查 key 也能读懂。`R↓→P×Q×Seg` 读出来就是 "revenue down, decompose price-volume by segment" —— 不需要附表。
+
+### 3. 可组合（Compositional）
+
+少量原子，自由拼接。`R↓`（revenue down）+ `π↓`（profit down）+ `C↑`（cost up）+ `vs`（compared to）+ `∴`（therefore）可以拼出几乎所有诊断句。
+
+### 4. 对应 corpus 真实高频动作，不是自造
+
+本速记法所有 trigger→action 都映射 Case-Library 里 `trigger_to_action` 字段的 lift 排序。不是"听起来酷"的发明，是"答案 key 写得最多"的复刻。
+
+底层公理 · 1 句话版
+
+Write the identity → name **Dx** vs **Dn** → disaggregate & compare to a benchmark → quantify only what flips the answer → judge vs. the **T** → commit then bound the risk.
+
+II.Atoms · 原子符号表
+
+## 30 个能拼出 90% 笔记的符号
+
+背这 30 个就够了。每个符号都对应 Case-Library 里出现频率 ≥10% 的概念。先认 column 1 (财务核心)，再叠 column 2 (动作 / 状态)。
+
+### 财务身份 Atoms
+
+RRevenue 收入R↓ = 收入下降
+
+CCost 成本C↑ = 成本上升
+
+πProfit 利润 (希腊π避开 P)π = (P–VC)Q – FC
+
+PPrice 单价P×Q = revenue
+
+QVolume/Quantity 量Q↓ in Seg2 = 第二段量跌
+
+MMargin 毛利率M=(P–VC)/P
+
+FC / VC固定 / 变动成本"FC vs VC 第一拆" = 1.51× lift
+
+KCapex / Capacity 资本/产能PB = K÷π_yr
+
+r / g折现率 / 永续增长NPV=FCF/(r–g)
+
+TTarget 目标数字 (North Star)T=$1B by 5y
+
+HHorizon 时间窗H=3y → use PB; H=10y → NPV
+
+⊕Synergy 协同 (M&A)⊕cost (certain) vs ⊕rev (caveat)
+
+### 动作 / 状态 Atoms
+
+↑ ↓ →up / down / flatπ↓ R→ → 看 cost 侧
+
+Δchange 变化ΔCOGS = +12% YoY
+
+vscompared to (Law 3)数字单独无意义
+
+∥benchmark / peerM ∥ peer = 14% vs 22%
+
+∴ ∵therefore / because合成 "so what"
+
+?clarify 澄清?Cm / ?T / ?Geo
+
+!risk / red flag!Cmr = 竞争反应风险
+
+^hypothesis 假设^cost = 我猜答案在 cost 侧
+
+□framework bucket□1 □2 □3 □4 = 4 个 MECE 桶
+
+★recommendation 终结判断★ Enter via JV @ $200M
+
+≈sanity-check 量级核对≈ 1 大城市年消费 = 合理
+
+÷Kper binding constraintπ÷K = 每机时利润 (容量受限时)
+
+2°second-order 二阶效应2° Cm-rxn = 然后竞争会怎么反应
+
+S/Oso-what 含义每个数据点结尾都要 S/O
+
+SCsunk cost — 排除SC ✗ (说出口才得分)
+
+BNbottleneck 瓶颈/binding constraintBN = 工艺 step 3
+
+Cnblcannibalization 蚕食新 SKU 抢老 SKU 的销量
+
+RTWRight-to-Win 凭什么我们能赢Entry case 必谈 (lift 1.24×)
+
+### 领域速记 (3 字母代号)
+
+CmCompetitor 竞品
+
+CxCustomer 客户
+
+MktMarket 市场
+
+SegSegment 细分
+
+GeoGeography 地域
+
+CapCapabilities 能力 / 资产
+
+Org / InOrganic / Inorganic 内生/外延
+
+WTPWillingness-to-Pay 价值上限
+
+BE / PBBreakeven / Payback
+
+NPV / IRR净现值 / 内部回报率
+
+CAGR年化复合增长
+
+TCOTotal Cost of Ownership (B2B 竞标)
+
+举例 · 把句子压成一行
+
+原句：“Revenue is down 12% but only in our suburban segment, and the cost line is flat year-over-year, so I think the issue is on the revenue side, specifically a volume drop in suburbs likely due to a new competitor.”
+
+**速记 →** `R↓ 12% (Sub only) · C→ · ∴^Rsd: Q↓ Sub ∵ new Cm`
+
+III.Trigger → Action
+
+## "看到 X → 写 Y" · 频率排序速查
+
+这是整个 cheatsheet 的核心。每行都来自 2,141 case 里 `trigger_to_action` 的 lift 排序。听到 trigger 就在草稿纸右上角写 action 的速记，不要重新想。
+
+| Trigger (听到 / 看到) | → | Action 速记 + 含义 | Lift |
+|----|----|----|----|
+| R↓ (revenue declining) | → | **R↓ → P×Q × Seg** · 拆 price × volume，按段/品分开看，<u>问数字别求平均</u> | 1.72× |
+| π↓ (profit/margin↓) | → | **π↓ → P×Q + FC\|VC** · 先拆 R = P×Q (1.71×)，再拆 C = FC vs VC (1.51×)；定位哪边动了 | 1.7× |
+| π↓ R→ (profit down, revenue flat) | → | **→ C side · % of R YoY** · 跳到成本，每条线作 R 比例的 YoY，找走偏那条 | — |
+| 多 Seg / SKU / Geo | → | **✗ avg · ask breakdown** · 拒绝平均；根因藏在某一个 sub-bucket (Law 4) | — |
+| Cm seen (mentioned) | → | **Int vs Ext + Mkt/Macro** · 内外因区分 (1.35×) + 看大盘 (1.15×)；量化对手 share/moat/可能反应 | 1.35× |
+| "Acquire / merge?" (M&A) | → | **⊕fit: V_stand + V_syn ≥ Ask** · 独立价值 + 协同 NPV ≥ 报价；cost⊕ vs rev⊕ 分开量 | 1.56× |
+| "Invest / build a facility?" | → | **NPV / PB vs r-hurdle** · 走数字案 (1.34×)；对比 do-nothing；先找 BN 再用产能算 R | 1.34× |
+| Pricing decision | → | **3 lenses: VC floor · Cm anchor · WTP ceiling**; 同时 C = FC\|VC 拆解 (1.27×) | 1.27× |
+| C↑ (costs rising / high) | → | **Cap & structure · FC vs VC** · 结构性 FC？组合调；运营 VC？谈判/替代 (1.32×) | 1.32× |
+| T=# (numeric ambition) | → | **back-calc CAGR / share / Q** · 反推所需增长率；先 sanity-check 再 brainstorm | — |
+| "Enter market?" | → | **Mkt size & RTW** · attractiveness <u>and</u> right-to-win (1.24×)；不要"市场大→进" | 1.24× |
+| Target underperforms peers | → | **Dx root + remodel post-fix** · 别接受现状毛利；诊断 + 修复后重算 | — |
+| Sunk cost mentioned | → | **SC ✗ (say it)** · 明确排除 + 说出口 (常见陷阱测试) | — |
+| Exhibit appears (56% of cases) | → | **PROVE** · Picture → Ratio (normalize) → Outlier → Verdict → Effect on T | — |
+| Capacity / scarcity | → | **rank by π÷K** · 每单位约束的利润排序，不是每单位产品 | — |
+| "Should we grow?" (587 cases) | → | **Ansoff 2×2 + Org vs In** · 拆 R = P×Q (1.19×) · 比 Org/In 的 unit econ | 1.19× |
+| Market sizing 直接问 | → | **ABC** · Anchor 写方程 → Build bottom-up → Conclude 用结果回答真问题 | 1.14× |
+
+读法 · Lift = 多倒霉
+
+"lift 1.72×" 的意思：在 *所有* case 里，"拆 R = P×Q" 是 42% 答案 key 会做的动作（baseline）。但<u>一旦 trigger 是 "R↓"</u>，72% 的 key 会做它 —— 即比基线高 1.72 倍，是真正 "trigger 特异性" 的动作，不是 generic prep talk。这就是为什么记 trigger→action 比记框架名字值钱。
+
+IV.Acronyms · 五个口诀
+
+## 5 个能说出口的口诀
+
+这 5 个口诀覆盖：开场 / 澄清 / Exhibit / 价格 / 收尾。每个 case 至少触发 3 个。听到对方说完 prompt 的瞬间，脑里先点亮 **ORSCHE**。
+
+### ① ORSCHE · 开场 90 秒
+
+1.  O **Objective + 数字** · 重述目标并把 T 写在纸顶 (Law 5)
+2.  R **Restate** · 用自己的话复述一遍验证理解
+3.  S **Structure 30s** · 主动要 30 秒画框架
+4.  C **Clarify ×4** · ?Cm (33%) / ?C&P (28%) / ?T (25%) / ?Geo (23%)
+5.  H **Hypothesis** · "我猜答案在 □2，因为…" (15% outstanding signal)
+6.  E **Engage** · "Does that frame work for you?"
+
+### ② PROVE · Exhibit 四步 (56% 的 case 必触发)
+
+面试官递图，按顺序走 5 步，<u>最常见的扣分是停在 P</u>：
+
+P · Picture
+
+一句话说图显示什么
+
+"This chart shows market share by channel for 2020–2024"
+
+R · Ratio (normalize)
+
+把绝对值变成 % / per-unit / ratio
+
+变可比 — 否则数字孤立无意义 (Law 3)
+
+O · Outlier
+
+找那条不一样的
+
+"Channel C grew 3× — everyone else flat"
+
+V · Verdict
+
+说"所以 / 含义是…" S/O
+
+主动说，不要等问
+
+E · Effect on T
+
+对客户目标的影响
+
+"这意味着我们如果不进入 Channel C，2 年内丢 30% share"
+
+### ③ FAC · 定价/估值三镜头
+
+F Floor (cost-based) · A Anchor (competitor) · C Ceiling (value / WTP)
+
+Set price between Floor and Ceiling, anchored by competitor. 通用到 M&A 估值 (standalone floor · comps anchor · strategic ceiling)、薪资谈判、招标。这就是 Law 9。
+
+### ④ SAFE · M&A 必问 4 件事
+
+- S **Standalone value** · 不算 synergy 之前值多少
+- A **⊕ synergies (cost & revenue 分开)** · cost⊕ 是 certain，rev⊕ 要 caveat
+- F **Fit + why now** · 战略契合 + 为什么是这家、为什么现在
+- E **Exit / alt** · 替代方案 (license / JV / 不动) + 退出路径
+
+速记公式：**V_stand + ⊕\_net ≥ Ask** · 总结一句话 "Max price = X vs ask = Y → +Z value"
+
+### ⑤ RECAP · 收尾 (84.6% 的 case 期望)
+
+1.  R **Recommendation** · 1 句 + 那个数字 (★)
+2.  E **Evidence** · 支撑那个数字的 1 个关键计算
+3.  C **Caveats / risks 2–3** · 从 `!Cmr · !Exo · !Reg · !Brd · !Cov · !Cnb` 里挑 (按 corpus 频率)
+4.  A **Actions (next steps) 2–3** · 排好顺序：先 X 再 Y 最后 Z
+5.  P **Pause** · 主动停顿等问，<u>不要继续填空</u>
+
+口诀对照 · 一行回忆
+
+`ORSCHE` 开 · `PROVE` 看图 · `FAC` 估价 · `SAFE` 并购 · `RECAP` 收
+
+V.Live Demo · 一页笔记
+
+## 把 HBS 2014 Retailer 案例压成 12 行
+
+真实案例：服装+家居零售 15 家店，profit↓，cost 端已优化。下面是用本速记法在 <u>对方说完 prompt 时</u> 草稿纸应该长什么样。读它 = 复述案例 = 重做案例。
+
+**Dx** · Retail 15 stores · π↓ · C done ∴ ^Rsd *↑ 诊断型, cost 已经压过, 假设 R 侧* **T:** ↑ growth rate + π *↑ North Star* **?** Cm? · P/C? · Seg by Geo? · Mix? *↑ ORSCHE 的 C 步* ──────── **□1** R = P × Q × <u>Seg</u> (Urb vs Sub) ← **^** **□2** Cx behavior: Urb buy 衣服小件 / Sub buy 大家电高 M **□3** Mix ∥ demo: same SKU everywhere — mismatch! **□4** Cm ≈ same both areas *(对手不是因)* ──────── **∴** Mix 为 Sub 设计, Urb 无大家电需求 (apt vs house) **S/O** 城里 SKU 错 → 库存浪费 + 卖场空间错配 → R↓ π↓ ──────── **★** Tailor SKU per Geo + ↑ apparel/small-item in Urb · cut 大家电 Urb **!** !Exo (re-merch 执行) · !Brd (one-brand 形象) · !Cov (重做库存费用) **→** (1) Cx survey by store, (2) pilot Urb 重组 3 家, (3) 6 mo PB 后 roll-out ──────── **2°** Cm-rxn? 重组后竞争对手会跟价吗? 测试期监测 **△** alternative 没被问的: 关 N 家 worst-perf Urb 店 (divest 选项)
+
+*17 行笔记 = 整个 case。下次翻到能 30 秒复述。**关键**：每一行右边的草书 italic 是给你以后自己看时的注释 —— 写笔记时不要写，复盘时补上。*
+
+VI.Math 速记
+
+## 87.5% 的 case 要算 · 这 7 个公式覆盖 90%
+
+按 corpus 频率排序。背 1–4 必背，5–7 看到就用。
+
+① per-unit · 53% of math cases
+
+cost/unit · R/customer · π/store/hour
+
+所有比较前先 normalize 到单位 — 这是 Law 3 在数学里的具象
+
+② margin / profit · 50%
+
+π = (P – VC)·Q – FC
+
+主身份。Profitability case 的诊断起点
+
+③ breakeven / payback · 19%
+
+BE_Q = FC ÷ (P – VC)
+PB = K ÷ π_annual
+
+PB 一定要说 "undiscounted" 以示严谨
+
+④ NPV / discounting · 19%
+
+NPV = Σ FCFₜ/(1+r)ᵗ
+**perpetuity:** FCF/(r – g)
+
+round factors: (1.1)⁴≈1.5 · (1.1)⁷≈2.0
+
+⑤ market sizing · 18%
+
+Pop × Cohort × Pen × Freq × Unit
+或 Installed Base ÷ Life + new
+
+stock→flow: 资产类要除寿命换成流量
+
+⑥ % change / CAGR · 15%
+
+CAGR = (end/start)^(1/n) – 1
+
+把 T 反推成 required CAGR — Growth case 必动作
+
+⑦ market share math · 9%
+
+company R = Mkt × share × ASP
+
+汇报公司收入前永远先乘 share，别报市场总量
+
+### 三个 LLM 经常忘但 corpus 反复奖励的 trick
+
+- **ignore sunk costs.** 看到 "already spent" → 写 `SC ✗` 并念出来
+- **scarce resource → rank by π÷K**，不是 π÷unit。容量限了 (机时/座位/平米)，按那个单位排
+- **post-synergy EBITDA in M&A multiples.** EV/EBITDA 乘的是合并后 EBITDA，不是 standalone
+
+VII.Practice · 怎么练
+
+## 怎么把速记法练到 "看到 → 手写出来"
+
+速记法不是看会的，是写会的。下面是 21 天练习曲线，每天 25 分钟。最难的不是符号，是 **在听的同时压**。
+
+#### WEEK 1 · 认符号
+
+- D1–2 · 抄 Atoms 表 3 遍，盲默
+- D3 · 听 1 个 Profitability case，用<u>满字</u>记录
+- D4 · 重听 D3，用速记法重写一次
+- D5–7 · 每天 1 个新 case，speed-write 后 5 分钟自评"哪些字其实可以压"
+
+#### WEEK 1 · 评估指标
+
+- 能 1 秒认出 30 个 atoms 中的 25+
+- 能写出 R↓ · π↓ · C↑ · Δ · vs · ∴ · ^ · □ · ★ · !
+- 能用一行写 "revenue down 12% in segment 2, costs flat"
+
+#### WEEK 2 · 触发反射
+
+- D8–10 · 只听 prompt 不看 solution，30 秒内写出 trigger→action
+- D11–12 · 加 PROVE 训练: 找 5 个带 exhibit 的 case，每个练 5 步
+- D13 · 计时：1 个 case 全程 ≤ 1 页笔记
+- D14 · 对照 PATTERNS.md 的 lift 表自检漏了哪些 trigger
+
+#### WEEK 2 · 评估指标
+
+- 看到 R↓ 立刻写 P×Q×Seg，不再想 1 秒
+- 看到 Cm 立刻写 Int vs Ext + Mkt
+- Exhibit 5 步能在 90 秒内走完
+
+#### WEEK 3 · 复述能力
+
+- D15–17 · 写完笔记封页后<u>不看 solution</u>，对着空白纸口头复述 case 全程
+- D18 · 用速记笔记教别人解这个 case
+- D19 · 把 PRINCIPLES.md 的 17 句 "money lines" 翻译成你的速记句子
+- D20–21 · mock interview · 评估官只看你的笔记纸能否还原过程
+
+#### WEEK 3 · 通关
+
+- 能凭一页速记笔记复述案例全过程
+- 笔记纸交给完全陌生的同事能看懂 70%+
+- 真面试时不再去抄面试官的字句，而是直接压
+
+最常见的 3 个练习陷阱
+
+- **试图记下每个字。** 速记法的目的是<u>不</u>记字。听到一个数据点，问 "vs 什么?" 再决定记不记。
+- **符号过多。** 30 个原子之外的符号，半年后自己都不认得。看到自己造新符号超过 5 个 → 停下重新背原子。
+- **只写不复盘。** 写完<u>当天</u>对着笔记口述一次，第二天再口述一次。第二次能讲通的笔记才合格。
+
+VIII.Outstanding 反射
+
+## 从"做出来"到"录用"的 10 个反射 (每个对应一个速记 token)
+
+这 10 个反射在 33% 的 case 里被显式表扬 (corpus 数据)。每条都对应一个能写到笔记右栏的 token —— 看到笔记里这些 token 反复出现 = 你在做 outstanding-tier 的事。
+
+| Token | 反射 | 频率 |
+|----|----|----|
+| △ | **抬出未被问的替代方案** · "divest 而不是 fix" / "license 而不是 build" / "do-nothing baseline" | 36% · \#1 |
+| \#·N | **每个 lever 旁边写数字** · 不是 "我们可以涨价"，是 "涨价对齐对手 = +$42M = +17% π" | 21% |
+| ?✗ | **找会让推荐崩的那一个假设** + 怎么验证它 · "Only if customers absorb 10% rise; below that NPV flips" | 19% |
+| ^ | **hypothesis-led** · 框架不只是覆盖，要指方向 | 15% |
+| Cx? | **客户/人的角度** · 数字回答不了的: 客户接受吗?员工执行得了吗? | 12% |
+| 80/20 | **最大杠杆先动** · 不要先讨论容易但小的 | 11% |
+| 2° | **"...然后呢?"** · 对手会怎么反应?品类会缩吗?裁员伤士气吗? | 11% |
+| Cnbl | **蚕食 net out** · 新 SKU 算 total R, 不是 gross R | 10% |
+| ≈ | **量级 sanity-check** · "这相当于全国人均买 3 个 — 直觉对/错因为..." | 7% |
+| Drv | **自驱动** · 不等问就提议下一步分析 / 主动收尾 | 6% |
+
+一句话定义
+
+*Competent solves the problem. Outstanding solves it, anticipates its consequences (**2°**), weighs the option nobody offered (**△**), sizes everything (**\#**), names what would break the answer (**?✗**) — and drives there without being led (**Drv**).*
+
+## 项目状态 · 本轮交付
+
+<table class="recap-t">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>项目 / Project</th>
+<th>现在到哪里</th>
+<th>已完成 (本轮)</th>
+<th>未完成 / Next</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Consulting_Case_Notetaking</strong><br />
+(新项目)</td>
+<td>v1.0 速记 codex 已落地为 editable HTML，可在浏览器改+下载</td>
+<td><ul>
+<li>从 Case-Library 拉 PATTERNS / PRINCIPLES / OUTSTANDING + patterns_stats.json (2,141 cases 频率数据)</li>
+<li>定义 30 个原子符号 (R / C / π / P / Q / FC|VC / Δ / vs / ∥ / ∴ / ^ / □ / ★ / ! / 2° 等)</li>
+<li>给出 17 行 trigger→action 表 + lift 数据 (R↓→P×Q×Seg = 1.72× 等)</li>
+<li>5 个口诀：<code>ORSCHE</code> · <code>PROVE</code> · <code>FAC</code> · <code>SAFE</code> · <code>RECAP</code></li>
+<li>HBS 2014 Retailer 案例 17 行 live demo</li>
+<li>21 天练习曲线 (3 周)</li>
+</ul></td>
+<td><ul>
+<li>挑 5 个不同 type (Profitability / Entry / M&amp;A / Pricing / Sizing) 各做 1 页 live demo, 放进 v1.1</li>
+<li>建一个 <code>practice-log.md</code>: 每天记录练了哪个 case + 用了多少新符号 + 哪几个还不熟</li>
+<li>把 PRINCIPLES.md 的 17 条 "money lines" 翻译成中文 + 配速记句</li>
+<li>给 HTML 加 dark-mode toggle (可选 · 不是优先级)</li>
+<li>git init 这个新项目 + 第一个 commit + push 到 Project JIeyue repo (按 ~/CLAUDE.md 强制规则)</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+— for Kevin · 2026-06-17 · grounded in Case-Library n=2,141
+
+---
+
+*Original HTML version: [consulting-case-shorthand-cheatsheet.html](consulting-case-shorthand-cheatsheet.html)*
