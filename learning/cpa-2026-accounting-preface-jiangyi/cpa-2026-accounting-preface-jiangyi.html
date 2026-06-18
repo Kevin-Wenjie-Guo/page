@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 考季 CPA《会计》前言 · 深入浅出讲义</title>
+<style>
+:root{
+  --ink:#1a1a1a;
+  --paper:#fbf8f3;
+  --paper-warm:#f5efe4;
+  --accent:#c8302d;      /* 朱砂红 */
+  --accent-2:#1f5f8b;    /* 钢蓝 */
+  --gold:#b08a3e;
+  --green:#3a6b3e;
+  --muted:#6b6b6b;
+  --line:#d8d2c4;
+  --hl:#fff3a3;
+  --shadow: 0 1px 0 rgba(0,0,0,.04), 0 12px 32px -16px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);
+  font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC", Georgia, serif;
+  line-height:1.7;
+}
+.toolbar{
+  position:sticky;top:0;z-index:50;
+  display:flex;gap:8px;align-items:center;
+  padding:10px 18px;
+  background:rgba(251,248,243,.92);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.toolbar .title{
+  font-family: "PingFang SC","Helvetica Neue", system-ui, sans-serif;
+  font-weight:600;font-size:14px;letter-spacing:.04em;color:var(--muted);
+  margin-right:auto;
+}
+.btn{
+  font-family: "PingFang SC", system-ui, sans-serif;
+  font-size:13px;font-weight:500;
+  padding:7px 14px;border-radius:999px;border:1px solid var(--ink);
+  background:var(--ink);color:var(--paper);cursor:pointer;
+  transition: all .18s ease;
+}
+.btn.secondary{background:transparent;color:var(--ink)}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+.wrap{max-width:980px;margin:0 auto;padding:48px 32px 120px;}
+.cover{
+  position:relative;
+  padding:80px 48px 72px;
+  margin-bottom:56px;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(200,48,45,.10), transparent 55%),
+    radial-gradient(ellipse at 100% 100%, rgba(31,95,139,.10), transparent 60%),
+    var(--paper-warm);
+  border:1px solid var(--line);
+  border-radius:6px;
+  overflow:hidden;
+}
+.cover::before{
+  content:"會計";
+  position:absolute;
+  right:-30px;top:-20px;
+  font-size:280px;font-weight:900;
+  color:rgba(200,48,45,.06);
+  letter-spacing:-.05em;
+  font-family:"Songti SC", serif;
+  line-height:1;
+  pointer-events:none;
+}
+.cover .kicker{
+  font-family: "PingFang SC", system-ui, sans-serif;
+  font-size:12px;letter-spacing:.32em;color:var(--accent);
+  text-transform:uppercase;font-weight:600;
+  margin-bottom:14px;
+}
+.cover h1{
+  font-size:clamp(36px, 5.4vw, 60px);
+  font-weight:700;margin:0 0 8px;letter-spacing:.02em;line-height:1.15;
+}
+.cover .sub{
+  font-size:clamp(18px,2vw,22px);color:var(--muted);
+  margin-bottom:24px;font-weight:400;
+}
+.cover .meta{
+  display:flex;gap:18px;flex-wrap:wrap;
+  font-family: "PingFang SC", system-ui, sans-serif;
+  font-size:13px;color:var(--muted);
+  border-top:1px dashed var(--line);
+  padding-top:18px;margin-top:18px;
+}
+.cover .meta span b{color:var(--ink);font-weight:600}
+
+/* Section */
+section{margin:64px 0;scroll-margin-top:60px}
+.section-no{
+  display:inline-block;
+  font-family:"PingFang SC", system-ui, sans-serif;
+  font-size:11px;letter-spacing:.3em;color:var(--accent);
+  font-weight:700;
+  padding:3px 10px;border:1px solid var(--accent);border-radius:2px;
+  margin-bottom:14px;
+}
+h2{
+  font-size:32px;font-weight:700;margin:0 0 8px;
+  border-bottom:3px double var(--ink);
+  padding-bottom:10px;
+  display:inline-block;
+}
+.lead{
+  font-size:17px;color:var(--muted);margin:8px 0 28px;
+  max-width:62ch;
+}
+
+h3{
+  font-size:22px;font-weight:600;
+  margin:36px 0 14px;
+  padding-left:14px;
+  border-left:4px solid var(--accent);
+}
+h4{
+  font-size:17px;font-weight:600;
+  margin:24px 0 10px;color:var(--accent-2);
+}
+
+/* TOC */
+.toc{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+  margin:32px 0;
+}
+.toc a{
+  display:block;padding:18px 16px;
+  background:#fff;border:1px solid var(--line);border-radius:4px;
+  text-decoration:none;color:var(--ink);
+  font-family:"PingFang SC",system-ui,sans-serif;
+  transition: all .2s;
+  position:relative;overflow:hidden;
+}
+.toc a::after{
+  content:"";position:absolute;left:0;top:0;width:4px;height:100%;
+  background:var(--accent);transform:scaleY(0);transform-origin:bottom;
+  transition:transform .2s;
+}
+.toc a:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.toc a:hover::after{transform:scaleY(1)}
+.toc .n{font-size:11px;color:var(--accent);letter-spacing:.2em;font-weight:600}
+.toc .t{font-size:16px;font-weight:600;margin-top:4px}
+.toc .d{font-size:12px;color:var(--muted);margin-top:6px}
+
+/* Callout */
+.callout{
+  margin:20px 0;padding:18px 22px;
+  background:#fff;border-left:5px solid var(--accent);
+  border-radius:0 4px 4px 0;
+  box-shadow:var(--shadow);
+}
+.callout.blue{border-left-color:var(--accent-2)}
+.callout.gold{border-left-color:var(--gold)}
+.callout.green{border-left-color:var(--green)}
+.callout .label{
+  font-family:"PingFang SC",sans-serif;
+  font-size:11px;letter-spacing:.25em;font-weight:700;color:var(--accent);
+  margin-bottom:6px;
+}
+.callout.blue .label{color:var(--accent-2)}
+.callout.gold .label{color:var(--gold)}
+.callout.green .label{color:var(--green)}
+
+/* Big stat */
+.stats{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:14px;margin:24px 0;
+}
+.stat{
+  background:#fff;border:1px solid var(--line);
+  padding:22px 18px;border-radius:4px;
+  position:relative;overflow:hidden;
+}
+.stat .num{
+  font-size:38px;font-weight:700;color:var(--accent);
+  line-height:1;letter-spacing:-.02em;
+}
+.stat .lbl{
+  font-family:"PingFang SC",sans-serif;
+  font-size:13px;color:var(--muted);margin-top:8px;
+}
+.stat::after{
+  content:"";position:absolute;right:-20px;bottom:-20px;
+  width:80px;height:80px;border-radius:50%;
+  background:radial-gradient(circle,rgba(200,48,45,.08),transparent 70%);
+}
+
+/* Table */
+table{
+  width:100%;border-collapse:collapse;
+  margin:18px 0;font-size:14.5px;
+  background:#fff;
+  font-family: "PingFang SC", system-ui, sans-serif;
+  box-shadow:var(--shadow);
+}
+th,td{
+  padding:11px 14px;border:1px solid var(--line);
+  vertical-align:top;text-align:left;
+}
+th{
+  background:var(--ink);color:var(--paper);
+  font-weight:600;font-size:13px;letter-spacing:.05em;
+}
+tr:nth-child(even) td{background:#faf6ee}
+td .tag{
+  display:inline-block;font-size:11px;font-weight:600;
+  padding:2px 7px;border-radius:3px;margin-right:5px;
+}
+.tag.new{background:#fff3a3;color:#7a5d00}
+.tag.fix{background:#cfe6f3;color:#1f5f8b}
+.tag.del{background:#f3d0cf;color:#a32826}
+.tag.none{background:#e8e8e8;color:#666}
+
+/* Highlight */
+mark{background:linear-gradient(transparent 55%, var(--hl) 55%);padding:0 2px;font-weight:600;color:var(--ink)}
+.key{color:var(--accent);font-weight:600}
+
+/* Formula */
+.formula{
+  background:#fff;padding:16px 22px;
+  border-left:3px solid var(--accent-2);
+  margin:14px 0;font-family: "Latin Modern Math", "Cambria Math", "STIX Two Math", "Times New Roman", serif;
+  font-size:17px;border-radius:0 4px 4px 0;
+  box-shadow:var(--shadow);
+}
+.formula .lbl{
+  display:block;font-family:"PingFang SC",sans-serif;
+  font-size:12px;letter-spacing:.15em;color:var(--muted);
+  margin-bottom:6px;
+}
+sup{font-size:.7em;vertical-align:super}
+sub{font-size:.7em;vertical-align:sub}
+
+/* Timeline diagram */
+.tl{
+  display:flex;justify-content:space-between;
+  margin:18px 0 24px;padding:12px 0;
+  border-top:2px solid var(--ink);
+  position:relative;
+}
+.tl::before{
+  content:"";position:absolute;left:0;top:-7px;
+  border-left:12px solid var(--ink);
+  border-top:6px solid transparent;border-bottom:6px solid transparent;
+  display:none;
+}
+.tl .pt{
+  text-align:center;font-family:"PingFang SC",sans-serif;
+  font-size:13px;color:var(--muted);flex:1;position:relative;
+}
+.tl .pt::before{
+  content:"";position:absolute;left:50%;top:-19px;transform:translateX(-50%);
+  width:10px;height:10px;background:var(--accent);border-radius:50%;
+}
+.tl .pt b{display:block;color:var(--ink);font-size:15px;margin-top:2px}
+
+/* Method cards */
+.methods{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:18px 0}
+.method{
+  padding:18px;background:#fff;border:1px solid var(--line);border-radius:4px;
+  border-top:4px solid var(--accent);
+}
+.method h5{margin:0 0 6px;font-size:15px;color:var(--accent);font-family:"PingFang SC",sans-serif}
+.method p{margin:0;font-size:13px;color:var(--muted);font-family:"PingFang SC",sans-serif}
+.method .when{
+  display:block;margin-top:8px;font-size:11px;color:var(--accent-2);
+  font-weight:600;letter-spacing:.1em;font-family:"PingFang SC",sans-serif;
+}
+
+/* Quiz */
+.quiz-cover{
+  background: linear-gradient(135deg, var(--ink) 0%, #2c2c2c 100%);
+  color:var(--paper);padding:54px 40px;border-radius:6px;margin:60px 0 24px;
+  position:relative;overflow:hidden;
+}
+.quiz-cover::before{
+  content:"Q";position:absolute;font-size:380px;font-weight:900;
+  right:-60px;bottom:-160px;color:rgba(251,248,243,.06);
+  font-family: Georgia, serif;line-height:1;
+}
+.quiz-cover .kicker{
+  font-size:11px;letter-spacing:.35em;color:rgba(251,248,243,.6);
+  font-family:"PingFang SC",sans-serif;
+}
+.quiz-cover h2{
+  color:var(--paper);border-bottom-color:var(--paper);font-size:42px;
+  margin-top:8px;
+}
+.quiz-cover .lead{color:rgba(251,248,243,.7);font-size:15px;max-width:50ch}
+.quiz-cover .ctl{
+  display:flex;gap:10px;margin-top:24px;align-items:center;
+  font-family:"PingFang SC",sans-serif;
+}
+.quiz-cover .btn{background:var(--accent);border-color:var(--accent);color:#fff}
+.quiz-cover .btn.secondary{background:transparent;color:var(--paper);border-color:var(--paper)}
+.score{
+  margin-left:auto;font-size:13px;color:rgba(251,248,243,.7);
+}
+
+.quiz{
+  background:#fff;border:1px solid var(--line);border-radius:4px;
+  padding:24px 26px;margin:16px 0;
+  box-shadow:var(--shadow);
+}
+.quiz .qn{
+  font-family:"PingFang SC",sans-serif;
+  font-size:11px;letter-spacing:.2em;color:var(--accent);font-weight:700;
+}
+.quiz .qt{
+  font-size:16px;font-weight:600;margin:6px 0 14px;color:var(--ink);
+}
+.quiz .qtype{
+  display:inline-block;font-size:10px;font-weight:600;letter-spacing:.1em;
+  padding:2px 7px;border-radius:3px;background:#eee;color:#666;margin-left:6px;
+  font-family:"PingFang SC",sans-serif;
+}
+.opts{list-style:none;padding:0;margin:0;font-family:"PingFang SC",sans-serif;font-size:14.5px}
+.opts li{
+  padding:10px 14px;margin:6px 0;border:1px solid var(--line);
+  border-radius:3px;cursor:pointer;transition: all .15s;
+  display:flex;gap:10px;align-items:flex-start;
+}
+.opts li:hover{background:#faf6ee;border-color:#bbb}
+.opts li .letter{
+  font-weight:700;color:var(--accent);min-width:18px;
+}
+.opts li.picked{background:#fff3a3;border-color:var(--gold)}
+.opts li.right{background:#dcecd9;border-color:var(--green);color:var(--green)}
+.opts li.wrong{background:#f3d0cf;border-color:var(--accent);color:var(--accent)}
+.explain{
+  display:none;margin-top:14px;padding:14px;
+  background:#faf6ee;border-left:3px solid var(--accent-2);
+  font-size:14px;color:#333;font-family:"PingFang SC",sans-serif;
+  border-radius:0 3px 3px 0;
+}
+.explain.show{display:block}
+.explain .ans{font-weight:700;color:var(--accent-2);margin-bottom:6px}
+
+/* Recap */
+.recap{
+  margin-top:80px;padding-top:30px;border-top:2px solid var(--ink);
+}
+.recap table{font-size:13px}
+.recap th{background:var(--accent-2)}
+
+/* Print */
+@media print{
+  .toolbar,.no-print{display:none !important}
+  body{background:#fff}
+  .wrap{padding:0}
+  section{break-inside:avoid;page-break-inside:avoid}
+  .quiz{break-inside:avoid;page-break-inside:avoid}
+  .cover::before{display:none}
+  .quiz-cover::before{display:none}
+  .quiz-cover{background:#1a1a1a !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+footer{
+  text-align:center;color:var(--muted);font-size:12px;
+  margin-top:60px;padding-top:24px;
+  font-family:"PingFang SC",sans-serif;
+  border-top:1px solid var(--line);
+}
+.editable-hint{
+  background:var(--hl);padding:8px 14px;border-radius:3px;
+  font-size:12px;color:#7a5d00;font-family:"PingFang SC",sans-serif;
+  margin-bottom:18px;display:inline-block;
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar no-print">
+  <span class="title">2026 CPA · 会计 · 前言讲义</span>
+  <button class="btn secondary" onclick="window.print()">打印 / 导出 PDF</button>
+  <button class="btn" onclick="saveDoc()">保存 HTML</button>
+</div>
+
+<div class="wrap" id="doc">
+
+<!-- COVER -->
+<header class="cover">
+  <div class="kicker">应试 · 基础精讲班 · 张敬富</div>
+  <h1>2026 考季 CPA《会计》</h1>
+  <div class="sub">前言 · 深入浅出讲义</div>
+  <div class="meta">
+    <span><b>共 30 章</b> · 5 大部分</span>
+    <span><b>满分 100</b> · 60 分及格</span>
+    <span><b>客观 50 分</b> + <b>主观 50 分</b></span>
+    <span>整理日期 · 2026 / 06 / 12</span>
+  </div>
+</header>
+
+<div class="editable-hint no-print">📝 全文可直接点击编辑（contenteditable）。改完点右上角"保存 HTML"导出最新版。</div>
+
+<!-- TOC -->
+<section id="toc">
+  <span class="section-no">CONTENTS</span>
+  <h2>目录导航</h2>
+  <p class="lead">前言一共讲四件事：教材怎么变、考试怎么考、怎么学、入门必备的金融数学。</p>
+  <div class="toc">
+    <a href="#s1"><div class="n">01</div><div class="t">教材框架及2026变化</div><div class="d">30 章 / 5 部分 · 新增/修改/删除一览</div></a>
+    <a href="#s2"><div class="n">02</div><div class="t">题型 · 题量 · 命题特点</div><div class="d">29 道客观 + 4 道主观 · 100 分</div></a>
+    <a href="#s3"><div class="n">03</div><div class="t">注意事项与学习方法</div><div class="d">4 阶段读书法 · 6 大注意点</div></a>
+    <a href="#s4"><div class="n">04</div><div class="t">入门必备：终值、现值与年金</div><div class="d">复利 · 4 类年金 · 插值法</div></a>
+    <a href="#quiz"><div class="n">05</div><div class="t">20 道随堂测验</div><div class="d">含解析 · 可自评分</div></a>
+  </div>
+</section>
+
+<!-- SECTION 1 -->
+<section id="s1">
+  <span class="section-no">PART 01</span>
+  <h2>教材框架结构及2026年主要变化</h2>
+  <p class="lead">2026 年《会计》教材共 <mark>30 章</mark>，分 <mark>5 大部分</mark>。这是张老师按章列的"哪里动了刀"地图，<b>新增/修改部分就是命题重点</b>。</p>
+
+  <div class="stats">
+    <div class="stat"><div class="num">30</div><div class="lbl">章节总数</div></div>
+    <div class="stat"><div class="num">5</div><div class="lbl">大部分</div></div>
+    <div class="stat"><div class="num">15</div><div class="lbl">会计要素的核算（最大块）</div></div>
+    <div class="stat"><div class="num">9</div><div class="lbl">特殊事项的处理</div></div>
+  </div>
+
+  <h3>第一部分 · 会计基本理论（1 章）</h3>
+  <table>
+    <thead><tr><th style="width:30%">章节</th><th>2026 主要变化</th></tr></thead>
+    <tbody>
+      <tr><td><b>第1章 总论</b></td><td>
+        <span class="tag new">新增</span>"会计工作责任"相关表述；<br>
+        <span class="tag new">新增</span>"可持续信息披露"相关例题；<br>
+        <span class="tag new">新增</span>第七节"人工智能在会计审计领域的应用"；<br>
+        <span class="tag fix">修订</span>部分文字。
+      </td></tr>
+    </tbody>
+  </table>
+
+  <h3>第二部分 · 会计要素的核算（15 章）</h3>
+  <table>
+    <thead><tr><th style="width:30%">章节</th><th>2026 主要变化</th></tr></thead>
+    <tbody>
+      <tr><td>第2章 存货</td><td><span class="tag none">无实质性变化</span></td></tr>
+      <tr><td>第3章 固定资产</td><td><span class="tag new">新增</span>部分例题；<span class="tag fix">修订</span>文字</td></tr>
+      <tr><td>第4章 无形资产</td><td><span class="tag new">新增</span>部分例题；<span class="tag fix">修订</span>文字</td></tr>
+      <tr><td>第5章 投资性房地产</td><td><span class="tag new">新增</span>"<mark>保险合同准则规定的投资性房地产处理原则</mark>"</td></tr>
+      <tr><td><b>第6章 长期股权投资与合营安排</b></td><td>
+        <span class="tag new">新增</span>"非同一控制企业合并下购买方获得<mark>补偿性资产</mark>会计处理原则"；<br>
+        <span class="tag new">新增</span>"企业处置原通过同一控制下企业合并取得的子公司<b>并丧失控制权</b>时，原合并日确认的资本公积会计处理原则"；<br>
+        <span class="tag new">新增</span>例题；<span class="tag fix">修订</span>文字
+      </td></tr>
+      <tr><td>第7章 资产减值</td><td><span class="tag none">无实质性变化</span></td></tr>
+      <tr><td><b>第8章 负债</b></td><td>
+        <span class="tag fix">修改</span>"增值税定义"、"<mark>视同应税交易</mark>的情形"、"进项税额不予抵扣的情形"；<br>
+        <span class="tag del">删除</span>"进项税额不得抵扣改为允许抵扣的会计处理"；<br>
+        <span class="tag del">删除</span>"差额征税的会计处理"；<br>
+        <span class="tag del">删除</span>"增值税税控系统专用设备/技术维护费用抵减增值税额"；<br>
+        <span class="tag new">新增</span>"<mark>地方政府专项债券</mark>"相关表述。
+      </td></tr>
+      <tr><td>第9章 职工薪酬</td><td><span class="tag none">无实质性变化</span></td></tr>
+      <tr><td>第10章 股份支付</td><td><span class="tag new">新增</span>例题；<span class="tag fix">修订</span>文字</td></tr>
+      <tr><td>第11章 借款费用</td><td><span class="tag none">无实质性变化</span></td></tr>
+      <tr><td>第12章 或有事项</td><td><span class="tag new">新增</span>"<mark>保证类质量保证形成的预计负债列报原则</mark>"</td></tr>
+      <tr><td><b>第13章 金融工具与保险合同</b></td><td>
+        <span class="tag new">新增</span>"以现金或其他金融工具<mark>净额结算</mark>，或者以交换金融工具结算的非金融项目合同的会计处理"；<br>
+        <span class="tag new">新增</span>"金融资产/金融负债的确认和终止确认"；<br>
+        <span class="tag new">新增</span>"金融工具组合提供<b>信用增级</b>对单项金融工具预期信用损失计量的影响"；<br>
+        <span class="tag new">新增</span>第八节"<mark>保险合同概述</mark>"；<br>
+        <span class="tag new">新增</span>例题；<span class="tag fix">修订</span>文字。
+      </td></tr>
+      <tr><td>第16章 所有者权益</td><td><span class="tag fix">修改</span>"发行方发行金融工具为<mark>复合金融工具</mark>的<b>交易费用</b>处理"；<span class="tag fix">修订</span>文字</td></tr>
+      <tr><td>第17章 收入、费用和利润</td><td><span class="tag new">新增</span>"<mark>合同履行完毕后调减商品对价</mark>的会计处理"；<span class="tag fix">修订</span>文字</td></tr>
+      <tr><td>第18章 政府补助</td><td><span class="tag fix">修改</span>"政府补助的定义"；<span class="tag fix">修订</span>文字</td></tr>
+    </tbody>
+  </table>
+
+  <h3>第三部分 · 特殊事项的处理（9 章）</h3>
+  <table>
+    <thead><tr><th style="width:30%">章节</th><th>2026 主要变化</th></tr></thead>
+    <tbody>
+      <tr><td>第14章 租赁</td><td><span class="tag none">无实质性变化</span></td></tr>
+      <tr><td>第15章 持有待售非流动资产、处置组和终止经营</td><td>
+        <span class="tag new">新增</span>"持有待分配给所有者的非流动资产或处置组发生的<mark>分配费用</mark>"；<br>
+        <span class="tag fix">修改</span>"终止确认持有待售的非流动资产或处置组"
+      </td></tr>
+      <tr><td>第19章 所得税</td><td><span class="tag new">新增</span>例题</td></tr>
+      <tr><td>第20章 非货币性资产交换</td><td><span class="tag none">无实质性变化</span></td></tr>
+      <tr><td>第21章 债务重组</td><td><span class="tag new">新增</span>"<mark>受让金融资产初始确认时公允价值与交易价格之间差异</mark>的具体处理"；<span class="tag fix">修订</span>文字</td></tr>
+      <tr><td>第22章 外币折算</td><td><span class="tag none">无实质性变化</span></td></tr>
+      <tr><td>第24章 会计政策、估计变更及差错更正</td><td><span class="tag new">新增</span>例题；<span class="tag fix">修订</span>文字</td></tr>
+      <tr><td>第25章 资产负债表日后事项</td><td><span class="tag fix">修改</span>例题表述；<span class="tag new">新增</span>"资产负债表日后事项<b>附注披露</b>"</td></tr>
+      <tr><td><b>第26章 企业合并</b></td><td>
+        <span class="tag new">新增</span>"同一控制下取得子公司处置并丧失控制权时，原资本公积处理"；<br>
+        <span class="tag new">新增</span>"<mark>补偿性资产的会计处理</mark>"（★★）
+      </td></tr>
+    </tbody>
+  </table>
+
+  <h3>第四部分 · 财务报告（3 章）</h3>
+  <table>
+    <thead><tr><th style="width:30%">章节</th><th>2026 主要变化</th></tr></thead>
+    <tbody>
+      <tr><td><b>第23章 财务报告</b></td><td>
+        <span class="tag fix">修改</span>"<mark>财务报表列报的基本要求</mark>"；<br>
+        <span class="tag new">新增</span>"应当在资产负债表中调整或增设相关项目的情形"；<br>
+        <span class="tag fix">修改</span>"资产和负债按<b>流动性列报</b>"；<br>
+        <span class="tag new">新增</span>"利润表中费用按<mark>功能分类</mark>"；<br>
+        <span class="tag fix">修改</span>所有者权益变动表内容与结构；<span class="tag fix">修改</span>附注主要内容。
+      </td></tr>
+      <tr><td>第27章 合并财务报表</td><td>
+        <span class="tag new">新增</span>同一控制下处置子公司并丧失控制权时原资本公积处理；<br>
+        <span class="tag del">删除</span>"合并现金流量表概述"中部分表述；<span class="tag fix">修订</span>文字。
+      </td></tr>
+      <tr><td>第28章 每股收益</td><td><span class="tag none">无实质性变化</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>第五部分 · 其他内容（2 章）</h3>
+  <table>
+    <thead><tr><th style="width:30%">章节</th><th>2026 主要变化</th></tr></thead>
+    <tbody>
+      <tr><td>第29章 公允价值计量</td><td><span class="tag none">无实质性变化</span></td></tr>
+      <tr><td><b>第30章 政府及民间非营利组织会计</b></td><td>
+        <span class="tag del">删除</span>"通过部门预算从同级财政取得政府债券资金等会计处理"；<br>
+        <span class="tag new">新增</span>"<mark>地方政府专项债券业务会计处理</mark>"（★）；<br>
+        <span class="tag new">新增</span>民间非营利组织的捐赠收入/会费收入/提供服务收入/其他收入定义；<br>
+        <span class="tag new">新增</span>"接受捐赠和政府补助何时确认收入及偿还相关资产的处理原则"（★）；<br>
+        <span class="tag fix">修改</span>捐赠资产确认和计量（★）、政府补助收入（★）、销售商品等所形成的收入（★）；<br>
+        <span class="tag fix">修改</span>业务活动成本、净资产相关表述；<span class="tag del">删除</span>部分例题。
+      </td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="label">★ 张老师划重点</div>
+    带 <b>★</b> 标记的变化属于"<mark>高概率命题点</mark>"。<b>新增 = 必考</b>，修改 = 重点关注，<b>无实质变化的章节</b>（存货、资产减值、职工薪酬、借款费用、租赁、外币折算、非货币性资产交换、每股收益、公允价值计量）≠ 不考，而是按旧考点抓。
+  </div>
+</section>
+
+<!-- SECTION 2 -->
+<section id="s2">
+  <span class="section-no">PART 02</span>
+  <h2>考试题型 · 题量 · 命题特点</h2>
+  <p class="lead">客观题 50 分、主观题 50 分，<b>近三年（2023-2025）题型题量完全稳定</b>。</p>
+
+  <h3>题型分布</h3>
+  <table>
+    <thead><tr><th>题型</th><th>题量</th><th>每题分值</th><th>合计</th><th>占比</th></tr></thead>
+    <tbody>
+      <tr><td>单选题</td><td>13 题</td><td>2 分</td><td>26 分</td><td>26%</td></tr>
+      <tr><td>多选题</td><td>12 题</td><td>2 分</td><td>24 分</td><td>24%</td></tr>
+      <tr><td>计算分析题</td><td>2 题</td><td>9 分</td><td>18 分</td><td>18%</td></tr>
+      <tr><td>综合题</td><td>2 题</td><td>16 分</td><td>32 分</td><td>32%</td></tr>
+      <tr><td><b>合计</b></td><td><b>29 题</b></td><td>—</td><td><b>100 分</b></td><td>100%</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout blue">
+    <div class="label">英文加分</div>
+    <b>计算分析题第 1 题</b>若采用<b>英文答题</b>，额外加 <mark>5 分</mark>。这是张老师特别点的"性价比加分"，英语过关的同学务必尝试。
+  </div>
+
+  <h3>命题特点</h3>
+  <table>
+    <thead><tr><th style="width:18%">大类</th><th style="width:18%">题型</th><th>特点</th></tr></thead>
+    <tbody>
+      <tr>
+        <td rowspan="2"><b>客观题</b></td>
+        <td>单选</td>
+        <td rowspan="2">
+          1. 题量<b>稳定</b>、覆盖面<b>较广</b>，涉及章节<b>较多</b>；<br>
+          2. 重在考核<b>基础知识</b>；<br>
+          3. 考核特点：<mark>重点恒重 · 逢新必考</mark>。
+        </td>
+      </tr>
+      <tr><td>多选</td></tr>
+      <tr>
+        <td rowspan="2"><b>主观题</b></td>
+        <td>计算分析题</td>
+        <td>
+          1. <b>"计算" 与 "分析" 并重</b>，需熟练掌握重点章节理论（长期股权投资、收入、租赁、金融工具、政府补助等）；<br>
+          2. 重点关注<b>基础知识 + 新增知识点</b>（如：职工薪酬）；<br>
+          3. 第 1 题英文答题加 5 分；<br>
+          4. 考点<b>较集中</b>，综合性<b>不强</b>。
+        </td>
+      </tr>
+      <tr>
+        <td>综合题</td>
+        <td>
+          1. <b>题量、阅读量、计算量相对较大</b>（注意：合理安排时间）；<br>
+          2. 综合性<b>强</b>，涉及章节<b>较多</b>，常以"<mark>差错更正</mark>"或"<mark>拼盘式</mark>"考核。
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- SECTION 3 -->
+<section id="s3">
+  <span class="section-no">PART 03</span>
+  <h2>注意事项 · 学习方法</h2>
+  <p class="lead">张老师的话："会计是 CPA 六科里最难的，但<b>难的不是知识，是节奏</b>。"</p>
+
+  <h3>六大注意事项</h3>
+  <div class="methods">
+    <div class="method"><h5>① 树立信心 · 持之以恒</h5><p>难度较大的章节<b>提前做好心理准备</b>，不要被合并报表/金融工具吓退。</p></div>
+    <div class="method"><h5>② 注重理解、总结、归纳</h5><p>重点放在<b>基础知识</b>和<b>新增知识点</b>，不死记硬背。</p></div>
+    <div class="method"><h5>③ 客观题/主观题分别策略</h5><p>采取<b>不同的学习方法</b>和考试应对技巧，不能一套打法走天下。</p></div>
+    <div class="method"><h5>④ 储备相关知识</h5><p>《税法》《财务管理》的基础概念要够用，特别是增值税、现值。</p></div>
+    <div class="method"><h5>⑤ 注意学习节奏</h5><p>避免前松后紧，<mark>切勿临阵磨枪</mark>。</p></div>
+    <div class="method"><h5>⑥ 熟练应对机考</h5><p>考试用<b>笔记本电脑</b>作答，平时刷题模拟机考环境。</p></div>
+  </div>
+
+  <h3>四阶段读书法</h3>
+  <p>张老师把 CPA 备考<mark>按时间</mark>分四个读书阶段，每段读法不一样：</p>
+
+  <div class="tl">
+    <div class="pt">考前 4–6 个月<b>熟读</b><span>教材+习题花大力气理解</span></div>
+    <div class="pt">考前 2–3 个月<b>精读</b><span>不重要的略过</span></div>
+    <div class="pt">考前 1–2 个月<b>泛读</b><span>以题带教材</span></div>
+    <div class="pt">考前 0.5–1 个月<b>粗读</b><span>重在理解、贯通</span></div>
+  </div>
+
+  <div class="callout green">
+    <div class="label">辅助原则</div>
+    1. 全面复习，突出重点 ・ 2. 强化练习，提高解题速度和准确性 ・ 3. 认真研读历年试题，注意知识更新。
+  </div>
+
+  <div class="callout">
+    <div class="label">为什么需要四阶段</div>
+    一开始的"熟读"是<b>把陌生概念变熟悉</b>；"精读"是<b>把熟悉概念变重点</b>；"泛读"是<b>把重点用题串起来</b>；最后的"粗读"是<b>把所有点串成网</b>。跳过任何一段，到考场就会"什么都见过却什么都不会"。
+  </div>
+</section>
+
+<!-- SECTION 4 -->
+<section id="s4">
+  <span class="section-no">PART 04</span>
+  <h2>入门必备：终值 · 现值 · 年金 · 插值法</h2>
+  <p class="lead">这是会计/财管的"<b>通用语</b>"——金融工具、租赁、长期股权投资、债务重组、所得税……所有涉及"未来现金流折现"的章节都用它。<b>前言里教，是因为后面章节默认你会</b>。</p>
+
+  <h3>一、终值 vs 现值（直觉版）</h3>
+  <table>
+    <thead><tr><th style="width:25%">概念</th><th>定义</th><th>俗称</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>终值 F</b><br>Future Value</td>
+        <td>现在一定量货币<b>折算到未来某一时点</b>所对应的金额</td>
+        <td><mark>本利和</mark>（"现在的钱长大后变多少"）</td>
+      </tr>
+      <tr>
+        <td><b>现值 P</b><br>Present Value</td>
+        <td>未来一定量货币<b>折算到现在</b>所对应的金额</td>
+        <td><mark>本金</mark>（"未来要拿到那笔钱，现在得投多少"）</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>二、单利 vs 复利</h3>
+  <div class="methods">
+    <div class="method">
+      <h5>单利计息</h5>
+      <p>只对<b>本金</b>计算利息，各期利息<mark>相等</mark>。</p>
+      <span class="when">现实场景：国债、银行定期</span>
+    </div>
+    <div class="method">
+      <h5>复利计息</h5>
+      <p>既对<b>本金</b>计利息，也对<b>前期的利息</b>计利息，各期利息<mark>不同</mark>（滚雪球）。</p>
+      <span class="when">CPA 全部按复利！</span>
+    </div>
+  </div>
+
+  <h3>三、一次性收付款项的复利公式</h3>
+  <div class="formula">
+    <span class="lbl">终值公式</span>
+    F = P × (1 + i)<sup>n</sup> = P × (F/P, i, n)
+  </div>
+  <div class="formula">
+    <span class="lbl">现值公式</span>
+    P = F ÷ (1 + i)<sup>n</sup> = F × (P/F, i, n)
+  </div>
+  <p>其中 <b>(F/P, i, n)</b> 叫"复利终值系数"，<b>(P/F, i, n)</b> 叫"复利现值系数"——这两个值<b>查表得到</b>，考场会给。</p>
+
+  <div class="callout blue">
+    <div class="label">手写板 1 · 例题</div>
+    第 5 年末有 300 万元，年利率 i=4%，问现在应该投入多少？<br>
+    <b>P = 300 ÷ (1+4%)<sup>5</sup> = 300 × (P/F, 4%, 5)</b>
+  </div>
+
+  <h3>四、年金的四种形态</h3>
+  <p><b>年金</b>定义：一定时期内，<mark>每隔相等时间</mark>、发生<mark>相等金额</mark>的收付款项（三要素：<b>等额、同向、等距</b>）。</p>
+
+  <table>
+    <thead><tr><th>类型</th><th>别名</th><th>特征</th><th>典型场景</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>① 普通年金</td>
+        <td><mark>后付年金</mark></td>
+        <td>从第一期开始，<b>每期期末</b>收付款</td>
+        <td>分期还房贷（月底扣款）</td>
+      </tr>
+      <tr>
+        <td>② 预付年金</td>
+        <td><mark>即付年金 / 先付年金</mark></td>
+        <td>从第一期开始，<b>每期期初</b>收付款</td>
+        <td>租金（月初付）、年金保险</td>
+      </tr>
+      <tr>
+        <td>③ 递延年金</td>
+        <td><mark>延期年金</mark></td>
+        <td>在<b>第二期或第二期以后</b>才开始收付款</td>
+        <td>宽限期后才还款的贷款</td>
+      </tr>
+      <tr>
+        <td>④ 永续年金</td>
+        <td>—</td>
+        <td><b>无限期</b>的普通年金</td>
+        <td>优先股股息、永续债</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>五、普通年金的终值与现值</h3>
+  <div class="formula">
+    <span class="lbl">普通年金终值</span>
+    F<sub>A</sub> = A × [(1+i)<sup>n</sup> − 1] ÷ i = A × (F/A, i, n)
+  </div>
+  <div class="formula">
+    <span class="lbl">普通年金现值</span>
+    P<sub>A</sub> = A × [1 − (1+i)<sup>−n</sup>] ÷ i = A × (P/A, i, n)
+  </div>
+  <p>系数同样查表。推导用<b>等比数列求和</b>：S<sub>n</sub> = a<sub>1</sub>×(1−q<sup>n</sup>) ÷ (1−q)。</p>
+
+  <h3>六、预付年金 · 递延年金的换算思路</h3>
+  <div class="callout">
+    <div class="label">核心方法 · "调一下时点"</div>
+    <b>预付年金</b> = 普通年金系数 <mark>× (1+i)</mark>（因为每笔都提前一期发生，所以现值/终值都"长大"一期）。<br>
+    例：P = A × (P/A, i, n) × (1+i)　　F = A × (F/A, i, n) × (1+i)<br><br>
+    <b>递延年金</b> = 把递延期"剥掉"，剩下就是普通年金。<br>
+    例：m 期递延、连续 n 期年金现值 P = A × (P/A, i, n) × (P/F, i, m)<br>
+    （先算到付款开始前一时点的现值，再折回 0 时点）
+  </div>
+
+  <h3>七、插值法（线性内插法）</h3>
+  <p>当查表查不到精确利率 i 时，<b>用相邻两个利率线性近似</b>。</p>
+
+  <div class="callout gold">
+    <div class="label">教材例题</div>
+    已知 (P/F, i, 5) = 0.6472，求 i。<br>
+    查表：(P/F, 8%, 5) = 0.6806；(P/F, 10%, 5) = 0.6209<br><br>
+    比例关系：(8% − i) / (8% − 10%) = (0.6806 − 0.6472) / (0.6806 − 0.6209)<br>
+    解出 <mark>i ≈ 9.12%</mark>
+  </div>
+
+  <div class="callout blue">
+    <div class="label">为什么这管用</div>
+    系数表是"<b>离散</b>"的，但函数本身是"<b>连续单调</b>"的。在小区间内（如 8%–10%），现值系数的曲线近似一条直线 → 用直线方程做内插，误差很小（&lt; 0.5%）。考场上够用。
+  </div>
+
+  <h3>八、章末速记口诀</h3>
+  <div class="methods">
+    <div class="method"><h5>看 F/P</h5><p>F=Future、P=Present、由 P 算 F → <b>乘 (1+i)<sup>n</sup></b></p></div>
+    <div class="method"><h5>看 P/F</h5><p>由 F 算 P → <b>除以 (1+i)<sup>n</sup></b>（折现）</p></div>
+    <div class="method"><h5>看 F/A or P/A</h5><p>A=Annuity、年金 → 用<b>等比数列</b>推</p></div>
+    <div class="method"><h5>预付 vs 后付</h5><p>差一期 → <b>系数 × (1+i)</b></p></div>
+    <div class="method"><h5>递延</h5><p>剥掉 m 期 → <b>再乘 (P/F, i, m)</b></p></div>
+    <div class="method"><h5>插值</h5><p>左右两表值<b>线性内插</b>，注意单调方向</p></div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="quiz-cover">
+    <div class="kicker">RANDOM CHECK · 20 QUESTIONS</div>
+    <h2>随堂测验 · 20 题</h2>
+    <p class="lead">检验你是否真的掌握了前言。每题点选选项即出对错与解析。15 题以上视为合格。</p>
+    <div class="ctl no-print">
+      <button class="btn" onclick="revealAll()">显示全部答案</button>
+      <button class="btn secondary" onclick="resetQuiz()">重置</button>
+      <span class="score" id="score">已答 0 / 20 · 正确 0</span>
+    </div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="quiz" data-ans="C">
+    <div class="qn">Q1<span class="qtype">单选</span></div>
+    <div class="qt">2026 年注册会计师《会计》教材一共多少章、分几大部分？</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> 28 章 / 4 部分</li>
+      <li data-k="B"><span class="letter">B</span> 29 章 / 5 部分</li>
+      <li data-k="C"><span class="letter">C</span> 30 章 / 5 部分</li>
+      <li data-k="D"><span class="letter">D</span> 32 章 / 6 部分</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：C</div>2026 年《会计》共 30 章，分 5 大部分：会计基本理论（1 章）、会计要素核算（15 章）、特殊事项处理（9 章）、财务报告（3 章）、其他内容（2 章）。</div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="quiz" data-ans="B">
+    <div class="qn">Q2<span class="qtype">单选</span></div>
+    <div class="qt">下列哪一章在 2026 年新增了"第七节 人工智能在会计审计领域的应用"？</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> 第 13 章 金融工具与保险合同</li>
+      <li data-k="B"><span class="letter">B</span> 第 1 章 总论</li>
+      <li data-k="C"><span class="letter">C</span> 第 23 章 财务报告</li>
+      <li data-k="D"><span class="letter">D</span> 第 30 章 政府及民间非营利组织会计</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：B</div>第 1 章总论 2026 年新增"会计工作责任"、"可持续信息披露"例题，并新增"第七节 人工智能在会计审计领域的应用"。</div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="quiz" data-ans="D">
+    <div class="qn">Q3<span class="qtype">多选</span></div>
+    <div class="qt">下列章节中 2026 年明确"无实质性变化"的是？（多选）</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> 第 2 章 存货</li>
+      <li data-k="B"><span class="letter">B</span> 第 7 章 资产减值</li>
+      <li data-k="C"><span class="letter">C</span> 第 11 章 借款费用</li>
+      <li data-k="D"><span class="letter">D</span> 以上全是</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：D</div>存货、资产减值、职工薪酬、借款费用、租赁、外币折算、非货币性资产交换、每股收益、公允价值计量均为"无实质性变化"章节。但<b>不是不考</b>，重点恒重，按旧考点抓。</div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="quiz" data-ans="C">
+    <div class="qn">Q4<span class="qtype">单选</span></div>
+    <div class="qt">第 8 章"负债"在 2026 年的变化中，<b>新增</b>了下列哪一项的相关表述？</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> 差额征税的会计处理</li>
+      <li data-k="B"><span class="letter">B</span> 增值税税控系统专用设备及技术维护费用抵减增值税额</li>
+      <li data-k="C"><span class="letter">C</span> 地方政府专项债券</li>
+      <li data-k="D"><span class="letter">D</span> 进项税额不得抵扣改为允许抵扣的会计处理</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：C</div>A、B、D 均为第 8 章<b>删除</b>项；C 是新增——地方政府专项债券相关表述。</div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="quiz" data-ans="A">
+    <div class="qn">Q5<span class="qtype">单选</span></div>
+    <div class="qt">2026 年《会计》考试客观题（单选+多选）的总分值是？</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> 50 分</li>
+      <li data-k="B"><span class="letter">B</span> 40 分</li>
+      <li data-k="C"><span class="letter">C</span> 60 分</li>
+      <li data-k="D"><span class="letter">D</span> 32 分</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：A</div>单选 13×2 = 26 分；多选 12×2 = 24 分，合计 50 分；主观题（计算分析 18 + 综合 32）= 50 分。客观与主观各占一半。</div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="quiz" data-ans="B">
+    <div class="qn">Q6<span class="qtype">单选</span></div>
+    <div class="qt">计算分析题第 1 题若采用英文答题，可以额外加多少分？</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> 3 分</li>
+      <li data-k="B"><span class="letter">B</span> 5 分</li>
+      <li data-k="C"><span class="letter">C</span> 9 分</li>
+      <li data-k="D"><span class="letter">D</span> 10 分</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：B</div>仅限计算分析题第 1 题，英文答题加 5 分。这是 CPA 会计科特有的政策红利，英语过关的同学务必利用。</div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="quiz" data-ans="C">
+    <div class="qn">Q7<span class="qtype">单选</span></div>
+    <div class="qt">综合题最常采用的考核形式是？</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> 案例分析</li>
+      <li data-k="B"><span class="letter">B</span> 名词解释</li>
+      <li data-k="C"><span class="letter">C</span> 差错更正 / 拼盘式</li>
+      <li data-k="D"><span class="letter">D</span> 单点深挖</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：C</div>张老师指出综合题"综合性强、涉及章节较多，考核形式多为差错更正或拼盘式"。</div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="quiz" data-ans="A">
+    <div class="qn">Q8<span class="qtype">单选</span></div>
+    <div class="qt">下列哪个不属于"四阶段读书法"中的某一段？</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> 速读</li>
+      <li data-k="B"><span class="letter">B</span> 精读</li>
+      <li data-k="C"><span class="letter">C</span> 泛读</li>
+      <li data-k="D"><span class="letter">D</span> 粗读</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：A</div>四阶段是：熟读（4–6 月前）→ 精读（2–3 月前）→ 泛读（1–2 月前）→ 粗读（0.5–1 月前）。没有"速读"。</div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="quiz" data-ans="D">
+    <div class="qn">Q9<span class="qtype">单选</span></div>
+    <div class="qt">下列哪一项<b>不是</b>张老师在"注意事项"中提到的？</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> 注意学习节奏，切勿临阵磨枪</li>
+      <li data-k="B"><span class="letter">B</span> 熟练应对机考（笔记本电脑）</li>
+      <li data-k="C"><span class="letter">C</span> 储备税法、财务管理相关知识</li>
+      <li data-k="D"><span class="letter">D</span> 必须每天学满 8 小时</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：D</div>张老师强调节奏与方法，而非时长。D 是没说过的"鸡汤"。</div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="quiz" data-ans="B">
+    <div class="qn">Q10<span class="qtype">单选</span></div>
+    <div class="qt">终值（Future Value）是指：</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> 未来一定量货币折算到现在的金额</li>
+      <li data-k="B"><span class="letter">B</span> 现在一定量货币折算到未来某一时点的金额</li>
+      <li data-k="C"><span class="letter">C</span> 单利计算下每期的利息</li>
+      <li data-k="D"><span class="letter">D</span> 永续年金的现值</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：B</div>终值 = 现在折算到未来；俗称"本利和"。A 描述的是现值。</div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="quiz" data-ans="C">
+    <div class="qn">Q11<span class="qtype">单选</span></div>
+    <div class="qt">关于"单利"与"复利"的区别，正确的是？</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> 单利对前期利息再计利息，复利不计</li>
+      <li data-k="B"><span class="letter">B</span> 单利各期利息不同，复利各期利息相等</li>
+      <li data-k="C"><span class="letter">C</span> 复利既对本金计息，也对前期利息计息</li>
+      <li data-k="D"><span class="letter">D</span> CPA《会计》计算默认用单利</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：C</div>单利只对本金、各期相等；复利"利滚利"、各期不同。CPA 会计/财管均按复利计算。</div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="quiz" data-ans="B">
+    <div class="qn">Q12<span class="qtype">单选</span></div>
+    <div class="qt">复利终值系数 (F/P, i, n) 等于：</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> 1 / (1+i)<sup>n</sup></li>
+      <li data-k="B"><span class="letter">B</span> (1+i)<sup>n</sup></li>
+      <li data-k="C"><span class="letter">C</span> [(1+i)<sup>n</sup> − 1] / i</li>
+      <li data-k="D"><span class="letter">D</span> [1 − (1+i)<sup>−n</sup>] / i</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：B</div>A 是 (P/F, i, n)；C 是 (F/A, i, n)；D 是 (P/A, i, n)。</div>
+  </div>
+
+  <!-- Q13 -->
+  <div class="quiz" data-ans="D">
+    <div class="qn">Q13<span class="qtype">多选</span></div>
+    <div class="qt">年金的三个必备特征是？（多选）</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> 等额</li>
+      <li data-k="B"><span class="letter">B</span> 同向</li>
+      <li data-k="C"><span class="letter">C</span> 等距</li>
+      <li data-k="D"><span class="letter">D</span> 以上全是</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：D</div>年金 = 一定时期内"每隔相等时间"（等距）发生"相等金额"（等额）、收付方向一致（同向）的现金流。三个条件缺一不可。</div>
+  </div>
+
+  <!-- Q14 -->
+  <div class="quiz" data-ans="A">
+    <div class="qn">Q14<span class="qtype">单选</span></div>
+    <div class="qt">下列对"普通年金"的描述正确的是？</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> 又称后付年金，每期期末收付</li>
+      <li data-k="B"><span class="letter">B</span> 又称先付年金，每期期初收付</li>
+      <li data-k="C"><span class="letter">C</span> 在第二期以后才开始收付</li>
+      <li data-k="D"><span class="letter">D</span> 无限期的现金流</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：A</div>普通年金 = 后付年金（期末）；预付年金 = 即付/先付（期初）；递延年金第二期及以后开始；永续年金无限期。</div>
+  </div>
+
+  <!-- Q15 -->
+  <div class="quiz" data-ans="B">
+    <div class="qn">Q15<span class="qtype">单选</span></div>
+    <div class="qt">预付年金的现值 = 普通年金现值 × ？</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> (1+i)<sup>n</sup></li>
+      <li data-k="B"><span class="letter">B</span> (1+i)</li>
+      <li data-k="C"><span class="letter">C</span> 1 / (1+i)</li>
+      <li data-k="D"><span class="letter">D</span> n × i</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：B</div>预付年金每笔现金流比普通年金"早一期"，所以现值与终值均要乘 (1+i)。手写板 4 即此结论。</div>
+  </div>
+
+  <!-- Q16 -->
+  <div class="quiz" data-ans="C">
+    <div class="qn">Q16<span class="qtype">单选</span></div>
+    <div class="qt">某项目第 5 年末有 300 万元，年利率 i=4%，现值约为？</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> 300 × (F/P, 4%, 5)</li>
+      <li data-k="B"><span class="letter">B</span> 300 × (F/A, 4%, 5)</li>
+      <li data-k="C"><span class="letter">C</span> 300 × (P/F, 4%, 5)</li>
+      <li data-k="D"><span class="letter">D</span> 300 × (P/A, 4%, 5)</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：C</div>把"未来 300 万"折回现在 → 一次性现值 → (P/F, i, n)。这是手写板 1 的例题原型。</div>
+  </div>
+
+  <!-- Q17 -->
+  <div class="quiz" data-ans="C">
+    <div class="qn">Q17<span class="qtype">单选</span></div>
+    <div class="qt">某 6 期、每期期初支付 300 万元，年利率 4%，其现值表达式为？</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> 300 × (P/A, 4%, 6)</li>
+      <li data-k="B"><span class="letter">B</span> 300 × (P/F, 4%, 6)</li>
+      <li data-k="C"><span class="letter">C</span> 300 × (P/A, 4%, 6) × (1+4%)</li>
+      <li data-k="D"><span class="letter">D</span> 300 × (F/A, 4%, 6) × (1+4%)</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：C</div>期初付 → 预付年金 → 普通年金现值 × (1+i)。这是手写板 4 的标答。</div>
+  </div>
+
+  <!-- Q18 -->
+  <div class="quiz" data-ans="C">
+    <div class="qn">Q18<span class="qtype">单选</span></div>
+    <div class="qt">"插值法"主要用于：</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> 计算永续年金的现值</li>
+      <li data-k="B"><span class="letter">B</span> 把单利换算为复利</li>
+      <li data-k="C"><span class="letter">C</span> 当系数表查不到精确利率时，用相邻两个利率线性近似</li>
+      <li data-k="D"><span class="letter">D</span> 把人民币现金流折算为外币</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：C</div>插值法 = 线性内插法，用于反推不在表上的利率（如 IRR 计算、债券实际利率）。前言例题中即用此法解出 i ≈ 9.12%。</div>
+  </div>
+
+  <!-- Q19 -->
+  <div class="quiz" data-ans="D">
+    <div class="qn">Q19<span class="qtype">多选</span></div>
+    <div class="qt">2026 年第 13 章"金融工具与保险合同"新增的内容包括？（多选）</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> 以现金或其他金融工具净额结算的非金融项目合同的会计处理</li>
+      <li data-k="B"><span class="letter">B</span> 金融资产和金融负债的确认和终止确认</li>
+      <li data-k="C"><span class="letter">C</span> 信用增级对单项金融工具预期信用损失计量的影响</li>
+      <li data-k="D"><span class="letter">D</span> 以上都是；并新增第八节"保险合同概述"</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：D</div>第 13 章变化最大：A、B、C 三项新增+新增第八节"保险合同概述"+新增例题+修订文字，是 2026 年的重头戏。</div>
+  </div>
+
+  <!-- Q20 -->
+  <div class="quiz" data-ans="B">
+    <div class="qn">Q20<span class="qtype">单选</span></div>
+    <div class="qt">下列对 2026 年《会计》考试特点的描述，<b>错误</b>的是？</div>
+    <ul class="opts">
+      <li data-k="A"><span class="letter">A</span> 客观题题量稳定、覆盖面较广，重点恒重、逢新必考</li>
+      <li data-k="B"><span class="letter">B</span> 计算分析题综合性很强，考点分散</li>
+      <li data-k="C"><span class="letter">C</span> 综合题阅读量、计算量大，多为差错更正或拼盘式</li>
+      <li data-k="D"><span class="letter">D</span> 计算分析题第 1 题英文作答可加 5 分</li>
+    </ul>
+    <div class="explain"><div class="ans">答案：B</div>张老师明确指出计算分析题"考点<b>较集中</b>、综合性<b>不强</b>"，B 表述相反；A、C、D 均正确。</div>
+  </div>
+</section>
+
+<!-- RECAP -->
+<section class="recap">
+  <span class="section-no">RECAP</span>
+  <h2>本讲速览</h2>
+  <table>
+    <thead>
+      <tr><th>项目 / Project</th><th>现在到哪里 / Where</th><th>已完成 / Done this turn</th><th>未完成 / Open / Next</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>CPA《会计》前言 HTML 讲义</td>
+        <td>完整生成，含 4 大部分 + 20 题 quiz</td>
+        <td>
+          · §1 30 章 + 5 部分 2026 变化表<br>
+          · §2 题型分布 / 命题特点<br>
+          · §3 6 注意 + 4 阶段读书法<br>
+          · §4 终值/现值/年金/插值法<br>
+          · 20 道交互式 quiz（含解析、自动评分）<br>
+          · 一键"保存 HTML"、"打印 PDF"
+        </td>
+        <td>— (clean)</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<footer>
+  © 2026 · CPA《会计》前言整理 · 张敬富老师讲义结构 · 本文档完全离线、可编辑、可导出
+</footer>
+
+</div>
+
+<script>
+// quiz logic
+(function(){
+  const quizzes = document.querySelectorAll('.quiz');
+  let answered = 0, correct = 0;
+  function refresh(){
+    document.getElementById('score').textContent =
+      `已答 ${answered} / 20 · 正确 ${correct}`;
+  }
+  quizzes.forEach(q => {
+    const ans = q.dataset.ans;
+    const expl = q.querySelector('.explain');
+    q.querySelectorAll('.opts li').forEach(li => {
+      li.addEventListener('click', () => {
+        if (q.dataset.locked) return;
+        q.dataset.locked = '1';
+        const k = li.dataset.k;
+        q.querySelectorAll('.opts li').forEach(o => {
+          if (o.dataset.k === ans) o.classList.add('right');
+          else if (o === li) o.classList.add('wrong');
+        });
+        if (k === ans) correct++;
+        answered++;
+        expl.classList.add('show');
+        refresh();
+      });
+    });
+  });
+  window.revealAll = function(){
+    quizzes.forEach(q => {
+      if (q.dataset.locked) return;
+      q.dataset.locked = '1';
+      const ans = q.dataset.ans;
+      q.querySelector(`.opts li[data-k="${ans}"]`).classList.add('right');
+      q.querySelector('.explain').classList.add('show');
+    });
+  };
+  window.resetQuiz = function(){
+    quizzes.forEach(q => {
+      delete q.dataset.locked;
+      q.querySelectorAll('.opts li').forEach(o => o.classList.remove('right','wrong','picked'));
+      q.querySelector('.explain').classList.remove('show');
+    });
+    answered = 0; correct = 0; refresh();
+  };
+})();
+
+// make editable
+document.getElementById('doc').setAttribute('contenteditable','true');
+
+// save
+function saveDoc(){
+  const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+  const blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = '2026-CPA-会计-前言-讲义.html';
+  document.body.appendChild(a); a.click(); a.remove();
+}
+window.saveDoc = saveDoc;
+</script>
+</body>
+</html>
