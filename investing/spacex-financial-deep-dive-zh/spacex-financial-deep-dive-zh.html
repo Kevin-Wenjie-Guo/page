@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>SpaceX S-1 Financial Deep Dive | 专家级财务分析</title>
+<style>
+:root {
+  --bg: #0a0e1a;
+  --bg2: #131826;
+  --accent: #00d4ff;
+  --accent2: #ffb84d;
+  --good: #4ade80;
+  --bad: #ef4444;
+  --warn: #fbbf24;
+  --text: #e2e8f0;
+  --text-dim: #94a3b8;
+  --border: #1e293b;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+  line-height: 1.6;
+  padding: 0;
+}
+.slide {
+  min-height: 100vh;
+  padding: 60px 80px;
+  border-bottom: 2px solid var(--border);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.slide-num {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: var(--text-dim);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+h1 {
+  font-size: 56px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--accent2);
+  margin: 20px 0 12px 0;
+}
+h4 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 16px 0 8px 0;
+}
+p { color: var(--text); margin-bottom: 12px; }
+.subtitle {
+  font-size: 22px;
+  color: var(--text-dim);
+  margin-bottom: 40px;
+}
+.kicker {
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 6px;
+}
+.tag-good { background: rgba(74, 222, 128, 0.15); color: var(--good); border: 1px solid var(--good); }
+.tag-bad { background: rgba(239, 68, 68, 0.15); color: var(--bad); border: 1px solid var(--bad); }
+.tag-warn { background: rgba(251, 191, 36, 0.15); color: var(--warn); border: 1px solid var(--warn); }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+th {
+  background: var(--bg2);
+  color: var(--accent);
+  text-align: right;
+  padding: 10px 12px;
+  border-bottom: 2px solid var(--accent);
+  font-weight: 600;
+}
+th:first-child { text-align: left; }
+td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: right;
+}
+td:first-child { text-align: left; color: var(--text-dim); }
+tr:hover td { background: var(--bg2); }
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+.metric {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  padding: 16px 20px;
+  border-radius: 6px;
+}
+.metric.bad { border-left-color: var(--bad); }
+.metric.good { border-left-color: var(--good); }
+.metric.warn { border-left-color: var(--warn); }
+.metric .label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+.metric .value { font-size: 28px; font-weight: 700; color: var(--text); margin: 4px 0; }
+.metric .delta { font-size: 13px; color: var(--text-dim); }
+.so-what {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(255, 184, 77, 0.08) 100%);
+  border: 1px solid var(--accent);
+  border-left: 6px solid var(--accent2);
+  padding: 18px 22px;
+  margin: 24px 0;
+  border-radius: 6px;
+  position: relative;
+}
+.so-what::before {
+  content: "💡 SO WHAT";
+  position: absolute;
+  top: -10px;
+  left: 14px;
+  background: var(--bg);
+  padding: 0 8px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--accent2);
+  font-weight: 700;
+}
+.so-what p:last-child { margin-bottom: 0; }
+.flag {
+  background: rgba(239, 68, 68, 0.06);
+  border-left: 4px solid var(--bad);
+  padding: 12px 16px;
+  margin: 12px 0;
+  border-radius: 4px;
+}
+.green-flag {
+  background: rgba(74, 222, 128, 0.06);
+  border-left: 4px solid var(--good);
+  padding: 12px 16px;
+  margin: 12px 0;
+  border-radius: 4px;
+}
+.warn-flag {
+  background: rgba(251, 191, 36, 0.06);
+  border-left: 4px solid var(--warn);
+  padding: 12px 16px;
+  margin: 12px 0;
+  border-radius: 4px;
+}
+.bar-chart {
+  margin: 20px 0;
+}
+.bar-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 100px;
+  align-items: center;
+  margin: 6px 0;
+  gap: 10px;
+}
+.bar-label { font-size: 13px; color: var(--text-dim); }
+.bar-track {
+  background: var(--bg2);
+  height: 24px;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%);
+  border-radius: 3px;
+}
+.bar-fill.bad { background: linear-gradient(90deg, var(--bad) 0%, #f97316 100%); }
+.bar-fill.good { background: linear-gradient(90deg, var(--good) 0%, #22d3ee 100%); }
+.bar-value { font-size: 13px; color: var(--text); text-align: right; font-weight: 600; }
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+.note {
+  font-size: 13px;
+  color: var(--text-dim);
+  font-style: italic;
+  margin-top: 8px;
+}
+.toc-list {
+  list-style: none;
+  padding: 0;
+  font-size: 17px;
+  margin-top: 30px;
+}
+.toc-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+.toc-list li::before {
+  content: counter(toc-counter, decimal-leading-zero) "  ";
+  counter-increment: toc-counter;
+  color: var(--accent);
+  font-weight: 700;
+  margin-right: 12px;
+}
+.toc-list { counter-reset: toc-counter; }
+.callout {
+  background: var(--bg2);
+  padding: 16px 20px;
+  border-radius: 6px;
+  margin: 16px 0;
+  border-left: 4px solid var(--accent);
+}
+.big-stat {
+  font-size: 80px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  margin: 20px 0;
+}
+.cover {
+  background: radial-gradient(ellipse at top right, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at bottom left, rgba(255, 184, 77, 0.1) 0%, transparent 50%),
+              var(--bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+.cover h1 { font-size: 84px; }
+.cover .subtitle { font-size: 28px; }
+.disclaimer {
+  margin-top: auto;
+  font-size: 12px;
+  color: var(--text-dim);
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  margin-top: 60px;
+}
+@media print {
+  .slide { page-break-after: always; min-height: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- =================== SLIDE 1: COVER =================== -->
+<section class="slide cover">
+  <div class="kicker">EQUITY RESEARCH · IPO PROSPECTUS DEEP DIVE</div>
+  <h1>SpaceX (SPCX)<br>财务深度解构</h1>
+  <div class="subtitle">超越 IS / BS / SCF 的专家级分析<br>每个发现配 So What 投资含义</div>
+  <div style="margin-top:40px; font-size: 15px; color: var(--text-dim);">
+    <div>📄 基于 SEC EDGAR S-1 原文（Accession 0001628280-26-036936）</div>
+    <div>📅 招股书提交日期：2026/05/20</div>
+    <div>🎯 用途：老虎证券新加坡客户直播筹备</div>
+  </div>
+  <div class="disclaimer">
+    本报告仅供研究用途，不构成投资建议。所有数字源自 S-1 原文及附属财务报表。
+  </div>
+</section>
+
+<!-- =================== SLIDE 2: TOC =================== -->
+<section class="slide">
+  <div class="slide-num">02 / 16</div>
+  <h2>分析路径图</h2>
+  <ol class="toc-list">
+    <li>30 秒看懂：财务现状一页纸</li>
+    <li>损益表（IS）——增长 vs. 利润的剪刀差</li>
+    <li>资产负债表（BS）——账面 $102B 的"内核"</li>
+    <li>现金流量表（SCF）——经营 OK，但 FCF 深度负</li>
+    <li>分部财务——三段式交叉补贴机制</li>
+    <li>单位经济：Starlink 用户增长 vs. ARPU 腰斩</li>
+    <li>资本支出强度——AI 段吞噬一切</li>
+    <li>自由现金流燃烧 + 现金跑道</li>
+    <li>非 GAAP 调整项的"魔术"</li>
+    <li>表外义务（Cursor / Anthropic / Spectrum / Terafab）</li>
+    <li>债务结构 + 隐藏杠杆</li>
+    <li>客户集中度 + 收入质量</li>
+    <li>Anthropic $45B 算力大单的会计真相</li>
+    <li>Forensics —— 红旗清单</li>
+    <li>估值含义 + 投资策略</li>
+    <li>结语 + Q&amp;A 弹药</li>
+  </ol>
+</section>
+
+<!-- =================== SLIDE 3: TL;DR =================== -->
+<section class="slide">
+  <div class="slide-num">03 / 16</div>
+  <h2>30 秒看懂</h2>
+  <p style="font-size: 18px; margin-bottom: 24px;">SpaceX 是<strong>三家公司套娃</strong>的合体：印钞的 Starlink、烧钱的 Starship、深亏的 xAI。三者共用一张资产负债表，IPO 是给 AI 段融资。</p>
+
+  <div class="metric-grid">
+    <div class="metric"><div class="label">2025 营收</div><div class="value">$18.7B</div><div class="delta">YoY +33%（含 xAI 回溯）</div></div>
+    <div class="metric bad"><div class="label">2025 净亏损</div><div class="value">$(4.9)B</div><div class="delta">2024 还盈利 $0.8B</div></div>
+    <div class="metric warn"><div class="label">2025 Adj EBITDA</div><div class="value">$6.6B</div><div class="delta">vs 营业亏损 $(2.6)B = $9B 缺口</div></div>
+    <div class="metric bad"><div class="label">2025 自由现金流</div><div class="value">$(13.9)B</div><div class="delta">OCF $6.8B − Capex $20.7B</div></div>
+    <div class="metric warn"><div class="label">总有息债务</div><div class="value">$29.1B</div><div class="delta">D/EBITDA = 4.4x</div></div>
+    <div class="metric bad"><div class="label">累计亏损</div><div class="value">$(41.3)B</div><div class="delta">Q1 2026 末</div></div>
+    <div class="metric"><div class="label">现金</div><div class="value">$15.9B</div><div class="delta">−$8.9B QoQ（融资可补）</div></div>
+    <div class="metric good"><div class="label">Starlink 段 Adj EBITDA 利润率</div><div class="value">63%</div><div class="delta">$7.2B / $11.4B（核心赚钱机器）</div></div>
+  </div>
+
+  <div class="so-what">
+    <p><strong>三段定性</strong>：Connectivity 段（Starlink）= 印钞机；Space 段（Starship R&amp;D 期）= 战略亏损；AI 段（xAI/Grok/COLOSSUS）= 全公司亏损来源。</p>
+    <p><strong>投资本质</strong>：你不是在买一家"火箭公司"，你是在买马斯克"用 Starlink 现金流补贴 AI 算力大赌注"的资本配置决策。</p>
+  </div>
+</section>
+
+<!-- =================== SLIDE 4: INCOME STATEMENT =================== -->
+<section class="slide">
+  <div class="slide-num">04 / 16</div>
+  <h2>损益表（IS）— 增长 vs 利润的剪刀差</h2>
+
+  <table>
+    <thead>
+      <tr><th>$M</th><th>2023</th><th>2024</th><th>2025</th><th>Q1'25</th><th>Q1'26</th><th>YoY (Q)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>营收</td><td>10,387</td><td>14,015</td><td><strong>18,674</strong></td><td>4,067</td><td>4,694</td><td>+15.4%</td></tr>
+      <tr><td>总成本+费用</td><td>13,892</td><td>13,549</td><td>21,263</td><td>4,040</td><td>6,637</td><td>+64.3%</td></tr>
+      <tr><td>营业利润</td><td>(3,505)</td><td>+466</td><td><strong>(2,589)</strong></td><td>+27</td><td><strong>(1,943)</strong></td><td>转负</td></tr>
+      <tr><td>营业利润率</td><td>-33.7%</td><td>+3.3%</td><td><strong>-13.9%</strong></td><td>+0.7%</td><td><strong>-41.4%</strong></td><td>-42pp</td></tr>
+      <tr><td><strong>净亏损</strong></td><td>(4,628)</td><td><strong>+791</strong></td><td><strong>(4,937)</strong></td><td>(528)</td><td><strong>(4,276)</strong></td><td>+710%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>三大异常点</h3>
+
+  <div class="flag">
+    <strong>① Q1 2026 单季亏损 $4.3B</strong> ≈ 2025 全年净亏损的 87%。<br>
+    营业利润率从 +0.7% 直接跌到 -41.4%，跌了 42 个百分点。
+  </div>
+
+  <div class="flag">
+    <strong>② 营收增速放缓</strong>：2025 全年 +33% YoY，Q1 2026 单季只 +15%。
+    但<strong>成本增速 +64%</strong>，呈"剪刀差"——营收边际增长跟不上成本扩张。
+  </div>
+
+  <div class="warn-flag">
+    <strong>③ 2024 净盈利 $791M 是异常值</strong>。
+    2023 / 2025 / Q1'26 全部巨亏，2024 唯独盈利。
+    背后是 <strong>AI 段当年还小 + Starship 投资节奏差异</strong> 导致的会计假象，不是可持续盈利能力。
+  </div>
+
+  <div class="so-what">
+    <p>市场会用"营收 +43% YoY"作为 bull case 标题，但 <strong>Q1 2026 增速已放缓到 +15%</strong>，并且<strong>成本扩张 4 倍于营收扩张</strong>。</p>
+    <p>未来 2-3 年的 P&amp;L 不会"反转盈利"——管理层在 MD&amp;A 自己说 "<strong>multi-year investment horizon before sustained positive AI Segment Adjusted EBITDA</strong>"，明示亏损还会持续多年。</p>
+    <p><strong>定价含义</strong>：估值不能用 P/E，必须用 EV/Sales 或 EV/Adj EBITDA。$2T 估值 / $18.7B 营收 = <strong>107× Sales</strong>，这是 NVIDIA 顶峰（2024）的 35× 量级的 3 倍。</p>
+  </div>
+</section>
+
+<!-- =================== SLIDE 5: BALANCE SHEET =================== -->
+<section class="slide">
+  <div class="slide-num">05 / 16</div>
+  <h2>资产负债表（BS）— 账面 $102B 的"内核"</h2>
+
+  <div class="two-col">
+    <div>
+      <h3>资产端 ($M)</h3>
+      <table>
+        <thead><tr><th>项目</th><th>2024</th><th>2025</th><th>Q1'26</th></tr></thead>
+        <tbody>
+          <tr><td>现金</td><td>11,385</td><td>24,747</td><td><strong>15,852</strong></td></tr>
+          <tr><td>流动资产合计</td><td>16,108</td><td>30,952</td><td>29,732</td></tr>
+          <tr><td><strong>PP&amp;E（净）</strong></td><td>21,147</td><td>42,602</td><td><strong>53,879</strong></td></tr>
+          <tr><td><strong>总资产</strong></td><td>57,062</td><td>92,079</td><td><strong>102,094</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>负债+股东权益端 ($M)</h3>
+      <table>
+        <thead><tr><th>项目</th><th>2024</th><th>2025</th><th>Q1'26</th></tr></thead>
+        <tbody>
+          <tr><td>流动负债</td><td>11,791</td><td>21,400</td><td>24,436</td></tr>
+          <tr><td>总负债</td><td>31,258</td><td>50,754</td><td>60,512</td></tr>
+          <tr><td>可赎回可转换优先股</td><td>20,941</td><td>38,752</td><td><strong>7,049</strong></td></tr>
+          <tr><td>股东权益</td><td>4,863</td><td>2,573</td><td><strong>34,533</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3>四大解读</h3>
+
+  <div class="callout">
+    <strong>① PP&amp;E 两年翻 2.5 倍：$21B → $54B</strong><br>
+    驱动 = AI 数据中心 + Starlink 卫星制造 + Starship 设施。<strong>每季度 PP&amp;E 增加 $11B</strong>，等于全公司一个季度营收的 2.4 倍——这是极其重资产的扩张。
+  </div>
+
+  <div class="callout">
+    <strong>② 优先股大转换：$38.7B → $7.0B</strong><br>
+    Q1 2026 完成大部分 Preferred Conversion（IPO 前清整资本结构）。剩余 $7B 将在 IPO 完成后清零。<br>
+    <span class="tag tag-warn">摊薄风险</span> Pro Forma 加权股数 9,649M（2025）vs 实际 2,926M = <strong>3.3x 摊薄因子</strong>。
+  </div>
+
+  <div class="callout">
+    <strong>③ 股东权益从 $2.6B 暴增到 $34.5B</strong><br>
+    主要来自 <strong>xAI 合并的资本结构调整 + Preferred Conversion</strong>。注意：<strong>这不是利润累积</strong>，是合并会计处理的结果。
+  </div>
+
+  <div class="callout">
+    <strong>④ 流动比率恶化：1.45 → 1.22</strong><br>
+    Q1 2026 流动负债增 $3B，流动资产降 $1.2B。<strong>短期偿付压力上升</strong>。
+  </div>
+
+  <div class="so-what">
+    <p>这张资产负债表的核心矛盾：<strong>资产端 = 重资产扩张（AI 和卫星）；负债端 = 优先股转股 + 新债融资 + 流动负债扩张</strong>。</p>
+    <p>$102B 总资产里，$54B 是 PP&amp;E（53%），$16B 是现金（16%）。<strong>PP&amp;E 周转率 = 营收 $18.7B / PP&amp;E $48B（均值）= 0.39x</strong>——比电信运营商还慢。这是一家比电信公司更"资本密集"的科技公司。</p>
+    <p><strong>定价含义</strong>：用 EV/EBITDA 才合理（资产摊销大）；P/B 完全失效（合并调整使账面价值不可比）。</p>
+  </div>
+</section>
+
+<!-- =================== SLIDE 6: CASH FLOW STATEMENT =================== -->
+<section class="slide">
+  <div class="slide-num">06 / 16</div>
+  <h2>现金流量表（SCF）— OCF 看着 OK，FCF 深度负</h2>
+
+  <table>
+    <thead>
+      <tr><th>$M</th><th>2023</th><th>2024</th><th>2025</th><th>Q1'26</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>经营现金流（OCF）</td><td>4,520</td><td>5,776</td><td><strong>6,785</strong></td><td>1,047</td></tr>
+      <tr><td>投资现金流</td><td>(4,867)</td><td>(10,796)</td><td>(19,575)</td><td><strong>(16,724)</strong></td></tr>
+      <tr><td>融资现金流</td><td>422</td><td>11,830</td><td><strong>26,350</strong></td><td>7,125</td></tr>
+      <tr><td>—— Capex（含三段）</td><td>(4,415)</td><td>(11,163)</td><td>(20,737)</td><td>(10,107)</td></tr>
+      <tr><td><strong>FCF = OCF − Capex</strong></td><td><strong>+105</strong></td><td><strong>(5,387)</strong></td><td><strong>(13,952)</strong></td><td><strong>(9,060)</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>三层穿透分析</h3>
+
+  <div class="warn-flag">
+    <strong>① OCF 增长 vs 净亏损扩大的剪刀差</strong><br>
+    2025 净亏 $4.9B 但 OCF +$6.8B，<strong>差额 $11.7B = D&amp;A + SBC + 其他非现金</strong>。<br>
+    Q1 2026 净亏 $4.3B 但 OCF +$1.0B，<strong>差额 $5.3B</strong>（一个季度！）。<br>
+    → <strong>"GAAP 亏损是真的吗？" 答案：是的，因为 PP&amp;E 在加速折旧</strong>，这些 D&amp;A 反映了真实的资产消耗。
+  </div>
+
+  <div class="flag">
+    <strong>② FCF 极端为负</strong>：2025 -$14B，Q1 2026 单季 -$9B。<br>
+    年化看，2026 全年 FCF 可能达到 <strong>-$30B 到 -$40B</strong>。
+  </div>
+
+  <div class="flag">
+    <strong>③ 完全依赖外部融资</strong>：2025 融资 +$26B，Q1 2026 融资 +$7B。<br>
+    没有融资 → 现金跑道按 Q1 烧钱速度算只有 <strong>~1.7 个季度</strong>。
+  </div>
+
+  <h3>现金跑道压力测试（基于 Q1'26 烧钱速度）</h3>
+
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-label">现金</div>
+      <div class="bar-track"><div class="bar-fill good" style="width: 100%;"></div></div>
+      <div class="bar-value">$15.9B</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Q1 烧钱</div>
+      <div class="bar-track"><div class="bar-fill bad" style="width: 57%;"></div></div>
+      <div class="bar-value">$9.1B</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">隐含跑道</div>
+      <div class="bar-track"><div class="bar-fill warn" style="width: 26%;"></div></div>
+      <div class="bar-value">~5 个月</div>
+    </div>
+  </div>
+
+  <div class="so-what">
+    <p><strong>SpaceX 不是在自我造血。它在烧融资</strong>。2025 融资 $26B 才能撑住 $20.7B 的 Capex 投资。</p>
+    <p>这意味着：<strong>IPO 募资 $75B 是必需的，不是 "nice to have"</strong>。如果 IPO 失败 / 估值打折导致募资缩水，公司必须减速 AI Capex（即放弃 orbital AI 故事）。</p>
+    <p>所以 IPO 是"<strong>承诺型融资</strong>"——不是为现有业务融资，是为<strong>2028 年要部署的轨道 AI 卫星</strong>提前融资。</p>
+  </div>
+</section>
+
+<!-- =================== SLIDE 7: SEGMENT FINANCIALS =================== -->
+<section class="slide">
+  <div class="slide-num">07 / 16</div>
+  <h2>分部财务 — 三段式交叉补贴机制</h2>
+
+  <div class="three-col">
+    <div class="callout">
+      <h4 style="color: var(--good);">📡 Connectivity（Starlink）</h4>
+      <table>
+        <tr><td>2025 营收</td><td>$11.4B</td></tr>
+        <tr><td>YoY 增速</td><td>+50%</td></tr>
+        <tr><td>营业利润</td><td>+$4.4B</td></tr>
+        <tr><td>Adj EBITDA</td><td><strong>$7.2B (63%)</strong></td></tr>
+        <tr><td>Capex</td><td>-$4.2B</td></tr>
+        <tr><td><strong>分部 FCF</strong></td><td><strong>+$3.0B</strong></td></tr>
+      </table>
+      <span class="tag tag-good">利润引擎</span>
+    </div>
+
+    <div class="callout">
+      <h4 style="color: var(--warn);">🚀 Space（火箭/Starship）</h4>
+      <table>
+        <tr><td>2025 营收</td><td>$4.1B</td></tr>
+        <tr><td>YoY 增速</td><td>+8%</td></tr>
+        <tr><td>营业亏损</td><td>-$0.7B</td></tr>
+        <tr><td>Adj EBITDA</td><td>$0.7B</td></tr>
+        <tr><td>Capex</td><td>-$3.8B</td></tr>
+        <tr><td><strong>分部 FCF</strong></td><td><strong>-$3.2B</strong></td></tr>
+      </table>
+      <span class="tag tag-warn">战略性亏损</span>
+    </div>
+
+    <div class="callout">
+      <h4 style="color: var(--bad);">🤖 AI（xAI/Grok/COLOSSUS）</h4>
+      <table>
+        <tr><td>2025 营收</td><td>$3.2B</td></tr>
+        <tr><td>YoY 增速</td><td>n/a (新合并)</td></tr>
+        <tr><td>营业亏损</td><td>-$6.4B</td></tr>
+        <tr><td>Adj EBITDA</td><td>-$1.2B</td></tr>
+        <tr><td>Capex</td><td>-$12.7B</td></tr>
+        <tr><td><strong>分部 FCF</strong></td><td><strong>-$13.9B</strong></td></tr>
+      </table>
+      <span class="tag tag-bad">现金黑洞</span>
+    </div>
+  </div>
+
+  <h3>交叉补贴流向图（2025）</h3>
+
+  <div class="callout" style="font-family: monospace; font-size: 14px; line-height: 1.8;">
+    Starlink 段 FCF +$3.0B<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;⬇<br>
+    + 优先股融资 $26B + 债务<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;⬇<br>
+    Space 段消耗 $3.2B（Starship R&amp;D $3.0B + 设施 capex）<br>
+    AI 段消耗 $13.9B（数据中心 capex + GPU 折旧 + xAI 整合）<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;⬇<br>
+    <strong>全公司净 FCF = -$14B</strong>
+  </div>
+
+  <h3>为什么 Space 段营收只增 +8%</h3>
+
+  <div class="warn-flag">
+    <strong>2025 Falcon 9 165 次发射，但只 43 次为外部客户</strong>（2024: 45 次外部，<strong>实际下降！</strong>）<br>
+    <strong>122 次内部发射 = 服务 Starlink，不计入 Space 段对外营收</strong>。<br>
+    → Space 段在 GAAP 上是"小段"，但实际是 Connectivity 段的母机；外部火箭收入增长基本停滞。
+  </div>
+
+  <div class="so-what">
+    <p><strong>Space 段不是独立业务，是 Starlink 的"成本中心"</strong>。把 Space 看成独立 EBITDA 段会低估其战略价值，但也<strong>不能把火箭业务拿来"对标 Rocket Lab 估值"</strong>——Space 段的对外营收 $4.1B 已经接近天花板，因为 SpaceX 把发射能力优先用于自家。</p>
+    <p>真正的财务故事是：<strong>Starlink 是奶牛 → 喂 Space + AI 两个吞金兽</strong>。Starlink 一旦增长失速（ARPU 跌没了），整个商业模式崩塌。</p>
+  </div>
+</section>
+
+<!-- =================== SLIDE 8: STARLINK UNIT ECONOMICS =================== -->
+<section class="slide">
+  <div class="slide-num">08 / 16</div>
+  <h2>单位经济 — Starlink 用户增长 vs ARPU 腰斩</h2>
+
+  <div class="two-col">
+    <div>
+      <h3>用户增长（百万）</h3>
+      <div class="bar-chart">
+        <div class="bar-row"><div class="bar-label">2023</div><div class="bar-track"><div class="bar-fill" style="width: 22%;"></div></div><div class="bar-value">2.3M</div></div>
+        <div class="bar-row"><div class="bar-label">2024</div><div class="bar-track"><div class="bar-fill" style="width: 43%;"></div></div><div class="bar-value">4.4M</div></div>
+        <div class="bar-row"><div class="bar-label">2025</div><div class="bar-track"><div class="bar-fill" style="width: 86%;"></div></div><div class="bar-value">8.9M</div></div>
+        <div class="bar-row"><div class="bar-label">Q1'26</div><div class="bar-track"><div class="bar-fill good" style="width: 100%;"></div></div><div class="bar-value">10.3M</div></div>
+      </div>
+      <p class="note">Q1 2026 YoY +105%</p>
+    </div>
+
+    <div>
+      <h3>ARPU（$/月）</h3>
+      <div class="bar-chart">
+        <div class="bar-row"><div class="bar-label">2023</div><div class="bar-track"><div class="bar-fill bad" style="width: 100%;"></div></div><div class="bar-value">$99</div></div>
+        <div class="bar-row"><div class="bar-label">2024</div><div class="bar-track"><div class="bar-fill bad" style="width: 92%;"></div></div><div class="bar-value">$91</div></div>
+        <div class="bar-row"><div class="bar-label">2025</div><div class="bar-track"><div class="bar-fill bad" style="width: 82%;"></div></div><div class="bar-value">$81</div></div>
+        <div class="bar-row"><div class="bar-label">Q1'26</div><div class="bar-track"><div class="bar-fill bad" style="width: 67%;"></div></div><div class="bar-value">$66</div></div>
+      </div>
+      <p class="note">Q1 2026 YoY -22.9%（vs Q1'25 $86）</p>
+    </div>
+  </div>
+
+  <h3>管理层自己的 forward guidance（MD&amp;A 原话）</h3>
+
+  <div class="flag">
+    <strong>"We generally expect Starlink Subscriber ARPU to continue to decline over the next few years"</strong><br>
+    驱动因素：（i）国际扩张（北美外用户占比上升）（ii）添加低价 plan（iii）下调订阅费。<br>
+    <strong>翻译：管理层在招股书里直接告诉你 ARPU 还要跌</strong>。
+  </div>
+
+  <h3>用户 × ARPU 增长分解（Q1 2026 YoY）</h3>
+
+  <table>
+    <thead>
+      <tr><th>组件</th><th>YoY</th><th>对营收的贡献</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>订阅用户增长</td><td>+105%</td><td><span style="color: var(--good);">+105pp</span></td></tr>
+      <tr><td>ARPU 下降</td><td>-22.9%</td><td><span style="color: var(--bad);">-23pp</span></td></tr>
+      <tr><td><strong>消费者订阅营收增速</strong></td><td colspan="2"><strong>~+58% YoY（数学：1.05/0.77 - 1）</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="warn-flag">
+    <strong>警示信号</strong>：用户增速也在放缓——2024 +91% YoY → 2025 +102% YoY → Q1'26 +105% YoY 看似稳定，但每个新用户的 ARPU 在快速下降。<br>
+    如果用户增速 2026 全年降到 +50%，叠加 ARPU 跌到 $55，<strong>消费者营收增速可能从 +58% 跌到 +20%</strong>。
+  </div>
+
+  <div class="so-what">
+    <p>Starlink 增长故事的核心是<strong>"全球可寻址用户"</strong>，不是 ARPU 抬升。当前 10.3M 用户 / 全球可寻址 ~3B 数字弱势人群 = 渗透率 0.3%。这是真正的牛市理由。</p>
+    <p>但 ARPU 持续下降会侵蚀 Connectivity 段毛利率。<strong>Q1 2026 Connectivity 段 EBITDA 利润率从 2025 的 63% 降到 64%（看似稳定）但增速仅 +29% YoY，远低于营收 +43% YoY</strong>——边际利润率开始下行。</p>
+    <p><strong>Bear case 推算</strong>：ARPU 跌到 $50 + 用户达到 30M，年化营收 $18B（vs 当前 $11.4B）；但段 EBITDA 可能只有 50%（边际成本上升）= $9B。<strong>Starlink 段稳态价值天花板可能在 $200-300B</strong>（按 25-30× EBITDA），不足以单独撑起 $2T 估值。</p>
+  </div>
+</section>
+
+<!-- =================== SLIDE 9: CAPEX INTENSITY =================== -->
+<section class="slide">
+  <div class="slide-num">09 / 16</div>
+  <h2>资本支出强度 — AI 段吞噬一切</h2>
+
+  <h3>三段 Capex 历史与展望</h3>
+
+  <table>
+    <thead>
+      <tr><th>$M</th><th>2023</th><th>2024</th><th>2025</th><th>Q1'26</th><th>Q1'26 年化</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Space</td><td>1,497</td><td>2,032</td><td>3,832</td><td>1,052</td><td>~4.2B</td></tr>
+      <tr><td>Connectivity</td><td>2,455</td><td>3,498</td><td>4,178</td><td>1,332</td><td>~5.3B</td></tr>
+      <tr><td><strong>AI</strong></td><td>463</td><td>5,633</td><td><strong>12,727</strong></td><td><strong>7,723</strong></td><td><strong>~30.9B</strong></td></tr>
+      <tr><td><strong>合计</strong></td><td>4,415</td><td>11,163</td><td>20,737</td><td>10,107</td><td><strong>~40.4B</strong></td></tr>
+      <tr><td><strong>Capex / 营收</strong></td><td>42%</td><td>80%</td><td><strong>111%</strong></td><td>215%</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <h3>AI 段 Capex 加速度</h3>
+
+  <div class="bar-chart">
+    <div class="bar-row"><div class="bar-label">2023</div><div class="bar-track"><div class="bar-fill" style="width: 1.5%;"></div></div><div class="bar-value">$0.5B</div></div>
+    <div class="bar-row"><div class="bar-label">2024</div><div class="bar-track"><div class="bar-fill" style="width: 18%;"></div></div><div class="bar-value">$5.6B</div></div>
+    <div class="bar-row"><div class="bar-label">2025</div><div class="bar-track"><div class="bar-fill" style="width: 41%;"></div></div><div class="bar-value">$12.7B</div></div>
+    <div class="bar-row"><div class="bar-label">Q1'26 ann.</div><div class="bar-track"><div class="bar-fill bad" style="width: 100%;"></div></div><div class="bar-value">~$30.9B</div></div>
+  </div>
+
+  <div class="flag">
+    <strong>Q1 2026 单季 AI Capex $7.7B = 2024 全年 AI Capex 的 1.4 倍</strong><br>
+    年化趋势：2026 全年 AI Capex 可能达到 <strong>$30-40B</strong>，<strong>仅 AI 段就将超过总营收</strong>。
+  </div>
+
+  <h3>Capex / Sales 比例对照（行业基准）</h3>
+
+  <table>
+    <thead><tr><th>公司</th><th>Capex / Sales</th><th>类型</th></tr></thead>
+    <tbody>
+      <tr><td>SpaceX 2025</td><td><strong>111%</strong></td><td><span class="tag tag-bad">超重资产</span></td></tr>
+      <tr><td>Microsoft (FY25)</td><td>~30%</td><td>云基建</td></tr>
+      <tr><td>Meta (2025)</td><td>~33%</td><td>AI 基建狂热期</td></tr>
+      <tr><td>AT&amp;T</td><td>~16%</td><td>电信</td></tr>
+      <tr><td>NVIDIA</td><td>~3%</td><td>fabless 设计</td></tr>
+    </tbody>
+  </table>
+
+  <div class="so-what">
+    <p>Capex/Sales = 111% 是<strong>历史上极少见的水平</strong>——意味着每赚 $1 营收，要再烧 $1.11 才能维持增长。这只有早期阶段的电信运营商（1990s 光纤热潮）或铁路公司（1860s）能匹敌。</p>
+    <p><strong>对市场的含义</strong>：</p>
+    <ol style="margin-left: 30px; margin-top: 8px;">
+      <li>需要持续融资 → IPO 后还会有二次发行</li>
+      <li>D&amp;A 会持续上升 → GAAP 利润压力 → S&amp;P 500 入选窗口推迟</li>
+      <li>如果 Starship 失败 → 全部 AI 卫星 Capex 沉没成本变废铁</li>
+    </ol>
+    <p><strong>跟 NVDA 的本质区别</strong>：NVDA 是 fabless（capex 3% of sales）= 高毛利 + 高 ROIC。SpaceX 是 hyper-capex 模式 = 低 ROIC + 长回收周期，更像电力 / 电信。</p>
+  </div>
+</section>
+
+<!-- =================== SLIDE 10: ADJ EBITDA MAGIC =================== -->
+<section class="slide">
+  <div class="slide-num">10 / 16</div>
+  <h2>非 GAAP 调整项的"魔术"</h2>
+
+  <h3>Adj EBITDA 定义（S-1 原文）</h3>
+
+  <div class="callout" style="font-family: monospace; font-size: 13px; line-height: 1.8;">
+    Segment Adj EBITDA = 营业利润<br>
+    &nbsp;&nbsp;− Depreciation &amp; Amortization（D&amp;A）<br>
+    &nbsp;&nbsp;− Stock-Based Compensation（SBC）<br>
+    &nbsp;&nbsp;− Restructuring Charges<br>
+    &nbsp;&nbsp;− Impairment
+  </div>
+
+  <h3>$9.2B 黑箱：营业利润 vs Adj EBITDA 桥（2025）</h3>
+
+  <table>
+    <thead><tr><th>项目（$M）</th><th>金额</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>营业亏损（GAAP）</td><td>(2,589)</td><td>底线</td></tr>
+      <tr><td>+ 添加 D&amp;A + SBC + Impairment</td><td>~9,173</td><td>非现金调整</td></tr>
+      <tr><td><strong>= Adj EBITDA</strong></td><td><strong>6,584</strong></td><td>非 GAAP</td></tr>
+    </tbody>
+  </table>
+
+  <div class="warn-flag">
+    <strong>$9.2B 的黑箱由三部分构成</strong>，但 S-1 没在这一段明确拆解：
+    <ol style="margin-left: 30px; margin-top: 8px;">
+      <li><strong>D&amp;A</strong>（占大头）：PP&amp;E $54B 的折旧，按 5-7 年线性折旧大约 $7-10B/年</li>
+      <li><strong>SBC</strong>：xAI 合并 + IPO 前老期权加速行权 + 新 A&amp;R 2024 Plan，估计 $1-2B/年</li>
+      <li><strong>Impairment</strong>：Space 段 Starship 失败案例的资产减值</li>
+    </ol>
+  </div>
+
+  <h3>Adj EBITDA 的两个隐藏问题</h3>
+
+  <div class="flag">
+    <strong>问题 ①：SBC 不应该剔除</strong><br>
+    巴菲特名言："If options aren't a form of compensation, what are they?"<br>
+    SpaceX 大量用 RSU/期权激励员工，IPO 后将启用新 A&amp;R 2024 Plan + ESPP。<br>
+    剔除 SBC 让 Adj EBITDA 看起来比真实经营状况好。<strong>真实"现金 EBITDA" ≈ Adj EBITDA - SBC ≈ $5-5.5B</strong>，估值倍数应该用这个。
+  </div>
+
+  <div class="flag">
+    <strong>问题 ②：Impairment 是经常性事件</strong><br>
+    S-1 自己定义："Space impairment includes impairment losses on fixed assets due to anomalies on the Company's flight vehicles and launch sites, which occur outside our normal business operations"<br>
+    但 Starship 还在试飞期，<strong>失败 + 减值是高频事件</strong>，不是"非经常性"。剔除它扭曲了真实的 Space 段经营状况。
+  </div>
+
+  <h3>OCF / Adj EBITDA 比率（质量指标）</h3>
+
+  <table>
+    <thead><tr><th>年份</th><th>OCF</th><th>Adj EBITDA</th><th>比率</th></tr></thead>
+    <tbody>
+      <tr><td>2024</td><td>5,776</td><td>~5.4B</td><td><strong>107%</strong></td></tr>
+      <tr><td>2025</td><td>6,785</td><td>6,584</td><td><strong>103%</strong></td></tr>
+      <tr><td>Q1'26 (年化)</td><td>~4.2B</td><td>~4.5B</td><td>~93%</td></tr>
+    </tbody>
+  </table>
+
+  <p class="note">健康的 SaaS / 软件公司比率 90-110%；电信公司 70-90%；如果 &lt;60% 是红旗。</p>
+
+  <div class="so-what">
+    <p>OCF/Adj EBITDA 在 100% 附近，<strong>说明 Adj EBITDA 在现金转化层面是真实的</strong>，不是会计创造。</p>
+    <p>但<strong>不能拿 Adj EBITDA 当估值锚</strong>。真实可比指标应该是 "OCF − 维持性 Capex"。SpaceX 还没披露 maintenance vs growth Capex 拆分，但合理假设维持性 ~$5B/年（卫星 5 年寿命要换 + 数据中心 GPU 4 年要换），<strong>"真实自由现金流" ≈ $6.8B - $5B = $1.8B/年</strong>。</p>
+    <p><strong>用这个数算估值</strong>：$2T / $1.8B 维持 FCF = <strong>1,111x</strong>。这就是为什么必须用 TAM 和 5-10 年 forward 估值方法，而不是当前 cash flow 倍数。</p>
+  </div>
+</section>
+
+<!-- =================== SLIDE 11: OFF BALANCE SHEET =================== -->
+<section class="slide">
+  <div class="slide-num">11 / 16</div>
+  <h2>表外义务 — 看不见的 $80B+ 承诺</h2>
+
+  <p>S-1 披露的、未充分反映在 BS 上的<strong>承诺 / 期权 / 或有支出</strong>：</p>
+
+  <table>
+    <thead><tr><th>项目</th><th>金额</th><th>性质</th><th>时间</th></tr></thead>
+    <tbody>
+      <tr><td>EchoStar 频谱并购</td><td>~$19B</td><td>~$8.5B 现金 + ~$8.5B 股票 + $2B 债务利息支持</td><td>2027/11 完成</td></tr>
+      <tr><td>Cursor 收购期权</td><td>$60B</td><td>隐含估值（全股票支付）</td><td>IPO 后任意时点</td></tr>
+      <tr><td>Cursor 解约成本</td><td>$10B</td><td>$1.5B 终止费 + $8.5B 递延服务费</td><td>如果不收购</td></tr>
+      <tr><td>Anthropic 算力承诺</td><td>~$45B</td><td>$1.25B/月 × 36 月 算力提供（公司是 supplier）</td><td>2026/5 至 2029/5</td></tr>
+      <tr><td>Terafab 框架</td><td>未定</td><td>Tesla + Intel + SpaceX 三方"无约束力" framework</td><td>未定</td></tr>
+      <tr><td>云算力多年承诺</td><td>未定</td><td>"non-cancellable, multi-year capacity commitments to cloud compute providers"</td><td>未定</td></tr>
+      <tr><td>$2B EchoStar 利息支持</td><td>$2B</td><td>支付给 EchoStar 至 2027/11</td><td>持续</td></tr>
+    </tbody>
+  </table>
+
+  <h3>关键解读</h3>
+
+  <div class="callout">
+    <strong>① Anthropic 是收入承诺，不是支出</strong><br>
+    SpaceX 提供算力 → Anthropic 付钱 → SpaceX 收 $1.25B/月。
+    <span class="tag tag-good">利好</span> 但<strong>风险</strong>：90 天通知任意终止 + Anthropic 自己在建数据中心，未来 3 年可能转走。
+  </div>
+
+  <div class="callout">
+    <strong>② Cursor 期权价 vs 解约费的不对称</strong><br>
+    收购：$60B 全股票（IPO 后 7 日均价）。<br>
+    放弃：$10B 现金（$1.5B + $8.5B）。<br>
+    → SpaceX 实际上对 Cursor "支付"了 $10B 的"<strong>反向锁定费</strong>"。<br>
+    <span class="tag tag-warn">隐藏成本</span> 即使最后不收购，仍要支付高达 $10B。这是表内债务级别的承诺。
+  </div>
+
+  <div class="callout">
+    <strong>③ EchoStar 频谱大金额 + 远期</strong><br>
+    Closing 在 2027/11，意味着<strong>Starlink Mobile Gen2 在 2027 之前都用不上 V2 Mobile 频谱</strong>，业务展开延后。<br>
+    现金支付 $8.5B + 股票稀释 + $2B 利息支持已锁定。
+  </div>
+
+  <div class="callout">
+    <strong>④ Terafab 法律强度极弱</strong><br>
+    S-1 自己说："neither Tesla nor Intel are obligated to remain a part of the project"<br>
+    → 媒体猜的 $119B Capex 在法律上没人承担。<strong>这部分故事在估值上几乎不可计入</strong>。
+  </div>
+
+  <div class="so-what">
+    <p>常规财报分析只看 BS 的 $60B 总负债，但 SpaceX 的"实际经济义务"可能高达 <strong>$60B（BS）+ $80B+（表外承诺）= $140B+</strong>。</p>
+    <p>对个人投资者意味着：<strong>不能只看 Net Debt = Cash - Debt $13B 这种"净现金"假象</strong>。考虑表外承诺后，调整后净债务可能在 $50-70B 量级。</p>
+    <p>正面看：<strong>Anthropic 锁定了 $45B 收入</strong>（如果不被取消），相当于 IPO 前给 AI 段提前注入了一个"锚定客户"。这是 IPO 路演的关键 selling point。</p>
+  </div>
+</section>
+
+<!-- =================== SLIDE 12: HIDDEN LEVERAGE =================== -->
+<section class="slide">
+  <div class="slide-num">12 / 16</div>
+  <h2>债务结构 + 隐藏杠杆</h2>
+
+  <h3>显性债务（S-1 披露）</h3>
+
+  <div class="metric-grid">
+    <div class="metric"><div class="label">总有息债务</div><div class="value">$29.1B</div><div class="delta">截至 Q1'26 末</div></div>
+    <div class="metric"><div class="label">流动债务</div><div class="value">$1.5B</div><div class="delta">Q1'26 当期</div></div>
+    <div class="metric warn"><div class="label">D / Adj EBITDA</div><div class="value">4.4x</div><div class="delta">投资级门槛通常 &lt;3x</div></div>
+    <div class="metric"><div class="label">利率风险</div><div class="value">浮动</div><div class="delta">"variable interest rates"</div></div>
+  </div>
+
+  <h3>隐藏杠杆来源</h3>
+
+  <div class="flag">
+    <strong>① 优先股残余 $7B</strong><br>
+    Q1 2026 优先股从 $38.7B → $7.0B（大部分已转换）。<br>
+    剩下 $7B 在 IPO 完成时强制转换为普通股 → <strong>额外稀释</strong>。
+  </div>
+
+  <div class="flag">
+    <strong>② 融资租赁（Finance Leases）</strong><br>
+    BS 标注 "Debt and finance leases, current"，意味着有可观的融资租赁负债。<br>
+    数据中心建设常用 sale-leaseback，<strong>实际有效杠杆比账面债务更高</strong>。
+  </div>
+
+  <div class="flag">
+    <strong>③ Anthropic 反向预收</strong><br>
+    Anthropic $1.25B/月可能涉及前期预付。如果出现"deferred revenue" → BS 上是负债。<br>
+    一旦 Anthropic 终止，SpaceX 可能要退还预付金额。
+  </div>
+
+  <div class="flag">
+    <strong>④ Cursor 解约金 $10B</strong><br>
+    虽然 contingent，但有触发条件。属于"or-equity"性质负债。
+  </div>
+
+  <div class="flag">
+    <strong>⑤ EchoStar 利息承担 $2B</strong><br>
+    实际上是替 EchoStar 还利息直到 2027/11。这是<strong>已锁定的现金流出义务</strong>，不是 contingent。
+  </div>
+
+  <h3>调整后净债务测算</h3>
+
+  <table>
+    <thead><tr><th>调整</th><th>$B</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>显性有息债务</td><td>+29.1</td><td>BS 披露</td></tr>
+      <tr><td>− 现金</td><td>-15.9</td><td>BS 披露</td></tr>
+      <tr><td><strong>账面 Net Debt</strong></td><td><strong>+13.2</strong></td><td>常规口径</td></tr>
+      <tr><td>+ 优先股残余（IPO 后转股）</td><td>+7.0</td><td>稀释而非债务，但有摊薄成本</td></tr>
+      <tr><td>+ EchoStar 现金 + 股票对价</td><td>+17.0</td><td>2027/11 closing 锁定</td></tr>
+      <tr><td>+ Cursor 期权 contingent</td><td>+10.0</td><td>解约费下限</td></tr>
+      <tr><td>+ EchoStar 利息支持</td><td>+2.0</td><td>已锁定现金流出</td></tr>
+      <tr><td><strong>调整后"经济义务" Net Debt</strong></td><td><strong>~$49B</strong></td><td>市场常忽略</td></tr>
+    </tbody>
+  </table>
+
+  <div class="so-what">
+    <p>常规分析师会说"SpaceX 净债务 $13B / $2T 估值 = 0.65% leverage"，<strong>这是典型的低估</strong>。</p>
+    <p>真实的"经济义务"接近 <strong>$49B</strong>，对应 Adj EBITDA $6.6B = <strong>7.4x 经济杠杆</strong>。</p>
+    <p>这个数字告诉我们：</p>
+    <ol style="margin-left: 30px; margin-top: 8px;">
+      <li><strong>SpaceX 想拿到投资级评级很难</strong>（管理层 MD&amp;A 自己说要 "aim to maintain an investment grade credit rating"，但 7.4x 经济杠杆下不可能）</li>
+      <li><strong>未来 2-3 年再次股权融资几乎确定</strong>（IPO 不是终点）</li>
+      <li><strong>利率敏感度高</strong>——浮动利率 + 高杠杆，美联储一旦再加息，利息支出可能压垮 OCF</li>
+    </ol>
+  </div>
+</section>
+
+<!-- =================== SLIDE 13: REVENUE QUALITY =================== -->
+<section class="slide">
+  <div class="slide-num">13 / 16</div>
+  <h2>收入质量 + 客户集中度</h2>
+
+  <h3>2025 营收来源拆解</h3>
+
+  <div class="bar-chart">
+    <div class="bar-row"><div class="bar-label">Connectivity</div><div class="bar-track"><div class="bar-fill good" style="width: 61%;"></div></div><div class="bar-value">$11.4B (61%)</div></div>
+    <div class="bar-row"><div class="bar-label">Space</div><div class="bar-track"><div class="bar-fill" style="width: 22%;"></div></div><div class="bar-value">$4.1B (22%)</div></div>
+    <div class="bar-row"><div class="bar-label">AI</div><div class="bar-track"><div class="bar-fill warn" style="width: 17%;"></div></div><div class="bar-value">$3.2B (17%)</div></div>
+  </div>
+
+  <h3>各类客户集中度</h3>
+
+  <div class="three-col">
+    <div class="callout">
+      <h4>美国联邦政府</h4>
+      <div class="big-stat" style="font-size: 50px;">~20%</div>
+      <p>2025 营收 ≈ $3.7B 来自联邦机构（NSSL / NASA / DoW / FEMA）</p>
+      <span class="tag tag-warn">政治周期风险</span>
+    </div>
+    <div class="callout">
+      <h4>Anthropic（AI 段）</h4>
+      <div class="big-stat" style="font-size: 50px;">~$15B/年</div>
+      <p>$1.25B/月 × 12 ≈ AI 段 ~$15B/年（如全量付费），是 2025 AI 段 $3.2B 的 4.7 倍</p>
+      <span class="tag tag-bad">单一客户依赖</span>
+    </div>
+    <div class="callout">
+      <h4>Starlink 消费者</h4>
+      <div class="big-stat" style="font-size: 50px;">>60%</div>
+      <p>Connectivity 段 60%+ 是消费者订阅，分散度高</p>
+      <span class="tag tag-good">高分散度</span>
+    </div>
+  </div>
+
+  <h3>合同性质</h3>
+
+  <div class="warn-flag">
+    <strong>Space 段 = Fixed-Price 合同主导</strong><br>
+    S-1 原文："our Space segment revenue is primarily derived from fixed-price contracts"<br>
+    意味着<strong>成本超支自吞</strong>。Starship 失败 / 频谱延期 / 通胀压力 → 直接侵蚀利润。
+  </div>
+
+  <div class="warn-flag">
+    <strong>Anthropic 90 天可终止</strong><br>
+    "agreements may be terminated by either party upon 90 days' notice"<br>
+    → $45B 看起来锁定，实际只锁定 90 天。<strong>不能算 backlog</strong>。
+  </div>
+
+  <div class="warn-flag">
+    <strong>Starlink Mobile = MNO Wholesale</strong><br>
+    SpaceX 不直接收用户费用，而是收 MNO（T-Mobile / KDDI / Optus 等）的 wholesale。<br>
+    → <strong>面对 30 家 MNO，议价权不对称</strong>，毛利率压低。
+  </div>
+
+  <div class="green-flag">
+    <strong>Starlink Enterprise 的"高粘性"</strong><br>
+    "Since 2023, no Starlink Enterprise customer having contributed more than $750,000 of annual revenue has voluntarily discontinued their service"<br>
+    → 大客户零流失，是真正的护城河信号。
+  </div>
+
+  <h3>Government 业务的特殊性</h3>
+
+  <div class="callout">
+    S-1 风险因素自爆："we may prioritize our own launch payloads over additional U.S. government contracts or third-party customers"<br>
+    → SpaceX 公开声明会优先服务自家 Starlink，<strong>政府客户随时可能"减配"</strong>。这是 ULA 等竞争对手的天然推销点。
+  </div>
+
+  <div class="so-what">
+    <p>SpaceX 收入结构看似多元，但<strong>实质是"星链 + 政府 + Anthropic"三足鼎立</strong>。任何一个塌陷都伤筋动骨。</p>
+    <p>具体来说：</p>
+    <ul style="margin-left: 30px;">
+      <li><strong>政府 20%</strong>（$3.7B）：受预算 / 政治轮替 / Continuing Resolution 影响</li>
+      <li><strong>Anthropic ~$15B/年潜力</strong>：90 天可取消，是 AI 段最大单一变量</li>
+      <li><strong>消费者 ~$7B</strong>（Connectivity 60%）：分散稳定但 ARPU 下行</li>
+    </ul>
+    <p><strong>压力测试</strong>：如果 Anthropic 取消 + 政府削减 20%（特朗普 2 期可能砍 NASA / Pentagon），SpaceX 2027 营收可能从 $30B 直接跌到 $20B。这种情景下 $2T 估值显著虚高。</p>
+  </div>
+</section>
+
+<!-- =================== SLIDE 14: ANTHROPIC DEAL DEEP DIVE =================== -->
+<section class="slide">
+  <div class="slide-num">14 / 16</div>
+  <h2>Anthropic $45B 算力大单的会计真相</h2>
+
+  <h3>合同结构（S-1 原文）</h3>
+
+  <div class="callout">
+    <strong>双方</strong>：SpaceX（卖方/算力提供方） vs Anthropic PBC（买方）<br>
+    <strong>金额</strong>：$1.25B/月 至 2029/5（即 36 个月，~$45B 总额）<br>
+    <strong>2026/5 + 6 月</strong>：渐进式启动，"capacity ramping ... at a reduced fee"<br>
+    <strong>提供方式</strong>：COLOSSUS + COLOSSUS II 算力<br>
+    <strong>IP</strong>：Anthropic 保留全部内容、模型、数据 IP<br>
+    <strong>终止</strong>：任意一方 90 天通知
+  </div>
+
+  <h3>会计视角拆解</h3>
+
+  <div class="three-col">
+    <div class="callout">
+      <h4 style="color: var(--good);">作为收入</h4>
+      <p><strong>$15B/年潜在 ARR</strong></p>
+      <p>vs AI 段 2025 营收 $3.2B → 是 <strong>4.7x</strong></p>
+      <p>vs 全公司 2025 营收 $18.7B → 占 <strong>80%</strong></p>
+      <p>如全量执行，2027 SpaceX 营收 = 2025 营收 × 1.8x</p>
+    </div>
+    <div class="callout">
+      <h4 style="color: var(--warn);">作为客户依赖</h4>
+      <p><strong>单一客户占 AI 段 80%+</strong></p>
+      <p>SaaS 行业经验：</p>
+      <ul style="margin-left: 16px; font-size: 13px;">
+        <li>&gt;30% 单客户 = 风险</li>
+        <li>&gt;50% = 严重风险</li>
+        <li>80%+ = 资本市场打折</li>
+      </ul>
+      <p>90 天可终止 → 不能算 backlog</p>
+    </div>
+    <div class="callout">
+      <h4 style="color: var(--bad);">作为利润率</h4>
+      <p><strong>毛利率未披露</strong>，但可推算：</p>
+      <p>AI 段 Capex / 算力 比率：<br>
+      $30B Capex / 1 GW = $30/W/年</p>
+      <p>Anthropic 付 $15B / ~600 MW 暴露算力 = $25/W/年</p>
+      <p>→ <strong>毛利可能为负 / 微利</strong></p>
+    </div>
+  </div>
+
+  <h3>三个隐藏问题</h3>
+
+  <div class="flag">
+    <strong>① 90 天可终止 ≠ 锁定收入</strong><br>
+    GAAP 下不能作为 deferred revenue 入账（除非预付）。<br>
+    实际为"合同性服务"，按月确认。
+  </div>
+
+  <div class="flag">
+    <strong>② Anthropic 在自建数据中心</strong><br>
+    Anthropic 也在与 Amazon AWS / Google Cloud 合作建数据中心。<br>
+    SpaceX 的 COLOSSUS 算力对它来说是"过渡性方案"，未来 2-3 年可能转走。
+  </div>
+
+  <div class="flag">
+    <strong>③ 利益冲突</strong><br>
+    Anthropic 是 Grok 的<strong>直接竞争对手</strong>（Claude vs Grok）。<br>
+    SpaceX 卖算力给竞争对手 ＝ 把自家 GPU 资源转让给敌方训练。<br>
+    战略上让人困惑——可能反映 SpaceX <strong>急需现金回笼 GPU 投资</strong>。
+  </div>
+
+  <div class="so-what">
+    <p>Anthropic 大单是 IPO 路演的"金字招牌"，但<strong>仔细看是把双刃剑</strong>：</p>
+    <ol style="margin-left: 30px; margin-top: 8px;">
+      <li><strong>正面</strong>：给 AI 段贡献了 $15B/年 ARR（如果跑满）= 直接把 AI 段做大 5 倍</li>
+      <li><strong>负面</strong>：单客户依赖 + 卖给竞争对手 + 90 天可取消</li>
+      <li><strong>背景含义</strong>：SpaceX 在 2026 上半年急需 cash income 来对冲 AI Capex 烧钱节奏。Anthropic 实际上是"<strong>临时融资工具</strong>"——以服务合同形式，让 GPU 投资能"自我造血"，避免完全靠融资。</li>
+    </ol>
+    <p><strong>对估值的修正</strong>：如果 Anthropic 大单维持，AI 段年化营收可达 $20B，按云行业 EV/S 5-7x → 段估值 $100-140B。如果取消，AI 段实际经济价值 &lt;$50B。<strong>$50-90B 的估值波动 = 5% 全公司估值范围</strong>。</p>
+  </div>
+</section>
+
+<!-- =================== SLIDE 15: FORENSICS RED FLAGS =================== -->
+<section class="slide">
+  <div class="slide-num">15 / 16</div>
+  <h2>Forensics — 红旗清单</h2>
+
+  <p>专业法务级别的财务取证，仅看 S-1 已可发现的<strong>10 大注意事项</strong>：</p>
+
+  <div class="flag">
+    <strong>🚩 ① "Common Control" 历史回溯合并</strong><br>
+    xAI 2026/2 并入，但财报回溯到 2023 都重列为合并实体。<br>
+    → 历史可比性丧失，所有过往 SpaceX 数据（媒体引用 2024 营收 $13B 等）作废。
+  </div>
+
+  <div class="flag">
+    <strong>🚩 ② Adj EBITDA 剔除 SBC + Impairment</strong><br>
+    SBC 是真实费用，IPO 后只会更大。<br>
+    Impairment 在 Starship 试飞期是经常性事件。<br>
+    剔除两项让 Adj EBITDA 高估真实经营状况 ~$2-3B。
+  </div>
+
+  <div class="flag">
+    <strong>🚩 ③ 内部发射不计入 Space 段营收</strong><br>
+    2025 165 次 Falcon 发射，<strong>122 次内部</strong>（74%），只 43 次对外。<br>
+    Space 段名义营收 $4.1B，实际承载 $30B+ 等价价值给 Connectivity 段。<br>
+    → 段间利润分配不透明，"transfer pricing" 黑盒。
+  </div>
+
+  <div class="flag">
+    <strong>🚩 ④ "Pro Forma" 大幅美化 EPS</strong><br>
+    GAAP 2025 EPS: -$1.69<br>
+    Pro Forma 2025 EPS: -$0.51（差 3.3 倍）<br>
+    → Pro Forma 通过预设 IPO 后股数 + 优先股转换调整。这是法律合规但容易误导散户。
+  </div>
+
+  <div class="flag">
+    <strong>🚩 ⑤ Q1 2026 Capex 极速跳升</strong><br>
+    Q1 2026 总 Capex $10.1B = 2024 全年的 91%<br>
+    AI 段 Q1'26 Capex $7.7B = 2024 AI Capex 的 1.4 倍<br>
+    → "提前装载"嫌疑：把 IPO 前 Capex 集中释放，IPO 后看起来"Capex 强度回落"。
+  </div>
+
+  <div class="flag">
+    <strong>🚩 ⑥ 不投保在轨卫星</strong><br>
+    "we currently do not insure and do not expect to insure ... our in-orbit satellites"<br>
+    → 9,600 颗卫星，单星造价 ~$0.5M，潜在敞口数亿美元。<br>
+    任何大规模碰撞 / 太阳风暴 → 直接计入 Impairment，但被 Adj EBITDA 剔除。
+  </div>
+
+  <div class="flag">
+    <strong>🚩 ⑦ 关联交易复杂网</strong><br>
+    Tesla（Macrohard / Terafab）、xAI（已并）、X（已并 xAI 旗下）、Neuralink（Musk 关联）、Boring Co（Musk 关联）、Cursor（期权）……<br>
+    → 章程豁免 corporate opportunity 义务 → <strong>关联方交易转价定价</strong>潜在调节空间大。
+  </div>
+
+  <div class="flag">
+    <strong>🚩 ⑧ SOX 内控未达标</strong><br>
+    "we have identified deficiencies and may identify deficiencies in the future that we may not be able to remediate"<br>
+    → IPO 后第二年报会触发 SOX 404 强制评估。<strong>Material Weakness 概率高</strong>。<br>
+    → 历史先例：Tesla / Snap / Lyft 都在 IPO 后曾披露 material weakness，触发短期股价 -10% 以上。
+  </div>
+
+  <div class="flag">
+    <strong>🚩 ⑨ 不投保 Key-Person</strong><br>
+    Musk 是 CEO + CTO + Chairman + Class B 控股，但"We do not maintain key-person life insurance on Mr. Musk"。<br>
+    → Brazil Asset Seizure 案例已示警：Musk 个人言行可触发关联资产冻结。
+  </div>
+
+  <div class="flag">
+    <strong>🚩 ⑩ "Anomalies" 可触发资产减值</strong><br>
+    S-1 自己定义 Space Impairment 为"flight vehicle and launch site anomalies"。<br>
+    → Starship 11 次试飞，部分包含失败。<strong>每次 Anomaly 都可能 trigger BS 资产减记 → P&amp;L 直接 hit</strong>。<br>
+    Q1 2026 营业亏损 $1.9B 中可能已包含此类减值。
+  </div>
+
+  <div class="so-what">
+    <p>这 10 条 Forensics 不是要否定 SpaceX，而是<strong>提醒尽职调查必须穿透到财务底层</strong>。</p>
+    <p>对零售投资者意味着：</p>
+    <ol style="margin-left: 30px; margin-top: 8px;">
+      <li><strong>不能简单用 "$2T 估值 / $18.7B 营收 = 107x P/S"</strong> 然后判断"贵"或"便宜"</li>
+      <li>财务质量低于一般大型科技 IPO（vs Meta IPO 时的 GAAP 透明度）</li>
+      <li>需要分情景估值：<strong>Bull case 用 Adj EBITDA + TAM；Bear case 用 GAAP + Forensics 调整</strong></li>
+      <li>如果有 IPO 后第二年 Material Weakness 披露，提前部分获利了结</li>
+    </ol>
+  </div>
+</section>
+
+<!-- =================== SLIDE 16: VALUATION & CONCLUSION =================== -->
+<section class="slide">
+  <div class="slide-num">16 / 16</div>
+  <h2>估值含义 + 投资策略</h2>
+
+  <h3>三段加总估值（Sum-of-Parts）</h3>
+
+  <table>
+    <thead><tr><th>分部</th><th>2025 营收</th><th>2025 Adj EBITDA</th><th>合理倍数</th><th>分部估值</th></tr></thead>
+    <tbody>
+      <tr><td>Connectivity（Starlink）</td><td>$11.4B</td><td>$7.2B</td><td>20-25× EBITDA</td><td>$144-180B</td></tr>
+      <tr><td>Space（火箭/Starship）</td><td>$4.1B</td><td>$0.7B</td><td>战略价值，10× 营收</td><td>$40B</td></tr>
+      <tr><td>AI（xAI/Grok/COLOSSUS）</td><td>$3.2B</td><td>-$1.2B</td><td>20-30× 营收（Anthropic 锁定下）</td><td>$60-100B</td></tr>
+      <tr><td>+ 期权价值（Terafab / 月球 / Mars）</td><td colspan="3">长期 optionality</td><td>$50-200B</td></tr>
+      <tr><td><strong>SOTP 估值范围</strong></td><td colspan="3"></td><td><strong>$294-520B</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="warn-flag">
+    SOTP $300-500B 远低于市场传言的 <strong>$2T+</strong>。<br>
+    差额 = $1.5-1.7T，主要 reflecting：<br>
+    （a）orbital AI compute 卫星星座的"远期 TAM 折现"<br>
+    （b）Musk 估值溢价（vs 同业 25-50% premium）<br>
+    （c）IPO 稀缺性溢价 + 散户追捧
+  </div>
+
+  <h3>三种情景下的合理估值</h3>
+
+  <div class="three-col">
+    <div class="callout" style="border-left-color: var(--bad);">
+      <h4 style="color: var(--bad);">🐻 Bear Case</h4>
+      <ul style="font-size: 13px; line-height: 1.8;">
+        <li>Starship 量产推迟 2-3 年</li>
+        <li>Anthropic 取消大单</li>
+        <li>政府营收砍 30%</li>
+        <li>ARPU 跌到 $50</li>
+      </ul>
+      <div class="big-stat" style="font-size: 40px; color: var(--bad);">$300-500B</div>
+      <p style="font-size: 13px;">vs $2T 估值 → -75 至 -85%</p>
+    </div>
+    <div class="callout" style="border-left-color: var(--warn);">
+      <h4 style="color: var(--warn);">🐯 Base Case</h4>
+      <ul style="font-size: 13px; line-height: 1.8;">
+        <li>Starship 2027 量产</li>
+        <li>Anthropic 续约</li>
+        <li>ARPU 触底 $60</li>
+        <li>orbital AI 2028 部署</li>
+      </ul>
+      <div class="big-stat" style="font-size: 40px; color: var(--warn);">$1.0-1.4T</div>
+      <p style="font-size: 13px;">vs $2T 估值 → -30 至 -50%</p>
+    </div>
+    <div class="callout" style="border-left-color: var(--good);">
+      <h4 style="color: var(--good);">🐂 Bull Case</h4>
+      <ul style="font-size: 13px; line-height: 1.8;">
+        <li>Starship 2026 H2 投运</li>
+        <li>orbital AI 2027 早期部署</li>
+        <li>Macrohard 商业化</li>
+        <li>NVDA 级 AI infra 公司</li>
+      </ul>
+      <div class="big-stat" style="font-size: 40px; color: var(--good);">$2.5-3.5T</div>
+      <p style="font-size: 13px;">vs $2T 估值 → +25 至 +75%</p>
+    </div>
+  </div>
+
+  <h3>给老虎客户的三条 Actionable 建议</h3>
+
+  <div class="callout">
+    <strong>1️⃣ 打新策略（适合所有客户）</strong><br>
+    SPCX IPO 是美股史上最大 IPO，散户 / 老虎打新通道存在显著超额收益（IPO Day 1 +20% 历史均值）。但<strong>建议 Day 1 部分获利了结，长期持有比例 ≤ 50%</strong>。
+  </div>
+
+  <div class="callout">
+    <strong>2️⃣ NASA ETF 提前布局（适合保守型客户）</strong><br>
+    NASA ETF（Tema Space Innovators）有 8.7% SpaceX SPV 暴露 + ASTS / RKLB / PL 等同业，beta 暴露 SpaceX 主题但风险分散。<strong>波动性远低于直接打新</strong>。
+  </div>
+
+  <div class="callout">
+    <strong>3️⃣ 风险对冲（适合激进客户）</strong><br>
+    如直接打新成功，建议同时<strong>做空 ARKK 或 ARKX</strong>（Cathie Wood 持有大量 SPCX 概念股）作为部分对冲。Material Weakness / Starship 失败时同步 -10%。
+  </div>
+
+  <div class="so-what">
+    <p><strong>核心判断</strong>：$2T 估值在合理 Base Case 下高估 30-50%，但 IPO 当天的"恐慌追逐"会让股价偏离基本面。<strong>正确的姿势是"短期参与 + 中期观望 + 长期看 Starship 试飞数据决定加仓"</strong>。</p>
+    <p><strong>最关键的中期 catalyst</strong>：</p>
+    <ul style="margin-left: 30px;">
+      <li>2026 H2 Starship 首次 payload 入轨成功 / 失败 → 股价 ±20%</li>
+      <li>2027 Q1 Q4 公开 SOX 404 评估 → 看是否有 Material Weakness</li>
+      <li>2027 H2 EchoStar 频谱 closing → V2 Mobile 业务展开</li>
+      <li>2028 早期 orbital AI 卫星部署 → 验证或证伪 AI 第二曲线</li>
+    </ul>
+    <p style="font-size: 18px; color: var(--accent2); margin-top: 16px;"><strong>结语：这是 21 世纪最伟大的 capital allocation 实验之一。投资 SPCX = 把你的资金加入到 Musk 的"Mars 殖民地资助计划"里。理解了这一点，估值波动就只是噪音。</strong></p>
+  </div>
+
+  <div class="disclaimer" style="margin-top: 60px;">
+    <strong>Disclaimer</strong>：本报告仅供研究用途，不构成投资建议。所有数字源自 SpaceX S-1（SEC EDGAR Accession 0001628280-26-036936，提交日 2026/05/20）。情景分析包含分析师主观判断，实际结果可能显著不同。投资有风险，入市需谨慎。
+  </div>
+</section>
+
+</body>
+</html>
