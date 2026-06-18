@@ -12,6 +12,7 @@ listing:
       - "appdev/*/index.qmd"
       - "strategy/*/index.qmd"
       - "meditation/*/index.qmd"
+      - "learning/*/index.qmd"
     sort: "date desc"
     max-items: 6
     type: default
@@ -46,7 +47,7 @@ format:
 
 <section class="modules-section">
   <div class="modules-inner">
-    <div class="section-eyebrow">Six places I think</div>
+    <div class="section-eyebrow">Seven places I think</div>
     <h2 class="section-title">What I write <em>about</em></h2>
     <div class="modules">
       <a class="module-card" href="daily/index.html">
@@ -79,8 +80,14 @@ format:
         <p>Mindfulness, well-being, and living better.</p>
         <span class="module-arrow">→</span>
       </a>
+      <a class="module-card" href="learning/index.html">
+        <div class="module-num">06 / LEARNING</div>
+        <h3>Learning</h3>
+        <p>Study notes — CPA prep, deep dives, and material I write to teach myself.</p>
+        <span class="module-arrow">→</span>
+      </a>
       <a class="module-card" href="mystory.html">
-        <div class="module-num">06 / STORY</div>
+        <div class="module-num">07 / STORY</div>
         <h3>My Story</h3>
         <p>Who I am and how I got here.</p>
         <span class="module-arrow">→</span>

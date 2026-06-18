@@ -21,7 +21,7 @@ const execP = promisify(exec);
 // Default: assume cms.js lives at <repo>/tools/cms/cms.js, walk up two levels
 const REPO_PATH = process.argv[2] || path.resolve(__dirname, '..', '..');
 const PORT = 4321;
-const SECTIONS = ['investing', 'daily', 'appdev', 'strategy', 'meditation'];
+const SECTIONS = ['investing', 'daily', 'appdev', 'strategy', 'meditation', 'learning'];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────
 

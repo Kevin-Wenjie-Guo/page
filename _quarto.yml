@@ -40,6 +40,8 @@ website:
         text: Strategy
       - href: meditation/index.qmd
         text: Meditation
+      - href: learning/index.qmd
+        text: Learning
       - href: mystory.qmd
         text: My Story
     right:

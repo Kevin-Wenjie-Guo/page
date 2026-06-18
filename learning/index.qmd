@@ -1,0 +1,13 @@
+---
+title: "Learning"
+listing:
+  contents: "*/index.qmd"
+  feed: true
+  sort: "date desc"
+  type: default
+  categories: true
+page-layout: full
+title-block-banner: true
+---
+
+Notes from things I'm studying — CPA preparation, technical deep dives, and study guides I write to teach myself.
