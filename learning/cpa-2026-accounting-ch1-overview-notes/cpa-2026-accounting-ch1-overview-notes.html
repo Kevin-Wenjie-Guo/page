@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 CPA《会计》第一章 总论 · 复习笔记</title>
+<style>
+:root{
+  --ink:#1a1a1a;--paper:#fbf8f3;--paper-warm:#f5efe4;
+  --accent:#c8302d;--accent-2:#1f5f8b;--gold:#b08a3e;--green:#3a6b3e;
+  --muted:#6b6b6b;--line:#d8d2c4;--hl:#fff3a3;--soft:#f0e9d8;
+  --shadow:0 1px 0 rgba(0,0,0,.04),0 12px 32px -16px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);
+  font-family:"PingFang SC","Helvetica Neue",system-ui,sans-serif;line-height:1.7;}
+.toolbar{position:sticky;top:0;z-index:50;display:flex;gap:8px;align-items:center;
+  padding:10px 18px;background:rgba(251,248,243,.94);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);}
+.toolbar .title{font-weight:600;font-size:14px;letter-spacing:.04em;color:var(--muted);margin-right:auto;}
+.btn{font-size:13px;font-weight:500;padding:7px 14px;border-radius:999px;
+  border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;transition:all .18s;}
+.btn.secondary{background:transparent;color:var(--ink)}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+.wrap{max-width:920px;margin:0 auto;padding:36px 28px 100px;}
+
+.cover{position:relative;padding:48px 36px 36px;margin-bottom:36px;
+  background:linear-gradient(135deg,var(--paper-warm) 0%,#fff 100%);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+.cover::before{content:"筆記";position:absolute;right:-20px;top:-30px;
+  font-size:200px;font-weight:900;color:rgba(31,95,139,.08);
+  font-family:"Songti SC",serif;line-height:1;pointer-events:none;}
+.cover .kicker{font-size:11px;letter-spacing:.32em;color:var(--accent);font-weight:700;margin-bottom:8px;}
+.cover h1{font-size:36px;font-weight:700;margin:0 0 6px;font-family:"Songti SC",serif;}
+.cover .sub{font-size:15px;color:var(--muted);}
+
+section{margin:42px 0;scroll-margin-top:60px;}
+h2{font-size:22px;margin:0 0 18px;padding:10px 16px;
+  background:var(--ink);color:var(--paper);border-radius:4px;letter-spacing:.04em;}
+h3{font-size:17px;margin:24px 0 12px;color:var(--accent-2);
+  border-left:3px solid var(--accent-2);padding-left:10px;}
+h4{font-size:15px;margin:16px 0 8px;color:var(--accent);font-weight:600;}
+p{margin:.4em 0;font-size:14.5px;}
+ul,ol{padding-left:1.4em;font-size:14.5px;}
+li{margin:.2em 0;}
+strong{color:var(--accent);font-weight:600;}
+em{color:var(--accent-2);font-style:normal;font-weight:600;}
+mark{background:linear-gradient(transparent 55%, var(--hl) 55%);padding:0 2px;color:inherit;}
+
+/* Compact tables */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;line-height:1.55;}
+th{background:var(--soft);font-weight:600;}
+tbody tr:nth-child(even){background:rgba(245,239,228,.4);}
+
+/* Key card */
+.card{margin:14px 0;padding:14px 18px;background:#fff;border:1px solid var(--line);
+  border-radius:6px;box-shadow:var(--shadow);}
+.card .tag{display:inline-block;font-size:10px;letter-spacing:.18em;font-weight:700;
+  padding:2px 8px;background:var(--accent);color:#fff;border-radius:3px;margin-bottom:8px;}
+.card.blue .tag{background:var(--accent-2);}
+.card.green .tag{background:var(--green);}
+.card.gold .tag{background:var(--gold);}
+
+/* Formula */
+.formula{margin:12px 0;padding:12px 16px;background:var(--paper-warm);
+  border:1px dashed var(--gold);border-radius:6px;text-align:center;
+  font-size:14.5px;font-weight:500;letter-spacing:.04em;}
+.formula b{color:var(--accent);font-size:16px;}
+
+/* Quick chips */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0;}
+.chip{font-size:12px;padding:4px 10px;border-radius:999px;
+  background:var(--soft);border:1px solid var(--line);font-weight:500;}
+.chip.red{background:rgba(200,48,45,.1);border-color:var(--accent);color:var(--accent);}
+.chip.blue{background:rgba(31,95,139,.1);border-color:var(--accent-2);color:var(--accent-2);}
+.chip.green{background:rgba(58,107,62,.1);border-color:var(--green);color:var(--green);}
+
+/* Quick Q */
+.q{margin:12px 0;padding:12px 16px;background:#fffaf0;border-left:3px solid var(--gold);
+  border-radius:0 4px 4px 0;font-size:13.5px;}
+.q b{color:var(--accent);}
+.q .a{margin-top:6px;padding-top:6px;border-top:1px dashed var(--line);color:var(--green);font-weight:600;}
+
+/* Mind grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0;}
+.grid .item{padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:6px;}
+.grid .item .h{font-weight:600;color:var(--accent);margin-bottom:4px;font-size:14px;}
+.grid .item .b{font-size:13px;color:var(--muted);line-height:1.55;}
+
+/* Cheat sheet box */
+.cheat{margin:16px 0;padding:18px 22px;background:linear-gradient(135deg,#fff8f4 0%,#f5efe4 100%);
+  border:2px solid var(--accent);border-radius:8px;}
+.cheat h4{margin-top:0;color:var(--accent);font-size:14px;letter-spacing:.18em;}
+
+/* Editor */
+[contenteditable="true"]:focus{outline:2px dashed var(--accent-2);outline-offset:4px;}
+
+/* Badge */
+.badge{display:inline-block;padding:1px 8px;font-size:10px;letter-spacing:.12em;
+  border-radius:999px;background:var(--gold);color:#fff;font-weight:600;
+  margin-left:6px;vertical-align:middle;}
+.badge.red{background:var(--accent);}
+.badge.blue{background:var(--accent-2);}
+
+/* TOC */
+.toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:18px 0;}
+.toc a{display:block;padding:8px 12px;background:#fff;border:1px solid var(--line);
+  border-radius:4px;text-decoration:none;color:var(--ink);font-size:13px;font-weight:500;
+  transition:all .15s;}
+.toc a:hover{border-color:var(--accent);color:var(--accent);transform:translateX(3px);}
+.toc a .n{display:block;font-size:10px;color:var(--muted);letter-spacing:.1em;margin-bottom:2px;}
+
+@media print{
+  .toolbar{display:none;}
+  .wrap{max-width:none;padding:0;}
+  section{page-break-inside:avoid;}
+}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <span class="title">2026 CPA《会计》· 第一章 总论 · 复习笔记</span>
+  <button class="btn secondary" onclick="window.print()">🖨️ 打印</button>
+  <button class="btn" onclick="saveDoc()">💾 保存</button>
+</div>
+
+<div class="wrap" contenteditable="true" id="doc">
+
+<header class="cover">
+  <div class="kicker">CHAPTER 01 · 总论 · 速查笔记</div>
+  <h1>第一章 总论</h1>
+  <p class="sub">送分章 · 2 分左右 · 客观题为主 · 对号入座</p>
+  <div class="chips" style="margin-top:14px;">
+    <span class="chip red">★★☆☆☆ 难度</span>
+    <span class="chip blue">单选 + 多选</span>
+    <span class="chip green">2 分左右</span>
+    <span class="chip">2026 新增 3 处</span>
+  </div>
+</header>
+
+<!-- 一图 -->
+<section>
+  <h2>① 一张图看整章</h2>
+  <div class="cheat">
+    <h4>本章 = 会计的"宪法层"</h4>
+    <div class="grid">
+      <div class="item"><div class="h">§1 会计概述</div><div class="b">定义 + 作用 + 职业道德 + 责任 + 准则</div></div>
+      <div class="item"><div class="h">§2 目标 + 假设 + 基础</div><div class="b">两观 · 四假设 · 权责发生制</div></div>
+      <div class="item"><div class="h">§3 8 项质量要求 ⭐</div><div class="b">可相理比 + 实重谨及</div></div>
+      <div class="item"><div class="h">§4 6 大要素 ⭐</div><div class="b">资负权 · 收费利</div></div>
+      <div class="item"><div class="h">§5 财务报告</div><div class="b">略(后续章节学)</div></div>
+      <div class="item"><div class="h">§6 可持续披露 <span class="badge">新</span></div><div class="b">ESG + 双重重要性 + 4 要素</div></div>
+      <div class="item"><div class="h">§7 AI 应用 <span class="badge">新</span></div><div class="b">会计 4 场景 + 审计 4 场景 + 开发 5 要求</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 变化 -->
+<section>
+  <h2>② 2026 教材变化(必看)</h2>
+  <table>
+    <thead><tr><th width="60%">变化点</th><th>位置</th></tr></thead>
+    <tbody>
+      <tr><td>新增"会计工作责任"相关表述(财会〔2025〕25 号)</td><td>§1</td></tr>
+      <tr><td>新增"可持续信息披露"相关例则问题</td><td>§6</td></tr>
+      <tr><td>新增"第七节 人工智能在会计审计领域的应用"</td><td>§7(全新)</td></tr>
+      <tr><td>对部分文字进行了修订</td><td>全章零散</td></tr>
+    </tbody>
+  </table>
+  <nav class="toc">
+    <a href="#s1"><span class="n">SECTION 01</span>会计概述</a>
+    <a href="#s2"><span class="n">SECTION 02</span>目标·假设·基础</a>
+    <a href="#s3"><span class="n">SECTION 03 ★</span>8 项质量要求</a>
+    <a href="#s4"><span class="n">SECTION 04 ★</span>6 大会计要素</a>
+    <a href="#s6"><span class="n">SECTION 06 新</span>可持续信息披露</a>
+    <a href="#s7"><span class="n">SECTION 07 新</span>AI 应用</a>
+  </nav>
+</section>
+
+<!-- §1 -->
+<section id="s1">
+  <h2>§1 会计概述</h2>
+
+  <div class="card">
+    <span class="tag">定义 1 句话</span>
+    <p>会计 = 以 <strong>货币</strong> 为主要计量单位,<strong>反映 + 监督</strong> 一个单位经济活动的一种 <strong>经济管理工作</strong>。</p>
+  </div>
+
+  <h3>会计的作用(口诀:提加考)</h3>
+  <div class="chips">
+    <span class="chip red"><b>提</b>供决策有用信息</span>
+    <span class="chip blue"><b>加</b>强经营管理</span>
+    <span class="chip green"><b>考</b>核管理层责任</span>
+  </div>
+
+  <h3>职业道德:三坚三守(会计人员)</h3>
+  <table>
+    <thead><tr><th width="35%">三坚三守</th><th>记忆点</th></tr></thead>
+    <tbody>
+      <tr><td>坚持<strong>诚信</strong>,守法奉公</td><td><em>自律</em> 要求</td></tr>
+      <tr><td>坚持<strong>准则</strong>,守责敬业</td><td><em>履职</em> 要求</td></tr>
+      <tr><td>坚持<strong>学习</strong>,守正创新</td><td><em>发展</em> 要求</td></tr>
+    </tbody>
+  </table>
+
+  <h3>CPA 6 条职业道德</h3>
+  <p>诚信 · 客观公正 · <strong>独立性</strong> · 专业胜任能力和勤勉尽责 · 保密 · 良好职业行为</p>
+
+  <h3>会计工作责任 <span class="badge">新增 财会〔2025〕25 号</span></h3>
+  <div class="grid">
+    <div class="item"><div class="h">① 单位主体责任</div><div class="b">不得让审计所代为编制报告;不相容岗位分离;出纳不得兼稽核、档案、登记、软件;记账与审批/经办/财物保管相互分离</div></div>
+    <div class="item"><div class="h">② 相关人员责任</div><div class="b">单位负责人对真实性完整性负责;总会计师协助管理</div></div>
+    <div class="item"><div class="h">③ 会计服务机构</div><div class="b">不得未履行程序就出报告;同一事项相同证据不得出不同结论</div></div>
+    <div class="item"><div class="h">④ 政府部门</div><div class="b">财政部门加强监管</div></div>
+    <div class="item"><div class="h">⑤ 行业协会</div><div class="b">发挥自律监督作用</div></div>
+  </div>
+
+  <h3>准则体系</h3>
+  <div class="formula">基本准则 + 具体准则 + 解释 + 应用指南</div>
+</section>
+
+<!-- §2 -->
+<section id="s2">
+  <h2>§2 财务报告目标 · 会计基本假设 · 会计基础</h2>
+
+  <h3>财务报告目标(两观)</h3>
+  <table>
+    <thead><tr><th width="30%">观点</th><th>看谁的需要</th></tr></thead>
+    <tbody>
+      <tr><td><strong>决策有用观</strong></td><td>投资者/债权人 → 做决策</td></tr>
+      <tr><td><strong>受托责任观</strong></td><td>股东 → 考核管理层</td></tr>
+    </tbody>
+  </table>
+
+  <h3>会计基本假设(4 个)</h3>
+  <div class="grid">
+    <div class="item"><div class="h">① 会计主体(空间)</div><div class="b">"给谁当会计,谁就是会计主体"。<br><strong>≠</strong> 法律主体。法律 ⊆ 会计(分部) 或 法律 ⊇ 会计(合并)</div></div>
+    <div class="item"><div class="h">② 持续经营</div><div class="b">假设未来不会马上倒闭/清算</div></div>
+    <div class="item"><div class="h">③ 会计分期(时间)</div><div class="b">年度 + 中期 → 产生折旧、摊销</div></div>
+    <div class="item"><div class="h">④ 货币计量</div><div class="b">中国境内通常以人民币为记账本位币</div></div>
+  </div>
+
+  <div class="card blue">
+    <span class="tag">法律主体 vs 会计主体 3 种情形</span>
+    <table>
+      <thead><tr><th>情形</th><th>法律主体</th><th>会计主体</th></tr></thead>
+      <tbody>
+        <tr><td>① 一对一</td><td>A 公司</td><td>= A 公司</td></tr>
+        <tr><td>② 分部</td><td>A 公司</td><td>一车间/二车间</td></tr>
+        <tr><td>③ 合并</td><td>A 母(控 100% B 子)</td><td>A + B 集团</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:6px;color:var(--muted);font-size:13px;">基金(证券投资、企业年金)→ 属于会计主体 ≠ 法律主体</p>
+  </div>
+
+  <h3>会计基础(归属期)</h3>
+  <table>
+    <thead><tr><th width="22%">基础</th><th>规则</th><th>使用</th></tr></thead>
+    <tbody>
+      <tr><td><strong>权责发生制</strong></td><td>看"经济实质归不归当期",不看钱付没付</td><td>企业会计 + 行政事业单位<em>财务会计</em></td></tr>
+      <tr><td><strong>收付实现制</strong></td><td>看"钱有没有收/付"</td><td>行政事业单位<em>预算会计</em></td></tr>
+    </tbody>
+  </table>
+
+  <div class="card">
+    <span class="tag">权责发生制 4 句</span>
+    <p>① 当期<strong>已实现</strong>收入 → 款项收没收都算 <strong>当期</strong>收入<br>
+    ② <strong>不属于</strong>当期收入 → 钱已收也<strong>不算</strong>当期<br>
+    ③ 当期<strong>已发生或应当负担</strong>费用 → 付没付都算 <strong>当期</strong>费用<br>
+    ④ <strong>不属于</strong>当期费用 → 钱已付也<strong>不算</strong>当期</p>
+  </div>
+</section>
+
+<!-- §3 -->
+<section id="s3">
+  <h2>§3 8 项会计信息质量要求 ⭐⭐⭐</h2>
+
+  <div class="cheat">
+    <h4>口诀</h4>
+    <p style="font-size:18px;text-align:center;letter-spacing:.1em;margin:8px 0;">
+      <strong>可</strong>靠 · <strong>相</strong>关 · 可<strong>理</strong>解 · 可<strong>比</strong> · <strong>实</strong>质重于形式 · <strong>重</strong>要 · <strong>谨</strong>慎 · <strong>及</strong>时
+    </p>
+  </div>
+
+  <table>
+    <thead><tr><th width="14%">要求</th><th width="18%">核心词</th><th>关键句</th></tr></thead>
+    <tbody>
+      <tr><td><strong>① 可靠性</strong></td><td><em>真实</em></td><td>诚信、不做假账;真实可靠 + 内容完整 + 中立无偏</td></tr>
+      <tr><td><strong>② 相关性</strong></td><td><em>有用</em></td><td>预测价值 + 反馈价值;引入<strong>公允价值</strong>↑相关性</td></tr>
+      <tr><td><strong>③ 可理解性</strong></td><td><em>清晰明了</em></td><td>便于使用者理解和使用</td></tr>
+      <tr><td><strong>④ 可比性</strong></td><td><em>纵向 + 横向</em></td><td>纵向:同企业不同期 一致;横向:不同企业同期 一致</td></tr>
+      <tr><td><strong>⑤ 实质重于形式</strong></td><td><em>看实质</em></td><td>典型:售后回购、控制判断、关联方判断</td></tr>
+      <tr><td><strong>⑥ 重要性</strong></td><td><em>金额 + 性质</em></td><td>典型:重要 vs 不重要 前期差错</td></tr>
+      <tr><td><strong>⑦ 谨慎性</strong></td><td><em>不高估资产/收益,不低估负债/费用</em></td><td><strong>不允许</strong>秘密准备;减值准备、预计负债、加速折旧</td></tr>
+      <tr><td><strong>⑧ 及时性</strong></td><td><em>不提前不延后</em></td><td>制约相关性 + 可靠性,需权衡</td></tr>
+    </tbody>
+  </table>
+
+  <h3>典型情景对号入座(高频)</h3>
+  <div class="grid">
+    <div class="item"><div class="h">售后回购按质押借款做账</div><div class="b">实质重于形式</div></div>
+    <div class="item"><div class="h">引入公允价值/消除会计错配</div><div class="b">相关性</div></div>
+    <div class="item"><div class="h">列报项目变更同步调整可比期间</div><div class="b">可比性</div></div>
+    <div class="item"><div class="h">不重大前期差错计入当期</div><div class="b">重要性</div></div>
+    <div class="item"><div class="h">计提资产减值准备 / 预计负债</div><div class="b">谨慎性</div></div>
+    <div class="item"><div class="h">加速折旧(双倍余额递减、年数总和)</div><div class="b">谨慎性</div></div>
+    <div class="item"><div class="h">递延所得税资产<em>有条件</em>确认 vs 负债<em>无条件</em></div><div class="b">谨慎性</div></div>
+    <div class="item"><div class="h">区分收入/利得、流动/非流动</div><div class="b">相关性</div></div>
+    <div class="item"><div class="h">关联方判断、合并范围判断</div><div class="b">实质重于形式</div></div>
+    <div class="item"><div class="h">必须及时确认,不得提前/延后</div><div class="b">及时性</div></div>
+  </div>
+
+  <div class="q">
+    <b>常错题:</b>"不同企业同期相同业务采用不同政策" → ❌ <strong>可比性错!</strong>(要相同政策才可比)<br>
+    "可以高估负债或费用" → ❌ <strong>谨慎性错!</strong>(也不能高估)
+    <div class="a">✅ 反馈价值 → 相关性;全部信息后才处理 → 影响及时性,不是重要性</div>
+  </div>
+</section>
+
+<!-- §4 -->
+<section id="s4">
+  <h2>§4 6 大会计要素 ⭐⭐⭐</h2>
+
+  <div class="formula">
+    <b>资产 = 负债 + 所有者权益</b>(资产负债表)&nbsp;|&nbsp; <b>收入 − 费用 = 利润</b>(利润表)
+  </div>
+
+  <h3>记账规则速查</h3>
+  <table>
+    <thead><tr><th width="50%">借方(↑)</th><th>贷方(↑)</th></tr></thead>
+    <tbody>
+      <tr><td>资产 / 费用 / 成本(半成品)</td><td>负债 / 所有者权益 / 收入</td></tr>
+    </tbody>
+  </table>
+  <p style="text-align:center;font-weight:600;color:var(--accent);">口诀:资费成借增,负权收贷增</p>
+
+  <h3>6 大要素 · 定义 + 确认条件</h3>
+  <table>
+    <thead><tr><th width="15%">要素</th><th width="42%">特征 / 定义</th><th>确认条件</th></tr></thead>
+    <tbody>
+      <tr><td><strong>资产</strong></td><td>① 预期带来经济利益 ② 企业 <em>拥有/控制</em> ③ <em>过去</em>交易形成</td><td>很可能流入 + 成本/价值可靠计量</td></tr>
+      <tr><td><strong>负债</strong></td><td>① 现时义务(法定 + <em>推定</em>) ② 清偿导致经济利益流出 ③ <em>过去</em>交易形成</td><td>很可能流出 + 金额可靠计量</td></tr>
+      <tr><td><strong>所有者权益</strong></td><td>资产 − 负债 = 股东权益;来源:投入资本 + 其他综合收益 + 留存收益</td><td>依赖资产和负债的确认</td></tr>
+      <tr><td><strong>收入</strong></td><td><em>日常活动</em>形成;权益增加;与所有者投入资本无关</td><td>履行履约义务,客户取得<em>控制权</em></td></tr>
+      <tr><td><strong>费用</strong></td><td><em>日常活动</em>形成;权益减少;与分配利润无关</td><td>很可能流出 + 致资产减少/负债增加 + 可靠计量</td></tr>
+      <tr><td><strong>利润</strong></td><td>一定会计期间的<em>经营成果</em></td><td>= 收入−费用 + 直接计入当期利润的利得/损失</td></tr>
+    </tbody>
+  </table>
+
+  <h3>可能性程度表(背)</h3>
+  <table>
+    <thead><tr><th width="40%">用语</th><th>区间</th></tr></thead>
+    <tbody>
+      <tr><td><strong>基本确定</strong></td><td>95% &lt; p &lt; 100%</td></tr>
+      <tr><td><strong>很可能</strong></td><td>50% &lt; p ≤ 95%</td></tr>
+      <tr><td><strong>可能</strong></td><td>5% &lt; p ≤ 50%</td></tr>
+      <tr><td><strong>极小可能</strong></td><td>0% &lt; p ≤ 5%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>利得 / 损失 两个去向</h3>
+  <table>
+    <thead><tr><th width="50%">路径 1:直接计入所有者权益</th><th>路径 2:计入当期损益</th></tr></thead>
+    <tbody>
+      <tr><td>其他综合收益(资产负债表项目)</td><td>营业外收入 / 营业外支出(利润表)</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:13px;color:var(--muted);">利得/损失 = <em>非日常活动</em>;收入/费用 = <em>日常活动</em>。</p>
+
+  <h3>所有者权益 — 5 个项目</h3>
+  <div class="chips">
+    <span class="chip">① 实收资本/股本(面值)</span>
+    <span class="chip">② 资本公积(溢价 + 其他)</span>
+    <span class="chip">③ 其他综合收益</span>
+    <span class="chip">④ 盈余公积(净利润 × 10%)</span>
+    <span class="chip">⑤ 未分配利润</span>
+  </div>
+  <p style="font-size:13px;color:var(--muted);">留存收益 = 盈余公积 + 未分配利润。用途:转增资本 / 弥补亏损。</p>
+
+  <h3>所有者权益<strong>不变</strong>的业务(易错)</h3>
+  <ol>
+    <li>转增资本(溢价/留存收益) — 内部腾挪</li>
+    <li>弥补亏损(以后年度/盈余公积) — 内部腾挪</li>
+    <li>发放<strong>股票股利</strong>(借:利润分配 / 贷:股本)</li>
+    <li>提取盈余公积(借:利润分配 / 贷:盈余公积)</li>
+  </ol>
+  <p style="color:var(--accent);font-weight:600;">对比:发放<strong>现金股利</strong> → 所有者权益 ↓(钱真流出)</p>
+
+  <h3>5 种计量属性</h3>
+  <table>
+    <thead><tr><th width="22%">属性</th><th>核心词</th></tr></thead>
+    <tbody>
+      <tr><td><strong>历史成本</strong></td><td>强调<em>当时</em>(购买时/合同金额)</td></tr>
+      <tr><td><strong>重置成本</strong></td><td>强调<em>现在</em></td></tr>
+      <tr><td><strong>可变现净值</strong></td><td><em>倒推</em>(售价 − 预计费用)</td></tr>
+      <tr><td><strong>现值</strong></td><td>强调<em>未来</em>(现金流折现)</td></tr>
+      <tr><td><strong>公允价值</strong></td><td><em>脱手价格</em>(计量日有序交易)</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:13px;">一般采用<strong>历史成本</strong>;采用其他属性需保证能取得 + 可靠计量。</p>
+</section>
+
+<!-- §6 -->
+<section id="s6">
+  <h2>§6 可持续信息披露 <span class="badge">2026 新增</span></h2>
+
+  <div class="card green">
+    <span class="tag">定义</span>
+    <p>可持续信息 = 企业 <strong>环境(E)+ 社会(S)+ 治理(G)</strong> 方面的可持续议题相关风险、机遇和影响的信息(即 ESG)。</p>
+  </div>
+
+  <h3>披露目标</h3>
+  <p>向 <strong>投资者、债权人</strong>(基本使用者)、政府等(信息使用者)提供:① 可持续议题如何<em>影响企业</em>未来发展 ② 企业经营如何<em>影响环境与社会</em> ③ 便其作出决策。</p>
+
+  <h3>披露原则(5 条)</h3>
+  <ol>
+    <li>符合 <strong>重要性</strong> 原则</li>
+    <li><strong>双重重要性</strong>:财务重要性 + 影响重要性 → 分别评估</li>
+    <li>报告期间、报告主体范围与财务报表<strong>一致</strong></li>
+    <li>合并主体 → 涵盖范围与合并财务报表合并范围一致</li>
+    <li>还应考虑<strong>价值链</strong>情况</li>
+  </ol>
+
+  <h3>6 项质量要求(对比第三节 8 项)</h3>
+  <table>
+    <thead><tr><th width="22%">质量要求</th><th>核心要点</th></tr></thead>
+    <tbody>
+      <tr><td><strong>可靠性</strong></td><td>如实反映:完整 + 中立 + 准确(不要求所有方面完美精确)</td></tr>
+      <tr><td><strong>相关性</strong></td><td>与决策相关;<strong>重要性</strong>是相关性的具体应用</td></tr>
+      <tr><td><strong>可比性</strong></td><td>同企业不同期 + 同行业/相似业务模式企业</td></tr>
+      <tr><td><strong>可验证性</strong> <span class="badge blue">独有</span></td><td>能通过信息本身或输入值<em>加以证实</em></td></tr>
+      <tr><td><strong>可理解性</strong></td><td>内容清晰明了;可<em>交叉索引</em>(不需重复披露)</td></tr>
+      <tr><td><strong>及时性</strong></td><td>及时满足使用者需求</td></tr>
+    </tbody>
+  </table>
+
+  <div class="q">
+    <b>易错(2025 回忆版):</b><br>
+    A. 独立报告对外公告 → <em>可理解性</em><br>
+    B. 根据影响规模决定是否纳入 → <em>相关性</em><br>
+    C. 用新方法重述可比期间数据 → <em>可比性</em><br>
+    D. 同时披露积极 + 消极影响 → ✅ <em>可靠性(中立)</em>
+    <div class="a">答案 D</div>
+  </div>
+
+  <h3>4 个核心要素(必考)</h3>
+  <div class="grid">
+    <div class="item"><div class="h">① 治理</div><div class="b">治理架构、控制措施和程序</div></div>
+    <div class="item"><div class="h">② 战略</div><div class="b">企业战略和可能结果</div></div>
+    <div class="item"><div class="h">③ 风险和机遇管理</div><div class="b">识别、评估、排序、监控流程;如何融入整体风险管理</div></div>
+    <div class="item"><div class="h">④ 指标和目标</div><div class="b">绩效;目标的进展(包括法规要求的目标)</div></div>
+  </div>
+
+  <h3>与财务报表信息的关系</h3>
+  <p>可持续信息<strong>应当与财务报表信息相互关联</strong>,便信息使用者理解不同披露之间的联系。</p>
+</section>
+
+<!-- §7 -->
+<section id="s7">
+  <h2>§7 AI 在会计审计领域的应用 <span class="badge">2026 新增</span></h2>
+
+  <h3>AI 概述</h3>
+  <p>AI = 计算机科学的<strong>核心分支</strong>,通过计算机程序<strong>模拟人类智能行为</strong>(语言/图像识别、学习、决策)。<br>技术:机器学习、专家系统、自动化决策、自然语言处理、计算机视觉、情感计算。</p>
+
+  <div class="grid">
+    <div class="item">
+      <div class="h">会计领域 4 场景</div>
+      <div class="b">① 自动化处理 ② 智能分析 ③ 风险控制 ④ 效率提升</div>
+    </div>
+    <div class="item">
+      <div class="h">审计领域 4 场景</div>
+      <div class="b">① 数据采集与分析 ② 风险识别与评估 ③ 程序自动化 ④ 质量控制和复核</div>
+    </div>
+  </div>
+
+  <h3>正确开发使用 AI(5 要求)</h3>
+  <ol>
+    <li>以会计人员<strong>职业道德</strong>为导向</li>
+    <li><strong>压实</strong>会计人员工作责任</li>
+    <li><strong>以人为本</strong>(人类决策为主)</li>
+    <li><strong>可解释性</strong>(不能是黑箱)</li>
+    <li><strong>数据保密</strong></li>
+  </ol>
+</section>
+
+<!-- 自测 -->
+<section>
+  <h2>③ 自测 10 问(合上笔记)</h2>
+  <ol>
+    <li>会计的定义里"主要计量单位"是什么?(<em>货币</em>)</li>
+    <li>会计 3 个作用?(<em>提加考</em>)</li>
+    <li>4 个会计基本假设?(会计主体 / 持续经营 / 会计分期 / 货币计量)</li>
+    <li>权责发生制 vs 收付实现制 — 行政事业单位的预算会计用哪个?(<em>收付实现制</em>)</li>
+    <li>8 项质量要求口诀?(<em>可相理比 + 实重谨及</em>)</li>
+    <li>谨慎性的核心两句话?(<em>不高估资产/收益,不低估负债/费用;不允许秘密准备</em>)</li>
+    <li>6 大会计要素?(资产/负债/所有者权益/收入/费用/利润)</li>
+    <li>"很可能"的概率区间?(<em>50% &lt; p ≤ 95%</em>)</li>
+    <li>5 种计量属性?(历史成本/重置成本/可变现净值/现值/公允价值)</li>
+    <li>可持续信息披露的"双重重要性"是哪两个?(<em>财务重要性 + 影响重要性</em>)</li>
+  </ol>
+</section>
+
+<!-- Cheat -->
+<section>
+  <h2>④ 一页 Cheat Sheet(印出来贴墙)</h2>
+  <div class="cheat">
+    <h4>🎯 考试速查 7 张卡</h4>
+    <div class="grid">
+      <div class="item"><div class="h">作用:提加考</div><div class="b">提信息 + 加管理 + 考责任</div></div>
+      <div class="item"><div class="h">假设:主续期币</div><div class="b">会计<em>主</em>体 + <em>续</em>经营 + 分<em>期</em> + 货<em>币</em>计量</div></div>
+      <div class="item"><div class="h">质量:可相理比·实重谨及</div><div class="b">8 项;高频:实质重于形式、谨慎、重要</div></div>
+      <div class="item"><div class="h">要素:资负权·收费利</div><div class="b">6 大;借贷规则口诀:资费成借增,负权收贷增</div></div>
+      <div class="item"><div class="h">概率 4 档</div><div class="b">基本确定 95-100;很可能 50-95;可能 5-50;极小 0-5</div></div>
+      <div class="item"><div class="h">计量 5 种</div><div class="b">历史·重置·可变现·现值·公允</div></div>
+      <div class="item"><div class="h">ESG 双重要性 + 4 要素</div><div class="b">财务+影响;治理/战略/风险机遇/指标目标</div></div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+function saveDoc(){
+  const content = document.documentElement.outerHTML;
+  const blob = new Blob([content], {type: 'text/html;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const ts = new Date().toISOString().slice(0,10);
+  a.href = url;
+  a.download = `2026-CPA-会计-第一章-总论-笔记-${ts}.html`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+document.querySelectorAll('.toc a').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id = a.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if(target){e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
+</body>
+</html>
