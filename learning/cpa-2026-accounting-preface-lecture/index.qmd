@@ -1,0 +1,618 @@
+---
+title: "2026 CPA 会计 · 前言 · 讲堂版"
+author: "Kevin Guo"
+date: "2026-06-18"
+categories: [CPA, accounting, "中文"]
+description: "前言章节的讲堂讲解节奏版 —— 适合二刷复盘。"
+---
+::: {.callout-note appearance="simple"}
+📄 **Also available as:** [HTML view →](cpa-2026-accounting-preface-lecture.html)
+:::
+应试 · 基础精讲班 · 张敬富老师
+
+同学们好
+咱们开始上第一节课
+==================
+
+2026 考季 CPA《会计》前言 · 通俗易懂讲堂版
+
+我先说一句话——CPA 会计这门课，难的不是知识本身，难的是**很多人一开始就放弃理解，直接背**。
+前言这一节我不教考点，我教你**怎么看待这门课**。看完前言能想通这件事，你已经赢了 50%。
+
+## 先搞清楚：你要爬的是一座什么山？
+
+很多人翻开 CPA 会计的教材，第一感觉是"卧槽好厚"，然后乱翻乱学。其实这本书结构非常清楚，就五个抽屉。
+
+张老师
+
+我把这本书比作一栋**五层楼**。
+一楼是地基（基本理论），二楼是各种"会计要素"（资产、负债、收入这些），三楼是几个比较绕的"特殊事项"（合并、租赁、所得税），四楼是怎么"把账编成报表给别人看"（财报），五楼是**政府和非营利组织的会计**（性质特殊，所以单独放）。
+
+### 30 章 / 5 个抽屉
+
+mindmap root(("30 章
+5 大部分")) P1\["P1 会计基本理论"\] ch1\["1. 总论 = 地基"\] P2\["P2 会计要素核算 15章"\] ch2\["存货 ch2"\] ch3\["固定 ch3"\] ch4\["无形 ch4"\] ch5\["投资性房地产 ch5"\] ch6\["长股投 ch6 ⭐"\] ch7\["资产减值 ch7"\] ch8\["负债 ch8 ⭐"\] ch9\["职工薪酬 ch9"\] ch10\["股份支付 ch10"\] ch11\["借款费用 ch11"\] ch12\["或有 ch12"\] ch13\["金融工具 ch13 ⭐⭐⭐"\] ch16\["所有者权益 ch16"\] ch17\["收入 ch17 ⭐"\] ch18\["政府补助 ch18"\] P3\["P3 特殊事项 9章"\] ch14\["租赁 ch14"\] ch15\["持有待售 ch15"\] ch19\["所得税 ch19"\] ch20\["非货币交换 ch20"\] ch21\["债务重组 ch21"\] ch22\["外币 ch22"\] ch24\["会计差错 ch24"\] ch25\["日后事项 ch25"\] ch26\["企业合并 ch26 ⭐⭐"\] P4\["P4 财务报告 3章"\] ch23\["财务报告 ch23 ⭐⭐"\] ch27\["合并报表 ch27"\] ch28\["EPS ch28"\] P5\["P5 其他 2章"\] ch29\["公允价值 ch29"\] ch30\["政府非营利 ch30 ⭐⭐"\]
+
+💡 张老师的比喻
+
+**会计 = 一门"翻译"**。它把企业天天发生的"我买了一台机器、我借了笔钱、我卖了一批货"这些事，翻译成会计语言（借/贷/资产/负债），然后把这些语言**整理成三张表**给别人看。
+
+所以这 30 章，本质上是教你：**什么事用什么词翻译**（P1-P3），**怎么编进表里**（P4），**政府/公益机构的语法另算**（P5）。
+
+## 2026 年改了哪些地方？
+
+每年准则都改一点，**新增的章节几乎必考**。这是张老师挑出来的"今年命题部门最爱"。
+
+学生
+
+老师，30 章我都得背吗？
+
+张老师
+
+不用。我教你一个**命题部门的偷懒规律**——他们出新题最爱出"今年新增的内容"，因为这能体现"准则在更新"。所以：
+新增 = 必考、修改 = 重点关注、删除 = 不学、没变化 ≠ 不考（但考法和往年一样，刷历年题就行）。
+
+### 真正的"变化王"前三名
+
+1
+
+**第 13 章 金融工具与保险合同**（⭐⭐⭐）
+今年改了 6 项——新增净额结算合同处理、金融资产/负债确认与终止确认、信用增级对预期信用损失影响、**第八节 保险合同概述**、新增例题、修订文字。
+为什么？因为 2024–2025 新保险合同准则刚落地，命题部门有"政治任务"考它。
+
+2
+
+**第 26 章 企业合并**（⭐⭐）
+新增"补偿性资产"（★★）的会计处理 + 同控合并取得子公司后处置丧失控制权时资本公积怎么处理。
+"补偿性资产"是 2024 年新概念——交易里买方因为某些风险未来可能能拿回一部分钱，这部分要单独入账。
+
+3
+
+**第 30 章 政府及民间非营利组织会计**（⭐⭐）
+新增"地方政府专项债券业务"（★）+ 民间非营利组织各类收入定义重写 + 4 项打 ★ 的修改。
+第 30 章往年考生最爱跳过——但今年改这么多，单选/多选可能出 2-3 题。
+
+### 详细变化清单（速查表）
+
+| 章 | 章节 | 2026 变化 |
+|----|----|----|
+| 1 | 总论 | 新会计工作责任 / 可持续披露例题 / AI 应用第七节 |
+| 2 | 存货 | 无变化 |
+| 3,4 | 固定资产/无形资产 | 新例题 修文字 |
+| 5 | 投资性房地产 | 新保险合同准则下投房处理 |
+| 6 | 长股投与合营 | 新补偿性资产 / 处置同控子公司丧失控制权 |
+| 7 | 资产减值 | 无变化 |
+| 8 | 负债 | 修增值税定义 / 视同应税交易 删差额征税 新地方政府专项债券 |
+| 9 | 职工薪酬 | 无变化 |
+| 10 | 股份支付 | 新例题 |
+| 11 | 借款费用 | 无变化 |
+| 12 | 或有事项 | 新保证类质量保证形成的预计负债 |
+| 13 | 金融工具+保险 | 新6 项（含**保险合同第八节**） |
+| 14 | 租赁 | 无变化 |
+| 15 | 持有待售 | 新分配费用 修终止确认 |
+| 16 | 所有者权益 | 修复合金融工具交易费用 |
+| 17 | 收入费用利润 | 新合同履行完毕后调减商品对价 |
+| 18 | 政府补助 | 修政府补助定义 |
+| 19 | 所得税 | 新例题 |
+| 20 | 非货币交换 | 无变化 |
+| 21 | 债务重组 | 新受让金融资产初始公允值与交易价差异 |
+| 22 | 外币折算 | 无变化 |
+| 23 | 财务报告 | 修列报基本要求 新调整或增设项目 / 费用按功能分类 |
+| 24 | 会计政策/差错 | 新例题 |
+| 25 | 日后事项 | 新日后事项附注披露 |
+| 26 | 企业合并 | 新补偿性资产 / 处置同控子公司 |
+| 27 | 合并报表 | 新处置同控子公司 删合并现金流量表概述部分 |
+| 28 | 每股收益 | 无变化 |
+| 29 | 公允价值计量 | 无变化 |
+| 30 | 政府+非营利 | 大改 6 项（含**地方政府专项债券**） |
+
+划重点 · 张老师 OS
+
+9 章"无变化"≠ 不考。它们考点稳定，刷历年题最划算。今年时间紧的话，**变化章节多花 60% 时间，无变化章节用历年题快速过**。
+
+## 考试场上长什么样？
+
+先把"敌人长什么样"摸清楚，再决定怎么打。
+
+### 四种题型 · 怎么打分
+
+| 题型     | 题量   | 每题 | 合计    | 占比 |
+|----------|--------|------|---------|------|
+| 单选     | 13     | 2    | 26      | 26%  |
+| 多选     | 12     | 2    | 24      | 24%  |
+| 计算分析 | 2      | 9    | 18      | 18%  |
+| 综合     | 2      | 16   | 32      | 32%  |
+| **合计** | **29** | —    | **100** | 100% |
+
+🎯 直觉理解
+
+**客观 50 分**（单选+多选）= "广撒网"。它要你**每章都懂一点**，没有盲区。
+**主观 50 分**（计算分析+综合）= "重点深挖"。它要你在 5 块大肉 上熟练：长股投、收入、租赁、金融工具、政府补助。
+
+### 第 1 个计算分析题，英文答可以 +5 分
+
+张老师
+
+这是 CPA 会计独有的"性价比红利"。
+第 1 道计算分析题，如果你**全程用英文作答**，可以额外加 5 分。也就是说同样一道 9 分题，满分能拿 14 分。
+英语过六级、看得懂 IFRS 术语的同学，这 5 分务必抢。但记住：要么**全英文**，中英混着写不给加。
+
+### 命题特点 · 翻译成人话
+
+①
+
+单选/多选——**题量稳、范围广**。命题部门口头禅："重点恒重 · 逢新必考"。意思是经典考点年年都考，今年新增的内容今年必考。
+
+②
+
+计算分析——**考点集中、综合性不强**。一道题就考一两章的内容，做对靠的是**对那章特别熟**，不靠跨章整合。
+
+③
+
+综合题——**阅读+计算量大**，常用两种考法：差错更正（给你一份错账让你改）和拼盘式（一道题串 4-5 章）。这种题**时间管理**比知识更关键。
+
+考场策略
+
+会做的先做、综合题最后压轴、多选题宁可少选不要多选（多选错一个全错）。计算分析第 1 题英文写 → 多 5 分。
+
+## 怎么学，才能"学完真的会"？
+
+很多人学完 CPA 会计依然不会做题——不是不努力，是**读教材的方式不对**。
+
+### 四阶段读书法（时间轴）
+
+gantt title 备考时间倒推（以考试日为起点） dateFormat YYYY-MM-DD axisFormat %m月 section 第一阶段 熟读：每章都搞懂 What/Why/How :2026-03-01, 60d section 第二阶段 精读：放弃次要章，火力集中重点 :2026-05-01, 60d section 第三阶段 泛读：以题带教材、刷套题 :2026-07-01, 60d section 第四阶段 粗读：通读笔记、错题本、查漏 :2026-08-15, 30d section 考试 冲刺机考 :crit, 2026-09-15, 7d
+
+张老师 · 关键比喻
+
+四阶段不是"读四遍"，是**四种不同的读法**：
+**熟读**＝把陌生变熟悉（重在理解）
+**精读**＝把熟悉变精通（重在重点）
+**泛读**＝把知识变工具（重在做题）
+**粗读**＝把所有点串成网（重在贯通）
+
+跳过任何一个，到考场就会出现"什么都见过，什么都不会"。
+
+### 六条注意事项（人话版）
+
+| 张老师原话 | 我给你翻译 |
+|----|----|
+| ① 树立信心、持之以恒 | 合并报表、金融工具这种章，**第一遍看不懂正常**。不要看一眼就放弃。 |
+| ② 注重理解、总结、归纳 | 不背概念，**用自己的话复述出来**才算会。 |
+| ③ 客观/主观题分别策略 | 客观题广撒网刷量、主观题**抠 5 大主线章节**反复练。 |
+| ④ 储备相关知识 | 《税法》的增值税、《财管》的现值/折现率，是会计的"前置课"。 |
+| ⑤ 注意学习节奏 | "前松后紧" = CPA 头号死法。每周固定 X 小时，不超额、不掉队。 |
+| ⑥ 熟练应对机考 | 考试用**笔记本电脑**作答，平时就模拟机考界面练。 |
+
+## 会计的"通用语"：现值与年金
+
+为什么前言里讲这个？因为**租赁、金融工具、长股投、债务重组、所得税**这些章，全都默认你会"折现"。不会的话，后面 90% 的题都做不动。
+
+### 5.1 一个核心思想：钱有时间价值
+
+🎯 灵魂比喻
+
+**现在的 100 块 ≠ 一年后的 100 块**。
+你今天给我 100 块，我存银行（假设年利率 4%）一年后是 104 块；如果一年后才给我 100 块，那我亏了 4 块的利息。
+所以——钱的"价值"必须带"时间戳"。我们要么把所有钱**统一折算到现在**（求现值 P），要么**统一折算到未来某一天**（求终值 F）。
+
+### 5.2 终值 F vs 现值 P
+
+flowchart LR P\["现在
+P 块"\] --\>\|"乘 (1+i)^n
+钱长大"\| F\["未来
+F 块"\] F --\>\|"除以 (1+i)^n
+钱穿越回来"\| P style P fill:#cee0ee,stroke:#3a7ca5,color:#1f1c18 style F fill:#fde9b3,stroke:#d4a847,color:#1f1c18
+
+| 叫法                       | 含义                       | 俗称   |
+|----------------------------|----------------------------|--------|
+| **终值 F** (Future Value)  | 现在的钱"长大"到未来变多少 | 本利和 |
+| **现值 P** (Present Value) | 未来的钱"穿越"回现在值多少 | 本金   |
+
+### 5.3 单利 vs 复利（CPA 全用复利）
+
+小故事
+
+你借给老王 100 块，年利率 10%。
+**单利**：每年只算本金的利息——每年都是 10 块。3 年后还你 130 块。
+**复利**：第二年的利息不仅算本金，**还要算上去年那 10 块的利息**。
+　第 1 年：100 → 110
+　第 2 年：110 × 1.1 = 121（多了 11 块利息，因为对第一年的 10 块也计息了）
+　第 3 年：121 × 1.1 = 133.1
+所以复利的本质就是利息生利息，行内话叫"**滚雪球**"。
+
+**CPA 考试全部按复利**。教材里说的"利息"，默认就是复利。
+
+### 5.4 两个核心公式
+
+复利终值（一次性收付）
+
+$$F = P \cdot (1+i)^n$$
+
+符号 $(F/P, i, n)$ 就是 $(1+i)^n$ 这一串。考试给你查系数表，不用自己算。
+
+复利现值（一次性收付）
+
+$$P = \frac{F}{(1+i)^n} = F \cdot (P/F, i, n)$$
+
+这就是"折现"。$i$ 叫**折现率**，$n$ 是期数。CPA 大半的章节都在算这个 P。
+
+张老师 · 例题
+
+第 5 年末有 300 万元，年利率 i=4%，现在应该投多少？
+$$P = \frac{300}{(1+4\\)^5} = 300 \times (P/F, 4\\, 5)$$
+查表 (P/F, 4%, 5) ≈ 0.8219，所以 P ≈ 246.57 万。
+
+### 5.5 年金——把"系列付款"打包
+
+"年金" = 一定时期内每隔相等时间、每次相等金额、方向一致的现金流。三个要素缺一不可：等额、等距、同向。
+
+#### 四种年金的时间轴
+
+![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgNzIwIDM2MCIgd2lkdGg9IjEwMCUiPgogIDx0ZXh0IHg9IjIwIiB5PSIzMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2U4NTUzZCI+4pGgIOaZrumAmuW5tOmHke+8iOWQjuS7mO+8jOavj+acn+acn+acq++8iTwvdGV4dD4KICA8bGluZSB4MT0iMjAiIHkxPSI1NSIgeDI9IjcwMCIgeTI9IjU1IiBzdHJva2U9IiMxZjFjMTgiIHN0cm9rZS13aWR0aD0iMiI+PC9saW5lPgogIDxnIGZvbnQtc2l6ZT0iMTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPgogICAgPHRleHQgeD0iMjAiIHk9IjQ4Ij4wPC90ZXh0Pjx0ZXh0IHg9IjE2MCIgeT0iNDgiPjE8L3RleHQ+PHRleHQgeD0iMzAwIiB5PSI0OCI+MjwvdGV4dD48dGV4dCB4PSI0NDAiIHk9IjQ4Ij4zPC90ZXh0Pjx0ZXh0IHg9IjU4MCIgeT0iNDgiPjQ8L3RleHQ+PHRleHQgeD0iNzAwIiB5PSI0OCI+4oCmbjwvdGV4dD4KICA8L2c+CiAgPGc+CiAgICA8bGluZSB4MT0iMTYwIiB5MT0iNjAiIHgyPSIxNjAiIHkyPSI4NSIgc3Ryb2tlPSIjZTg1NTNkIiBzdHJva2Utd2lkdGg9IjIiIG1hcmtlci1lbmQ9InVybCgjYXJyKSI+PC9saW5lPgogICAgPGxpbmUgeDE9IjMwMCIgeTE9IjYwIiB4Mj0iMzAwIiB5Mj0iODUiIHN0cm9rZT0iI2U4NTUzZCIgc3Ryb2tlLXdpZHRoPSIyIiBtYXJrZXItZW5kPSJ1cmwoI2FycikiPjwvbGluZT4KICAgIDxsaW5lIHgxPSI0NDAiIHkxPSI2MCIgeDI9IjQ0MCIgeTI9Ijg1IiBzdHJva2U9IiNlODU1M2QiIHN0cm9rZS13aWR0aD0iMiIgbWFya2VyLWVuZD0idXJsKCNhcnIpIj48L2xpbmU+CiAgICA8bGluZSB4MT0iNTgwIiB5MT0iNjAiIHgyPSI1ODAiIHkyPSI4NSIgc3Ryb2tlPSIjZTg1NTNkIiBzdHJva2Utd2lkdGg9IjIiIG1hcmtlci1lbmQ9InVybCgjYXJyKSI+PC9saW5lPgogIDwvZz4KICA8ZyBmb250LXNpemU9IjEwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZTg1NTNkIj4KICAgIDx0ZXh0IHg9IjE2MCIgeT0iOTgiPkE8L3RleHQ+PHRleHQgeD0iMzAwIiB5PSI5OCI+QTwvdGV4dD48dGV4dCB4PSI0NDAiIHk9Ijk4Ij5BPC90ZXh0Pjx0ZXh0IHg9IjU4MCIgeT0iOTgiPkE8L3RleHQ+CiAgPC9nPgoKICA8dGV4dCB4PSIyMCIgeT0iMTMwIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjM2E3Y2E1Ij7ikaEg6aKE5LuY5bm06YeR77yI5YWI5LuY77yM5q+P5pyf5pyf5Yid77yJPC90ZXh0PgogIDxsaW5lIHgxPSIyMCIgeTE9IjE1NSIgeDI9IjcwMCIgeTI9IjE1NSIgc3Ryb2tlPSIjMWYxYzE4IiBzdHJva2Utd2lkdGg9IjIiPjwvbGluZT4KICA8ZyBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4KICAgIDx0ZXh0IHg9IjIwIiB5PSIxNDgiPjA8L3RleHQ+PHRleHQgeD0iMTYwIiB5PSIxNDgiPjE8L3RleHQ+PHRleHQgeD0iMzAwIiB5PSIxNDgiPjI8L3RleHQ+PHRleHQgeD0iNDQwIiB5PSIxNDgiPjM8L3RleHQ+PHRleHQgeD0iNTgwIiB5PSIxNDgiPjQ8L3RleHQ+PHRleHQgeD0iNzAwIiB5PSIxNDgiPuKApm48L3RleHQ+CiAgPC9nPgogIDxnPgogICAgPGxpbmUgeDE9IjIwIiB5MT0iMTYwIiB4Mj0iMjAiIHkyPSIxODUiIHN0cm9rZT0iIzNhN2NhNSIgc3Ryb2tlLXdpZHRoPSIyIiBtYXJrZXItZW5kPSJ1cmwoI2FyckIpIj48L2xpbmU+CiAgICA8bGluZSB4MT0iMTYwIiB5MT0iMTYwIiB4Mj0iMTYwIiB5Mj0iMTg1IiBzdHJva2U9IiMzYTdjYTUiIHN0cm9rZS13aWR0aD0iMiIgbWFya2VyLWVuZD0idXJsKCNhcnJCKSI+PC9saW5lPgogICAgPGxpbmUgeDE9IjMwMCIgeTE9IjE2MCIgeDI9IjMwMCIgeTI9IjE4NSIgc3Ryb2tlPSIjM2E3Y2E1IiBzdHJva2Utd2lkdGg9IjIiIG1hcmtlci1lbmQ9InVybCgjYXJyQikiPjwvbGluZT4KICAgIDxsaW5lIHgxPSI0NDAiIHkxPSIxNjAiIHgyPSI0NDAiIHkyPSIxODUiIHN0cm9rZT0iIzNhN2NhNSIgc3Ryb2tlLXdpZHRoPSIyIiBtYXJrZXItZW5kPSJ1cmwoI2FyckIpIj48L2xpbmU+CiAgICA8bGluZSB4MT0iNTgwIiB5MT0iMTYwIiB4Mj0iNTgwIiB5Mj0iMTg1IiBzdHJva2U9IiMzYTdjYTUiIHN0cm9rZS13aWR0aD0iMiIgbWFya2VyLWVuZD0idXJsKCNhcnJCKSI+PC9saW5lPgogIDwvZz4KICA8ZyBmb250LXNpemU9IjEwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjM2E3Y2E1Ij4KICAgIDx0ZXh0IHg9IjIwIiB5PSIxOTgiPkE8L3RleHQ+PHRleHQgeD0iMTYwIiB5PSIxOTgiPkE8L3RleHQ+PHRleHQgeD0iMzAwIiB5PSIxOTgiPkE8L3RleHQ+PHRleHQgeD0iNDQwIiB5PSIxOTgiPkE8L3RleHQ+PHRleHQgeD0iNTgwIiB5PSIxOTgiPkE8L3RleHQ+CiAgPC9nPgoKICA8dGV4dCB4PSIyMCIgeT0iMjMwIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZDRhODQ3Ij7ikaIg6YCS5bu25bm06YeR77yIbSDmnJ/msqHpkrEgKyBuIOacn+aZrumAmuW5tOmHke+8iTwvdGV4dD4KICA8bGluZSB4MT0iMjAiIHkxPSIyNTUiIHgyPSI3MDAiIHkyPSIyNTUiIHN0cm9rZT0iIzFmMWMxOCIgc3Ryb2tlLXdpZHRoPSIyIj48L2xpbmU+CiAgPGcgZm9udC1zaXplPSIxMSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+CiAgICA8dGV4dCB4PSIyMCIgeT0iMjQ4Ij4wPC90ZXh0Pjx0ZXh0IHg9IjMwMCIgeT0iMjQ4Ij5tPC90ZXh0Pjx0ZXh0IHg9IjQ0MCIgeT0iMjQ4Ij5tKzE8L3RleHQ+PHRleHQgeD0iNTgwIiB5PSIyNDgiPm0rMjwvdGV4dD48dGV4dCB4PSI3MDAiIHk9IjI0OCI+bStuPC90ZXh0PgogIDwvZz4KICA8cmVjdCB4PSIyMiIgeT0iMjU4IiB3aWR0aD0iMjc4IiBoZWlnaHQ9IjE4IiBmaWxsPSIjZmRlOWIzIiBvcGFjaXR5PSIuOCIgLz4KICA8dGV4dCB4PSIxNjAiIHk9IjI3MiIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzlhNzQwMCI+6YCS5bu25pyfIG3vvIzmsqHmnInnjrDph5HmtYE8L3RleHQ+CiAgPGc+CiAgICA8bGluZSB4MT0iNDQwIiB5MT0iMjYwIiB4Mj0iNDQwIiB5Mj0iMjg1IiBzdHJva2U9IiNkNGE4NDciIHN0cm9rZS13aWR0aD0iMiIgbWFya2VyLWVuZD0idXJsKCNhcnJDKSI+PC9saW5lPgogICAgPGxpbmUgeDE9IjU4MCIgeTE9IjI2MCIgeDI9IjU4MCIgeTI9IjI4NSIgc3Ryb2tlPSIjZDRhODQ3IiBzdHJva2Utd2lkdGg9IjIiIG1hcmtlci1lbmQ9InVybCgjYXJyQykiPjwvbGluZT4KICAgIDxsaW5lIHgxPSI3MDAiIHkxPSIyNjAiIHgyPSI3MDAiIHkyPSIyODUiIHN0cm9rZT0iI2Q0YTg0NyIgc3Ryb2tlLXdpZHRoPSIyIiBtYXJrZXItZW5kPSJ1cmwoI2FyckMpIj48L2xpbmU+CiAgPC9nPgogIDxnIGZvbnQtc2l6ZT0iMTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNkNGE4NDciPgogICAgPHRleHQgeD0iNDQwIiB5PSIyOTgiPkE8L3RleHQ+PHRleHQgeD0iNTgwIiB5PSIyOTgiPkE8L3RleHQ+PHRleHQgeD0iNzAwIiB5PSIyOTgiPkE8L3RleHQ+CiAgPC9nPgoKICA8dGV4dCB4PSIyMCIgeT0iMzMwIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjNWE4YTRlIj7ikaMg5rC457ut5bm06YeR77yI5peg6ZmQ5pyf77yJPC90ZXh0PgogIDxsaW5lIHgxPSIyMCIgeTE9IjM1NSIgeDI9IjcwMCIgeTI9IjM1NSIgc3Ryb2tlPSIjMWYxYzE4IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1kYXNoYXJyYXk9IjQgMyI+PC9saW5lPgogIDxnIGZvbnQtc2l6ZT0iMTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM1YThhNGUiPgogICAgPHRleHQgeD0iMTYwIiB5PSIzNTAiPkE8L3RleHQ+PHRleHQgeD0iMzAwIiB5PSIzNTAiPkE8L3RleHQ+PHRleHQgeD0iNDQwIiB5PSIzNTAiPkE8L3RleHQ+PHRleHQgeD0iNTgwIiB5PSIzNTAiPkE8L3RleHQ+PHRleHQgeD0iNzAwIiB5PSIzNDUiPuKGkiDiiJ48L3RleHQ+CiAgPC9nPgoKICA8ZGVmcz4KICAgIDxtYXJrZXIgaWQ9ImFyciIgbWFya2Vyd2lkdGg9IjYiIG1hcmtlcmhlaWdodD0iNiIgcmVmeD0iMyIgcmVmeT0iMyIgb3JpZW50PSJhdXRvIj48cG9seWdvbiBwb2ludHM9IjAsMCA2LDMgMCw2IiBmaWxsPSIjZTg1NTNkIj48L3BvbHlnb24+PC9tYXJrZXI+CiAgICA8bWFya2VyIGlkPSJhcnJCIiBtYXJrZXJ3aWR0aD0iNiIgbWFya2VyaGVpZ2h0PSI2IiByZWZ4PSIzIiByZWZ5PSIzIiBvcmllbnQ9ImF1dG8iPjxwb2x5Z29uIHBvaW50cz0iMCwwIDYsMyAwLDYiIGZpbGw9IiMzYTdjYTUiPjwvcG9seWdvbj48L21hcmtlcj4KICAgIDxtYXJrZXIgaWQ9ImFyckMiIG1hcmtlcndpZHRoPSI2IiBtYXJrZXJoZWlnaHQ9IjYiIHJlZng9IjMiIHJlZnk9IjMiIG9yaWVudD0iYXV0byI+PHBvbHlnb24gcG9pbnRzPSIwLDAgNiwzIDAsNiIgZmlsbD0iI2Q0YTg0NyI+PC9wb2x5Z29uPjwvbWFya2VyPgogIDwvZGVmcz4KPC9zdmc+)
+
+#### 各种年金的现值/终值公式
+
+| 类型 | 典型生活例子 | 现值公式 |
+|----|----|----|
+| ① 普通年金 | 分期还房贷（每月底扣） | $P = A \cdot (P/A, i, n)$ |
+| ② 预付年金 | 租房（每月初付） | $P = A \cdot (P/A, i, n) \cdot (1+i)$ |
+| ③ 递延年金 | 研究生毕业 2 年后才开始还助学贷款 | $P = A \cdot (P/A, i, n) \cdot (P/F, i, m)$ |
+| ④ 永续年金 | 优先股股息、永续债 | $P = \dfrac{A}{i}$ |
+
+张老师 · 预付年金为什么 ×(1+i)
+
+每笔钱比普通年金"提前一期"发生，所以每笔钱都比普通年金多"长大一期"——**整笔现值就是普通年金现值乘以 (1+i)**。
+递延年金正好相反：钱比普通年金"晚出现 m 期"，所以要再折现 m 期——**乘以 (P/F, i, m)**。
+
+记不住公式不要紧，记住这两个"差异"的方向——预付往前一期、递延往后 m 期——临场都能推出来。
+
+### 5.6 插值法 · 反推折现率
+
+学生
+
+老师，如果题目给我现值系数 0.6472，问 i 是多少，但系数表上没有这个值怎么办？
+
+张老师
+
+用**插值法**——也叫线性内插法。原理超简单：表上 8% 对应 0.6806、10% 对应 0.6209，我们假设 8%~10% 这段是一条直线（虽然实际是曲线，但在这种小区间内非常接近直线），然后**按比例**定位 0.6472 在 8% 和 10% 之间的位置。
+
+教材例题
+
+已知 $(P/F, i, 5) = 0.6472$，查表：
+　　$(P/F, 8\\, 5) = 0.6806$，$(P/F, 10\\, 5) = 0.6209$
+建立比例： $$\frac{8\\ - i}{8\\ - 10\\} = \frac{0.6806 - 0.6472}{0.6806 - 0.6209}$$ 解出：$\boxed{i \approx 9.12\\}$
+
+flowchart TD A\["1. 题目给系数
+找不到对应的 i"\] --\> B\["2. 查表找
+i 两侧最近的两个值
+(8%, 10%)"\] B --\> C\["3. 假设 8%~10%
+是一条直线"\] C --\> D\["4. 列比例式：
+(i 在区间的位置) =
+(系数在区间的位置)"\] D --\> E\["5. 解出 i"\] style A fill:#e8553d,color:#fff style E fill:#5a8a4e,color:#fff
+
+💡 为什么这管用
+
+现值系数表是"**离散**"的（只列了几个整数百分点），但底层函数是"**连续**"的。在 8%-10% 这种小区间，曲线弯得很小，**直线代替曲线**误差小于 0.5%——考场上完全够用。
+你在 IRR（内部收益率）题、债券实际利率题里都会用它。**插值法是 CPA 数学的"瑞士军刀"**。
+
+## 这节课，我希望你带走三件事
+
+①
+
+**结构感**——CPA 会计 30 章是 5 个抽屉，不是 30 个散点。看懂结构，比背知识更重要。
+
+②
+
+**策略感**——客观题广撒网、主观题深挖 5 大块、第 1 道计算分析用英文写 +5 分、综合题先标重点。
+
+③
+
+**方法感**——四阶段读书法（熟读→精读→泛读→粗读），每阶段读法不同。前言里教的现值/年金/插值法是"金融语言"，后面所有"折现"题都默认你会。
+
+张老师 · 最后一句话
+
+第一节课不要急。你能**看懂前言的结构**，就比 90% 一上来就翻第二章的人领先了。
+我们下节课，从**第 1 章 总论**开始。
+
+RANDOM CHECK · 20 QUESTIONS
+
+## 课后小测 · 20 题
+
+每道题点一下选项就出对错和解析。你能答对 15 题以上，证明这节前言彻底听懂了。
+
+已答 0 / 20 · 正确 0
+
+Q1单选
+
+2026 年 CPA《会计》教材一共有多少章、分成几个部分？
+
+- A 28 章 / 4 部分
+- B 29 章 / 5 部分
+- C 30 章 / 5 部分
+- D 32 章 / 6 部分
+
+答案：C
+
+30 章 / 5 部分：基本理论 1 章、要素核算 15 章、特殊事项 9 章、财务报告 3 章、其他 2 章。
+
+前言开篇就讲，记不住等于没听课。
+
+Q2单选
+
+2026 年第 1 章"总论"新增了哪一节？
+
+- A 第七节 人工智能在会计审计领域的应用
+- B 第八节 保险合同概述
+- C 第六节 可持续信息披露
+- D 第九节 数字化转型
+
+答案：A
+
+第 1 章新增"会计工作责任"、"可持续披露"例题，并**新增第七节 AI 在会计审计领域的应用**。B 是第 13 章新增的第八节，不要混淆。
+
+Q3多选
+
+2026 年明确"无实质性变化"的章节有？（多选）
+
+- A 第 2 章 存货
+- B 第 9 章 职工薪酬
+- C 第 14 章 租赁
+- D 以上都是
+
+答案：D
+
+本届"无变化"章节共 9 个：存货、资产减值、职工薪酬、借款费用、租赁、外币折算、非货币性资产交换、每股收益、公允价值计量。
+
+注意：无变化 ≠ 不考，按往年题型刷历年题即可。
+
+Q4单选
+
+第 8 章"负债"在 2026 年**新增**了下列哪一项？
+
+- A 差额征税的会计处理
+- B 增值税税控系统专用设备维护费用抵减
+- C 地方政府专项债券相关表述
+- D 进项税额不得抵扣改为允许抵扣的会计处理
+
+答案：C
+
+A、B、D 均为第 8 章**删除**项；只有 C "地方政府专项债券"是新增。
+
+记忆诀窍：A、B、D 都跟"增值税细节"有关——准则在简化；C 是"宏观政策工具"——准则在加进来。
+
+Q5多选
+
+第 13 章"金融工具与保险合同"2026 年新增的内容包括？（多选）
+
+- A 净额结算合同的会计处理
+- B 金融资产/负债的确认与终止确认
+- C 信用增级对预期信用损失的影响
+- D 以上全是，还新增第八节"保险合同概述"
+
+答案：D
+
+第 13 章是 2026 年改动最大的一章——新增 6 项加修订，**★★★** 必考核心。
+
+为什么变化这么大？新保险合同准则刚生效，命题部门有政治任务。
+
+Q6单选
+
+CPA《会计》客观题（单选+多选）总分是多少？
+
+- A 40 分
+- B 50 分
+- C 60 分
+- D 32 分
+
+答案：B
+
+单选 13×2 = 26、多选 12×2 = 24，合计 50 分；主观（计算分析 18 + 综合 32）= 50 分。**客观和主观各占一半**。
+
+Q7单选
+
+计算分析题第 1 题英文作答，最多可以加多少分？
+
+- A 3 分
+- B 5 分
+- C 9 分
+- D 10 分
+
+答案：B
+
+仅限**计算分析题第 1 题**、必须**全程英文**。+5 分相当于原题 9 分变 14 分，性价比最高的政策红利。
+
+注意：中英混写不加分。
+
+Q8单选
+
+综合题最常采用的考核形式是？
+
+- A 名词解释
+- B 单点深挖
+- C 差错更正 / 拼盘式
+- D 案例分析
+
+答案：C
+
+综合题阅读量大、综合性强，**差错更正**（给你一份错账让你改）和 **拼盘式**（一题串多章）是两大固定套路。
+
+Q9单选
+
+下列哪个**不是**"四阶段读书法"中的一个阶段？
+
+- A 速读
+- B 精读
+- C 泛读
+- D 粗读
+
+答案：A
+
+四阶段：**熟读（4-6 月前）→ 精读（2-3 月前）→ 泛读（1-2 月前）→ 粗读（0.5-1 月前）**。没有"速读"。
+
+Q10单选
+
+下列哪项**不是**张老师"六大注意事项"中的一条？
+
+- A 注意学习节奏，切勿临阵磨枪
+- B 熟练应对机考
+- C 储备税法、财管知识
+- D 每天必须学满 8 小时
+
+答案：D
+
+张老师强调**节奏与方法**，从不规定时长。"每天 8 小时"是网络流传的鸡汤，张老师没说过。
+
+Q11单选
+
+"现在的 100 元一年后等于 104 元（假设利率 4%）"，这 104 元叫？
+
+- A 现值
+- B 终值
+- C 年金
+- D 折现率
+
+答案：B
+
+终值 = 现在的钱"长大"到未来的金额。俗称"本利和"。
+
+100 是现值 P，104 是终值 F，4% 是 i，1 年是 n。
+
+Q12单选
+
+关于单利和复利，下列说法正确的是？
+
+- A 单利对前期利息再计利息，复利不计
+- B 复利各期利息相等
+- C 复利既对本金计息，也对前期利息计息
+- D CPA 计算默认用单利
+
+答案：C
+
+复利的核心就是**"利滚利"**——前期利息也成为下期的"本金"。CPA 全部按复利。
+
+单利的利息恒定；复利的利息**逐期递增**。
+
+Q13单选
+
+复利终值系数 $(F/P, i, n)$ 等于：
+
+- A $\dfrac{1}{(1+i)^n}$
+- B $(1+i)^n$
+- C $\dfrac{(1+i)^n - 1}{i}$
+- D $\dfrac{1-(1+i)^{-n}}{i}$
+
+答案：B
+
+A 是 (P/F, i, n) 复利现值系数；C 是 (F/A, i, n) 年金终值系数；D 是 (P/A, i, n) 年金现值系数。
+
+看符号开头：F 在前 → 算终值；P 在前 → 算现值；A 在分母 → 涉及年金。
+
+Q14多选
+
+年金必须同时满足以下哪些特征？（多选）
+
+- A 等额（每次金额相同）
+- B 同向（收付方向一致）
+- C 等距（每次间隔相同时间）
+- D 以上全是
+
+答案：D
+
+三个条件缺一不可。比如"每年付一次但金额变了"不是年金；"每月付但有时付有时收"也不是年金。
+
+Q15单选
+
+"普通年金"又称：
+
+- A 后付年金，每期期末收付
+- B 先付年金，每期期初收付
+- C 延期年金，第二期后开始
+- D 永续年金，无限期
+
+答案：A
+
+普通 = 后付（期末）。
+
+B = 预付/即付/先付；C = 递延/延期；D = 永续。
+
+Q16单选
+
+预付年金的现值 = 普通年金现值 × ？
+
+- A $(1+i)^n$
+- B $(1+i)$
+- C $\dfrac{1}{1+i}$
+- D $n \cdot i$
+
+答案：B
+
+预付每笔钱比普通"提前 1 期"，所以整笔现值/终值都要乘 (1+i)。
+
+这是"差一期"的简单几何调整，不要把它当作公式背，而是理解"为什么"。
+
+Q17单选
+
+第 5 年末有 300 万元、年利率 4%，求现值表达式：
+
+- A $300 \times (F/P, 4\\, 5)$
+- B $300 \times (F/A, 4\\, 5)$
+- C $300 \times (P/F, 4\\, 5)$
+- D $300 \times (P/A, 4\\, 5)$
+
+答案：C
+
+"未来 300 万折回现在"= 一次性收付的现值 = (P/F, i, n)。
+
+如果题目说"每年末都有 300 万"，那才是 (P/A, i, n)。注意 "一次性" 还是 "每年"。
+
+Q18单选
+
+某项目 6 期、每期**期初**付 300 万元、年利率 4%，求现值表达式：
+
+- A $300 \times (P/A, 4\\, 6)$
+- B $300 \times (P/F, 4\\, 6)$
+- C $300 \times (P/A, 4\\, 6) \times (1+4\\)$
+- D $300 \times (F/A, 4\\, 6) \times (1+4\\)$
+
+答案：C
+
+期初付 = 预付年金 → 普通年金现值 × (1+i)。
+
+手写板 4 标答。如果题目改成"期末付" → 答案就是 A。
+
+Q19单选
+
+插值法（线性内插法）主要解决什么问题？
+
+- A 计算永续年金的现值
+- B 把单利换算为复利
+- C 系数表上查不到精确利率时，用相邻两个利率线性近似
+- D 把外币现金流折算为人民币
+
+答案：C
+
+插值法 = 线性内插法。在 IRR、债券实际利率、租赁折现率反推中都会用。
+
+原理：小区间内曲线接近直线，按比例分割就能近似求出落点。
+
+Q20单选
+
+下列对 2026 年《会计》考试特点的描述，**错误**的是？
+
+- A 客观题题量稳定、覆盖面较广，重点恒重 · 逢新必考
+- B 计算分析题综合性很强，考点分散
+- C 综合题阅读量计算量大，多为差错更正或拼盘式
+- D 计算分析第 1 题英文作答 +5 分
+
+答案：B
+
+张老师明确说计算分析题"考点**较集中**、综合性**不强**"。B 表述**完全相反**。
+
+真正"综合性强"的是综合题（C 选项），不要混淆。
+
+© 2026 · CPA《会计》前言 · 张敬富课堂讲解版 · 单文件可编辑 · 可保存 · 可打印
+
+---
+
+*Original HTML version: [cpa-2026-accounting-preface-lecture.html](cpa-2026-accounting-preface-lecture.html)*
