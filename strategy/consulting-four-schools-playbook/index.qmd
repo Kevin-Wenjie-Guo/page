@@ -1,0 +1,359 @@
+---
+title: "Consulting case prep — the four schools playbook"
+author: "Kevin Guo"
+date: "2026-06-18"
+categories: [consulting, case-prep, strategy]
+description: "The four major schools of consulting case prep (MBB-style, Victor Cheng, LOMS, Casefolio) compared and synthesized into one playbook."
+---
+::: {.callout-note appearance="simple"}
+📄 **Also available as:** [HTML view →](consulting-four-schools-playbook.html)
+:::
+Consulting Case Notetaking · Volume II
+
+# Four Schools, Four DNAs
+
+Duke Fuqua · UVA Darden · Kellogg · NYU Stern — a forensic read of 47 answer keys from each school's casebook, distilled into the move the case writers actually reward.
+
+Date · 2026-06-17
+Corpus · 47 cases · 4 schools
+Method · Read each meta, prompt, framework, recommendation; identify the recurring "what wins"
+Sister doc · case-shorthand-cheatsheet.html
+
+Every case in every casebook reduces to one of four identities — Profit, Value, Market, Revenue-by-segment. What changes from school to school is not the math; it's *what the case writer is testing for*. Fuqua is testing whether you can turn an ambition into a number and judge options against it. Darden is testing whether you've internalized a sell-side analyst's P&L discipline and named the risk register. Kellogg is testing whether you can pick a segment and bet on it with a dollar figure. Stern is testing whether you've kept the calculator running while staying close to a real consumer.
+
+The four sections below name each school's DNA, walk through three to four *specific* scenarios from the corpus (with the actual industries and numeric anchors that recur), and show the move the answer key rewarded. The closing pages give you a comparison table and a four-card reflex sheet you can carry into any case where you're told only "this is a \[Fuqua / Darden / Kellogg / Stern\] case."
+
+## SECTION I · DUKE FUQUAThe math-backed ambition case
+
+"The CEO gave you a target — what does that mean in dollars, and which lever actually hits it?"
+
+Twelve cases sampled (Fuqua 2018 + 2020): five Profitability, plus one each of M&A, Investment, Market Entry, Growth, Operations, Other-tagged. Industry mix is the most diverse of any school — Transportation, Pharma/Retail, Energy, Tech, Finance, Education, eCommerce, Agri-business — Fuqua does not have a vertical it returns to. What it returns to instead is **a CEO who has already named the target**.
+
+#### What recurs in the prompt
+
+- An **explicit numeric ambition** ("increase revenue by 10% or $100M"; "resolve $90M outstanding debt"; "double client wallet over five years")
+- A **specific constraint** often stacked on top — debt cap, capacity, dual-mandate (financial + impact)
+- A binary or trinary choice arriving in the middle: **option A vs option B** framed as "the CEO is considering both"
+
+#### The scenarios you will see
+
+SCENARIO 1 · PROFITABILITY WITH A NAMED TARGET
+
+"Reverse the revenue trend by ~10% / $100M"
+
+ShipTech is a US ground-transportation shipping company; revenue has been falling and the CEO wants +$100M (≈10%). Take Inc. is a ride-hail platform with ~10% volume loss to competitor "Elevate." Drugs "R" Us is a pharmacy with declining margins.
+
+Rewarded move: **back-calculate the bottleneck** before brainstorming levers. ShipTech's answer key skips P×V decomposition and goes straight to "we're turning away $600M in potential sales because we lack drivers — hire 1,380 at industry-standard comp." The reward is recognizing that revenue-down with demand intact is a *capacity* problem, not a marketing problem. Take Inc. rewards isolating *where the volume went* (a named competitor) before proposing the lever (loyalty + targeted acquisition).
+
+SCENARIO 2 · OPTION-PICK BETWEEN PRE-BUILT CHOICES
+
+"The CEO is considering A, B, or C — which one?"
+
+Roll 'n Grind needs to fix peak-season delivery delays — Option A (rent overflow) vs Option B (capital expansion). Paper Pricing Predicament has a pre-set pricing menu. A-Plus School District has three intervention bundles.
+
+Rewarded move: **compute each option to a single comparable number** (Roll 'n Grind: Option A $37K vs Option B $43K → A wins by $6K) and commit to the cheaper one, then surface one risk. Fuqua rewards the candidate who finishes the calculation rather than the candidate who lists framework dimensions. Do not over-bucket.
+
+SCENARIO 3 · DUAL-MANDATE INVESTMENT
+
+"It looks financially attractive — but does it pass the second test?"
+
+Green Ride: PickUp ride-hail looks like a 1.8× return ($360M exit on $200M) for impact-fund Clean Ventures — but CO₂ impact is +500M lbs/day. Mischief Managed: wealth-management expansion picks among three cities on opportunity size *and* demographic fit.
+
+Rewarded move: **name the second criterion explicitly** and let it override when binding. Green Ride's answer key says "NO — impact mandate has equal weight; +500M lbs CO₂ disqualifies it despite the NPV." The wrong move is to recommend yes because the financials clear the hurdle. Fuqua often packs the trap that the dollar answer is the wrong answer.
+
+SCENARIO 4 · M&A AS "WHICH PIECE TO SELL"
+
+"We can't acquire any more — what do we shed?"
+
+XY Inbev — multinational brewer post-decade of acquisitions, $90M debt overhang, anti-trust ceiling, three product lines with different profit/growth profiles.
+
+Rewarded move: **invert the framing**. Instead of "where do we grow", ask "which line is highest profit but lowest growth — sell it." The key recommends divest Beer Brands 1–3 for ~$100M to clear the $90M debt. The principle: *cash trapped under a slow-growing asset is the easiest source of $90M when growth options are capped.*
+
+#### Fuqua note template — 6 lines
+
+\# Always lead with the number. OBJ: \[verb\] \[metric\] \[Δ\] in \[horizon\] e.g. ↑R +$100M / 10% in NT IDY: \[Profit / Value / Mkt / Rev-by-seg\] which term moved? → ◯ P ◯ Q ◯ Mix ◯ Cost OPT: A: \[\_\_\_\_\] → $\_\_\_ / risk \_\_\_ B: \[\_\_\_\_\] → $\_\_\_ / risk \_\_\_ C: \[\_\_\_\_\] → $\_\_\_ / risk \_\_\_ ∴ pick \[letter\] @ $\_\_\_ ∵ hits OBJ + clears 2nd test !2°: if \[2nd criterion\] binds → flip to \[\_\_\_\_\] → next: validate \[breaking assumption\]
+
+#### Outstanding signal at Fuqua
+
+Anticipate the *second criterion* before the interviewer surfaces it. Green Ride's grader is watching for whether you remember impact is equal-weight. Mischief Managed wants demographic fit on top of TAM. ShipTech wants the candidate to spot that a comp raise is needed *before* they can hire — i.e., to chain the second-order link without prompting.
+
+#### What to *skip* at Fuqua
+
+- Listing 5-bucket frameworks when the prompt already named 3 options — go straight to the math
+- "Let me brainstorm growth levers" when the prompt is asking you to choose between named options
+- Hedged recommendations — Fuqua keys penalize "it depends" and reward commit-then-bound
+
+## SECTION II · UVA DARDENThe sell-side discipline case
+
+"Read the P&L like an analyst — name every line, every synergy, every risk. Then put a number on the deal."
+
+Twelve cases sampled (Darden 2018 + 2020): heavy on **M&A (3) and Operations / "Other" (5)**, with classic Profitability and Market Entry rounding it out. Industries skew traditional and balance-sheet-heavy: Transportation, Insurance, Hedge fund, Aviation, Pharma. Darden is the school whose cases *read* closest to a real banker pitch — DCF mentioned by name, EBITDA multiples handed to you, "comparable transactions" cited as a method.
+
+#### What recurs in the prompt
+
+- **Three-method valuations** stated as method: "DCF (preferred), comparable company, EBITDA multiple"
+- **Synergies separated cost vs revenue**, with dis-synergies explicitly netted
+- An **investor / buyer framing** ("BackupCo evaluating CloudCo", "Canyon Capital's profits down", "Lizard Insurance's subsidiary TechSize")
+- **Multi-site / geographic complexity** (HQ Boston, dev in Texas + Ukraine, services South Carolina) — this is information, not noise
+
+#### The scenarios you will see
+
+SCENARIO 1 · ACQUISITION AT A NAMED MAX PRICE
+
+"Value the target, name the max bid"
+
+BackupCo (data backup, HQ Boston) evaluating CloudCo (cloud backup, S.Cal). Lizard Insurance with B2C-auto core deciding what to do with subsidiary TechSize.
+
+Rewarded move: **state the three valuation methods, then quantify cost synergies separately from revenue synergies, net out dis-synergies, land on a price**. The BackupCo key concludes "purchase for less than $71.7M" — note the precise ceiling. Lizard concludes "~$1B based on 5× EBITDA on $206M, sell because no synergies with B2C core." The Darden tell: *always close the loop with "max price = X vs ask = Y → creates/destroys $Z."*
+
+SCENARIO 2 · COST-LINE DIAGNOSTIC
+
+"Profits down — which line moved?"
+
+Canyon Capital Partners (hedge fund): Mgmt fees down? AuM down? Carried interests below 15% hurdle? Office rent? Comp structure? National Logistics Trucking: fuel? wages? depreciation?
+
+Rewarded move: **decompose to the specific economic engine of that industry**. Hedge fund = Mgmt fee × AuM + Carried × performance-above-hurdle. Trucking = price-per-load × loads − fuel − driver wages − depreciation. The key for Canyon recommends raise mgmt fee back toward 2%, rebalance analyst:associate ratio — naming both a revenue lever and a comp-structure cost lever. Darden rewards *industry-specific vocabulary*: AuM, hurdle rate, carried interest, comp ratio.
+
+SCENARIO 3 · RANK-BY-ROI WITH A QUALITATIVE TIE-BREAK
+
+"Pick the option that hits the hurdle"
+
+The Big Shot (LCA studio): Pick the next movie. Action has higher absolute profit ($127.5M) but lower ROI (170%); Comedy delivers ROI 212% on smaller absolute. Hurdle: ROI \> 50%.
+
+Rewarded move: **respect the stated metric** (ROI, not absolute profit) and pick accordingly. The key: Comedy wins on ROI even though Action has higher dollars. The Darden trap: candidates default to absolute profit because it feels more like the right answer; the key explicitly rewards reading the hurdle the prompt named.
+
+SCENARIO 4 · KEEP-OR-SELL THE NON-CORE ASSET
+
+"What do we do with this orphan business unit?"
+
+Lizard Insurance and TechSize. Implicit in many Darden M&A: the "Keep vs Sell" binary tree (Keep → Hold / Grow-organic / Grow-inorganic; Sell → Partial / Full).
+
+Rewarded move: **build the explicit binary tree**, evaluate Keep viability on synergies and standalone market attractiveness, then commit. If no fit + market stagnant → sell, valuation by EBITDA multiple, comp transactions for the multiple. Darden's signature is that the tree itself is part of the answer — write it out.
+
+#### Darden note template — 7 lines
+
+\# Read it like a sell-side memo. DEAL: \[Buyer\] / \[Target\] / ask $\_\_\_ VAL: DCF: $\_\_\_ Comps: $\_\_\_ EBITDA×: $\_\_\_ → standalone $\_\_\_ SYN+: Rev: \[cross-sell, up-sell\] ~$\_\_\_ Cost: \[HC, R&D, ven, IT\] ~$\_\_\_ SYN-: Dis-syn \[lost cust, talent flight\] ~$\_\_\_ post-syn $\_\_\_ → max bid $\_\_\_ ∴ \[Buy ≤ $\_\_\_ / Sell @ ~$\_\_\_ / Hold\] RISK: reg · talent retention · cust loss · culture → validate \[synergy \#1\] vs comp transactions
+
+#### Outstanding signal at Darden
+
+Quantify cost synergies (more certain) *separately* from revenue synergies (less certain) and say which is which. Net out dis-synergies — most candidates forget. Use **post-synergy EBITDA** when applying multiples. End with the explicit "max price = $X vs ask = $Y → creates/destroys $Z" sentence; this single sentence is the most reliable Darden M&A signal.
+
+#### What to *skip* at Darden
+
+- Generic "market attractiveness" without naming the rivalry / regulatory / capability lens
+- Picking absolute profit over the stated hurdle (ROI, payback, IRR)
+- Skipping the dis-synergy line — Darden keys specifically watch for it
+
+## SECTION III · KELLOGGThe market-entry-with-a-segment-bet case
+
+"Should you enter — and if yes, which segment / location / SKU, with what dollar profit?"
+
+Eleven cases sampled (Kellogg 2018 + 2020): **seven Market Entry, plus Opportunity Assessment, New Product, Profitability, Operations**. Industries: Consumer Products (2), Hospitality & Leisure (2), Transportation, Aerospace & Defense, Healthcare. This is the most thematically concentrated of the four schools — if you draw a Kellogg case, your prior should be ~70% it's an entry decision.
+
+#### What recurs in the prompt
+
+- **An expansion target already named** — a city, a country, a customer segment, a product
+- **Constrained choice set**: "which neighborhood?", "which segment?", "which prototype?"
+- **Friend-of-the-client framing**: Busch's Barber Shop is a friend's business plan; Maine Apples is the test-market expansion for a Korean acquirer; Chicouver Cycle is a startup pre-launch
+- A **year-one profit target** or specific dollar amount the recommendation will be judged against
+
+#### The scenarios you will see
+
+SCENARIO 1 · WHICH LOCATION / NEIGHBORHOOD / SEGMENT
+
+"Pick the entry point and project the year-1 profit"
+
+Chicouver Cycle (bikeshare, dockless vs docked, multiple neighborhoods). Busch's Barber Shop (downtown vs not-downtown in Evanston). Kellogg in India (which education segment).
+
+Rewarded move: **size each candidate location/segment to a year-one profit, pick the highest, justify why the second-best loses**. Chicouver picks Nightlife District + dockless = $18M (dockless saves $15M in docking, costs $3M more in distribution, net +$12M). Busch picks downtown $436K vs not-downtown $275K, no loyalty program. The reward is delivering a specific dollar gap between option A and B, not just "A is better."
+
+SCENARIO 2 · VALUE-BASED PRICING ON A B2B INNOVATION
+
+"You have a product that creates value for the buyer — what do you charge?"
+
+Maine Apples — chemical that lets orchards harvest earlier + improves yield. Set the price for orchard owners.
+
+Rewarded move: **quantify the customer's incremental benefit per acre, capture a fixed share (typically 40–50%)**. The key sets ~$1,000/acre, ~50% gross margin to client, ~50% incremental value left with the farmer. The Kellogg signature: the price ceiling is value-based, but the recommendation locks in the *split* — half to the farmer is the rewarded heuristic when you need adoption.
+
+SCENARIO 3 · WHICH PROTOTYPE TO COMMERCIALIZE
+
+"Three products on the bench — which one ships?"
+
+Dark Sky (Aerospace & Defense, three drone prototypes: JointBird / SeaBird / SandBird). Zephyr Beverages (which adjacent line). Health Coaches (which disease cohort to pilot).
+
+Rewarded move: **compute total revenue / profit per prototype on the named horizon, pick the highest, net out cannibalization of the existing product**. Dark Sky picks JointBird @ $16.75M vs SeaBird $14.3M vs SandBird $14.25M. Health Coaches picks 65+ Lifestyle cohort, $72K net profit per coach, scales to $144M annually. Kellogg rewards the candidate who carries cannibalization through to a *net* figure, not a gross.
+
+SCENARIO 4 · DIAGNOSTIC INSIDE A PE PORTCO
+
+"The PE firm bought it; now profits are off — fix the lever"
+
+Events.com (SaaS registration, owned by Prospect Equity Partners). The pricing model changed and processing costs scaled with dollar volume while revenue capped.
+
+Rewarded move: **find the line in the pricing model that broke as customer mix shifted**. The key: add a 2.25% credit-card fee on the Over-$50 tier; +$8.4M in revenue / OI, customer surveys show negligible churn risk. The Kellogg twist on Profitability: the fix is a *pricing-policy* change, not a cost cut. Always check whether the answer is "edit the pricing tiers" before "cut a cost line."
+
+#### Kellogg note template — 6 lines
+
+\# Pick a bet. Size it. Justify in dollars. Q: enter? where/which? at what $? MKT: TAM ~$\_\_\_ / growth ~\_\_% / comp \[\_\_\_\_\] FIT: RTW ⊕ (cap / brand / channel) / RTW ⊖ (\_\_\_) CAND: A: \_\_\_\_ → Y1 profit $\_\_\_ B: \_\_\_\_ → Y1 profit $\_\_\_ C: \_\_\_\_ → Y1 profit $\_\_\_ ∴ pick \[A\] @ $\_\_\_ ∵ +$\_\_\_ vs B price = \[cost+ / comp / value × 50%\] !Cnbl: nets to $\_\_\_ post-cannib → pilot in \[seg X\] first, scale if \[trigger\]
+
+#### Outstanding signal at Kellogg
+
+Two reflexes win Kellogg cases: (1) **state the dollar gap between option A and option B**, never just "A is better." (2) **Net out cannibalization** on any new product or location — most candidates compute gross. The third reflex, harder, is to **spot when "Profitability" is actually a pricing-tier-policy fix** in disguise (Events.com).
+
+#### What to *skip* at Kellogg
+
+- Sizing the TAM and stopping there — Kellogg wants the segment bet, not the market chart
+- Setting price cost-plus when the case gives you a quantified customer benefit
+- Recommending "test all three" — pick one and name what would have to be true
+
+## SECTION IV · NYU STERNThe consumer-elasticity-with-receipts case
+
+"Stay close to the shopper. Run the elasticity. Pair the number with one piece of soft evidence."
+
+Twelve cases sampled (Stern 2018 + 2020). Type mix is the most varied — **Pricing, Profitability, Growth, Market Entry, Cost-reduction** all represented. Industries lean consumer-facing: Retail, Apparel, Food & Beverage, Restaurant, Pharma, Travel/Hospitality, Gaming. Stern cases are visibly the most *quantitative*: explicit Quant/Structure difficulty tags ("Quant 5 / Structure 7"), elasticity tables, scenario EBITDA bridges.
+
+#### What recurs in the prompt
+
+- **A consumer behavior question underneath a financial question** — why did volume shift? Will customers accept the price? Will they switch to competitor when we reopen?
+- **Multi-model option-pick** ("3 business models", "4 product lines to keep or drop")
+- **An aspirational growth target the client just stated** (4× revenue to $240M, 10.5% margin) and asked you whether it's realistic
+- **Survey data given alongside the financials** — Beta-test intent-to-recommend scores, customer surveys, willingness-to-pay studies
+
+#### The scenarios you will see
+
+SCENARIO 1 · BUSINESS-MODEL PICK WITH ELASTICITY
+
+"Three pricing/revenue models — which one wins?"
+
+The Pricing Games (NLG, online multiplayer game, three models: subscription / pay-once / free-to-play). Made to Measure (mfg, growth model). Men's Extra Comfortable Essentials (4 product lines, drop or keep).
+
+Rewarded move: **compute each model's first-year profit, then introduce one survey/behavioral datapoint that breaks the tie**. The Pricing Games picks free-to-play: tied at $20M Y1 profit with subscription, but 50% market share vs 10–12%, intent-to-recommend 4.8, intent-to-switch 1.9. The Stern signature: when the dollar math ties, the survey data is decisive. Without the soft datapoint the answer feels half-finished.
+
+SCENARIO 2 · WHY DID VOLUME SHIFT (PRICE-DRIVEN)
+
+"Revenue is down — but in which SKU, and because of what price move?"
+
+Drinks Gone Flat (supermarket beverage dept, Value Brand cut $0.60→$0.40, Brand A leaks volume to Value). Tres Burritos (flu virus, 10 NYC locations, EBITDA $90K → $37K per location).
+
+Rewarded move: **segment to the SKU/location where the price moved, compute revenue ÷ volume to back into the price change, propose a price reset**. Drinks Gone Flat's key: Value Brand's cut cannibalized Brand A — raise Value Brand price + differentiate via packaging / shelf / promo. Tres Burritos: delivery beats closing because closing still has fixed costs at zero revenue; -60% EBITDA vs -100%. Stern rewards walking the price-volume math to the actual SKU that moved.
+
+SCENARIO 3 · "IS THIS TARGET REALISTIC?"
+
+"The CEO says 4× in three years. Pressure-test."
+
+Men's Extra Comfortable Essentials (target $240M / 10.5% margin). FlashPro growth. Many Stern Growth-type cases lead with this aspirational figure.
+
+Rewarded move: **back-calculate the required CAGR and share, then drop the negative-margin lines from the portfolio**. The key drops Tanks (negative) and Tees (zero margin), grows Underwear share 1%→10%, holds Socks at 15% — i.e., portfolio surgery + share-grab, not a generic "four growth levers." The reward is honesty about the target's feasibility plus a specific surgical change.
+
+SCENARIO 4 · NEW PRODUCT WITH CANNIBALIZATION DOWNSIDE
+
+"The new market is big — but it might eat the cash cow"
+
+Botox (cosmetic Botox is the cash cow; prescription migraine indication is the $14.4B opportunity with $4.32B Botox share).
+
+Rewarded move: **name the cannibalization risk loudly and quantify the cosmetic-side downside before celebrating the migraine opportunity**. The key: market is attractive — BUT cannibalization of high-margin cosmetic Botox is the binding concern, especially under the client's proposed go-to-market. The Stern signature: do *not* let a TAM number bury a margin-mix risk.
+
+#### Stern note template — 7 lines
+
+\# Math first, then a single soft datapoint. SKU: \[which segment / line / location moved\] P / Q: P now $\_\_\_ (was $\_\_\_, Δ \_\_%) Q now \_\_\_ (was \_\_\_, Δ \_\_%) elasticity ε ≈ \_\_\_ OPT: A: model/SKU \_\_\_\_ → Y1 $\_\_\_ / margin \_\_% B: model/SKU \_\_\_\_ → Y1 $\_\_\_ / margin \_\_% C: model/SKU \_\_\_\_ → Y1 $\_\_\_ / margin \_\_% SOFT: \[survey / intent / NPS\] → A breaks tie ∴ pick \[A\] @ $\_\_\_, drop \[neg-margin SKU\] !Cnbl: watch \[cash-cow product\] downside → validate WTP with \[test\] before scale
+
+#### Outstanding signal at Stern
+
+Pair the chosen number with *one* piece of soft data. Intent-to-recommend, intent-to-switch, NPS, customer-survey of pricing-acceptance — Stern cases reliably hand you this data and the rewarded candidate uses it explicitly. Second: **state the elasticity** (even directionally — "looks elastic, 10% price cut drove ~30% volume gain") instead of treating P and Q as independent.
+
+#### What to *skip* at Stern
+
+- Picking the highest-absolute-revenue option when margin tells a different story (drop the Tees)
+- Ignoring the survey/intent data because "we already have the financials"
+- Recommending an entry/launch without naming the cannibalization on the existing line
+
+## SECTION V · COMPARISONThe four DNAs side by side
+
+|  | Fuqua | Darden | Kellogg | Stern |
+|----|----|----|----|----|
+| DNA (one line) | Turn the CEO's target into a number, judge options against it | Sell-side analyst's P&L + valuation discipline | Pick the segment bet, size it in dollars | Run the elasticity, anchor in one piece of consumer evidence |
+| Dominant type | Profitability + option-pick (5/12 profit) | M&A + Operations (3 M&A, 5 ops/other) | Market Entry (7/11) | Mixed — Pricing/Profit/Growth roughly equal |
+| Numeric anchor style | Single named target ("+$100M", "$90M debt") | Multi-method valuation w/ post-syn EBITDA | Year-1 profit by candidate option | Per-SKU P×V with elasticity |
+| What the trap is | Financial answer overrides a second criterion (impact, fit) | Picking absolute profit over the stated hurdle metric | Recommending "size all three" instead of one bet | Letting TAM bury margin-mix / cannibalization |
+| Signature close | "Pick A @ $X because hits target + clears 2nd test" | "Max price $X vs ask $Y → creates/destroys $Z" | "Pick segment A @ Y1 $X, +$Δ vs segment B" | "Pick A on math, soft data confirms; watch cannib on \[Z\]" |
+| Industry tilt | Diverse — no vertical | Traditional + balance-sheet (trucking, insurance, hedge fund) | Consumer products + hospitality | Consumer-facing + tech (gaming, apparel, restaurant, pharma) |
+| First-60-second move | Write the target as a number on the page | Name 3 valuation methods + write SYN+ / SYN- buckets | List the candidate options, prepare to size each | Find the SKU/segment whose price or volume moved |
+| When math ties, what wins | The second criterion (impact, fit, debt clearance) | The stated hurdle metric (ROI, IRR, payback) | Net cannibalization, segment-fit qualitative | Survey / intent / WTP data |
+
+## SECTION VI · REFLEX CARDSIf I'm told only "this is a \[school\] case", my first move is…
+
+Fuqua
+
+Write the **target as a number** at the top of the page before anything else. Then list **2–3 named options** and prepare a column under each for its dollar impact. Watch for a **second criterion** (impact, fit, debt) that can override the dollar winner.
+
+Darden
+
+If M&A: write **"DCF · Comps · EBITDA×"** and **"SYN+ / SYN- / DIS-SYN"** as section headers, then plan to land on **"max bid = $X vs ask = $Y"**. If diagnostic: name the **industry-specific revenue identity** (e.g., AuM × fee + carried × performance) before you decompose.
+
+Kellogg
+
+Assume **market entry** unless told otherwise. List the **candidate options** (location/segment/SKU) in a column, plan to put **Y1 profit** next to each, and budget time to **net out cannibalization**. If value-based pricing comes up, default to the **50/50 split** heuristic.
+
+Stern
+
+Find the **SKU, segment, or location whose price or volume moved**. Compute **revenue ÷ volume** to back into price changes. Reserve one bullet for the **survey / intent / NPS data** that the case will hand you. Always check **cannibalization** on the cash-cow line.
+
+## SECTION VII · ONE TEMPLATE TO RULE THEM ALLThe 8-line case-page that adapts to any school
+
+Use this skeleton on the left page of your notebook for every case, then mutate it toward the school's DNA on the right page.
+
+\# THE UNIVERSAL CASE PAGE — 8 lines, leave room. 1 OBJ: \[verb\] \[metric\] \[Δ\] in \[horizon\] \# the number the case lives or dies by 2 IDY: □ Profit □ Value □ Market □ Rev-seg \# which identity is broken/unknown 3 ARC: □ Diagnostic (why X moved) □ Decision (which option / how much) 4 Δ?: \[vs prior yr \| vs comp \| vs seg \| vs target\] \# compare-to-what — must fill this 5 OPT: A \_\_\_\_ $\_\_\_ \| B \_\_\_\_ $\_\_\_ \| C \_\_\_\_ $\_\_\_ \# quantify every lever 6 ?BRK: single assumption that flips the answer \_\_\_ → mitigation \_\_\_ 7 ∴: pick \[letter\] @ $\_\_\_ ∵ hits OBJ, clears 2nd test 8 →: risk top-2 \_\_\_ \_\_\_ · next step \_\_\_ \_\_\_
+
+Now mutate by school:
+
+- **Fuqua mutation** — line 7 must include the second criterion in plain words ("…and clears the impact / fit / debt-clearance test"). Line 5 should be the *named* options, not your brainstorm.
+- **Darden mutation** — between lines 5 and 6, insert: `5b VAL: DCF $___ · Comp $___ · EBITDA× $___ · SYN+ $___ · SYN- $___ → max bid $___`. Line 8 risk bullets must include reg, talent, integration.
+- **Kellogg mutation** — line 5 options are usually locations/segments/SKUs. Add `5b !Cnbl: net post-cannib $___`. Line 6 often becomes "TAM mis-sized" or "RTW absent" as the breaking assumption.
+- **Stern mutation** — between lines 4 and 5, insert: `4b P/Q: P_now ___ Q_now ___ ε≈___`. Add `5b SOFT: [survey / intent / NPS / WTP]` as a column. Line 8 must name the cannibalization-on-cash-cow risk by SKU.
+
+------------------------------------------------------------------------
+
+## SECTION VIII · RECAPWhat changed this turn, what's next
+
+<table class="recap">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Project</th>
+<th>Where we are</th>
+<th>Done this turn</th>
+<th>Open / Next</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Consulting_Case_Notetaking</strong> (Desktop)<br />
+v1.0 cheatsheet → v2.0 school playbook</td>
+<td>v2.0 school-by-school case playbook landed as editable HTML at <code>~/Desktop/Consulting_Case_Notetaking/four-schools-playbook.html</code></td>
+<td><ul>
+<li>Read 47 case JSONs across Fuqua/Darden/Kellogg/Stern (2018 + 2020 cohorts)</li>
+<li>Per-school DNA sentence + 3–4 concrete scenarios with industries, anchors, and rewarded moves</li>
+<li>Per-school 6–7 line shorthand template (Fuqua / Darden / Kellogg / Stern)</li>
+<li>Side-by-side comparison table (8 dimensions)</li>
+<li>4-reflex card for the "first 60 seconds" by school</li>
+<li>One universal 8-line template + 4 school-specific mutations</li>
+</ul></td>
+<td><ul>
+<li>Practice round: blind-recite one case from each school using the school-specific template, then check against the answer key</li>
+<li>Extend to remaining MBA schools (HBS, Wharton, Booth, Columbia, Tuck, Ross, Anderson, Sloan, Haas, McCombs) for v3.0</li>
+<li>Add a "math-only" companion page that lists each school's signature calculation (Fuqua: target back-calc; Darden: post-syn EBITDA; Kellogg: Y1 profit per option; Stern: price-volume elasticity)</li>
+<li>Per-project CLAUDE.md says: commit + push when this project is brought under git. Currently lives on Desktop, not yet inside the JIeyue repo</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+Sources: `github.com/kevinguo0351/Case-Library` — drill.json files for Fuqua (12), Darden (12), Kellogg (11), Stern (12). Sampled 2018 + 2020 cohorts. Patterns are descriptive of this corpus, not universal truth. Case interviews reward judgment, not answer-matching. · Document is editable inline — click any paragraph to edit. Use Save HTML to download your edited copy.
+
+---
+
+*Original HTML version: [consulting-four-schools-playbook.html](consulting-four-schools-playbook.html)*

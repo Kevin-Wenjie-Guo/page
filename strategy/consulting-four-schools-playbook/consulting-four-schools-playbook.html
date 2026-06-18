@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Four-School Case Playbook · Fuqua · Darden · Kellogg · Stern</title>
+<style>
+  :root{
+    --paper:#f4ecd9;
+    --ink:#1c1410;
+    --rule:#2a1c14;
+    --accent:#8a2b1f;
+    --accent-2:#1b4b3a;
+    --muted:#6b5a47;
+    --highlight:#ead7a8;
+    --shadow:0 1px 0 rgba(0,0,0,.05);
+    --serif:"Iowan Old Style","Palatino Linotype","Palatino","PT Serif","Georgia",serif;
+    --mono:"JetBrains Mono","Menlo","Consolas","Courier New",monospace;
+    --sans:"Inter","Helvetica Neue","Helvetica","Arial",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  body{background-image:radial-gradient(rgba(120,80,40,.04) 1px,transparent 1px);background-size:3px 3px}
+  .page{max-width:1180px;margin:0 auto;padding:48px 56px 96px;position:relative}
+  .toolbar{position:sticky;top:0;z-index:99;display:flex;gap:8px;justify-content:flex-end;padding:10px 12px;margin:-12px -12px 24px;background:rgba(244,236,217,.92);backdrop-filter:blur(6px);border-bottom:1px solid rgba(42,28,20,.15)}
+  .toolbar button{font-family:var(--sans);font-size:12px;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--rule);background:var(--paper);color:var(--rule);padding:7px 14px;cursor:pointer;border-radius:0;transition:.15s}
+  .toolbar button:hover{background:var(--rule);color:var(--paper)}
+  .masthead{border-top:6px double var(--rule);border-bottom:1px solid var(--rule);padding:28px 0 24px;margin-bottom:36px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end}
+  .masthead .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+  .masthead h1{font-family:var(--serif);font-weight:600;font-size:54px;line-height:1.03;letter-spacing:-.012em;margin:6px 0 8px}
+  .masthead .dek{font-style:italic;color:var(--muted);font-size:18px;max-width:60ch}
+  .masthead .meta{font-family:var(--mono);font-size:11px;color:var(--muted);text-align:right;line-height:1.7}
+  .lede{column-count:2;column-gap:40px;font-size:18px;margin:0 0 40px;border-left:3px solid var(--accent);padding-left:24px}
+  .lede p{margin:0 0 12px;break-inside:avoid}
+  .lede .drop::first-letter{font-size:54px;font-weight:700;float:left;line-height:.85;padding:6px 8px 0 0;font-family:var(--serif);color:var(--accent)}
+  h2.section{font-family:var(--serif);font-weight:700;font-size:34px;margin:64px 0 6px;letter-spacing:-.01em;position:relative;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+  h2.section .num{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.18em;display:block;margin-bottom:6px}
+  h3.school{font-family:var(--serif);font-weight:600;font-size:28px;margin:36px 0 6px;letter-spacing:-.01em}
+  h3.school .badge{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;background:var(--rule);color:var(--paper);padding:3px 9px;vertical-align:middle;margin-right:10px;border-radius:2px}
+  h4{font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:22px 0 6px}
+  p{margin:0 0 12px}
+  .dna{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.45;border-left:4px solid var(--accent);padding:8px 0 8px 22px;margin:14px 0 22px;color:var(--rule)}
+  .school-grid{display:grid;grid-template-columns:5fr 4fr;gap:36px;margin-bottom:18px}
+  .school-grid .col-right{background:rgba(234,215,168,.32);border:1px solid rgba(42,28,20,.2);padding:18px 22px 6px}
+  .scenario{margin:0 0 18px;padding:0 0 14px;border-bottom:1px dashed rgba(42,28,20,.25)}
+  .scenario:last-child{border-bottom:none}
+  .scenario .head{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2);margin-bottom:3px}
+  .scenario .title{font-family:var(--serif);font-weight:600;font-size:18px;margin:0 0 6px}
+  .scenario .prompt{font-style:italic;font-size:15.5px;color:#3a2a1f;border-left:2px solid var(--muted);padding:2px 0 2px 14px;margin:0 0 8px}
+  .scenario .move{font-size:15.5px}
+  .scenario .move b{color:var(--accent)}
+  .reward{background:linear-gradient(transparent 62%, var(--highlight) 62%);padding:0 2px}
+  .codebox{font-family:var(--mono);font-size:13.5px;background:#fffaee;border:1px solid var(--rule);padding:14px 18px;margin:8px 0 16px;white-space:pre-wrap;line-height:1.65;border-radius:2px;box-shadow:var(--shadow)}
+  .codebox .com{color:var(--muted);font-style:italic}
+  .codebox .acc{color:var(--accent);font-weight:700}
+  .codebox .grn{color:var(--accent-2);font-weight:600}
+  table.comp{width:100%;border-collapse:collapse;margin:18px 0 28px;font-size:14.5px;font-family:var(--sans)}
+  table.comp th,table.comp td{border:1px solid var(--rule);padding:10px 12px;vertical-align:top;text-align:left}
+  table.comp th{background:var(--rule);color:var(--paper);font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+  table.comp td.row-h{background:rgba(234,215,168,.45);font-family:var(--serif);font-weight:600;font-size:15px}
+  table.recap{width:100%;border-collapse:collapse;margin:18px 0;font-family:var(--sans);font-size:13.5px}
+  table.recap th{background:var(--accent);color:var(--paper);padding:8px 10px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-align:left}
+  table.recap td{border:1px solid rgba(42,28,20,.3);padding:9px 10px;vertical-align:top}
+  .reflex{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0 24px}
+  .reflex .card{border:1.5px solid var(--rule);padding:14px 16px;background:#fffaee;position:relative;border-radius:2px}
+  .reflex .card .school-name{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  .reflex .card .first{font-family:var(--serif);font-size:15.5px;line-height:1.4}
+  .reflex .card .first b{font-style:italic}
+  ul.tight{margin:6px 0 14px;padding:0 0 0 22px}
+  ul.tight li{margin:0 0 4px}
+  .marg{font-family:var(--sans);font-size:11.5px;color:var(--muted);letter-spacing:.02em}
+  hr.sep{border:none;border-top:1px solid var(--rule);margin:48px 0 24px}
+  footer{margin-top:64px;padding-top:18px;border-top:6px double var(--rule);font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em}
+  [contenteditable="true"]:focus{outline:2px dashed var(--accent);outline-offset:4px;background:rgba(255,255,200,.3)}
+  @media print{.toolbar{display:none}.page{padding:14px 18px}body{background:none}}
+  @media (max-width:880px){.school-grid{grid-template-columns:1fr}.lede{column-count:1}.reflex{grid-template-columns:repeat(2,1fr)}.masthead{grid-template-columns:1fr}.masthead .meta{text-align:left}}
+</style>
+</head>
+<body>
+<div class="page" contenteditable="true" spellcheck="false">
+
+<div class="toolbar" contenteditable="false">
+  <button onclick="saveDoc()">↓ Save HTML</button>
+  <button onclick="window.print()">⎙ Print / PDF</button>
+  <button onclick="document.body.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+</div>
+
+<header class="masthead">
+  <div>
+    <div class="eyebrow">Consulting Case Notetaking · Volume II</div>
+    <h1>Four Schools, Four DNAs</h1>
+    <div class="dek">Duke Fuqua · UVA Darden · Kellogg · NYU Stern — a forensic read of 47 answer keys from each school's casebook, distilled into the move the case writers actually reward.</div>
+  </div>
+  <div class="meta">
+    Date · 2026-06-17<br>
+    Corpus · 47 cases · 4 schools<br>
+    Method · Read each meta, prompt, framework, recommendation; identify the recurring "what wins"<br>
+    Sister doc · case-shorthand-cheatsheet.html
+  </div>
+</header>
+
+<div class="lede">
+  <p class="drop">Every case in every casebook reduces to one of four identities — Profit, Value, Market, Revenue-by-segment. What changes from school to school is not the math; it's <em>what the case writer is testing for</em>. Fuqua is testing whether you can turn an ambition into a number and judge options against it. Darden is testing whether you've internalized a sell-side analyst's P&amp;L discipline and named the risk register. Kellogg is testing whether you can pick a segment and bet on it with a dollar figure. Stern is testing whether you've kept the calculator running while staying close to a real consumer.</p>
+  <p>The four sections below name each school's DNA, walk through three to four <em>specific</em> scenarios from the corpus (with the actual industries and numeric anchors that recur), and show the move the answer key rewarded. The closing pages give you a comparison table and a four-card reflex sheet you can carry into any case where you're told only "this is a [Fuqua / Darden / Kellogg / Stern] case."</p>
+</div>
+
+<!-- ============= FUQUA ============= -->
+<h2 class="section"><span class="num">SECTION I · DUKE FUQUA</span>The math-backed ambition case</h2>
+<div class="dna">"The CEO gave you a target — what does that mean in dollars, and which lever actually hits it?"</div>
+
+<div class="school-grid">
+  <div class="col-left">
+    <p>Twelve cases sampled (Fuqua 2018 + 2020): five Profitability, plus one each of M&amp;A, Investment, Market Entry, Growth, Operations, Other-tagged. Industry mix is the most diverse of any school — Transportation, Pharma/Retail, Energy, Tech, Finance, Education, eCommerce, Agri-business — Fuqua does not have a vertical it returns to. What it returns to instead is <b>a CEO who has already named the target</b>.</p>
+
+    <h4>What recurs in the prompt</h4>
+    <ul class="tight">
+      <li>An <b>explicit numeric ambition</b> ("increase revenue by 10% or $100M"; "resolve $90M outstanding debt"; "double client wallet over five years")</li>
+      <li>A <b>specific constraint</b> often stacked on top — debt cap, capacity, dual-mandate (financial + impact)</li>
+      <li>A binary or trinary choice arriving in the middle: <b>option A vs option B</b> framed as "the CEO is considering both"</li>
+    </ul>
+
+    <h4>The scenarios you will see</h4>
+
+    <div class="scenario">
+      <div class="head">SCENARIO 1 · PROFITABILITY WITH A NAMED TARGET</div>
+      <div class="title">"Reverse the revenue trend by ~10% / $100M"</div>
+      <div class="prompt">ShipTech is a US ground-transportation shipping company; revenue has been falling and the CEO wants +$100M (≈10%). Take Inc. is a ride-hail platform with ~10% volume loss to competitor "Elevate." Drugs "R" Us is a pharmacy with declining margins.</div>
+      <div class="move">Rewarded move: <b>back-calculate the bottleneck</b> before brainstorming levers. ShipTech's answer key skips P×V decomposition and goes straight to <span class="reward">"we're turning away $600M in potential sales because we lack drivers — hire 1,380 at industry-standard comp."</span> The reward is recognizing that revenue-down with demand intact is a <em>capacity</em> problem, not a marketing problem. Take Inc. rewards isolating <em>where the volume went</em> (a named competitor) before proposing the lever (loyalty + targeted acquisition).</div>
+    </div>
+
+    <div class="scenario">
+      <div class="head">SCENARIO 2 · OPTION-PICK BETWEEN PRE-BUILT CHOICES</div>
+      <div class="title">"The CEO is considering A, B, or C — which one?"</div>
+      <div class="prompt">Roll 'n Grind needs to fix peak-season delivery delays — Option A (rent overflow) vs Option B (capital expansion). Paper Pricing Predicament has a pre-set pricing menu. A-Plus School District has three intervention bundles.</div>
+      <div class="move">Rewarded move: <b>compute each option to a single comparable number</b> (Roll 'n Grind: Option A $37K vs Option B $43K → A wins by $6K) and <span class="reward">commit to the cheaper one, then surface one risk</span>. Fuqua rewards the candidate who finishes the calculation rather than the candidate who lists framework dimensions. Do not over-bucket.</div>
+    </div>
+
+    <div class="scenario">
+      <div class="head">SCENARIO 3 · DUAL-MANDATE INVESTMENT</div>
+      <div class="title">"It looks financially attractive — but does it pass the second test?"</div>
+      <div class="prompt">Green Ride: PickUp ride-hail looks like a 1.8× return ($360M exit on $200M) for impact-fund Clean Ventures — but CO₂ impact is +500M lbs/day. Mischief Managed: wealth-management expansion picks among three cities on opportunity size <em>and</em> demographic fit.</div>
+      <div class="move">Rewarded move: <b>name the second criterion explicitly</b> and let it override when binding. Green Ride's answer key says <span class="reward">"NO — impact mandate has equal weight; +500M lbs CO₂ disqualifies it despite the NPV."</span> The wrong move is to recommend yes because the financials clear the hurdle. Fuqua often packs the trap that the dollar answer is the wrong answer.</div>
+    </div>
+
+    <div class="scenario">
+      <div class="head">SCENARIO 4 · M&amp;A AS "WHICH PIECE TO SELL"</div>
+      <div class="title">"We can't acquire any more — what do we shed?"</div>
+      <div class="prompt">XY Inbev — multinational brewer post-decade of acquisitions, $90M debt overhang, anti-trust ceiling, three product lines with different profit/growth profiles.</div>
+      <div class="move">Rewarded move: <b>invert the framing</b>. Instead of "where do we grow", ask "which line is highest profit but lowest growth — sell it." The key recommends <span class="reward">divest Beer Brands 1–3 for ~$100M to clear the $90M debt</span>. The principle: <em>cash trapped under a slow-growing asset is the easiest source of $90M when growth options are capped.</em></div>
+    </div>
+  </div>
+
+  <div class="col-right">
+    <h4>Fuqua note template — 6 lines</h4>
+    <div class="codebox"><span class="com"># Always lead with the number.</span>
+<span class="acc">OBJ:</span> [verb] [metric] [Δ] in [horizon]
+       e.g.  ↑R +$100M / 10% in NT
+
+<span class="acc">IDY:</span> [Profit / Value / Mkt / Rev-by-seg]
+       which term moved? → ◯ P  ◯ Q  ◯ Mix  ◯ Cost
+
+<span class="acc">OPT:</span> A: [____]  → $___ / risk ___
+       B: [____]  → $___ / risk ___
+       C: [____]  → $___ / risk ___
+
+<span class="acc">∴</span>  pick [letter] @ $___ <span class="grn">∵ hits OBJ + clears 2nd test</span>
+<span class="acc">!2°:</span> if [2nd criterion] binds → flip to [____]
+<span class="acc">→</span>  next: validate [breaking assumption]</div>
+
+    <h4>Outstanding signal at Fuqua</h4>
+    <p style="font-size:14.5px">Anticipate the <em>second criterion</em> before the interviewer surfaces it. Green Ride's grader is watching for whether you remember impact is equal-weight. Mischief Managed wants demographic fit on top of TAM. ShipTech wants the candidate to spot that a comp raise is needed <em>before</em> they can hire — i.e., to chain the second-order link without prompting.</p>
+
+    <h4>What to <em>skip</em> at Fuqua</h4>
+    <ul class="tight" style="font-size:14.5px">
+      <li>Listing 5-bucket frameworks when the prompt already named 3 options — go straight to the math</li>
+      <li>"Let me brainstorm growth levers" when the prompt is asking you to choose between named options</li>
+      <li>Hedged recommendations — Fuqua keys penalize "it depends" and reward commit-then-bound</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============= DARDEN ============= -->
+<h2 class="section"><span class="num">SECTION II · UVA DARDEN</span>The sell-side discipline case</h2>
+<div class="dna">"Read the P&amp;L like an analyst — name every line, every synergy, every risk. Then put a number on the deal."</div>
+
+<div class="school-grid">
+  <div class="col-left">
+    <p>Twelve cases sampled (Darden 2018 + 2020): heavy on <b>M&amp;A (3) and Operations / "Other" (5)</b>, with classic Profitability and Market Entry rounding it out. Industries skew traditional and balance-sheet-heavy: Transportation, Insurance, Hedge fund, Aviation, Pharma. Darden is the school whose cases <em>read</em> closest to a real banker pitch — DCF mentioned by name, EBITDA multiples handed to you, "comparable transactions" cited as a method.</p>
+
+    <h4>What recurs in the prompt</h4>
+    <ul class="tight">
+      <li><b>Three-method valuations</b> stated as method: "DCF (preferred), comparable company, EBITDA multiple"</li>
+      <li><b>Synergies separated cost vs revenue</b>, with dis-synergies explicitly netted</li>
+      <li>An <b>investor / buyer framing</b> ("BackupCo evaluating CloudCo", "Canyon Capital's profits down", "Lizard Insurance's subsidiary TechSize")</li>
+      <li><b>Multi-site / geographic complexity</b> (HQ Boston, dev in Texas + Ukraine, services South Carolina) — this is information, not noise</li>
+    </ul>
+
+    <h4>The scenarios you will see</h4>
+
+    <div class="scenario">
+      <div class="head">SCENARIO 1 · ACQUISITION AT A NAMED MAX PRICE</div>
+      <div class="title">"Value the target, name the max bid"</div>
+      <div class="prompt">BackupCo (data backup, HQ Boston) evaluating CloudCo (cloud backup, S.Cal). Lizard Insurance with B2C-auto core deciding what to do with subsidiary TechSize.</div>
+      <div class="move">Rewarded move: <b>state the three valuation methods, then quantify cost synergies separately from revenue synergies, net out dis-synergies, land on a price</b>. The BackupCo key concludes <span class="reward">"purchase for less than $71.7M"</span> — note the precise ceiling. Lizard concludes <span class="reward">"~$1B based on 5× EBITDA on $206M, sell because no synergies with B2C core."</span> The Darden tell: <em>always close the loop with "max price = X vs ask = Y → creates/destroys $Z."</em></div>
+    </div>
+
+    <div class="scenario">
+      <div class="head">SCENARIO 2 · COST-LINE DIAGNOSTIC</div>
+      <div class="title">"Profits down — which line moved?"</div>
+      <div class="prompt">Canyon Capital Partners (hedge fund): Mgmt fees down? AuM down? Carried interests below 15% hurdle? Office rent? Comp structure? National Logistics Trucking: fuel? wages? depreciation?</div>
+      <div class="move">Rewarded move: <b>decompose to the specific economic engine of that industry</b>. Hedge fund = Mgmt fee × AuM + Carried × performance-above-hurdle. Trucking = price-per-load × loads − fuel − driver wages − depreciation. The key for Canyon recommends <span class="reward">raise mgmt fee back toward 2%, rebalance analyst:associate ratio</span> — naming both a revenue lever and a comp-structure cost lever. Darden rewards <em>industry-specific vocabulary</em>: AuM, hurdle rate, carried interest, comp ratio.</div>
+    </div>
+
+    <div class="scenario">
+      <div class="head">SCENARIO 3 · RANK-BY-ROI WITH A QUALITATIVE TIE-BREAK</div>
+      <div class="title">"Pick the option that hits the hurdle"</div>
+      <div class="prompt">The Big Shot (LCA studio): Pick the next movie. Action has higher absolute profit ($127.5M) but lower ROI (170%); Comedy delivers ROI 212% on smaller absolute. Hurdle: ROI &gt; 50%.</div>
+      <div class="move">Rewarded move: <b>respect the stated metric</b> (ROI, not absolute profit) and pick accordingly. The key: <span class="reward">Comedy wins on ROI even though Action has higher dollars.</span> The Darden trap: candidates default to absolute profit because it feels more like the right answer; the key explicitly rewards reading the hurdle the prompt named.</div>
+    </div>
+
+    <div class="scenario">
+      <div class="head">SCENARIO 4 · KEEP-OR-SELL THE NON-CORE ASSET</div>
+      <div class="title">"What do we do with this orphan business unit?"</div>
+      <div class="prompt">Lizard Insurance and TechSize. Implicit in many Darden M&amp;A: the "Keep vs Sell" binary tree (Keep → Hold / Grow-organic / Grow-inorganic; Sell → Partial / Full).</div>
+      <div class="move">Rewarded move: <b>build the explicit binary tree</b>, evaluate Keep viability on synergies and standalone market attractiveness, then commit. <span class="reward">If no fit + market stagnant → sell, valuation by EBITDA multiple, comp transactions for the multiple.</span> Darden's signature is that the tree itself is part of the answer — write it out.</div>
+    </div>
+  </div>
+
+  <div class="col-right">
+    <h4>Darden note template — 7 lines</h4>
+    <div class="codebox"><span class="com"># Read it like a sell-side memo.</span>
+<span class="acc">DEAL:</span> [Buyer] / [Target] / ask $___
+
+<span class="acc">VAL:</span> DCF: $___   Comps: $___   EBITDA×: $___
+       → standalone $___
+
+<span class="acc">SYN+:</span> Rev: [cross-sell, up-sell] ~$___
+       Cost: [HC, R&amp;D, ven, IT] ~$___
+<span class="acc">SYN-:</span> Dis-syn [lost cust, talent flight] ~$___
+        post-syn $___ → max bid $___
+
+<span class="acc">∴</span>  [Buy ≤ $___ / Sell @ ~$___ / Hold]
+<span class="acc">RISK:</span> reg · talent retention · cust loss · culture
+<span class="acc">→</span>  validate [synergy #1] vs comp transactions</div>
+
+    <h4>Outstanding signal at Darden</h4>
+    <p style="font-size:14.5px">Quantify cost synergies (more certain) <em>separately</em> from revenue synergies (less certain) and say which is which. Net out dis-synergies — most candidates forget. Use <b>post-synergy EBITDA</b> when applying multiples. End with the explicit "max price = $X vs ask = $Y → creates/destroys $Z" sentence; this single sentence is the most reliable Darden M&amp;A signal.</p>
+
+    <h4>What to <em>skip</em> at Darden</h4>
+    <ul class="tight" style="font-size:14.5px">
+      <li>Generic "market attractiveness" without naming the rivalry / regulatory / capability lens</li>
+      <li>Picking absolute profit over the stated hurdle (ROI, payback, IRR)</li>
+      <li>Skipping the dis-synergy line — Darden keys specifically watch for it</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============= KELLOGG ============= -->
+<h2 class="section"><span class="num">SECTION III · KELLOGG</span>The market-entry-with-a-segment-bet case</h2>
+<div class="dna">"Should you enter — and if yes, which segment / location / SKU, with what dollar profit?"</div>
+
+<div class="school-grid">
+  <div class="col-left">
+    <p>Eleven cases sampled (Kellogg 2018 + 2020): <b>seven Market Entry, plus Opportunity Assessment, New Product, Profitability, Operations</b>. Industries: Consumer Products (2), Hospitality &amp; Leisure (2), Transportation, Aerospace &amp; Defense, Healthcare. This is the most thematically concentrated of the four schools — if you draw a Kellogg case, your prior should be ~70% it's an entry decision.</p>
+
+    <h4>What recurs in the prompt</h4>
+    <ul class="tight">
+      <li><b>An expansion target already named</b> — a city, a country, a customer segment, a product</li>
+      <li><b>Constrained choice set</b>: "which neighborhood?", "which segment?", "which prototype?"</li>
+      <li><b>Friend-of-the-client framing</b>: Busch's Barber Shop is a friend's business plan; Maine Apples is the test-market expansion for a Korean acquirer; Chicouver Cycle is a startup pre-launch</li>
+      <li>A <b>year-one profit target</b> or specific dollar amount the recommendation will be judged against</li>
+    </ul>
+
+    <h4>The scenarios you will see</h4>
+
+    <div class="scenario">
+      <div class="head">SCENARIO 1 · WHICH LOCATION / NEIGHBORHOOD / SEGMENT</div>
+      <div class="title">"Pick the entry point and project the year-1 profit"</div>
+      <div class="prompt">Chicouver Cycle (bikeshare, dockless vs docked, multiple neighborhoods). Busch's Barber Shop (downtown vs not-downtown in Evanston). Kellogg in India (which education segment).</div>
+      <div class="move">Rewarded move: <b>size each candidate location/segment to a year-one profit, pick the highest, justify why the second-best loses</b>. Chicouver picks <span class="reward">Nightlife District + dockless = $18M (dockless saves $15M in docking, costs $3M more in distribution, net +$12M)</span>. Busch picks <span class="reward">downtown $436K vs not-downtown $275K, no loyalty program</span>. The reward is delivering a specific dollar gap between option A and B, not just "A is better."</div>
+    </div>
+
+    <div class="scenario">
+      <div class="head">SCENARIO 2 · VALUE-BASED PRICING ON A B2B INNOVATION</div>
+      <div class="title">"You have a product that creates value for the buyer — what do you charge?"</div>
+      <div class="prompt">Maine Apples — chemical that lets orchards harvest earlier + improves yield. Set the price for orchard owners.</div>
+      <div class="move">Rewarded move: <b>quantify the customer's incremental benefit per acre, capture a fixed share (typically 40–50%)</b>. The key sets <span class="reward">~$1,000/acre, ~50% gross margin to client, ~50% incremental value left with the farmer</span>. The Kellogg signature: the price ceiling is value-based, but the recommendation locks in the <em>split</em> — half to the farmer is the rewarded heuristic when you need adoption.</div>
+    </div>
+
+    <div class="scenario">
+      <div class="head">SCENARIO 3 · WHICH PROTOTYPE TO COMMERCIALIZE</div>
+      <div class="title">"Three products on the bench — which one ships?"</div>
+      <div class="prompt">Dark Sky (Aerospace &amp; Defense, three drone prototypes: JointBird / SeaBird / SandBird). Zephyr Beverages (which adjacent line). Health Coaches (which disease cohort to pilot).</div>
+      <div class="move">Rewarded move: <b>compute total revenue / profit per prototype on the named horizon, pick the highest, net out cannibalization of the existing product</b>. Dark Sky picks <span class="reward">JointBird @ $16.75M vs SeaBird $14.3M vs SandBird $14.25M</span>. Health Coaches picks <span class="reward">65+ Lifestyle cohort, $72K net profit per coach, scales to $144M annually</span>. Kellogg rewards the candidate who carries cannibalization through to a <em>net</em> figure, not a gross.</div>
+    </div>
+
+    <div class="scenario">
+      <div class="head">SCENARIO 4 · DIAGNOSTIC INSIDE A PE PORTCO</div>
+      <div class="title">"The PE firm bought it; now profits are off — fix the lever"</div>
+      <div class="prompt">Events.com (SaaS registration, owned by Prospect Equity Partners). The pricing model changed and processing costs scaled with dollar volume while revenue capped.</div>
+      <div class="move">Rewarded move: <b>find the line in the pricing model that broke as customer mix shifted</b>. The key: <span class="reward">add a 2.25% credit-card fee on the Over-$50 tier; +$8.4M in revenue / OI, customer surveys show negligible churn risk.</span> The Kellogg twist on Profitability: the fix is a <em>pricing-policy</em> change, not a cost cut. Always check whether the answer is "edit the pricing tiers" before "cut a cost line."</div>
+    </div>
+  </div>
+
+  <div class="col-right">
+    <h4>Kellogg note template — 6 lines</h4>
+    <div class="codebox"><span class="com"># Pick a bet. Size it. Justify in dollars.</span>
+<span class="acc">Q:</span> enter? where/which? at what $?
+
+<span class="acc">MKT:</span> TAM ~$___ / growth ~__% / comp [____]
+<span class="acc">FIT:</span> RTW ⊕ (cap / brand / channel)  / RTW ⊖ (___)
+
+<span class="acc">CAND:</span> A: ____  → Y1 profit $___
+         B: ____  → Y1 profit $___
+         C: ____  → Y1 profit $___
+
+<span class="acc">∴</span>  pick [A] @ $___ <span class="grn">∵ +$___ vs B</span>
+       price = [cost+ / comp / <span class="acc">value × 50%</span>]
+<span class="acc">!Cnbl:</span> nets to $___ post-cannib
+<span class="acc">→</span>  pilot in [seg X] first, scale if [trigger]</div>
+
+    <h4>Outstanding signal at Kellogg</h4>
+    <p style="font-size:14.5px">Two reflexes win Kellogg cases: (1) <b>state the dollar gap between option A and option B</b>, never just "A is better." (2) <b>Net out cannibalization</b> on any new product or location — most candidates compute gross. The third reflex, harder, is to <b>spot when "Profitability" is actually a pricing-tier-policy fix</b> in disguise (Events.com).</p>
+
+    <h4>What to <em>skip</em> at Kellogg</h4>
+    <ul class="tight" style="font-size:14.5px">
+      <li>Sizing the TAM and stopping there — Kellogg wants the segment bet, not the market chart</li>
+      <li>Setting price cost-plus when the case gives you a quantified customer benefit</li>
+      <li>Recommending "test all three" — pick one and name what would have to be true</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============= STERN ============= -->
+<h2 class="section"><span class="num">SECTION IV · NYU STERN</span>The consumer-elasticity-with-receipts case</h2>
+<div class="dna">"Stay close to the shopper. Run the elasticity. Pair the number with one piece of soft evidence."</div>
+
+<div class="school-grid">
+  <div class="col-left">
+    <p>Twelve cases sampled (Stern 2018 + 2020). Type mix is the most varied — <b>Pricing, Profitability, Growth, Market Entry, Cost-reduction</b> all represented. Industries lean consumer-facing: Retail, Apparel, Food &amp; Beverage, Restaurant, Pharma, Travel/Hospitality, Gaming. Stern cases are visibly the most <em>quantitative</em>: explicit Quant/Structure difficulty tags ("Quant 5 / Structure 7"), elasticity tables, scenario EBITDA bridges.</p>
+
+    <h4>What recurs in the prompt</h4>
+    <ul class="tight">
+      <li><b>A consumer behavior question underneath a financial question</b> — why did volume shift? Will customers accept the price? Will they switch to competitor when we reopen?</li>
+      <li><b>Multi-model option-pick</b> ("3 business models", "4 product lines to keep or drop")</li>
+      <li><b>An aspirational growth target the client just stated</b> (4× revenue to $240M, 10.5% margin) and asked you whether it's realistic</li>
+      <li><b>Survey data given alongside the financials</b> — Beta-test intent-to-recommend scores, customer surveys, willingness-to-pay studies</li>
+    </ul>
+
+    <h4>The scenarios you will see</h4>
+
+    <div class="scenario">
+      <div class="head">SCENARIO 1 · BUSINESS-MODEL PICK WITH ELASTICITY</div>
+      <div class="title">"Three pricing/revenue models — which one wins?"</div>
+      <div class="prompt">The Pricing Games (NLG, online multiplayer game, three models: subscription / pay-once / free-to-play). Made to Measure (mfg, growth model). Men's Extra Comfortable Essentials (4 product lines, drop or keep).</div>
+      <div class="move">Rewarded move: <b>compute each model's first-year profit, then introduce one survey/behavioral datapoint that breaks the tie</b>. The Pricing Games picks <span class="reward">free-to-play: tied at $20M Y1 profit with subscription, but 50% market share vs 10–12%, intent-to-recommend 4.8, intent-to-switch 1.9</span>. The Stern signature: when the dollar math ties, the survey data is decisive. Without the soft datapoint the answer feels half-finished.</div>
+    </div>
+
+    <div class="scenario">
+      <div class="head">SCENARIO 2 · WHY DID VOLUME SHIFT (PRICE-DRIVEN)</div>
+      <div class="title">"Revenue is down — but in which SKU, and because of what price move?"</div>
+      <div class="prompt">Drinks Gone Flat (supermarket beverage dept, Value Brand cut $0.60→$0.40, Brand A leaks volume to Value). Tres Burritos (flu virus, 10 NYC locations, EBITDA $90K → $37K per location).</div>
+      <div class="move">Rewarded move: <b>segment to the SKU/location where the price moved, compute revenue ÷ volume to back into the price change, propose a price reset</b>. Drinks Gone Flat's key: <span class="reward">Value Brand's cut cannibalized Brand A — raise Value Brand price + differentiate via packaging / shelf / promo.</span> Tres Burritos: <span class="reward">delivery beats closing because closing still has fixed costs at zero revenue; -60% EBITDA vs -100%.</span> Stern rewards walking the price-volume math to the actual SKU that moved.</div>
+    </div>
+
+    <div class="scenario">
+      <div class="head">SCENARIO 3 · "IS THIS TARGET REALISTIC?"</div>
+      <div class="title">"The CEO says 4× in three years. Pressure-test."</div>
+      <div class="prompt">Men's Extra Comfortable Essentials (target $240M / 10.5% margin). FlashPro growth. Many Stern Growth-type cases lead with this aspirational figure.</div>
+      <div class="move">Rewarded move: <b>back-calculate the required CAGR and share, then drop the negative-margin lines from the portfolio</b>. The key drops <span class="reward">Tanks (negative) and Tees (zero margin), grows Underwear share 1%→10%, holds Socks at 15%</span> — i.e., portfolio surgery + share-grab, not a generic "four growth levers." The reward is honesty about the target's feasibility plus a specific surgical change.</div>
+    </div>
+
+    <div class="scenario">
+      <div class="head">SCENARIO 4 · NEW PRODUCT WITH CANNIBALIZATION DOWNSIDE</div>
+      <div class="title">"The new market is big — but it might eat the cash cow"</div>
+      <div class="prompt">Botox (cosmetic Botox is the cash cow; prescription migraine indication is the $14.4B opportunity with $4.32B Botox share).</div>
+      <div class="move">Rewarded move: <b>name the cannibalization risk loudly and quantify the cosmetic-side downside before celebrating the migraine opportunity</b>. The key: <span class="reward">market is attractive — BUT cannibalization of high-margin cosmetic Botox is the binding concern, especially under the client's proposed go-to-market.</span> The Stern signature: do <em>not</em> let a TAM number bury a margin-mix risk.</div>
+    </div>
+  </div>
+
+  <div class="col-right">
+    <h4>Stern note template — 7 lines</h4>
+    <div class="codebox"><span class="com"># Math first, then a single soft datapoint.</span>
+<span class="acc">SKU:</span> [which segment / line / location moved]
+
+<span class="acc">P / Q:</span> P now $___ (was $___, Δ __%)
+        Q now ___ (was ___, Δ __%)
+       <span class="grn">elasticity ε ≈ ___</span>
+
+<span class="acc">OPT:</span> A: model/SKU ____ → Y1 $___ / margin __%
+       B: model/SKU ____ → Y1 $___ / margin __%
+       C: model/SKU ____ → Y1 $___ / margin __%
+
+<span class="acc">SOFT:</span> [survey / intent / NPS] → A breaks tie
+
+<span class="acc">∴</span>  pick [A] @ $___, drop [neg-margin SKU]
+<span class="acc">!Cnbl:</span> watch [cash-cow product] downside
+<span class="acc">→</span>  validate WTP with [test] before scale</div>
+
+    <h4>Outstanding signal at Stern</h4>
+    <p style="font-size:14.5px">Pair the chosen number with <em>one</em> piece of soft data. Intent-to-recommend, intent-to-switch, NPS, customer-survey of pricing-acceptance — Stern cases reliably hand you this data and the rewarded candidate uses it explicitly. Second: <b>state the elasticity</b> (even directionally — "looks elastic, 10% price cut drove ~30% volume gain") instead of treating P and Q as independent.</p>
+
+    <h4>What to <em>skip</em> at Stern</h4>
+    <ul class="tight" style="font-size:14.5px">
+      <li>Picking the highest-absolute-revenue option when margin tells a different story (drop the Tees)</li>
+      <li>Ignoring the survey/intent data because "we already have the financials"</li>
+      <li>Recommending an entry/launch without naming the cannibalization on the existing line</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============= COMPARISON ============= -->
+<h2 class="section"><span class="num">SECTION V · COMPARISON</span>The four DNAs side by side</h2>
+
+<table class="comp">
+  <thead><tr><th></th><th>Fuqua</th><th>Darden</th><th>Kellogg</th><th>Stern</th></tr></thead>
+  <tbody>
+    <tr><td class="row-h">DNA (one line)</td>
+      <td>Turn the CEO's target into a number, judge options against it</td>
+      <td>Sell-side analyst's P&amp;L + valuation discipline</td>
+      <td>Pick the segment bet, size it in dollars</td>
+      <td>Run the elasticity, anchor in one piece of consumer evidence</td></tr>
+    <tr><td class="row-h">Dominant type</td>
+      <td>Profitability + option-pick (5/12 profit)</td>
+      <td>M&amp;A + Operations (3 M&amp;A, 5 ops/other)</td>
+      <td>Market Entry (7/11)</td>
+      <td>Mixed — Pricing/Profit/Growth roughly equal</td></tr>
+    <tr><td class="row-h">Numeric anchor style</td>
+      <td>Single named target ("+$100M", "$90M debt")</td>
+      <td>Multi-method valuation w/ post-syn EBITDA</td>
+      <td>Year-1 profit by candidate option</td>
+      <td>Per-SKU P×V with elasticity</td></tr>
+    <tr><td class="row-h">What the trap is</td>
+      <td>Financial answer overrides a second criterion (impact, fit)</td>
+      <td>Picking absolute profit over the stated hurdle metric</td>
+      <td>Recommending "size all three" instead of one bet</td>
+      <td>Letting TAM bury margin-mix / cannibalization</td></tr>
+    <tr><td class="row-h">Signature close</td>
+      <td>"Pick A @ $X because hits target + clears 2nd test"</td>
+      <td>"Max price $X vs ask $Y → creates/destroys $Z"</td>
+      <td>"Pick segment A @ Y1 $X, +$Δ vs segment B"</td>
+      <td>"Pick A on math, soft data confirms; watch cannib on [Z]"</td></tr>
+    <tr><td class="row-h">Industry tilt</td>
+      <td>Diverse — no vertical</td>
+      <td>Traditional + balance-sheet (trucking, insurance, hedge fund)</td>
+      <td>Consumer products + hospitality</td>
+      <td>Consumer-facing + tech (gaming, apparel, restaurant, pharma)</td></tr>
+    <tr><td class="row-h">First-60-second move</td>
+      <td>Write the target as a number on the page</td>
+      <td>Name 3 valuation methods + write SYN+ / SYN- buckets</td>
+      <td>List the candidate options, prepare to size each</td>
+      <td>Find the SKU/segment whose price or volume moved</td></tr>
+    <tr><td class="row-h">When math ties, what wins</td>
+      <td>The second criterion (impact, fit, debt clearance)</td>
+      <td>The stated hurdle metric (ROI, IRR, payback)</td>
+      <td>Net cannibalization, segment-fit qualitative</td>
+      <td>Survey / intent / WTP data</td></tr>
+  </tbody>
+</table>
+
+<!-- ============= REFLEX CARDS ============= -->
+<h2 class="section"><span class="num">SECTION VI · REFLEX CARDS</span>If I'm told only "this is a [school] case", my first move is…</h2>
+
+<div class="reflex">
+  <div class="card">
+    <div class="school-name">Fuqua</div>
+    <div class="first">Write the <b>target as a number</b> at the top of the page before anything else. Then list <b>2–3 named options</b> and prepare a column under each for its dollar impact. Watch for a <b>second criterion</b> (impact, fit, debt) that can override the dollar winner.</div>
+  </div>
+  <div class="card">
+    <div class="school-name">Darden</div>
+    <div class="first">If M&amp;A: write <b>"DCF · Comps · EBITDA×"</b> and <b>"SYN+ / SYN- / DIS-SYN"</b> as section headers, then plan to land on <b>"max bid = $X vs ask = $Y"</b>. If diagnostic: name the <b>industry-specific revenue identity</b> (e.g., AuM × fee + carried × performance) before you decompose.</div>
+  </div>
+  <div class="card">
+    <div class="school-name">Kellogg</div>
+    <div class="first">Assume <b>market entry</b> unless told otherwise. List the <b>candidate options</b> (location/segment/SKU) in a column, plan to put <b>Y1 profit</b> next to each, and budget time to <b>net out cannibalization</b>. If value-based pricing comes up, default to the <b>50/50 split</b> heuristic.</div>
+  </div>
+  <div class="card">
+    <div class="school-name">Stern</div>
+    <div class="first">Find the <b>SKU, segment, or location whose price or volume moved</b>. Compute <b>revenue ÷ volume</b> to back into price changes. Reserve one bullet for the <b>survey / intent / NPS data</b> that the case will hand you. Always check <b>cannibalization</b> on the cash-cow line.</div>
+  </div>
+</div>
+
+<!-- ============= UNIVERSAL TEMPLATE ============= -->
+<h2 class="section"><span class="num">SECTION VII · ONE TEMPLATE TO RULE THEM ALL</span>The 8-line case-page that adapts to any school</h2>
+
+<p>Use this skeleton on the left page of your notebook for every case, then mutate it toward the school's DNA on the right page.</p>
+
+<div class="codebox"><span class="com"># THE UNIVERSAL CASE PAGE — 8 lines, leave room.</span>
+<span class="acc">1 OBJ:</span>  [verb] [metric] [Δ] in [horizon]            <span class="com"># the number the case lives or dies by</span>
+<span class="acc">2 IDY:</span>  □ Profit   □ Value   □ Market   □ Rev-seg    <span class="com"># which identity is broken/unknown</span>
+<span class="acc">3 ARC:</span>  □ Diagnostic (why X moved)  □ Decision (which option / how much)
+<span class="acc">4 Δ?:</span>   [vs prior yr | vs comp | vs seg | vs target]  <span class="com"># compare-to-what — must fill this</span>
+<span class="acc">5 OPT:</span>  A ____ $___ | B ____ $___ | C ____ $___       <span class="com"># quantify every lever</span>
+<span class="acc">6 ?BRK:</span> single assumption that flips the answer ___ → mitigation ___
+<span class="acc">7 ∴:</span>    pick [letter] @ $___ <span class="grn">∵ hits OBJ, clears 2nd test</span>
+<span class="acc">8 →:</span>    risk top-2 ___ ___ · next step ___ ___</div>
+
+<p>Now mutate by school:</p>
+
+<ul class="tight">
+  <li><b>Fuqua mutation</b> — line 7 must include the second criterion in plain words ("…and clears the impact / fit / debt-clearance test"). Line 5 should be the <em>named</em> options, not your brainstorm.</li>
+  <li><b>Darden mutation</b> — between lines 5 and 6, insert: <code>5b VAL: DCF $___ · Comp $___ · EBITDA× $___ · SYN+ $___ · SYN- $___ → max bid $___</code>. Line 8 risk bullets must include reg, talent, integration.</li>
+  <li><b>Kellogg mutation</b> — line 5 options are usually locations/segments/SKUs. Add <code>5b !Cnbl: net post-cannib $___</code>. Line 6 often becomes "TAM mis-sized" or "RTW absent" as the breaking assumption.</li>
+  <li><b>Stern mutation</b> — between lines 4 and 5, insert: <code>4b P/Q: P_now ___ Q_now ___ ε≈___</code>. Add <code>5b SOFT: [survey / intent / NPS / WTP]</code> as a column. Line 8 must name the cannibalization-on-cash-cow risk by SKU.</li>
+</ul>
+
+<hr class="sep">
+
+<!-- ============= RECAP ============= -->
+<h2 class="section"><span class="num">SECTION VIII · RECAP</span>What changed this turn, what's next</h2>
+
+<table class="recap">
+  <thead><tr><th>Project</th><th>Where we are</th><th>Done this turn</th><th>Open / Next</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><b>Consulting_Case_Notetaking</b> (Desktop)<br><span class="marg">v1.0 cheatsheet → v2.0 school playbook</span></td>
+      <td>v2.0 school-by-school case playbook landed as editable HTML at <code>~/Desktop/Consulting_Case_Notetaking/four-schools-playbook.html</code></td>
+      <td>
+        <ul style="margin:0;padding-left:18px">
+          <li>Read 47 case JSONs across Fuqua/Darden/Kellogg/Stern (2018 + 2020 cohorts)</li>
+          <li>Per-school DNA sentence + 3–4 concrete scenarios with industries, anchors, and rewarded moves</li>
+          <li>Per-school 6–7 line shorthand template (Fuqua / Darden / Kellogg / Stern)</li>
+          <li>Side-by-side comparison table (8 dimensions)</li>
+          <li>4-reflex card for the "first 60 seconds" by school</li>
+          <li>One universal 8-line template + 4 school-specific mutations</li>
+        </ul>
+      </td>
+      <td>
+        <ul style="margin:0;padding-left:18px">
+          <li>Practice round: blind-recite one case from each school using the school-specific template, then check against the answer key</li>
+          <li>Extend to remaining MBA schools (HBS, Wharton, Booth, Columbia, Tuck, Ross, Anderson, Sloan, Haas, McCombs) for v3.0</li>
+          <li>Add a "math-only" companion page that lists each school's signature calculation (Fuqua: target back-calc; Darden: post-syn EBITDA; Kellogg: Y1 profit per option; Stern: price-volume elasticity)</li>
+          <li>Per-project CLAUDE.md says: commit + push when this project is brought under git. Currently lives on Desktop, not yet inside the JIeyue repo</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<footer>
+  Sources: <code>github.com/kevinguo0351/Case-Library</code> — drill.json files for Fuqua (12), Darden (12), Kellogg (11), Stern (12). Sampled 2018 + 2020 cohorts. Patterns are descriptive of this corpus, not universal truth. Case interviews reward judgment, not answer-matching. · Document is editable inline — click any paragraph to edit. Use Save HTML to download your edited copy.
+</footer>
+
+</div>
+
+<script>
+function saveDoc(){
+  // Snapshot current DOM
+  const html = '<!doctype html>\n' + document.documentElement.outerHTML;
+  const blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const stamp = new Date().toISOString().slice(0,10);
+  a.href = url;
+  a.download = 'four-schools-playbook-' + stamp + '.html';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(()=>{ document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+}
+</script>
+</body>
+</html>
