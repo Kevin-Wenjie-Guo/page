@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SpaceX (SPCX) — IPO Deep Dive | Investor-Grade Analysis</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --bg:#0a0e1a; --bg2:#131826; --bg3:#1a2233;
+  --accent:#00d4ff; --accent2:#ffb84d;
+  --good:#4ade80; --bad:#ef4444; --warn:#fbbf24;
+  --text:#e2e8f0; --text-dim:#94a3b8;
+  --border:#1e293b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.65}
+.section{max-width:1200px;margin:0 auto;padding:64px 56px;border-bottom:2px solid var(--border);position:relative}
+.section-num{position:absolute;top:18px;right:30px;color:var(--text-dim);font-size:12px;letter-spacing:2px}
+h1{font-size:54px;font-weight:800;background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;margin-bottom:18px}
+h2{font-size:32px;font-weight:700;color:var(--accent);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--accent);display:inline-block}
+h3{font-size:22px;font-weight:600;color:var(--accent2);margin:26px 0 12px}
+h4{font-size:17px;font-weight:600;color:var(--text);margin:18px 0 8px}
+p{margin-bottom:12px;color:var(--text)}
+strong{color:#fff}
+em{color:var(--accent2);font-style:normal;font-weight:600}
+.subtitle{font-size:20px;color:var(--text-dim);margin-bottom:32px}
+.kicker{font-size:12px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:14px;font-weight:600}
+.tag{display:inline-block;padding:3px 9px;border-radius:4px;font-size:11px;font-weight:600;margin-right:6px;letter-spacing:.5px}
+.tag-good{background:rgba(74,222,128,.15);color:var(--good);border:1px solid var(--good)}
+.tag-bad{background:rgba(239,68,68,.15);color:var(--bad);border:1px solid var(--bad)}
+.tag-warn{background:rgba(251,191,36,.15);color:var(--warn);border:1px solid var(--warn)}
+.tag-neutral{background:rgba(148,163,184,.15);color:var(--text-dim);border:1px solid var(--text-dim)}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+th{background:var(--bg2);color:var(--accent);text-align:right;padding:10px 12px;border-bottom:2px solid var(--accent);font-weight:600}
+th:first-child{text-align:left}
+td{padding:9px 12px;border-bottom:1px solid var(--border);text-align:right}
+td:first-child{text-align:left;color:var(--text-dim)}
+tr:hover td{background:var(--bg2)}
+.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.metric-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+.metric{background:var(--bg2);border:1px solid var(--border);border-left:4px solid var(--accent);padding:14px 18px;border-radius:6px}
+.metric.bad{border-left-color:var(--bad)}
+.metric.good{border-left-color:var(--good)}
+.metric.warn{border-left-color:var(--warn)}
+.metric .label{font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px}
+.metric .value{font-size:26px;font-weight:700;color:#fff;margin:4px 0}
+.metric .delta{font-size:12px;color:var(--text-dim)}
+.so-what{background:linear-gradient(135deg,rgba(0,212,255,.08) 0%,rgba(255,184,77,.08) 100%);border:1px solid var(--accent);border-left:6px solid var(--accent2);padding:18px 22px;margin:24px 0;border-radius:6px;position:relative}
+.so-what::before{content:"SO WHAT";position:absolute;top:-10px;left:14px;background:var(--bg);padding:0 8px;font-size:11px;letter-spacing:2px;color:var(--accent2);font-weight:700}
+.so-what p:last-child{margin-bottom:0}
+.flag{background:rgba(239,68,68,.06);border-left:4px solid var(--bad);padding:12px 16px;margin:12px 0;border-radius:4px}
+.green-flag{background:rgba(74,222,128,.06);border-left:4px solid var(--good);padding:12px 16px;margin:12px 0;border-radius:4px}
+.warn-flag{background:rgba(251,191,36,.06);border-left:4px solid var(--warn);padding:12px 16px;margin:12px 0;border-radius:4px}
+.bar-chart{margin:18px 0}
+.bar-row{display:grid;grid-template-columns:120px 1fr 110px;align-items:center;margin:6px 0;gap:10px}
+.bar-label{font-size:13px;color:var(--text-dim)}
+.bar-track{background:var(--bg2);height:24px;border-radius:3px;position:relative;overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:3px}
+.bar-fill.bad{background:linear-gradient(90deg,#ef4444,#fbbf24)}
+.bar-fill.good{background:linear-gradient(90deg,#4ade80,#00d4ff)}
+.bar-val{font-size:13px;color:var(--text);text-align:right;font-weight:600}
+ul,ol{margin:10px 0 14px 22px}
+li{margin-bottom:6px;color:var(--text)}
+blockquote{border-left:4px solid var(--accent);padding:10px 18px;margin:14px 0;background:var(--bg2);font-style:italic;color:var(--text-dim);font-size:14px}
+blockquote cite{display:block;color:var(--accent);font-style:normal;font-size:12px;margin-top:6px}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin:18px 0}
+.card{background:var(--bg2);border:1px solid var(--border);padding:18px 20px;border-radius:6px}
+.card.accent{border-top:4px solid var(--accent)}
+.card.warn{border-top:4px solid var(--warn)}
+.card.bad{border-top:4px solid var(--bad)}
+.card.good{border-top:4px solid var(--good)}
+.card h4{margin-top:0;color:var(--accent)}
+.toc{background:var(--bg2);border:1px solid var(--border);padding:20px 26px;border-radius:6px;margin:24px 0}
+.toc ol{columns:2;column-gap:30px;margin-left:18px}
+.toc a{color:var(--text);text-decoration:none}
+.toc a:hover{color:var(--accent)}
+.disclaimer{font-size:12px;color:var(--text-dim);font-style:italic;margin-top:18px;padding:12px;border:1px dashed var(--border);border-radius:4px}
+.scenario{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.scen{padding:18px;border-radius:6px;background:var(--bg2);border-top:4px solid var(--text-dim)}
+.scen.bull{border-top-color:var(--good)}
+.scen.base{border-top-color:var(--accent)}
+.scen.bear{border-top-color:var(--bad)}
+.scen h4{font-size:18px;margin-top:0}
+.scen .big{font-size:28px;font-weight:800;color:#fff;margin:6px 0}
+.timeline{margin:18px 0;border-left:2px solid var(--accent);padding-left:24px;position:relative}
+.tl-item{margin-bottom:18px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-31px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent2);border:2px solid var(--bg)}
+.tl-date{font-size:13px;color:var(--accent);font-weight:600}
+.tl-text{font-size:14px;color:var(--text);margin-top:2px}
+@media(max-width:800px){
+  .section{padding:40px 24px}
+  h1{font-size:36px}
+  .metric-grid,.metric-grid-3,.three-col,.scenario{grid-template-columns:1fr}
+  .toc ol{columns:1}
+}
+</style>
+</head>
+<body>
+
+<section class="section" id="cover">
+  <div class="section-num">01 / COVER</div>
+  <div class="kicker">Investor-Grade IPO Deep Dive · Tiger Brokers Singapore</div>
+  <h1>SpaceX (SPCX)<br>The $2 Trillion Three-Engine Bet</h1>
+  <p class="subtitle">A retail-investor field guide to the largest IPO in U.S. history — anchored in the May&nbsp;20, 2026 S-1 filing</p>
+
+  <div class="metric-grid">
+    <div class="metric"><div class="label">Ticker</div><div class="value">SPCX</div><div class="delta">Nasdaq + Nasdaq Texas dual listing</div></div>
+    <div class="metric"><div class="label">Filed</div><div class="value">May 20, 2026</div><div class="delta">Roadshow June 4 · Pricing ~June 12</div></div>
+    <div class="metric"><div class="label">2025 Revenue</div><div class="value">$18.7 B</div><div class="delta">+33.2% YoY (recast for xAI)</div></div>
+    <div class="metric bad"><div class="label">2025 Net Loss</div><div class="value">$(4.94) B</div><div class="delta">All losses concentrated in AI segment</div></div>
+  </div>
+
+  <div class="so-what">
+    <p><strong>The one-line thesis.</strong> SpaceX is no longer a "rocket IPO." It is a three-engine capital allocation story: <em>Starlink</em> is the cash generator, <em>Space/Starship</em> is the strategic enabler, <em>AI / xAI / COLOSSUS</em> is the high-upside, capital-hungry bet. Whether $2T is "fair" depends almost entirely on what you believe the AI engine is worth — at the segment level, Space + Connectivity together produce roughly $7.8 B of EBITDA, and <em>everything above that valuation is an AI bet, not a launch bet</em>.</p>
+  </div>
+
+  <div class="disclaimer">
+    For informational and educational use with Tiger Brokers Singapore retail clients. All figures sourced from the Form S-1 (SEC EDGAR Accession 0001628280-26-036936). Not investment advice. IPOs are speculative; pre-IPO and secondary-market vehicles carry liquidity, valuation, and structural risks beyond standard listed equities. Position size accordingly.
+  </div>
+
+  <div class="toc">
+    <strong style="color:var(--accent)">Contents</strong>
+    <ol>
+      <li><a href="#thesis">The three-engine framework</a></li>
+      <li><a href="#offering">Offering &amp; structure</a></li>
+      <li><a href="#financials">Income statement teardown</a></li>
+      <li><a href="#cashflow">Cash flow &amp; capex intensity</a></li>
+      <li><a href="#starlink">Starlink unit economics</a></li>
+      <li><a href="#space">Space &amp; Starship</a></li>
+      <li><a href="#ai">AI segment deep dive</a></li>
+      <li><a href="#balance">Balance sheet &amp; debt</a></li>
+      <li><a href="#valuation">Valuation scenarios</a></li>
+      <li><a href="#governance">Governance &amp; Class B</a></li>
+      <li><a href="#risks">Risk map</a></li>
+      <li><a href="#playbook">Investor playbook</a></li>
+      <li><a href="#mos">Margin of safety &amp; watchpoints</a></li>
+      <li><a href="#sources">Sources &amp; disclosures</a></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="thesis">
+  <div class="section-num">02 / THESIS</div>
+  <div class="kicker">Section 1 — The Three-Engine Framework</div>
+  <h2>One company, three businesses, one balance sheet</h2>
+
+  <p>The post-xAI SpaceX reports under three segments — <strong>Space</strong>, <strong>Connectivity</strong>, and <strong>AI</strong> — and they are doing very different things to the P&amp;L.</p>
+
+  <div class="three-col">
+    <div class="card good">
+      <h4>Engine 1 · Starlink</h4>
+      <p style="font-size:13px"><span class="tag tag-good">Cash generator</span></p>
+      <p>2025 revenue <strong>$11.4&nbsp;B</strong> (+50% YoY). Segment Adj. EBITDA <strong>$7.17&nbsp;B</strong>, ~63% margin. 10.3 M subscribers across 164 countries. <em>This is the only profit pool in the company today.</em></p>
+    </div>
+    <div class="card warn">
+      <h4>Engine 2 · Space / Starship</h4>
+      <p style="font-size:13px"><span class="tag tag-warn">Strategic enabler</span></p>
+      <p>Falcon 9 is the cash spine of the launch business; Starship is the bet. 170 launches in 2025, ~75% of all human orbital mass. Starship R&amp;D pushed segment EBITDA from $1.15 B (2024) to $0.65 B (2025), and <em>negative</em> $(351) M in Q1 2026.</p>
+    </div>
+    <div class="card bad">
+      <h4>Engine 3 · AI</h4>
+      <p style="font-size:13px"><span class="tag tag-bad">High-upside bet</span></p>
+      <p>2025 revenue $3.2 B; 2025 segment operating loss <strong>$(6.4) B</strong>. AI capex alone was <strong>$12.7 B in 2025</strong> and <strong>$7.7 B in Q1 2026 alone</strong>. COLOSSUS / COLOSSUS II = ~1.0 GW. Anthropic signed a $45 B / 36-month compute agreement.</p>
+    </div>
+  </div>
+
+  <h3>Why this framing matters</h3>
+  <ul>
+    <li><strong>The cash engine subsidises the bet.</strong> Without Starlink's $7 B+ EBITDA, the AI build-out is unfinanceable at this pace.</li>
+    <li><strong>Starship is the linchpin.</strong> Both V3 broadband satellites and the orbital AI compute story require full Starship reusability. The S-1 lists Starship as Risk Factor #1.</li>
+    <li><strong>The AI engine is the swing factor on valuation.</strong> Reasonable investors can debate $200–400 B for the launch + Starlink stack; the gap to a $2 T cap is, almost by definition, an AI option premium.</li>
+  </ul>
+
+  <div class="so-what">
+    <p>Buy the IPO and you are not just buying rockets. You are buying — in this order of capital intensity — an AI infrastructure company, a satellite broadband company, and a launch company. The S-1's own <em>Use of Proceeds</em> ranks "AI compute infrastructure" first, ahead of launch and constellation spend.</p>
+  </div>
+</section>
+
+<section class="section" id="offering">
+  <div class="section-num">03 / OFFERING</div>
+  <div class="kicker">Section 2 — Deal Mechanics</div>
+  <h2>What is actually being sold</h2>
+
+  <table>
+    <tr><th>Item</th><th>Detail</th></tr>
+    <tr><td>Ticker</td><td>SPCX</td></tr>
+    <tr><td>Exchange</td><td>Nasdaq Global Select Market &amp; Nasdaq Texas (dual listing)</td></tr>
+    <tr><td>Legal entity</td><td>Space Exploration Technologies Corp. (Texas corporation, redomiciled from Delaware Feb 14, 2024)</td></tr>
+    <tr><td>Lead bookrunners</td><td>Morgan Stanley (Michael Grimes), Goldman Sachs, J.P. Morgan; ~21-bank syndicate</td></tr>
+    <tr><td>Issuer counsel</td><td>Gibson, Dunn &amp; Crutcher (Houston)</td></tr>
+    <tr><td>Underwriter counsel</td><td>Davis Polk &amp; Wardwell (NYC)</td></tr>
+    <tr><td>Dual-class structure</td><td>Class A (1 vote / share) sold to public · Class B (10 votes / share) held by insiders</td></tr>
+    <tr><td>Stock split</td><td>2026 Stock Split (5-for-1) executed; FMV $526.59 → ~$105.32</td></tr>
+    <tr><td>Dividend policy</td><td>None planned; cash retained for growth</td></tr>
+    <tr><td>"Controlled Company" status</td><td>Yes — exempt from majority-independent-director rules under Nasdaq</td></tr>
+    <tr><td>Headline market expectation</td><td>Initial $1.75 T discussed; revised press talk &gt; $2 T; ~$75 B raise reported. <em>The S-1 has not yet filled in the price range</em></td></tr>
+  </table>
+
+  <h3>Calendar</h3>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-date">2026-04-01</div><div class="tl-text">Confidential S-1 submission</div></div>
+    <div class="tl-item"><div class="tl-date">2026-05-12</div><div class="tl-text">FCC approves SpaceX acquisition of EchoStar AWS-3, AWS-4, H-Block spectrum</div></div>
+    <div class="tl-item"><div class="tl-date">2026-05-20</div><div class="tl-text">Public S-1 filed (Accession 0001628280-26-036936)</div></div>
+    <div class="tl-item"><div class="tl-date">2026-06-04</div><div class="tl-text">Roadshow begins</div></div>
+    <div class="tl-item"><div class="tl-date">~2026-06-12</div><div class="tl-text">Expected pricing &amp; first day of trading</div></div>
+    <div class="tl-item"><div class="tl-date">2026-H2</div><div class="tl-text">Starship targeted to begin operational orbital payload deployment</div></div>
+    <div class="tl-item"><div class="tl-date">2027-11</div><div class="tl-text">Expected closing of EchoStar spectrum transaction</div></div>
+  </div>
+
+  <div class="warn-flag">
+    <strong>Compliance note for the live session:</strong> the S-1 has not yet disclosed an offering price range, share count, or use-of-proceeds dollar figure. Anything quoted in the press is anticipation, not fact.
+  </div>
+</section>
+
+<section class="section" id="financials">
+  <div class="section-num">04 / FINANCIALS</div>
+  <div class="kicker">Section 3 — Income Statement Teardown</div>
+  <h2>From "$8 B profit" rumour to a $4.9 B GAAP loss</h2>
+
+  <p>The big surprise in the S-1 is not just the loss — it is the <strong>recast</strong>. xAI was merged into SpaceX in February 2026 under common-control accounting, which forces SpaceX to re-state every prior period as if xAI had always been part of the company. Every previously reported pre-merger SpaceX revenue and earnings number is therefore stale.</p>
+
+  <h3>Consolidated GAAP P&amp;L ($ M)</h3>
+  <table>
+    <tr><th></th><th>2023</th><th>2024 (recast)</th><th>2025</th><th>Q1 2025</th><th>Q1 2026</th></tr>
+    <tr><td>Revenue</td><td>10,387</td><td>14,015</td><td><strong>18,674</strong></td><td>4,067</td><td>4,694</td></tr>
+    <tr><td>Total cost &amp; expenses</td><td>13,892</td><td>13,549</td><td>21,263</td><td>4,040</td><td>6,637</td></tr>
+    <tr><td>Operating income / (loss)</td><td>(3,505)</td><td>+466</td><td>(2,589)</td><td>+27</td><td>(1,943)</td></tr>
+    <tr><td><strong>Net income / (loss)</strong></td><td>(4,628)</td><td><strong>+791</strong></td><td><strong>(4,937)</strong></td><td>(528)</td><td><strong>(4,276)</strong></td></tr>
+    <tr><td>Operating margin</td><td>-33.7%</td><td>+3.3%</td><td>-13.9%</td><td>+0.7%</td><td>-41.4%</td></tr>
+  </table>
+
+  <div class="metric-grid">
+    <div class="metric good"><div class="label">2025 revenue growth</div><div class="value">+33%</div><div class="delta">vs. 2024 recast</div></div>
+    <div class="metric warn"><div class="label">Q1 2026 growth</div><div class="value">+15%</div><div class="delta">deceleration</div></div>
+    <div class="metric bad"><div class="label">Q1 2026 net loss</div><div class="value">$(4.3) B</div><div class="delta">single quarter ≈ all of 2025</div></div>
+    <div class="metric bad"><div class="label">Accumulated deficit</div><div class="value">$(41.3) B</div><div class="delta">as of 3/31/26</div></div>
+  </div>
+
+  <h3>Where the loss really sits — segment view</h3>
+  <table>
+    <tr><th>Segment 2025</th><th>Revenue</th><th>Op. profit / (loss)</th><th>Adj. EBITDA</th><th>Op. margin</th></tr>
+    <tr><td>Space (rockets)</td><td>4,086</td><td>(657)</td><td>653</td><td>-16.1%</td></tr>
+    <tr><td><strong>Connectivity (Starlink)</strong></td><td><strong>11,387</strong></td><td><strong>+4,423</strong></td><td><strong>7,168</strong></td><td><strong>+38.8%</strong></td></tr>
+    <tr><td>AI (xAI / Grok / X / COLOSSUS)</td><td>3,201</td><td>(6,355)</td><td>(1,237)</td><td>-198.5%</td></tr>
+  </table>
+
+  <div class="so-what">
+    <p>The headline "$4.9 B net loss" hides the real story. Connectivity alone earns $4.4 B in segment operating income; the AI segment loses $6.4 B. <em>Subtract AI and SpaceX is profitable. Add AI and it is the most ambitious capital-allocation bet in U.S. equity markets right now.</em> Whether you're long or short SPCX, this single offset is the question.</p>
+  </div>
+
+  <h3>EPS — GAAP and pro-forma</h3>
+  <table>
+    <tr><th></th><th>2025</th><th>Q1 2026</th></tr>
+    <tr><td>Basic / diluted EPS (GAAP)</td><td>$(1.69)</td><td>$(1.27)</td></tr>
+    <tr><td>Pro-forma diluted EPS (post-IPO)</td><td>$(0.51)</td><td>$(0.41)</td></tr>
+    <tr><td>Pro-forma weighted shares (M)</td><td>9,649</td><td>10,607</td></tr>
+  </table>
+</section>
+
+<section class="section" id="cashflow">
+  <div class="section-num">05 / CASH</div>
+  <div class="kicker">Section 4 — Cash Flow &amp; Capital Intensity</div>
+  <h2>Operating cash flow is real. Capex is even more real.</h2>
+
+  <h3>Cash flow ($ M)</h3>
+  <table>
+    <tr><th></th><th>2023</th><th>2024</th><th>2025</th><th>Q1 2026</th></tr>
+    <tr><td>Operating cash flow</td><td>4,520</td><td>5,776</td><td><strong>6,785</strong></td><td>1,047</td></tr>
+    <tr><td>Investing cash flow</td><td>(4,867)</td><td>(10,796)</td><td><strong>(19,575)</strong></td><td>(16,724)</td></tr>
+    <tr><td>Financing cash flow</td><td>422</td><td>11,830</td><td><strong>26,350</strong></td><td>7,125</td></tr>
+  </table>
+
+  <h3>Capex by segment ($ M)</h3>
+  <table>
+    <tr><th>Capex</th><th>2023</th><th>2024</th><th>2025</th><th>Q1 2026</th></tr>
+    <tr><td>Space</td><td>1,497</td><td>2,032</td><td>3,832</td><td>1,052</td></tr>
+    <tr><td>Connectivity</td><td>2,455</td><td>3,498</td><td>4,178</td><td>1,332</td></tr>
+    <tr><td><strong>AI</strong></td><td>463</td><td>5,633</td><td><strong>12,727</strong></td><td><strong>7,723</strong></td></tr>
+    <tr><td><strong>Total</strong></td><td>4,415</td><td>11,163</td><td><strong>20,737</strong></td><td><strong>10,107</strong></td></tr>
+  </table>
+
+  <div class="bar-chart">
+    <h4>2025 capex mix</h4>
+    <div class="bar-row"><div class="bar-label">AI</div><div class="bar-track"><div class="bar-fill bad" style="width:61%"></div></div><div class="bar-val">$12.7 B (61%)</div></div>
+    <div class="bar-row"><div class="bar-label">Connectivity</div><div class="bar-track"><div class="bar-fill" style="width:20%"></div></div><div class="bar-val">$4.2 B (20%)</div></div>
+    <div class="bar-row"><div class="bar-label">Space</div><div class="bar-track"><div class="bar-fill good" style="width:18%"></div></div><div class="bar-val">$3.8 B (18%)</div></div>
+  </div>
+
+  <div class="so-what">
+    <p>Operating cash flow is genuinely positive ($6.8 B in 2025) and growing. But capex is now <em>roughly 3x operating cash flow</em>, and Q1 2026 capex alone ($10.1 B) is ~2x Q1 2026 operating cash flow ($1.0 B). <strong>This is a structural free-cash-flow deficit, plugged by issuance.</strong> The IPO is the funding plan.</p>
+  </div>
+</section>
+
+<section class="section" id="starlink">
+  <div class="section-num">06 / STARLINK</div>
+  <div class="kicker">Section 5 — Connectivity Unit Economics</div>
+  <h2>The cash engine — strong, but the price-per-user has halved</h2>
+
+  <div class="metric-grid">
+    <div class="metric good"><div class="label">Subscribers (3/31/26)</div><div class="value">10.3 M</div><div class="delta">~164 countries</div></div>
+    <div class="metric"><div class="label">Operational satellites</div><div class="value">~9,600</div><div class="delta">~75% of all maneuverable sats globally</div></div>
+    <div class="metric"><div class="label">Median residential download</div><div class="value">225 Mbps</div><div class="delta">peak hours</div></div>
+    <div class="metric warn"><div class="label">ARPU Q1 2026</div><div class="value">$66 / mo</div><div class="delta">$99 (2023) → $66 (Q1 2026)</div></div>
+  </div>
+
+  <h3>ARPU trend — three years to half</h3>
+  <table>
+    <tr><th>Period</th><th>ARPU ($ / month)</th><th>Change</th></tr>
+    <tr><td>2023</td><td>$99</td><td>—</td></tr>
+    <tr><td>2024</td><td>$91</td><td>-8%</td></tr>
+    <tr><td>2025</td><td>$81</td><td>-11%</td></tr>
+    <tr><td><strong>Q1 2026</strong></td><td><strong>$66</strong></td><td><strong>-19% vs FY 2025</strong></td></tr>
+  </table>
+
+  <p><strong>International mix shift.</strong> Starlink is trading price for global penetration — emerging-market consumers cannot pay U.S. tier prices. Management acknowledges in MD&amp;A that further ARPU declines are expected. The closest analogue is Netflix's international rollout: lower price, larger TAM, eventual pricing power once category-dominant.</p>
+
+  <h3>Connectivity segment ($ M)</h3>
+  <table>
+    <tr><th></th><th>2023</th><th>2024</th><th>2025</th><th>Q1 2026</th></tr>
+    <tr><td>Revenue</td><td>—</td><td>7,599</td><td><strong>11,387</strong></td><td>3,257</td></tr>
+    <tr><td>Operating profit</td><td>469</td><td>2,006</td><td><strong>4,423</strong></td><td>1,188</td></tr>
+    <tr><td>Adj. EBITDA</td><td>1,602</td><td>3,849</td><td><strong>7,168</strong></td><td>2,087</td></tr>
+    <tr><td>EBITDA margin</td><td>—</td><td>~51%</td><td><strong>~63%</strong></td><td>~64%</td></tr>
+  </table>
+
+  <h3>Direct-to-Cell (Starlink Mobile)</h3>
+  <ul>
+    <li>~650 dedicated V1 Mobile satellites</li>
+    <li>7.4 M monthly active independent devices</li>
+    <li>~30 countries · ~30 mobile network operator partners</li>
+    <li>T-Mobile T-Satellite live commercially at $10/month</li>
+    <li>EchoStar AWS-3/AWS-4/H-Block spectrum (FCC approved May 2026; closing Nov 2027) is the medium-term upside</li>
+  </ul>
+
+  <div class="green-flag">
+    <strong>Constructive:</strong> Direct-to-Cell is a wholesale layer that bypasses the consumer ARPU problem entirely — wholesale to MNOs is closer to a SaaS revenue line than a consumer broadband line.
+  </div>
+
+  <div class="so-what">
+    <p>Starlink is doing two jobs at once: compounding subscribers at &gt;100% in 2 years and absorbing a price decline. The proof point is segment EBITDA margin holding above 60% even as ARPU drops — unit costs are falling faster than price. If that holds, the cash engine is durable.</p>
+  </div>
+</section>
+
+<section class="section" id="space">
+  <div class="section-num">07 / SPACE</div>
+  <div class="kicker">Section 6 — Launch &amp; Starship</div>
+  <h2>Falcon prints cash. Starship eats it.</h2>
+
+  <div class="metric-grid">
+    <div class="metric good"><div class="label">2025 launches</div><div class="value">170</div><div class="delta">~80%+ of global orbital mass</div></div>
+    <div class="metric"><div class="label">Cumulative orbital mass</div><div class="value">~7,400 mt</div><div class="delta">as of 3/31/26</div></div>
+    <div class="metric"><div class="label">Falcon 9 max reuse</div><div class="value">34×</div><div class="delta">single-booster record</div></div>
+    <div class="metric warn"><div class="label">Q1 2026 Space EBITDA</div><div class="value">$(351) M</div><div class="delta">Starship R&amp;D drag</div></div>
+  </div>
+
+  <h3>Space segment ($ M)</h3>
+  <table>
+    <tr><th></th><th>2024</th><th>2025</th><th>Q1 2025</th><th>Q1 2026</th></tr>
+    <tr><td>Revenue</td><td>3,796</td><td><strong>4,086</strong></td><td>865</td><td><strong>619 <span class="tag tag-bad">-28%</span></strong></td></tr>
+    <tr><td>Operating profit / (loss)</td><td>+21</td><td>(657)</td><td>(70)</td><td>(662)</td></tr>
+    <tr><td>Adj. EBITDA</td><td>1,154</td><td>653</td><td>224</td><td>(351)</td></tr>
+  </table>
+
+  <p>Space revenue dropped 28% in Q1 2026 because customer launches fell from 12 to 7 — SpaceX prioritised internal Starlink deployment over third-party flights. <em>This is a self-cannibalisation choice, not a demand failure</em>, but it limits Space as a standalone equity story.</p>
+
+  <div class="flag">
+    <strong>U.S. government concentration.</strong> ~20% of 2025 revenue (~$3.7 B) came from U.S. federal agencies — NASA (5/5 ISS missions), NSSL (11/12 national security launches), DoD. Many are <em>fixed-price</em>; budget cycles, continuing resolutions, and political shifts hit this line. The S-1 itself notes SpaceX may "prioritize our own launch payloads over additional U.S. government contracts."
+  </div>
+
+  <h3>Starship — Risk Factor #1, by the company's own ranking</h3>
+  <pre style="background:var(--bg2);padding:14px 18px;border-radius:6px;color:var(--text-dim);font-size:13px;line-height:1.5;overflow-x:auto">Starship slips → V3 satellites cannot be deployed at planned cadence
+                  → V2 Mobile (Starlink Direct-to-Cell at scale) delays
+                  → orbital AI compute economics break entirely</pre>
+
+  <ul>
+    <li>11 test flights to date; 12th flight scheduled with next-gen Super Heavy + Raptor</li>
+    <li>V3 design: 100 t to LEO, full reuse</li>
+    <li>Single Starship can deploy 60 V3 satellites — ~20× a Falcon 9 load</li>
+    <li><strong>In-orbit refueling has not yet been demonstrated</strong> (precondition for Mars/lunar missions)</li>
+    <li>FAA does not currently permit return-to-launch-site reentry without waiver</li>
+  </ul>
+
+  <blockquote>
+    "AI compute satellites at scale need full Starship reusability to be economically compelling."
+    <cite>— S-1 Risk Factors</cite>
+  </blockquote>
+
+  <div class="so-what">
+    <p>Treat Space as <em>two</em> sub-businesses: a profitable, scaled Falcon 9 launch business, and a Starship development program that is a bet on physics, regulation, and execution. The IPO does not de-risk Starship; it pre-funds it.</p>
+  </div>
+</section>
+
+<section class="section" id="ai">
+  <div class="section-num">08 / AI</div>
+  <div class="kicker">Section 7 — The xAI / COLOSSUS Bet</div>
+  <h2>Where the entire thesis is being decided</h2>
+
+  <div class="metric-grid">
+    <div class="metric"><div class="label">Compute capacity</div><div class="value">~1.0 GW</div><div class="delta">COLOSSUS + COLOSSUS II</div></div>
+    <div class="metric"><div class="label">Build speed</div><div class="value">91–122 days</div><div class="delta">vs ~2 yrs industry baseline for 100 MW</div></div>
+    <div class="metric good"><div class="label">Anthropic agreement</div><div class="value">$45 B</div><div class="delta">$1.25 B / mo × 36 mo</div></div>
+    <div class="metric warn"><div class="label">2025 segment loss</div><div class="value">$(6.4) B</div><div class="delta">130% of total company net loss</div></div>
+  </div>
+
+  <h3>AI segment ($ M)</h3>
+  <table>
+    <tr><th></th><th>2023</th><th>2024</th><th>2025</th><th>Q1 2026</th></tr>
+    <tr><td>Revenue</td><td>—</td><td>2,620</td><td><strong>3,201</strong></td><td>818</td></tr>
+    <tr><td>Operating loss</td><td>(3,973)</td><td>(1,561)</td><td>(6,355)</td><td>(2,469)</td></tr>
+    <tr><td>Adj. EBITDA</td><td>+1,222</td><td>+347</td><td>(1,237)</td><td>(609)</td></tr>
+    <tr><td>Capex</td><td>463</td><td>5,633</td><td><strong>12,727</strong></td><td><strong>7,723</strong></td></tr>
+  </table>
+
+  <h3>What is in the AI segment?</h3>
+  <div class="three-col">
+    <div class="card accent">
+      <h4>COLOSSUS / COLOSSUS II</h4>
+      <p>Memphis, Tennessee. Combined ~1.0 GW. COLOSSUS built in 122 days, COLOSSUS II in 91 days — vs ~2 years industry baseline. <em>Pace is a moat the company is building, not just chip count.</em></p>
+    </div>
+    <div class="card accent">
+      <h4>xAI &amp; Grok</h4>
+      <p>Acquired Feb 2026 (all-stock, common-control). Grok: 1.3 B supported accounts, 117 M MAU. X platform: 550 M MAU, ~350 M posts/day. <em>An owned audience for AI distribution.</em></p>
+    </div>
+    <div class="card accent">
+      <h4>Macrohard / Money / Cursor</h4>
+      <p>Macrohard: agentic AI workflow with Tesla. Money Product: payments + banking on X. Cursor (Anysphere): compute supply + acquisition option at $60 B implied valuation.</p>
+    </div>
+  </div>
+
+  <h3>The deals that re-rate the AI segment</h3>
+  <table>
+    <tr><th>Counterparty</th><th>Date</th><th>Structure</th><th>Headline</th></tr>
+    <tr><td>Anthropic</td><td>May 2026</td><td>Cloud Services Agreement on COLOSSUS / COLOSSUS II; either side 90-day termination</td><td><strong>$1.25 B/mo × 36 mo ≈ $45 B</strong></td></tr>
+    <tr><td>Cursor (Anysphere)</td><td>Apr 2026</td><td>Compute partnership + acquisition option at IPO + 7-day VWAP; $1.5 B termination + $8.5 B deferred service fee on breach</td><td><strong>~$60 B implied valuation</strong></td></tr>
+    <tr><td>Tesla / Intel / SpaceX (Terafab)</td><td>2026</td><td>"General framework" — neither Tesla nor Intel obligated to remain</td><td><strong>Capex undisclosed</strong> (press: ~$119 B)</td></tr>
+  </table>
+
+  <div class="warn-flag">
+    <strong>Read the Anthropic deal carefully.</strong> The 90-day mutual termination right means $45 B is a <em>guideline</em>, not a guaranteed contract. If Anthropic finds capacity at AWS Trainium or Google TPU at better unit economics, they can leave; SpaceX could equally prioritise xAI / Grok internally.
+  </div>
+
+  <div class="warn-flag">
+    <strong>Terafab is press speculation, not S-1.</strong> The $119 B figure does not appear in the S-1, which states: <em>"neither Tesla nor Intel are obligated to remain a part of the project."</em> Treat Terafab as optional upside, not a baseline.
+  </div>
+
+  <div class="so-what">
+    <p>The AI segment is the swing factor on every valuation. 2025 revenue $3.2 B is small. But (a) Anthropic implies $15 B annualised AI revenue if executed; (b) compute build speed is genuinely category-leading; (c) xAI + X + Grok create a vertically integrated stack (chip → DC → model → distribution) no other public company combines. The IPO price is, in large part, an option on this stack working.</p>
+  </div>
+</section>
+
+<section class="section" id="balance">
+  <div class="section-num">09 / BALANCE SHEET</div>
+  <div class="kicker">Section 8 — Funding the Bet</div>
+  <h2>A real balance sheet, with real leverage</h2>
+
+  <table>
+    <tr><th>Balance sheet ($ M)</th><th>2024</th><th>2025</th><th>Q1 2026</th></tr>
+    <tr><td>Cash &amp; equivalents</td><td>11,385</td><td>24,747</td><td><strong>15,852</strong></td></tr>
+    <tr><td>PP&amp;E</td><td>21,147</td><td>42,602</td><td><strong>53,879</strong></td></tr>
+    <tr><td>Total assets</td><td>57,062</td><td>92,079</td><td><strong>102,094</strong></td></tr>
+    <tr><td>Total liabilities</td><td>31,258</td><td>50,754</td><td><strong>60,512</strong></td></tr>
+    <tr><td>Redeemable convertible preferred</td><td>20,941</td><td>38,752</td><td>7,049</td></tr>
+    <tr><td>Stockholders' equity</td><td>4,863</td><td>2,573</td><td><strong>34,533</strong></td></tr>
+  </table>
+
+  <div class="metric-grid-3">
+    <div class="metric warn"><div class="label">Total principal indebtedness</div><div class="value">$29.1 B</div><div class="delta">3/31/26 (S-1 risk section)</div></div>
+    <div class="metric bad"><div class="label">Accumulated deficit</div><div class="value">$41.3 B</div><div class="delta">3/31/26</div></div>
+    <div class="metric"><div class="label">Q1 2026 cash burn</div><div class="value">~$8.9 B</div><div class="delta">cash 24.7 → 15.9</div></div>
+  </div>
+
+  <div class="flag">
+    <strong>Three things to internalise:</strong>
+    <ol>
+      <li><strong>$29 B principal debt</strong> — restrictive covenants in future debt could constrain capex or M&amp;A.</li>
+      <li><strong>$41 B accumulated deficit</strong> — S&amp;P 500 inclusion (recent quarterly + 4-quarter GAAP profit) is far away. Anyone betting on near-term passive index inflows is early.</li>
+      <li><strong>Cash burned $8.9 B in a single quarter</strong>. The IPO is necessary, not optional, at this run-rate.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="valuation">
+  <div class="section-num">10 / VALUATION</div>
+  <div class="kicker">Section 9 — Three Honest Scenarios</div>
+  <h2>How to think about $2 trillion</h2>
+
+  <p>The S-1 has not yet disclosed an offering range. Press reporting clusters in $1.75–$2 T+. The right question is not "is it cheap" — it is "<em>what does each engine need to do</em> to justify that print." Below are three scenarios using management-disclosed segment numbers, not back-of-the-envelope guesses.</p>
+
+  <div class="scenario">
+    <div class="scen bull">
+      <h4>Bull case</h4>
+      <div class="big">$2.5 – 4 T</div>
+      <p style="font-size:13px"><span class="tag tag-good">All three engines fire</span></p>
+      <ul style="font-size:13px">
+        <li>Starship achieves operational reuse 2026 H2; V3 deployment de-risks orbital constellation economics.</li>
+        <li>Starlink ARPU stabilises ~$60 floor with Direct-to-Cell wholesale layer compounding; 25 M+ subs by 2028.</li>
+        <li>Anthropic deal runs full 36 months; AI segment swings to operating profit by 2028.</li>
+        <li>Terafab moves from framework to definitive agreement.</li>
+      </ul>
+    </div>
+    <div class="scen base">
+      <h4>Base case</h4>
+      <div class="big">$1.5 – 2 T</div>
+      <p style="font-size:13px"><span class="tag tag-neutral">Mixed but workable</span></p>
+      <ul style="font-size:13px">
+        <li>Starlink keeps compounding revenue ~30%, EBITDA margin holds 55–63%.</li>
+        <li>Starship slips by 1–2 years but progresses; V3 deployed 2027–28.</li>
+        <li>AI segment remains loss-making through 2027; capex peaks 2026–27.</li>
+        <li>SPCX trades at a quality-growth multiple with an embedded option on AI.</li>
+      </ul>
+    </div>
+    <div class="scen bear">
+      <h4>Bear case</h4>
+      <div class="big">$700 B – 1.2 T</div>
+      <p style="font-size:13px"><span class="tag tag-bad">AI option re-prices, Starship slips</span></p>
+      <ul style="font-size:13px">
+        <li>Starship delayed multiple years or hits an in-orbit refueling failure.</li>
+        <li>Anthropic exercises 90-day termination; AI revenue base resets.</li>
+        <li>Starlink ARPU drops below $50 with no DTC offset; EBITDA margin compresses below 50%.</li>
+        <li>Multiple compresses to ~6× Starlink EBITDA + small launch + zero AI option.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Reverse-engineered build at $2 T</h3>
+  <table>
+    <tr><th>Building block</th><th>Approach</th><th>Indicative value</th></tr>
+    <tr><td>Connectivity (Starlink)</td><td>$7.2 B 2025 EBITDA × 25× (premium broadband-platform)</td><td>~$180 B</td></tr>
+    <tr><td>Space (Falcon + ISS + NSSL + Starship option)</td><td>EBITDA capitalisation at trough plus development option</td><td>~$60–100 B</td></tr>
+    <tr><td>Net debt</td><td>$29 B principal — IPO cash</td><td>(~$0–10 B)</td></tr>
+    <tr><td><strong>Implied "AI option" residual</strong></td><td>Plug to reach $2 T</td><td><strong>~$1.7 T</strong></td></tr>
+  </table>
+
+  <div class="so-what">
+    <p>If the IPO prints at $2 T, you are paying ~$1.7 T for the AI segment alone. That is comparable to the AI engine inside Microsoft or Alphabet — without their established, profitable cloud or ads business underneath. Whether that is "expensive" or "fair" depends on your view of (a) Anthropic durability, (b) Grok / X distribution monetisation, (c) the orbital-compute call option. <em>It is a sized call, not a low-conviction one.</em></p>
+  </div>
+
+  <h3>Musk's own anchor: the $7.5 T performance award</h3>
+  <p>The board granted Musk 1 B Class B performance shares on Jan 13, 2026, in 15 tranches, unlocking at market-cap milestones from $500 B to <strong>$7.5 T</strong>, each with a Mars colony milestone (1 M inhabitants) as a second condition. The first $1.065 T tranche was already met before xAI merger and partially settled in Class A. This is not a price target — it is the company-internal map of how high management thinks the cap can go on a multi-decade horizon.</p>
+</section>
+
+<section class="section" id="governance">
+  <div class="section-num">11 / GOVERNANCE</div>
+  <div class="kicker">Section 10 — Who Actually Controls SPCX</div>
+  <h2>You buy economics. You do not buy votes.</h2>
+
+  <h3>Capital structure post-IPO</h3>
+  <ul>
+    <li><strong>Class A</strong>: 1 vote / share, sold to public</li>
+    <li><strong>Class B</strong>: 10 votes / share, held by insiders. Class B holders, voting separately, elect <strong>51%</strong> of the board ("Class B Directors")</li>
+    <li>Class B converts 1:1 to Class A on transfer (other than Permitted Transfers)</li>
+    <li>Mr. Musk holds CEO + CTO + Board Chairman simultaneously and <em>can only be removed by a vote of Class B holders</em></li>
+  </ul>
+
+  <div class="flag">
+    <strong>Controlled Company exemptions.</strong> Under Nasdaq rules, SpaceX as a Controlled Company may opt out of: majority-independent board · fully independent nominating committee · fully independent comp committee · annual committee performance review.<br>
+    Meta, Snap, Google use similar structures. SpaceX is not unusual; combined with related-party items below, it materially limits public-shareholder leverage.
+  </div>
+
+  <h3>Related parties &amp; conflicts</h3>
+  <ul>
+    <li>Mr. Musk also runs <strong>Tesla</strong> (CEO/Technoking, ~20%), <strong>Neuralink</strong>, <strong>The Boring Company</strong></li>
+    <li>The charter <em>renounces</em> corporate-opportunity duties — Musk has no obligation to bring new opportunities to SpaceX first</li>
+    <li>Macrohard (Tesla collaboration) and Terafab (Tesla / Intel / SpaceX) terms, IP allocation, timeline are <em>not yet finalised</em></li>
+    <li>SpaceX does <em>not</em> maintain key-person life insurance on Mr. Musk; the S-1 also notes he "does not devote his full time and attention to our businesses"</li>
+  </ul>
+
+  <h3>Texas Business Organisations Code (2025)</h3>
+  <table>
+    <tr><th>TBOC provision</th><th>Effect on shareholders</th></tr>
+    <tr><td>§21.419 — Statutory business judgment rule</td><td>Plaintiffs must prove fraud, intentional misconduct, ultra vires, or knowing legal violation</td></tr>
+    <tr><td>3% threshold for derivative actions</td><td>Effectively excludes retail and small institutional plaintiffs</td></tr>
+    <tr><td>§21.373 — Shareholder proposal requirements</td><td>≥3% ownership + ≥6 months held + ≥67% solicitation</td></tr>
+  </table>
+
+  <div class="flag">
+    <strong>Forum-selection bylaw.</strong> Disputes must go: Texas Business Court (Eleventh Division) → mandatory arbitration (ICC Expedited) → S.D. Texas Federal (Houston) → Harris County state court. <em>No class actions, no mass actions, no jury trial.</em>
+  </div>
+
+  <div class="so-what">
+    <p>A retail investor in SPCX receives economic exposure to the company's success and effectively no governance or litigation leverage. Consistent with Meta/Snap; not a deal-breaker, but it changes how you size the position. <em>Do not own a position you would only feel comfortable owning if you trusted your ability to litigate.</em></p>
+  </div>
+</section>
+
+<section class="section" id="risks">
+  <div class="section-num">12 / RISKS</div>
+  <div class="kicker">Section 11 — The 47-Item Risk Map, Compressed to 12</div>
+  <h2>What can actually break the thesis</h2>
+
+  <h3>Tier 1 · Execution &amp; technology</h3>
+  <ol>
+    <li><strong>Starship slips or fails durability tests</strong> — kills V3 satellites, V2 Mobile, orbital AI compute.</li>
+    <li><strong>In-orbit refueling never works at scale</strong> — Mars / lunar storyline mutes; chip-cycle on AI sats stretches.</li>
+    <li><strong>AI segment integration / xAI loss-rate accelerates</strong> — pressures further equity issuance.</li>
+    <li><strong>Anthropic terminates with 90-day notice</strong> — AI revenue base resets; multiple re-rates.</li>
+  </ol>
+
+  <h3>Tier 2 · Regulatory &amp; geopolitical</h3>
+  <ol start="5">
+    <li><strong>FCC / international spectrum</strong> — EchoStar transaction does not close in Nov 2027.</li>
+    <li><strong>FAA</strong> — return-to-launch-site reentry waivers delayed; frequent post-anomaly investigations.</li>
+    <li><strong>EU GDPR (Irish DPC) + FTC Grok investigations</strong> — fines, restrictions, training-data bans.</li>
+    <li><strong>Sovereign asset seizure precedent</strong> — Brazil 2024 froze Starlink assets over an X (then Musk-affiliated) issue; mechanism is not unique to Brazil.</li>
+  </ol>
+
+  <h3>Tier 3 · Financial &amp; structural</h3>
+  <ol start="9">
+    <li><strong>$29 B principal debt + $41 B accumulated deficit</strong> — covenants and dilution risk over the next 5 years.</li>
+    <li><strong>U.S. federal concentration (~20% of revenue)</strong> — political, budgetary, debarment, fixed-price overrun.</li>
+    <li><strong>Material-weakness disclosure post-IPO</strong> — S-1 flags pre-existing internal-control deficiencies likely to surface in the second annual report.</li>
+    <li><strong>Governance overhang</strong> — Controlled Company + Texas TBOC + arbitration. No litigation leverage means concerns are priced via the multiple.</li>
+  </ol>
+
+  <div class="warn-flag">
+    <strong>"Brazil example" is the most underweighted risk.</strong> In August 2024, Brazil's Supreme Court froze Starlink's Brazilian financial assets to enforce an action against X — at a time when X was not yet owned by SpaceX. <em>If a future foreign government takes a similar view of Musk-affiliated platforms, SpaceX assets can be entangled.</em>
+  </div>
+</section>
+
+<section class="section" id="playbook">
+  <div class="section-num">13 / PLAYBOOK</div>
+  <div class="kicker">Section 12 — Practical Routes for Retail</div>
+  <h2>How an investor can express a view, before and around the IPO</h2>
+
+  <p>None of the routes below are recommendations — they are <em>options</em> to consider, sized to your overall portfolio. Every option carries risk; some carry liquidity risk far above a typical listed equity.</p>
+
+  <div class="three-col">
+    <div class="card accent">
+      <h4>Route 1 — IPO subscription</h4>
+      <p>Tiger Brokers Singapore IPO subscription, on whatever allocation and conditions are offered at pricing. Allocation in mega-IPOs is rarely 100%; institutional demand will be heavy. <em>Key risk:</em> first-day price is rarely the long-run price.</p>
+    </div>
+    <div class="card accent">
+      <h4>Route 2 — Space ETFs</h4>
+      <p>Tema Space Innovators (NASA), ARKX, UFO offer indirect exposure pre-IPO via SPVs and post-IPO via direct holdings. Often hold ASTS, RKLB, and a SpaceX SPV slice. <em>Key risk:</em> ETF beta is mostly other names — your SpaceX exposure is small.</p>
+    </div>
+    <div class="card accent">
+      <h4>Route 3 — Pre-IPO secondaries</h4>
+      <p>Forge, Hiive, Sacra-listed SPVs offer pre-IPO secondary access. Often $25K+ minimums, lockups, carry structures. <em>Key risk:</em> illiquidity, fee drag, and lockup duration may extend through IPO.</p>
+    </div>
+    <div class="card accent">
+      <h4>Route 4 — Public-name proxies</h4>
+      <p>Listed comps with overlapping themes: <strong>RKLB</strong> (launch + space systems), <strong>ASTS</strong> (Direct-to-Cell competitor), <strong>IRDM</strong> (mature satcom), <strong>NVDA / AMD</strong> (AI infra), <strong>TSLA</strong> (Musk AI exposure, now diluted by xAI carve-out). <em>Key risk:</em> these are not SpaceX; correlation can break.</p>
+    </div>
+    <div class="card accent">
+      <h4>Route 5 — Wait</h4>
+      <p>Lockup waves 90–180 days post-IPO often reprice issuance-heavy IPOs lower. For investors without high-conviction urgency, post-lockup is a structurally cheaper entry. <em>Key risk:</em> if the bull case validates in the first 6 months, the entry price may not return.</p>
+    </div>
+    <div class="card accent">
+      <h4>Route 6 — Express the bear</h4>
+      <p>Inverse / put strategies on SPCX or correlated exposures, post-listing. <em>Strongly</em> not retail-friendly; surface only if a client asks.</p>
+    </div>
+  </div>
+
+  <div class="so-what">
+    <p>The retail temptation is to treat IPO day as an event. The discipline is to treat IPO day as an entry decision among 6 options, with sizing tied to thesis confidence. <em>If you are not comfortable owning SPCX through a 50% drawdown, you are too large.</em> That single rule resolves most of the IPO-day mistakes.</p>
+  </div>
+</section>
+
+<section class="section" id="mos">
+  <div class="section-num">14 / MARGIN OF SAFETY</div>
+  <div class="kicker">Section 13 — Buffett-Style Discipline on a Story Stock</div>
+  <h2>What "margin of safety" looks like when GAAP is negative</h2>
+
+  <p>Traditional margin-of-safety frameworks (low P/E, low EV/EBIT, dividend yield) do not apply at this stage. Three tools that <em>do</em>:</p>
+
+  <ol>
+    <li><strong>Segment-level conservatism.</strong> Underwrite Connectivity at trough margin (50% rather than 63%) and apply a haircut to AI segment revenue (assume 50% of Anthropic deal value). If the math still works, you have segment-level cushion.</li>
+    <li><strong>Position sizing as the primary lever.</strong> A 1.5–3% portfolio position survives a 50% drawdown. A 10% position does not.</li>
+    <li><strong>Time arbitrage.</strong> The largest risk to an SPCX investor is not "wrong forever" — it is "right too early." Lockup-driven supply, post-IPO volatility, and one Starship anomaly can each create a 20–40% drawdown that resets the entry.</li>
+  </ol>
+
+  <h3>12-month watchpoints</h3>
+  <table>
+    <tr><th>Event</th><th>Why it matters</th></tr>
+    <tr><td>Starship Flight 12 + first operational orbital payload</td><td>De-risks V3, V2 Mobile, orbital AI compute simultaneously</td></tr>
+    <tr><td>Q2 2026 ARPU print</td><td>$66 → ?  A bottom signal would re-rate Connectivity</td></tr>
+    <tr><td>AI segment quarterly loss trajectory</td><td>Largest single swing factor on consolidated GAAP</td></tr>
+    <tr><td>Anthropic agreement endurance</td><td>90-day termination clause = every quarter is a referendum</td></tr>
+    <tr><td>Material-weakness disclosure (likely 2027)</td><td>Often a 5–15% drawdown event regardless of substance</td></tr>
+    <tr><td>EchoStar spectrum closing (Nov 2027)</td><td>Unlocks V2 Mobile timeline</td></tr>
+    <tr><td>Lockup expiry (T+90, T+180)</td><td>Mechanical supply event; usually reprices growth IPOs lower</td></tr>
+    <tr><td>Terafab definitive agreement (or absence)</td><td>Confirms or removes the chip-supply leg of the AI thesis</td></tr>
+  </table>
+</section>
+
+<section class="section" id="sources">
+  <div class="section-num">15 / SOURCES</div>
+  <div class="kicker">Section 14 — Sources, Disclosures, References</div>
+  <h2>Where every number in this report comes from</h2>
+
+  <h3>Primary source</h3>
+  <ul>
+    <li>SEC EDGAR Form S-1, Space Exploration Technologies Corp.<br>
+      Accession 0001628280-26-036936, filed May 20, 2026 · CIK 0001181412<br>
+      <a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/spaceexplorationtechnologi.htm" style="color:var(--accent)">https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/spaceexplorationtechnologi.htm</a>
+    </li>
+    <li>Local extracts: <code>s1_text.txt</code>, <code>s1_main.htm</code>, <code>S1_Deep_Read_Analysis.md</code> in this folder</li>
+  </ul>
+
+  <h3>Supporting context (treated as colour, not as fact)</h3>
+  <ul>
+    <li>Sacra report (May 20, 2026) — used only where the S-1 corroborates</li>
+    <li>Bloomberg / Reuters reporting on valuation revisions to &gt;$2 T</li>
+    <li>Forge / Hiive secondary-market last-traded indications</li>
+    <li>Tema Space Innovators ETF disclosures (NASA ETF)</li>
+  </ul>
+
+  <h3>Numbers we deliberately did NOT quote (S-1 disagrees)</h3>
+  <ul>
+    <li>2024 revenue $13.1 B (S-1: $14.0 B recast)</li>
+    <li>2025 launches "165" (S-1: 170)</li>
+    <li>"Starlink ARPU $81" as a current number (S-1 Q1 2026: $66)</li>
+    <li>Terafab "$119 B SpaceX-only" (S-1: framework with Tesla + Intel; capex undisclosed)</li>
+  </ul>
+
+  <h3>Disclosures</h3>
+  <div class="disclaimer">
+    Prepared by Tiger Brokers Singapore investor education. Educational and informational only. Not investment advice and not personalised. All projections are scenarios, not forecasts. Past performance — including Tesla's 2018 performance award — does not predict future results. Pre-IPO and secondary-market vehicles carry liquidity, transparency, and structural risks materially greater than listed equities. The author may hold positions in named comparable companies. Listeners and readers should consult a licensed advisor and consider their own circumstances before any investment decision.
+  </div>
+</section>
+
+</body>
+</html>
