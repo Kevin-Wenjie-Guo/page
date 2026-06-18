@@ -1,0 +1,88 @@
+---
+title: "Claude API Switcher"
+author: "Kevin Guo"
+date: "2026-06-18"
+categories: [tools, Claude, AI, "中文"]
+description: "一个在多个 Claude API key / endpoint 之间快速切换的小工具 —— 设计、用法、踩过的坑。"
+---
+::: {.callout-note appearance="simple"}
+📄 **Also available as:** [HTML view →](claude-api-switcher.html)
+:::
+Quick Guide
+
+# 多 API 切换器配置已就绪！
+
+您的终端配置文件 `~/.zshrc` 已成功配置了**七牛 (Qiniu)** 和 **MindraCode** 两家 Claude 代理服务。您可以使用两个简单方便的命令，根据网络环境或额度情况随时一键切换。
+
+![API Gateway Banner](./api_switcher_banner.png)
+
+Providers
+
+## 认识您的两套 API 提供商
+
+两套配置均使用最新的 Claude 3.5 智能模型，通过代理路由让连接更通畅。
+
+● MindraCode (默认)
+
+已预设为开启新终端时的**默认源**，完美适配您的 `cmux` 终端环境。
+
+**BASE_URL:** https://api.mindracode.com
+
+**切换命令:** use_mindra
+
+● 七牛云 (Qiniu)
+
+使用最新写入的专用七牛 Key，保证高速稳定的备用开发通道。
+
+**BASE_URL:** https://api.qiniu.com
+
+**切换命令:** use_qiniu
+
+Default Command
+
+## 使用 use_mindra
+
+当您想使用 MindraCode API 服务时，只需在终端中键入 `use_mindra`。系统会自动清理其余代理配置，并更新为 MindraCode 的路由与密钥。
+
+终端会自动输出成功启用的绿色勾选标识。
+
+zsh - MindraCode Simulator
+
+kevin@macbook %
+
+Alternative Command
+
+## 使用 use_qiniu
+
+当您想将服务通道切为七牛云 API 时，在终端中直接键入 `use_qiniu`。它会秒级完成所有底层变量替换，不需要您重新登录，无需手动编辑配置。
+
+这允许您在不同的模型计费提供商之间快速横跳。
+
+zsh - Qiniu Simulator
+
+kevin@macbook %
+
+Verification & Tips
+
+## 高级验证与排查小常识
+
+💡 **生效方式**：
+要让新写入的配置文件立即在当前老终端中起作用，请确保执行过：
+source ~/.zshrc
+
+🔬 **如何检查当前生效的 API 通道？**
+在终端里直接执行如下指令，可以打印当前正在使用的 Base URL：
+echo $ANTHROPIC_BASE_URL
+
+⚙️ **超时防护配置 (已写入)**：
+为了防止复杂、长时间运行的 Coding 任务发生意外超时，我们已经为您在全局注入了最大保护时长：
+export DEFAULT_TIMEOUT_MS=3600000 (1小时)
+
+✅ **回复测试**：
+配置成功后，启动你的命令行 AI（例如输入 `claude` ），如果能看见计费或正常的欢迎回复，即表示配置成功。
+
+### 🎉 万事大吉！祝您开发愉快！
+
+---
+
+*Original HTML version: [claude-api-switcher.html](claude-api-switcher.html)*

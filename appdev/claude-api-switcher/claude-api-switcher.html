@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude API 切换器指南 🚀</title>
+    <!-- 引入高档现代字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.15);
+            --qiniu-color: #06b6d4;
+            --qiniu-glow: rgba(6, 182, 212, 0.15);
+            --mindra-color: #ec4899;
+            --mindra-glow: rgba(236, 72, 153, 0.15);
+            --terminal-bg: #030712;
+            --success: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.05) 0%, transparent 40%);
+        }
+
+        /* 顶部导航 */
+        header {
+            padding: 24px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(8px);
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--primary), var(--qiniu-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo svg {
+            width: 24px;
+            height: 24px;
+            fill: url(#logo-grad);
+        }
+
+        .progress-container {
+            display: flex;
+            gap: 8px;
+        }
+
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .progress-dot.active {
+            background-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            width: 32px;
+            border-radius: 6px;
+        }
+
+        /* 幻灯片主容器 */
+        main {
+            flex-grow: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+            padding: 20px;
+        }
+
+        .slide {
+            position: absolute;
+            width: 90%;
+            max-width: 1000px;
+            min-height: 520px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 48px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            opacity: 0;
+            pointer-events: none;
+            transform: rotateY(45deg) translateZ(-100px) scale(0.9);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: rotateY(0deg) translateZ(0) scale(1);
+            z-index: 5;
+        }
+
+        /* 幻灯片布局元素 */
+        .slide-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .slide-text {
+            flex: 1;
+        }
+
+        .slide-visual {
+            flex: 1.2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+        }
+
+        .tag-qiniu {
+            background-color: var(--qiniu-glow);
+            color: var(--qiniu-color);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        .tag-mindra {
+            background-color: var(--mindra-glow);
+            color: var(--mindra-color);
+            border: 1px solid rgba(236, 72, 153, 0.2);
+        }
+
+        .tag-info {
+            background-color: var(--primary-glow);
+            color: var(--primary);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        /* 特制终端仿真器 */
+        .terminal-box {
+            width: 100%;
+            background-color: var(--terminal-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+        }
+
+        .terminal-header {
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .terminal-buttons {
+            display: flex;
+            gap: 6px;
+        }
+
+        .terminal-btn {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .btn-red { background-color: #ef4444; }
+        .btn-yellow { background-color: #f59e0b; }
+        .btn-green { background-color: #10b981; }
+
+        .terminal-title {
+            color: var(--text-muted);
+            font-size: 11px;
+        }
+
+        .terminal-body {
+            padding: 20px;
+            min-height: 200px;
+            color: #d1d5db;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .cmd-line {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .prompt {
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 15px;
+            background-color: var(--text-main);
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            from, to { background-color: transparent }
+            50% { background-color: var(--text-main) }
+        }
+
+        .cmd-output {
+            color: #9ca3af;
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
+
+        .highlight-output {
+            color: #60a5fa;
+        }
+
+        /* 引导交互按钮 */
+        .action-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, #4f46e5 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+        }
+
+        .action-btn:active {
+            transform: translateY(0);
+        }
+
+        /* 底部控制栏 */
+        footer {
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            z-index: 10;
+        }
+
+        .nav-btn {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .help-text {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        /* 第一张幻灯片的 Banner 图像 */
+        .banner-img-container {
+            width: 100%;
+            height: 280px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .banner-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 多栏对比 */
+        .provider-cards {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .provider-card {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s;
+        }
+
+        .provider-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .provider-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .provider-detail {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            line-height: 1.4;
+        }
+
+        .code-snippet {
+            font-family: 'Fira Code', monospace;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #e5e7eb;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶栏 SVG 渐变定义 -->
+    <svg style="width:0;height:0;position:absolute;">
+        <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#6366f1" />
+            <stop offset="100%" stop-color="#06b6d4" />
+        </linearGradient>
+    </svg>
+
+    <header>
+        <div class="logo">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2L2 22h20L12 2zm0 3l7.5 15h-15L12 5zm-1 8h2v5h-2v-5zm0-3h2v2h-2V10z"/>
+            </svg>
+            Claude API Switcher
+        </div>
+        <div class="progress-container" id="progress-container">
+            <!-- 由 JS 渲染 -->
+        </div>
+    </header>
+
+    <main>
+        <!-- Slide 1: 欢迎页 -->
+        <div class="slide active" id="slide-1">
+            <div class="slide-content">
+                <div class="slide-text">
+                    <span class="tag tag-info">Quick Guide</span>
+                    <h1>多 API 切换器配置已就绪！</h1>
+                    <p>您的终端配置文件 <code>~/.zshrc</code> 已成功配置了<strong>七牛 (Qiniu)</strong> 和 <strong>MindraCode</strong> 两家 Claude 代理服务。您可以使用两个简单方便的命令，根据网络环境或额度情况随时一键切换。</p>
+                    <button class="action-btn" onclick="nextSlide()">
+                        开始浏览指南
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+                <div class="slide-visual">
+                    <div class="banner-img-container">
+                        <!-- 引用生成的 Banner -->
+                        <img src="./api_switcher_banner.png" alt="API Gateway Banner">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: 服务提供商对比 -->
+        <div class="slide" id="slide-2">
+            <div class="slide-content" style="flex-direction: column; align-items: flex-start; justify-content: center;">
+                <div style="margin-bottom: 24px;">
+                    <span class="tag tag-info">Providers</span>
+                    <h2>认识您的两套 API 提供商</h2>
+                    <p style="margin-bottom: 0;">两套配置均使用最新的 Claude 3.5 智能模型，通过代理路由让连接更通畅。</p>
+                </div>
+                <div class="provider-cards">
+                    <div class="provider-card" style="border-top: 4px solid var(--mindra-color);">
+                        <div class="provider-title">
+                            <span style="color: var(--mindra-color);">●</span> MindraCode (默认)
+                        </div>
+                        <p style="font-size: 14px; margin-bottom: 12px;">已预设为开启新终端时的<b>默认源</b>，完美适配您的 <code>cmux</code> 终端环境。</p>
+                        <div class="provider-detail">
+                            <b>BASE_URL:</b> <span class="code-snippet">https://api.mindracode.com</span><br><br>
+                            <b>切换命令:</b> <span class="code-snippet">use_mindra</span>
+                        </div>
+                    </div>
+                    <div class="provider-card" style="border-top: 4px solid var(--qiniu-color);">
+                        <div class="provider-title">
+                            <span style="color: var(--qiniu-color);">●</span> 七牛云 (Qiniu)
+                        </div>
+                        <p style="font-size: 14px; margin-bottom: 12px;">使用最新写入的专用七牛 Key，保证高速稳定的备用开发通道。</p>
+                        <div class="provider-detail">
+                            <b>BASE_URL:</b> <span class="code-snippet">https://api.qiniu.com</span><br><br>
+                            <b>切换命令:</b> <span class="code-snippet">use_qiniu</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: 演示指令: use_mindra -->
+        <div class="slide" id="slide-3">
+            <div class="slide-content">
+                <div class="slide-text">
+                    <span class="tag tag-mindra">Default Command</span>
+                    <h2>使用 use_mindra</h2>
+                    <p>当您想使用 MindraCode API 服务时，只需在终端中键入 <code>use_mindra</code>。系统会自动清理其余代理配置，并更新为 MindraCode 的路由与密钥。</p>
+                    <p style="font-size: 14px; color: var(--text-muted);">终端会自动输出成功启用的绿色勾选标识。</p>
+                    <button class="action-btn" style="background: linear-gradient(135deg, var(--mindra-color) 0%, #db2777 100%); box-shadow: 0 4px 14px var(--mindra-glow);" onclick="simulateMindra()">
+                        模拟运行此命令 ⚡
+                    </button>
+                </div>
+                <div class="slide-visual">
+                    <div class="terminal-box">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <div class="terminal-btn btn-red"></div>
+                                <div class="terminal-btn btn-yellow"></div>
+                                <div class="terminal-btn btn-green"></div>
+                            </div>
+                            <div class="terminal-title">zsh - MindraCode Simulator</div>
+                            <div></div>
+                        </div>
+                        <div class="terminal-body" id="mindra-terminal">
+                            <div class="cmd-line">
+                                <span class="prompt">kevin@macbook %</span>
+                                <span class="cmd-input" id="mindra-input"></span><span class="cursor" id="mindra-cursor"></span>
+                            </div>
+                            <div class="cmd-output" id="mindra-output"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: 演示指令: use_qiniu -->
+        <div class="slide" id="slide-4">
+            <div class="slide-content">
+                <div class="slide-text">
+                    <span class="tag tag-qiniu">Alternative Command</span>
+                    <h2>使用 use_qiniu</h2>
+                    <p>当您想将服务通道切为七牛云 API 时，在终端中直接键入 <code>use_qiniu</code>。它会秒级完成所有底层变量替换，不需要您重新登录，无需手动编辑配置。</p>
+                    <p style="font-size: 14px; color: var(--text-muted);">这允许您在不同的模型计费提供商之间快速横跳。</p>
+                    <button class="action-btn" style="background: linear-gradient(135deg, var(--qiniu-color) 0%, #0891b2 100%); box-shadow: 0 4px 14px var(--qiniu-glow);" onclick="simulateQiniu()">
+                        模拟运行此命令 ⚡
+                    </button>
+                </div>
+                <div class="slide-visual">
+                    <div class="terminal-box">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <div class="terminal-btn btn-red"></div>
+                                <div class="terminal-btn btn-yellow"></div>
+                                <div class="terminal-btn btn-green"></div>
+                            </div>
+                            <div class="terminal-title">zsh - Qiniu Simulator</div>
+                            <div></div>
+                        </div>
+                        <div class="terminal-body" id="qiniu-terminal">
+                            <div class="cmd-line">
+                                <span class="prompt">kevin@macbook %</span>
+                                <span class="cmd-input" id="qiniu-input"></span><span class="cursor" id="qiniu-cursor"></span>
+                            </div>
+                            <div class="cmd-output" id="qiniu-output"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: 高级控制与验证 -->
+        <div class="slide" id="slide-5">
+            <div class="slide-content" style="flex-direction: column; align-items: flex-start; justify-content: center;">
+                <div style="margin-bottom: 20px;">
+                    <span class="tag tag-info">Verification & Tips</span>
+                    <h2>高级验证与排查小常识</h2>
+                </div>
+                <div style="display: flex; gap: 24px; width: 100%;">
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 16px;">
+                        <p style="margin: 0; font-size: 15px;">
+                            💡 <b>生效方式</b>：<br>
+                            要让新写入的配置文件立即在当前老终端中起作用，请确保执行过：<br>
+                            <span class="code-snippet" style="font-size: 14px; display: inline-block; margin-top: 5px;">source ~/.zshrc</span>
+                        </p>
+                        <p style="margin: 0; font-size: 15px;">
+                            🔬 <b>如何检查当前生效的 API 通道？</b><br>
+                            在终端里直接执行如下指令，可以打印当前正在使用的 Base URL：<br>
+                            <span class="code-snippet" style="font-size: 14px; display: inline-block; margin-top: 5px;">echo $ANTHROPIC_BASE_URL</span>
+                        </p>
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 16px;">
+                        <p style="margin: 0; font-size: 15px;">
+                            ⚙️ <b>超时防护配置 (已写入)</b>：<br>
+                            为了防止复杂、长时间运行的 Coding 任务发生意外超时，我们已经为您在全局注入了最大保护时长：<br>
+                            <span class="code-snippet" style="font-size: 13px; display: inline-block; margin-top: 5px;">export DEFAULT_TIMEOUT_MS=3600000 (1小时)</span>
+                        </p>
+                        <p style="margin: 0; font-size: 15px;">
+                            ✅ <b>回复测试</b>：<br>
+                            配置成功后，启动你的命令行 AI（例如输入 <code>claude</code> ），如果能看见计费或正常的欢迎回复，即表示配置成功。
+                        </p>
+                    </div>
+                </div>
+                <div style="margin-top: 30px; text-align: center; width: 100%;">
+                    <h3 style="font-size: 18px; color: var(--success);">🎉 万事大吉！祝您开发愉快！</h3>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <button class="nav-btn" id="prev-btn" onclick="prevSlide()" disabled>上一步</button>
+        <span class="help-text">💡 提示：您可以使用键盘的 <b>← / →</b> 键或 <b>空格键</b> 切换幻灯片</span>
+        <button class="nav-btn" id="next-btn" onclick="nextSlide()">下一步</button>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressContainer = document.getElementById('progress-container');
+        
+        let currentSlideIdx = 0;
+
+        // 渲染进度圆点
+        function renderProgress() {
+            progressContainer.innerHTML = '';
+            slides.forEach((_, idx) => {
+                const dot = document.createElement('div');
+                dot.className = `progress-dot ${idx === currentSlideIdx ? 'active' : ''}`;
+                dot.onclick = () => goToSlide(idx);
+                progressContainer.appendChild(dot);
+            });
+        }
+
+        // 更新幻灯片状态
+        function updateSlideVisibility() {
+            slides.forEach((slide, idx) => {
+                slide.classList.toggle('active', idx === currentSlideIdx);
+            });
+            prevBtn.disabled = currentSlideIdx === 0;
+            nextBtn.disabled = currentSlideIdx === slides.length - 1;
+            renderProgress();
+        }
+
+        function goToSlide(idx) {
+            if (idx >= 0 && idx < slides.length) {
+                currentSlideIdx = idx;
+                updateSlideVisibility();
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlideIdx < slides.length - 1) {
+                goToSlide(currentSlideIdx + 1);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlideIdx > 0) {
+                goToSlide(currentSlideIdx - 1);
+            }
+        }
+
+        // 键盘导航支持
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        // 仿真器打字效果实现
+        function typeWriter(elementId, text, speed, callback) {
+            const el = document.getElementById(elementId);
+            el.textContent = '';
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    el.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else if (callback) {
+                    callback();
+                }
+            }
+            type();
+        }
+
+        // 模拟 MindraCode 运行
+        let isMindraSimulating = false;
+        function simulateMindra() {
+            if (isMindraSimulating) return;
+            isMindraSimulating = true;
+            
+            const cursor = document.getElementById('mindra-cursor');
+            cursor.style.display = 'inline-block';
+            
+            typeWriter('mindra-input', 'use_mindra', 100, () => {
+                cursor.style.display = 'none';
+                setTimeout(() => {
+                    const output = document.getElementById('mindra-output');
+                    output.innerHTML = `✅ 已切换为: MindraCode Claude API 环境<br><br>
+<span style="color:var(--success)">kevin@macbook %</span> claude<br>
+<span class="highlight-output">🤖 Claude Code (v0.x) 已成功加载。</span><br>
+<span class="highlight-output">Cost: $0.00 / API Usage Billing (api.mindracode.com)</span><br>
+<span style="color:white">? 如何帮助你？</span> <span class="cursor" style="display:inline-block"></span>`;
+                    isMindraSimulating = false;
+                }, 400);
+            });
+        }
+
+        // 模拟 Qiniu 运行
+        let isQiniuSimulating = false;
+        function simulateQiniu() {
+            if (isQiniuSimulating) return;
+            isQiniuSimulating = true;
+            
+            const cursor = document.getElementById('qiniu-cursor');
+            cursor.style.display = 'inline-block';
+            
+            typeWriter('qiniu-input', 'use_qiniu', 100, () => {
+                cursor.style.display = 'none';
+                setTimeout(() => {
+                    const output = document.getElementById('qiniu-output');
+                    output.innerHTML = `✅ 已切换为: 七牛 (Qiniu) Claude API 环境<br><br>
+<span style="color:var(--success)">kevin@macbook %</span> claude<br>
+<span class="highlight-output">🤖 Claude Code (v0.x) 已成功加载。</span><br>
+<span class="highlight-output">Cost: $0.00 / API Usage Billing (api.qiniu.com)</span><br>
+<span style="color:white">? 如何帮助你？</span> <span class="cursor" style="display:inline-block"></span>`;
+                    isQiniuSimulating = false;
+                }, 400);
+            });
+        }
+
+        // 初始化
+        renderProgress();
+    </script>
+</body>
+</html>
