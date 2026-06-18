@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>关系恢复指南 · 基于神经科学 · 2026-06-15</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style>
+  :root{
+    --paper:#f5efe4;
+    --paper-2:#ebe2cf;
+    --ink:#1f1a14;
+    --ink-soft:#5b4d3a;
+    --rule:#c4b18f;
+    --rose:#a8324a;
+    --rose-soft:#e9b9c0;
+    --amber:#b8842a;
+    --teal:#356860;
+    --violet:#5d3f8a;
+    --gold:#c89849;
+    --serif:'Georgia','Iowan Old Style','Source Han Serif SC','Songti SC',serif;
+    --sans:-apple-system,'PingFang SC','Helvetica Neue',Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+  body{padding:48px 24px 96px}
+  .page{max-width:940px;margin:0 auto}
+  .toolbar{position:sticky;top:0;z-index:5;display:flex;gap:8px;justify-content:flex-end;padding:8px 0;background:linear-gradient(to bottom,var(--paper) 70%,transparent)}
+  .btn{font:600 12px/1 var(--sans);letter-spacing:.04em;text-transform:uppercase;padding:10px 14px;border:1px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;border-radius:0;transition:all .15s ease}
+  .btn:hover{background:var(--ink);color:var(--paper)}
+  .btn.primary{background:var(--rose);border-color:var(--rose);color:#fff}
+  .btn.primary:hover{background:#7c2336;border-color:#7c2336}
+
+  .masthead{border-top:6px solid var(--ink);padding-top:14px;margin-top:8px;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:10px;flex-wrap:wrap;gap:8px}
+  .masthead .brand{font:700 12px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase}
+  .masthead .meta{font:italic 13px/1 var(--serif);color:var(--ink-soft)}
+
+  .hero{padding:48px 0 24px;border-bottom:1px solid var(--rule)}
+  .hero .kicker{font:600 12px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:var(--rose)}
+  .hero h1{font:700 clamp(36px,6vw,68px)/1.02 var(--serif);margin:14px 0 12px;letter-spacing:-0.02em}
+  .hero h1 em{font-style:italic;color:var(--rose)}
+  .hero .deck{font:400 clamp(16px,1.4vw,19px)/1.5 var(--serif);color:var(--ink-soft);max-width:680px}
+  .hero .stat-row{display:flex;gap:24px;margin-top:24px;flex-wrap:wrap;border-top:1px dashed var(--rule);padding-top:18px}
+  .stat{flex:1 1 160px}
+  .stat .n{font:700 28px/1 var(--serif);color:var(--rose)}
+  .stat .l{font:600 11px/1.3 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px}
+
+  section{padding:44px 0;border-bottom:1px solid var(--rule)}
+  section:last-of-type{border-bottom:0}
+  h2{font:700 26px/1.15 var(--serif);margin:0 0 8px;letter-spacing:-0.01em}
+  h2 .num{display:inline-block;font:600 11px/1 var(--sans);letter-spacing:.3em;color:var(--rose);vertical-align:middle;margin-right:14px;padding:6px 8px;border:1px solid var(--rose)}
+  .lede{font:italic 16px/1.55 var(--serif);color:var(--ink-soft);margin:0 0 22px;max-width:720px}
+
+  h3{font:700 18px/1.3 var(--serif);margin:24px 0 8px}
+  h4{font:700 14px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;margin:18px 0 6px;color:var(--rose)}
+  p{margin:0 0 12px}
+
+  .diagnosis{background:#efe5d0;border-left:4px solid var(--rose);padding:18px 22px;margin:0 0 8px}
+  .diagnosis h3{margin-top:0}
+  .diagnosis ul{margin:8px 0 0;padding-left:18px}
+  .diagnosis li{margin:4px 0;font-size:14px}
+
+  .nt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:8px}
+  .nt{background:var(--paper);padding:16px}
+  .nt .name{font:700 13px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase}
+  .nt .cn{font:400 12px/1 var(--serif);color:var(--ink-soft);margin-top:4px}
+  .nt .what{font:400 13px/1.55 var(--sans);margin-top:10px}
+  .nt .here{font:600 11px/1.4 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--rose);margin-top:10px;border-top:1px dashed var(--rule);padding-top:8px}
+  .nt.cort{border-top:3px solid var(--rose)}
+  .nt.oxy{border-top:3px solid var(--teal)}
+  .nt.dop{border-top:3px solid var(--amber)}
+  .nt.sero{border-top:3px solid var(--violet)}
+
+  .phase{display:grid;grid-template-columns:80px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--rule)}
+  .phase:last-child{border-bottom:0}
+  .phase .marker{font:700 36px/0.9 var(--serif);color:var(--rose);font-style:italic;letter-spacing:-0.02em}
+  .phase .marker .sub{display:block;font:600 10px/1.2 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);font-style:normal;margin-top:6px}
+  .phase h3{margin-top:0;margin-bottom:4px}
+  .phase .timeframe{font:italic 13px/1.3 var(--serif);color:var(--ink-soft);margin-bottom:14px}
+  .goal-box{background:#fbf6e8;border:1px solid var(--rule);padding:12px 14px;margin:10px 0 14px}
+  .goal-box b{display:block;font:700 11px/1.2 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--amber);margin-bottom:4px}
+  .actions{margin:10px 0}
+  .actions li{margin:6px 0;font-size:14.5px}
+  .actions li b{color:var(--rose)}
+  .neuro-tag{display:inline-block;font:600 10px/1.2 var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:3px 6px;background:var(--ink);color:var(--paper);margin-right:4px;vertical-align:middle}
+  .neuro-tag.oxy{background:var(--teal)}
+  .neuro-tag.dop{background:var(--amber)}
+  .neuro-tag.cort{background:var(--rose)}
+  .neuro-tag.sero{background:var(--violet)}
+
+  .donts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px}
+  .donts .x{padding:14px;background:#f5dde0;border-left:3px solid var(--rose);font:400 13.5px/1.5 var(--sans)}
+  .donts .x b{display:block;font:700 12px/1.2 var(--sans);letter-spacing:.04em;margin-bottom:4px;text-transform:uppercase;color:var(--rose)}
+
+  .mech{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px}
+  .mech .item{padding:16px 18px;border-left:3px solid var(--teal);background:#e8f0ed}
+  .mech .item:nth-child(2){border-left-color:var(--amber);background:#f7eed8}
+  .mech .item:nth-child(3){border-left-color:var(--violet);background:#ece6f4}
+  .mech .item:nth-child(4){border-left-color:var(--rose);background:#f5dde0}
+  .mech h4{margin:0 0 6px;color:var(--ink);text-transform:none;letter-spacing:0;font-family:var(--serif);font-size:16px}
+  .mech p{margin:0;font:400 14px/1.55 var(--sans)}
+  .mech .cite{display:block;margin-top:8px;font:italic 12px/1.3 var(--serif);color:var(--ink-soft)}
+
+  .script{background:#1f1a14;color:#f5efe4;padding:18px 22px;margin:14px 0;border-left:4px solid var(--gold)}
+  .script .label{font:600 10px/1.2 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+  .script .said{font:italic 15px/1.5 var(--serif);color:#f5efe4;margin:8px 0}
+  .script .said.bad{color:#e9b9c0;text-decoration:line-through;text-decoration-color:#a8324a}
+  .script .said.good{color:#f9e9c4}
+  .script .why{font:13px/1.5 var(--sans);color:#cbb89a;margin-top:6px}
+
+  .checklist{margin:14px 0;padding:0;list-style:none}
+  .checklist li{padding:8px 0 8px 30px;position:relative;border-bottom:1px dotted var(--rule);font:14px/1.4 var(--sans)}
+  .checklist li:last-child{border-bottom:0}
+  .checklist li::before{content:'☐';position:absolute;left:0;top:6px;font-size:18px;color:var(--rose)}
+
+  table.recap{width:100%;border-collapse:collapse;margin-top:16px;font:14px/1.5 var(--sans)}
+  table.recap th,table.recap td{border:1px solid var(--rule);padding:10px 12px;vertical-align:top;text-align:left}
+  table.recap th{background:var(--ink);color:var(--paper);font:600 12px/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase}
+
+  .colophon{padding-top:28px;font:italic 13px/1.5 var(--serif);color:var(--ink-soft);text-align:center}
+
+  @media (max-width:640px){
+    body{padding:24px 16px 64px}
+    .phase{grid-template-columns:1fr}
+    .phase .marker{font-size:28px}
+    .mech{grid-template-columns:1fr}
+  }
+  @media print{
+    .toolbar{display:none}
+    body{background:#fff;padding:0;font-size:11pt}
+    section,.phase{break-inside:avoid;page-break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="toolbar" contenteditable="false">
+    <button class="btn" onclick="window.print()">打印 / 导出 PDF</button>
+    <button class="btn primary" onclick="saveDoc()">保存 HTML</button>
+  </div>
+
+  <main contenteditable="true" spellcheck="false">
+
+    <header class="masthead">
+      <span class="brand">Recovery Lab · For 睿睿 &amp; 羊羊</span>
+      <span class="meta">2026 年 6 月 15 日 · 基于 Plot.md 定制</span>
+    </header>
+
+    <div class="hero">
+      <div class="kicker">Neuroscience-Based Repair Protocol</div>
+      <h1>关系恢复指南<br><em>—— 给羊羊的神经科学路线图</em></h1>
+      <p class="deck">这不是一份"如何让她回来"的攻略。这是一份基于她的大脑当下状态——还在修复信任、还在评估安全感、还在保护自己——倒推出来的、12 周分阶段行动方案。所有动作都对应到具体的神经化学机制。</p>
+      <div class="stat-row">
+        <div class="stat"><div class="n">3 年</div><div class="l">关系总长度</div></div>
+        <div class="stat"><div class="n">~12 月</div><div class="l">你冷淡她的时长</div></div>
+        <div class="stat"><div class="n">现在</div><div class="l">同城 / 频繁见面</div></div>
+        <div class="stat"><div class="n">12 周</div><div class="l">建议恢复周期</div></div>
+      </div>
+    </div>
+
+    <!-- 0. 诊断 -->
+    <section>
+      <h2><span class="num">00</span>先诊断 · 她的大脑现在在防什么</h2>
+      <p class="lede">恢复的前提是知道你在修什么。从 Plot.md 反推，她当前对你的心智模型大概率包含以下三个"防御性预测"。每一个都对应一种神经化学反应，决定她见到你时身体的第一反应。</p>
+
+      <div class="diagnosis">
+        <h3>她大脑里关于"羊羊"的三个负面预测</h3>
+        <ul>
+          <li><b>① "他会再次突然冷掉。"</b> —— 八月之后的 12 个月冷淡是一次明确的"依附受伤"事件。海马体把"羊羊 + 突然消失"这对组合编码进了威胁记忆。每次见你之前，她杏仁核会先做风险评估。</li>
+          <li><b>② "和他亲近 = 我会再次失控地难过。"</b> —— 分手时她没崩，是因为你还在。等你真的撤了，她大脑才进入<em>延迟创伤反应</em>，"胡吃海塞填空白"也发生在你身上的对应版本里。她现在不愿意重启，本质是<em>认知性自我保护</em>。</li>
+          <li><b>③ "他喜欢我，可能会变成压力。"</b> —— 你过去那种"高强度爱"在异国阶段后期已经被她神经系统标记为"消耗品"。她现在很警惕"被你的喜欢困住"。</li>
+        </ul>
+      </div>
+
+      <h3>这三条对你意味着什么</h3>
+      <p>你不能用"更多的爱 / 更深的告白 / 更长的视频"去攻克这些预测——那只会激活她已经设防的电路。<b>唯一能让这些预测被覆盖的方式，是用 12-16 周的新行为数据，慢慢让她大脑重新更新预测。</b>这就是所谓"信任不能说，只能种"。</p>
+    </section>
+
+    <!-- 1. 四种关键神经化学 -->
+    <section>
+      <h2><span class="num">01</span>这一阶段最该理解的四种神经化学</h2>
+      <p class="lede">和早期约会不一样。修复期的大脑不是在追求多巴胺峰值，而是在等催产素、皮质醇、血清素三轴的<em>稳态</em>。</p>
+
+      <div class="nt-grid">
+        <div class="nt cort">
+          <div class="name">Cortisol</div>
+          <div class="cn">皮质醇 · 防御与警觉</div>
+          <div class="what">她每次和你互动，杏仁核会评估是否安全。皮质醇升高 = 防御启动 = 后续任何亲密信号都会被关掉。</div>
+          <div class="here">你的工作：让每次见面后她的皮质醇回到基线，而不是升高。</div>
+        </div>
+        <div class="nt oxy">
+          <div class="name">Oxytocin</div>
+          <div class="cn">催产素 · 信任与依附</div>
+          <div class="what">催产素不会因为"我很爱你"而释放。它响应的是：可预测性、被听见、温和的触碰、被照顾。受伤的人尤其需要"先安全再亲密"。</div>
+          <div class="here">你的工作：成为她神经系统里"可预测的安全源"。</div>
+        </div>
+        <div class="nt dop">
+          <div class="name">Dopamine</div>
+          <div class="cn">多巴胺 · 期待与新奇</div>
+          <div class="what">她对你的多巴胺反应在过去 12 个月可能已经被消减了（习惯化 + 负面联想）。但<em>"惊喜的、轻量的、不带条件的好"</em>可以重启它。</div>
+          <div class="here">你的工作：小剂量、不可预测的善意，不是大剂量的浪漫。</div>
+        </div>
+        <div class="nt sero">
+          <div class="name">Serotonin</div>
+          <div class="cn">血清素 · 稳定与价值感</div>
+          <div class="what">长期关系满意度的底层是血清素稳态：感觉被尊重、有地位、不被消耗。她现在判断你的标准不是"你多爱我"，而是"和你在一起我会不会变得更好"。</div>
+          <div class="here">你的工作：让她在你身边感到自己更亮、更被尊重，而不是被需要。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 四个核心机制 -->
+    <section>
+      <h2><span class="num">02</span>四个必须吃透的神经科学机制</h2>
+      <p class="lede">这四条是这份指南所有具体动作的底层原理。每一条都解释了"为什么过去那套不管用了"。</p>
+
+      <div class="mech">
+        <div class="item">
+          <h4>① 预测编码（Predictive Coding）</h4>
+          <p>大脑不是被动接收世界，而是不断生成对世界的预测，再用现实校对。她对你的预测目前是"会再次冷掉 / 会再次压我"。<b>只有持续 8-12 周不符合她预测的新数据，预测才会被更新。</b></p>
+          <span class="cite">→ 不要试图说服她，让她<em>看见</em>一个不一样的你。</span>
+        </div>
+        <div class="item">
+          <h4>② 习惯化（Habituation）</h4>
+          <p>同一个刺激重复出现，神经反应会衰减。"我爱你 / 我很在乎你 / 我会改"在过去三年她听过太多次，这些词在她神经系统里已经不再激活情绪。</p>
+          <span class="cite">→ 说得越多，越无效。改用<em>非言语证据</em>。</span>
+        </div>
+        <div class="item">
+          <h4>③ 依附损伤修复（Attachment Injury Repair）</h4>
+          <p>Sue Johnson 的 EFT 研究：受伤方需要看到伤害方<em>明确承认、不辩解、不淡化</em>，然后用持续行为证明不会重演。一次清晰的承认 &gt; 一百次模糊的好。</p>
+          <span class="cite">→ 你需要一次<em>非视频</em>形式的、直接的、无任何"但是"的承认。</span>
+        </div>
+        <div class="item">
+          <h4>④ 镜像神经元 &amp; 情绪同调（Co-regulation）</h4>
+          <p>她的神经系统会下意识同步你的状态。如果你紧绷、焦虑、需要回应——她也紧绷。如果你松弛、有自己的节奏、对见面不附加期待——她神经系统才能放下。</p>
+          <span class="cite">→ 修复关系的第一步是修复你自己的神经系统。</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 12周分阶段方案 -->
+    <section>
+      <h2><span class="num">03</span>12 周分阶段恢复方案</h2>
+      <p class="lede">分四个阶段，每个阶段 3 周。<b>不要跳级</b>——大脑神经回路的重塑速度是有生物上限的（突触级别的可塑性约 21 天形成新连接）。</p>
+
+      <div class="phase">
+        <div class="marker">01<span class="sub">Week 1–3</span></div>
+        <div>
+          <h3>降皮质醇期 · "证明我不会再消失"</h3>
+          <p class="timeframe">目标神经化学：把她见到你时的皮质醇基线拉下来</p>
+
+          <div class="goal-box">
+            <b>本阶段唯一目标</b>
+            让她大脑形成一个新数据点：<em>"和羊羊见面 / 聊天不会再带来意外的伤害。"</em> 不追求任何亲密推进。
+          </div>
+
+          <h4>关键动作</h4>
+          <ul class="actions">
+            <li><span class="neuro-tag cort">皮质醇↓</span><b>可预测性。</b> 联系节奏稳定（不一会高频一会消失）、回复时间稳定、见面频率稳定。她大脑最需要的不是惊喜，是<b>能预测</b>。</li>
+            <li><span class="neuro-tag cort">皮质醇↓</span><b>一次明确的承认。</b> 不是视频里、不是隐喻、不是"以前我有问题"，而是当面或长文字：<em>"去年八月开始我冷下来那 12 个月，我知道我让你独自承担了很多。那不是你做错了什么。我很抱歉。"</em> 没有"但是"，没有解释。一次就够。</li>
+            <li><span class="neuro-tag oxy">催产素+</span><b>低强度、零压力的相处。</b> 吃饭、散步、走路、buy 她爱吃的小东西。不安排"约会感很重"的活动。</li>
+            <li><span class="neuro-tag sero">血清素+</span><b>每次见面后她应该更轻松，而不是更累。</b> 见完就该结束，不要拖延，不要"再聊聊"，不要发"刚才在车上想到 ..."这种延伸消息。</li>
+          </ul>
+
+          <h4>本阶段禁忌</h4>
+          <div class="donts">
+            <div class="x"><b>不要发那个视频</b>哪怕是温柔版。Week 1-3 她神经系统还在防你，任何"纪念性内容"都会被解读为"开始施压了"。</div>
+            <div class="x"><b>不要提"我们"</b>不要谈关系定义、不要回忆过去、不要说"那时候"。她大脑会立刻进入评估模式。</div>
+            <div class="x"><b>不要发深夜长文</b>深夜情绪文本会激活她的应激反应。所有重话都白天、简短、就事论事。</div>
+            <div class="x"><b>不要主动谈她的 options 或你的 crush</b>这个话题在 Week 1-12 任何时候都不该由你发起。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="marker">02<span class="sub">Week 4–6</span></div>
+        <div>
+          <h3>催产素重建期 · "和你在一起是安心的"</h3>
+          <p class="timeframe">目标神经化学：催产素 + 血清素 同步上升</p>
+
+          <div class="goal-box">
+            <b>本阶段唯一目标</b>
+            让她大脑形成第二个新数据点：<em>"和羊羊在一起的时候，我能放松、能笑、能做自己。"</em> 仍然不推进定义。
+          </div>
+
+          <h4>关键动作</h4>
+          <ul class="actions">
+            <li><span class="neuro-tag oxy">催产素+</span><b>共同照顾一个对象。</b> 一起照顾朋友的猫、一起给你妈/她妈选生日礼物、一起做一顿饭送给共同朋友。<em>共同照顾</em>是催产素最强的非身体触发器（参见 oxytocin 和 caregiving 的研究）。</li>
+            <li><span class="neuro-tag oxy">催产素+</span><b>小剂量身体接触，由她主导。</b> 不要主动拥抱、不要试探牵手。只是<em>不躲</em>她的接触。让她的身体感觉"靠近你不会被推进"。</li>
+            <li><span class="neuro-tag sero">血清素+</span><b>在她朋友面前认真夸她。</b> 不是夸外貌，是夸她做过的具体事："她那篇论文那一段改得真的好。"——血清素响应的是<em>地位感被外部认可</em>。</li>
+            <li><span class="neuro-tag dop">多巴胺+</span><b>引入轻量新奇。</b> 一家她没去过的小店、一个她没看过的展、一个她朋友圈没人推过的地方。每周一个就够。</li>
+          </ul>
+
+          <h4>这一阶段的关键测试</h4>
+          <p>看她有没有开始主动发起一些小事——一张照片、一个梗、一段她今天遇到的事。<b>如果有，说明她神经系统开始把你从"威胁源"重新分类为"安全源"。</b> 如果没有，留在 Week 4-6 多两周，不要跳。</p>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="marker">03<span class="sub">Week 7–9</span></div>
+        <div>
+          <h3>多巴胺重启期 · "和你在一起会发生有趣的事"</h3>
+          <p class="timeframe">目标神经化学：多巴胺峰值 + 自我扩展（self-expansion）</p>
+
+          <div class="goal-box">
+            <b>本阶段唯一目标</b>
+            让她大脑形成第三个新数据点：<em>"羊羊不只是那个曾经爱过我的人，他是个值得花时间靠近的人，我和他在一起会变得更亮。"</em>
+          </div>
+
+          <h4>关键动作</h4>
+          <ul class="actions">
+            <li><span class="neuro-tag dop">多巴胺+</span><b>引入<em>共同新体验</em>（参考 Aron 的 self-expansion theory）。</b> 一起报一节课（陶艺、调酒、攀岩、即兴喜剧）、一起做一件你们俩都没做过的事。重点不是浪漫，是"我们一起进了一个新世界"。</li>
+            <li><span class="neuro-tag dop">多巴胺+</span><b>给她看你的新东西。</b> 你的健身进度、你的实习作品、你在学的 AI 项目、你最近读的书。不要等她问，自然展示。她需要看到"和你在一起 = 接触到一个有生命力的世界"。</li>
+            <li><span class="neuro-tag oxy">催产素+</span><b>一次真正的、不带功能性的脆弱分享。</b> 不是"我有多想你"，而是"我最近在害怕一件事/我最近想通了一件什么事/我最近发现自己其实并不是那么 ___"。让她看到你内心新的一层，但不要让这次分享变成她需要安慰你。</li>
+            <li><span class="neuro-tag sero">血清素+</span><b>开始有自己的明显节奏。</b> 周一晚上你健身、周三晚上你和朋友、周五她有空可以见。她需要感觉到"羊羊有自己完整的生活，他选择和我在一起，不是依赖我在一起。"</li>
+          </ul>
+
+          <h4>本阶段才可以做的事</h4>
+          <p>如果时机自然，可以做一次真正的、轻的、有节制的"过去回顾"——但<b>必须由她先开启话题</b>。如果她没开，不要强开。这也是这份指南里第一个可以考虑发那条<em>"一些很亮的日子"</em>视频的窗口——但前提是 Week 1-6 完全顺利。</p>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="marker">04<span class="sub">Week 10–12</span></div>
+        <div>
+          <h3>选择期 · "如果我选你，是因为现在的你，不是因为过去的我们"</h3>
+          <p class="timeframe">目标神经化学：前额叶皮层介入决策（不是情绪驱动）</p>
+
+          <div class="goal-box">
+            <b>本阶段唯一目标</b>
+            让她进入一个能<em>清醒决定</em>的状态。不是激情下的回头，是评估后的选择。<b>这个阶段的核心动作是不动作。</b>
+          </div>
+
+          <h4>关键动作</h4>
+          <ul class="actions">
+            <li><span class="neuro-tag sero">血清素+</span><b>放空间给她。</b> 主动减少一次见面频率，让她体会"如果以后没有羊羊了会怎么样"。<em>损失厌恶</em>（Kahneman-Tversky）是这个阶段最强的催化剂——但只有在前 9 周积累足够正向数据的前提下才有效。</li>
+            <li><span class="neuro-tag cort">皮质醇↓</span><b>明确告诉她你的状态，一次。</b> 用极简的话：<em>"这几个月和你在一起我很开心。我没有要催你做决定。你不用回答我什么。我只是想让你知道我在这里。"</em> 然后<b>就此打住</b>，不再提，连续 3 周不提。</li>
+            <li><span class="neuro-tag dop">多巴胺+</span><b>让她看到你即使没有她也在变好。</b> 这是这 12 周里最反直觉的一条，但它是唯一能让她神经系统真正放下"压力预测"的方式。</li>
+          </ul>
+
+          <h4>她可能给出的三种回应 · 神经科学解读</h4>
+          <p><b>A. 主动靠近 / 表态：</b>她的多巴胺-催产素回路已经重新形成对你的正向预测，前额叶完成了风险评估。这是最好的信号，但你要回应得<em>稳</em>——不要回到 2023 年那个"全身扑上去"的羊羊。</p>
+          <p><b>B. 不变 / 维持现状：</b>她神经系统还需要时间。可能要 6-12 个月。<b>这种情况你不能再"加码"</b>，加码只会逆转。维持 Week 7-9 的节奏，把自己的生活继续扩大。</p>
+          <p><b>C. 明确拒绝 / 拉开距离：</b>她的杏仁核做出了保护性最终决定。这种情况你需要尊重，并且<em>对自己神经系统温柔一点</em>——你也是一个有依附系统的人，你的心也是真的会痛的。看下面 §05。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 关键对话脚本 -->
+    <section>
+      <h2><span class="num">04</span>关键对话 · 神经化学优化版脚本</h2>
+      <p class="lede">几个高风险时刻的具体说什么 / 不说什么。每一句的措辞都经过神经化学考虑：减少她的皮质醇、避免触发她的"被压"预警、不激活习惯化的钝感。</p>
+
+      <h3>场景 A · 第一次明确承认</h3>
+      <div class="script">
+        <div class="label">不要这样说</div>
+        <div class="said bad">"对不起，去年那段时间我真的很糟。但其实我也是因为太爱你才——"</div>
+        <div class="why">"但是"会立刻关掉催产素通路。任何解释 = 把伤害合理化 = 她神经系统判定"他没有真的承认"。</div>
+      </div>
+      <div class="script">
+        <div class="label">应该这样说</div>
+        <div class="said good">"去年八月开始我冷下来那一年，是我处理不了自己的事，转嫁到了你身上。你一个人扛了那些。我知道。我很抱歉。"</div>
+        <div class="why">三个要素：① 时间具体 ② 责任在自己 ③ 没有"但是"。这一句话是<em>依附损伤修复</em>研究里唯一能真正下载到对方神经系统的格式。<b>说完不需要她回应</b>。</div>
+      </div>
+
+      <h3>场景 B · 她突然冷淡 / 不回消息</h3>
+      <div class="script">
+        <div class="label">不要这样说</div>
+        <div class="said bad">"你今天是不是不开心？我哪里又做错了吗？我们好好聊聊吧。"</div>
+        <div class="why">这正是激活她"羊羊会再次变成压力源"预测的关键模式。<em>追问 = 情绪劳动 = 皮质醇上升</em>。</div>
+      </div>
+      <div class="script">
+        <div class="label">应该这样做</div>
+        <div class="said good">[ 什么都不说，正常过自己的两天。第三天发一个轻的、不需要回的内容：一张街角的照片，一个她会笑的梗。 ]</div>
+        <div class="why">她神经系统需要确认"羊羊不会因为我冷一下就崩"。你越稳，她越能放松。这是 co-regulation 的核心。</div>
+      </div>
+
+      <h3>场景 C · 她问 "你还喜欢我吗 / 你是不是想复合"</h3>
+      <div class="script">
+        <div class="label">不要这样说</div>
+        <div class="said bad">"我当然还喜欢你！我从来没有不喜欢过你！我们能不能——"</div>
+        <div class="why">高强度回应 = 把球扔回她那边 + 启动她的"被压"预警。即使你说的是真的。</div>
+      </div>
+      <div class="script">
+        <div class="label">应该这样说</div>
+        <div class="said good">"我现在很珍惜你在我生活里。剩下的不用我们今天就有答案。你不用因为我有什么感觉就觉得有压力。"</div>
+        <div class="why">三层信号：① 承认情感 ② 不要求 ③ 主动卸压。这激活的是催产素而不是皮质醇。</div>
+      </div>
+
+      <h3>场景 D · 你自己崩了的时候</h3>
+      <div class="script">
+        <div class="label">不要这样做</div>
+        <div class="said bad">[ 找她诉说 / 凌晨发长文 / 暗示你睡不着 / 暗示你又开始焦虑 ]</div>
+        <div class="why">她现在不是你的稳定源。每次你把她当稳定源，都在确认她"和羊羊在一起 = 被消耗"的预测。</div>
+      </div>
+      <div class="script">
+        <div class="label">应该这样做</div>
+        <div class="said good">[ 找一个朋友 / 跑步 / 健身 / 写下来 / 找心理咨询师。她以外的所有人都可以。等情绪过了 24 小时，再判断要不要和她说，怎么说。 ]</div>
+        <div class="why">你需要一个不是她的情绪基础设施。这件事独立于复合与否，你都该建立。</div>
+      </div>
+    </section>
+
+    <!-- 5. 你自己的神经系统 -->
+    <section>
+      <h2><span class="num">05</span>你自己的神经系统 · 这也是恢复的一部分</h2>
+      <p class="lede">这份指南有 80% 是关于她。剩下 20% 是关于你——因为你也在受伤，你的杏仁核也在过度激活，你也需要让自己的神经化学回到稳态。否则任何关于她的策略都会被你自己的焦虑拖坏。</p>
+
+      <h3>你大脑现在的状态</h3>
+      <p>从 Plot.md 能看出来：12 个月的冷淡是一种<em>反向应激反应</em>（你也受伤了，只是表达成了距离）。然后再次见面她又心动你——你现在多巴胺被她重新激活，但同时焦虑也起来了。这种"心动 + 怕失去"的混合是最难处理的神经状态，因为它会让你做出过度行为。</p>
+
+      <h3>你接下来 12 周必须做的 6 件事（独立于她）</h3>
+      <ul class="checklist">
+        <li><b>身体动起来。</b>每周 3 次力量训练 + 2 次有氧。运动是最强的<em>内源性 BDNF</em>（脑源性神经营养因子）激活剂，能修复焦虑造成的海马体损伤。这条不可妥协。</li>
+        <li><b>睡眠保护到 7.5 小时。</b>睡眠不足时杏仁核反应会强 60%（Walker 实验室数据）。你做的所有"她到底什么意思"的过度解读，一半是因为没睡好。</li>
+        <li><b>建立非她的情绪出口。</b>一个固定朋友、一个心理咨询师、一个写作习惯。三选一，最少一个。</li>
+        <li><b>让你的世界变大，不是为了表演给她看，是为了你自己神经系统的健康。</b>新项目、新朋友、新城市、新技能。注意力转移本身就是治疗。</li>
+        <li><b>减少社交媒体上和她相关的检查行为。</b>每一次刷她朋友圈 / 看她在线状态 / 看共同朋友动态 = 一次小型多巴胺奖赏 + 一次小型焦虑。这个回路必须打断。建议直接对她的所有平台静音 14 天。</li>
+        <li><b>承认一件事：她可能不会回来。</b>这不是悲观，是<em>认知性接受</em>。只有你内心真的可以接受这个结果，你 12 周里的所有动作才不会带着隐藏的索取。她神经系统能闻到这个差别。</li>
+      </ul>
+    </section>
+
+    <!-- 6. 关于那个视频 -->
+    <section>
+      <h2><span class="num">06</span>关于那个三周年视频 · 神经科学建议</h2>
+      <p class="lede">基于 Plot.md 你已经决定做"温柔版 · 一些很亮的日子"。这个 decision 是对的。下面是几条优化建议——让它真正起到神经化学上的<em>催产素 + 多巴胺</em>作用，而不是被她解读为压力。</p>
+
+      <h3>优化点</h3>
+      <ul class="actions">
+        <li><span class="neuro-tag oxy">催产素+</span><b>时长压到 2:00 以内</b>。她大脑对"被纪念"这件事的耐受度在 2 分钟左右。超过这个长度，开始变成情绪劳动。</li>
+        <li><span class="neuro-tag dop">多巴胺+</span><b>开头 5 秒必须有让她笑的具体细节</b>。不是大场面，是只有你们俩懂的小梗——"前妻姐"如果真的是你们的梗，可以用。但只用一次。</li>
+        <li><span class="neuro-tag oxy">催产素+</span><b>音乐选她的、不是你的</b>。她大学时期听的、她当时常发的歌、她朋友圈出现过的 BGM。她的神经系统对她自己听过的音乐有路径依赖，不会被压。</li>
+        <li><span class="neuro-tag cort">皮质醇↓</span><b>不要放任何分手 / 冷淡 / 等待 / 想念的画面</b>。哪怕一帧。她大脑对这些场景的负面联想已经形成，看到就会皱眉。</li>
+        <li><span class="neuro-tag sero">血清素+</span><b>结尾不要说"如果未来还有机会"</b>。哪怕是最轻的版本。Plot.md 里 GPT 给的中间版本仍然有重量。建议用最轻的："愿你温柔，也勇敢。" 然后停。留白本身就是信号。</li>
+        <li><span class="neuro-tag cort">皮质醇↓</span><b>不要在情绪节日发</b>。不要在她生日、分手周年、表白纪念日发。<em>选一个普通的下午</em>。"普通"本身就在说"我没有把这件事变成事件"。</li>
+        <li><span class="neuro-tag cort">皮质醇↓</span><b>发送时间：Week 5-7 之间</b>。Week 1-4 太早（皮质醇还高）。Week 10+ 太晚（如果前面顺利，已经不需要；如果前面不顺利，发了等于自爆）。</li>
+      </ul>
+    </section>
+
+    <!-- 7. 速查 -->
+    <section>
+      <h2><span class="num">07</span>速查 · 12 周决策树</h2>
+      <table class="recap">
+        <thead><tr><th>时点</th><th>她的状态</th><th>你该做</th><th>你不该做</th></tr></thead>
+        <tbody>
+          <tr><td><b>Week 1-3</b></td><td>警觉 / 防御</td><td>稳定联系 + 一次明确承认 + 低强度相处</td><td>发视频 / 谈"我们" / 深夜长文</td></tr>
+          <tr><td><b>Week 4-6</b></td><td>开始观察</td><td>共同照顾 + 小新奇 + 她主导身体节奏</td><td>主动定义关系 / 谈未来</td></tr>
+          <tr><td><b>Week 7-9</b></td><td>重新评估</td><td>新体验 + 展示成长 + 一次脆弱分享 + 可发视频</td><td>催回应 / 比较她的 options</td></tr>
+          <tr><td><b>Week 10-12</b></td><td>做出选择</td><td>留白 + 一次极简表态 + 自己生活继续</td><td>反复确认 / 大动作 / 重启告白</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 8. 最后的话 -->
+    <section>
+      <h2><span class="num">08</span>最后一条 · 关于"复合"这个词</h2>
+      <p class="lede">这份指南通篇没有说"复合"两个字，是有意的。</p>
+      <p>神经科学上，<b>"复合"是个不存在的概念</b>。你不可能回到 2024 年那个版本——你的神经系统变了，她的神经系统也变了。你们能形成的只有一段<em>新关系</em>，发生在两个曾经爱过、互相伤过、各自成长过的人之间。</p>
+      <p>所以这 12 周真正的目标不是"她回来"。<b>是你和她一起，看看现在的你们能不能彼此选择。</b>如果可以，那是因为你们各自都成为了更稳定的神经系统，能在彼此身边共存。如果不可以，那也是同一件事——你们各自都成为了更稳定的神经系统，只是这次稳态里不包含彼此。</p>
+      <p>这两种结果，都是好结果。Plot.md 的最后一句你已经写得很对了——<em>"愿我们都成为更好的自己。"</em> 你越是真心这么想，她神经系统越能放下防御。这是神经科学，也是这件事本身的悖论之美。</p>
+    </section>
+
+    <!-- 9. 本回合 -->
+    <section>
+      <h2><span class="num">09</span>本回合 · 速记</h2>
+      <table class="recap">
+        <thead>
+          <tr>
+            <th>项目 / Project</th>
+            <th>现在到哪里 / Where we are</th>
+            <th>已完成 / Done this turn</th>
+            <th>未完成 / Open / Next</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>关系恢复指南（基于 Plot.md）</td>
+            <td>单页 HTML 已生成并打开，存到 CGI video 目录</td>
+            <td>
+              · 诊断她大脑的三个负面预测<br>
+              · 四种关键神经化学 + 四个核心机制<br>
+              · 12 周 4 阶段具体行动方案<br>
+              · 4 个关键对话场景脚本（神经化学优化版）<br>
+              · 你自己的 6 条神经系统维护清单<br>
+              · 三周年视频的 7 条优化建议
+            </td>
+            <td>
+              · 如果你想，我可以再做一份"Week 1-3 每日 micro-action 清单"<br>
+              · 或者按 Plot.md 你提到的每个具体记忆点，做对应的"她神经系统会被激活/被防御"的素材分级表<br>
+              · 或者把视频脚本本身按这份指南重写一版
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <p class="colophon">— Recovery Lab · 神经科学只解释机制，决定靠近还是放手的还是你自己。 —</p>
+
+  </main>
+</div>
+
+<script>
+function saveDoc(){
+  const clone = document.documentElement.cloneNode(true);
+  clone.querySelectorAll('.toolbar, script').forEach(el => el.remove());
+  const main = clone.querySelector('main');
+  if (main) main.removeAttribute('contenteditable');
+  const html = '<!doctype html>\n' + clone.outerHTML;
+  const blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const stamp = new Date().toISOString().slice(0,10);
+  a.href = url;
+  a.download = '关系恢复指南-神经科学-' + stamp + '.html';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url), 1000);
+}
+</script>
+</body>
+</html>
