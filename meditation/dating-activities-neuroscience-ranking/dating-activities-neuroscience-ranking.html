@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>约会项目神经科学排名 — 2026-06-15</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style>
+  :root{
+    --cream:#faf5ee;
+    --cream-2:#f1e7d6;
+    --ink:#2b1e16;
+    --ink-soft:#5a4736;
+    --rule:#cbb89a;
+    --rose:#b13a48;
+    --rose-soft:#e6a8af;
+    --amber:#c98a2e;
+    --gold:#d4a55a;
+    --teal:#3d6b65;
+    --serif:'Georgia','Iowan Old Style','Source Han Serif SC','Songti SC',serif;
+    --sans:-apple-system,'PingFang SC','Helvetica Neue',Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,'SF Mono',Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--cream);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+  body{padding:48px 24px 96px}
+  .page{max-width:920px;margin:0 auto}
+  .toolbar{position:sticky;top:0;z-index:5;display:flex;gap:8px;justify-content:flex-end;padding:8px 0;background:linear-gradient(to bottom,var(--cream) 70%,transparent)}
+  .btn{font:600 12px/1 var(--sans);letter-spacing:.04em;text-transform:uppercase;padding:10px 14px;border:1px solid var(--ink);background:var(--cream);color:var(--ink);cursor:pointer;border-radius:0;transition:all .15s ease}
+  .btn:hover{background:var(--ink);color:var(--cream)}
+  .btn.primary{background:var(--rose);border-color:var(--rose);color:#fff}
+  .btn.primary:hover{background:#8a2632;border-color:#8a2632}
+
+  /* Masthead */
+  .masthead{border-top:6px solid var(--ink);padding-top:14px;margin-top:8px;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:10px}
+  .masthead .brand{font:700 13px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase}
+  .masthead .meta{font:italic 13px/1 var(--serif);color:var(--ink-soft)}
+
+  /* Hero */
+  .hero{padding:56px 0 32px;border-bottom:1px solid var(--rule);position:relative}
+  .hero .kicker{font:600 12px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:var(--rose)}
+  .hero h1{font:700 clamp(40px,7vw,84px)/0.98 var(--serif);margin:14px 0 12px;letter-spacing:-0.02em}
+  .hero h1 em{font-style:italic;color:var(--rose)}
+  .hero .deck{font:400 clamp(17px,1.6vw,21px)/1.5 var(--serif);color:var(--ink-soft);max-width:640px}
+
+  /* Section */
+  section{padding:48px 0;border-bottom:1px solid var(--rule)}
+  section:last-of-type{border-bottom:0}
+  h2{font:700 28px/1.1 var(--serif);margin:0 0 6px;letter-spacing:-0.01em}
+  h2 .num{display:inline-block;font:600 12px/1 var(--sans);letter-spacing:.3em;color:var(--rose);vertical-align:middle;margin-right:14px;padding:6px 8px;border:1px solid var(--rose)}
+  .lede{font:italic 17px/1.55 var(--serif);color:var(--ink-soft);margin:0 0 24px;max-width:680px}
+
+  /* Neurotransmitter cards */
+  .nt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:8px}
+  .nt{background:var(--cream);padding:18px 16px}
+  .nt .name{font:700 14px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase}
+  .nt .cn{font:400 13px/1 var(--serif);color:var(--ink-soft);margin-top:4px}
+  .nt .what{font:400 14px/1.5 var(--sans);margin-top:10px}
+  .nt .trig{font:600 11px/1.4 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--rose);margin-top:10px;border-top:1px dashed var(--rule);padding-top:8px}
+  .nt.dop{border-top:3px solid var(--rose)}
+  .nt.end{border-top:3px solid var(--amber)}
+  .nt.oxy{border-top:3px solid var(--teal)}
+  .nt.nor{border-top:3px solid #6b4ba8}
+
+  /* Ranking list */
+  .rank{display:grid;grid-template-columns:64px 1fr 160px;gap:18px;padding:22px 0;border-bottom:1px solid var(--rule);align-items:start}
+  .rank:last-child{border-bottom:0}
+  .rank .pos{font:700 44px/0.9 var(--serif);color:var(--rose);font-style:italic;letter-spacing:-0.02em}
+  .rank.top1 .pos,.rank.top2 .pos,.rank.top3 .pos{color:var(--ink)}
+  .rank.top1 .pos::after{content:'☉';font-size:14px;color:var(--gold);vertical-align:super;margin-left:4px;font-style:normal}
+  .rank h3{margin:0 0 4px;font:700 19px/1.25 var(--serif)}
+  .rank .why{font:400 14px/1.55 var(--sans);color:var(--ink-soft);margin:0}
+  .rank .why strong{color:var(--ink)}
+  .rank .bars{display:flex;flex-direction:column;gap:6px;align-self:start}
+  .bar{display:grid;grid-template-columns:32px 1fr 28px;gap:6px;align-items:center;font:600 10px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase}
+  .bar .label{color:var(--ink-soft)}
+  .bar .track{height:6px;background:var(--cream-2);position:relative}
+  .bar .fill{position:absolute;left:0;top:0;bottom:0}
+  .bar.d .fill{background:var(--rose)}
+  .bar.e .fill{background:var(--amber)}
+  .bar.o .fill{background:var(--teal)}
+  .bar .val{text-align:right;color:var(--ink)}
+
+  /* Memory mechanisms */
+  .mech{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:16px}
+  .mech .item{padding:18px 18px 18px 22px;border-left:3px solid var(--rose);background:#fff8ec}
+  .mech h4{margin:0 0 6px;font:700 16px/1.3 var(--serif)}
+  .mech .item:nth-child(2){border-left-color:var(--amber);background:#f7eed8}
+  .mech .item:nth-child(3){border-left-color:var(--teal);background:#e9f0ee}
+  .mech .item:nth-child(4){border-left-color:#6b4ba8;background:#ece6f4}
+  .mech p{margin:0;font:400 14px/1.55 var(--sans)}
+  .mech .cite{display:block;margin-top:8px;font:italic 12px/1.3 var(--serif);color:var(--ink-soft)}
+
+  /* Recipe formula */
+  .recipe{display:grid;grid-template-columns:140px 1fr;gap:0;border:1px solid var(--ink);margin-top:16px}
+  .recipe > div{padding:14px 16px;border-bottom:1px solid var(--rule)}
+  .recipe > div:nth-last-child(-n+2){border-bottom:0}
+  .recipe .step{background:var(--ink);color:var(--cream);font:700 13px/1.2 var(--sans);letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center}
+  .recipe .desc{background:var(--cream);font:400 14px/1.55 var(--sans)}
+  .recipe .desc b{color:var(--rose)}
+
+  /* Don't do */
+  .dont{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px}
+  .dont .x{padding:14px;background:#f5e3e3;border-left:3px solid var(--rose);font:400 14px/1.5 var(--sans)}
+  .dont .x b{display:block;font:700 13px/1.2 var(--sans);letter-spacing:.04em;margin-bottom:4px;text-transform:uppercase;color:var(--rose)}
+
+  /* Recap table */
+  table.recap{width:100%;border-collapse:collapse;margin-top:18px;font:14px/1.5 var(--sans)}
+  table.recap th,table.recap td{border:1px solid var(--rule);padding:10px 12px;vertical-align:top;text-align:left}
+  table.recap th{background:var(--ink);color:var(--cream);font:600 12px/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase}
+
+  .colophon{padding-top:32px;font:italic 13px/1.5 var(--serif);color:var(--ink-soft);text-align:center}
+
+  @media (max-width:640px){
+    body{padding:24px 16px 64px}
+    .rank{grid-template-columns:48px 1fr;}
+    .rank .bars{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;gap:10px}
+    .rank .bars .bar{grid-template-columns:32px 80px 28px}
+    .mech{grid-template-columns:1fr}
+    .recipe{grid-template-columns:100px 1fr}
+  }
+
+  @media print{
+    .toolbar{display:none}
+    body{background:#fff;padding:0;font-size:11pt}
+    section{break-inside:avoid;page-break-inside:avoid}
+    .rank{break-inside:avoid;page-break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="toolbar" contenteditable="false">
+    <button class="btn" onclick="window.print()">打印 / 导出 PDF</button>
+    <button class="btn primary" onclick="saveDoc()">保存 HTML</button>
+  </div>
+
+  <main contenteditable="true" spellcheck="false">
+
+    <header class="masthead">
+      <span class="brand">The Date Lab · No. 01</span>
+      <span class="meta">2026 年 6 月 15 日 · 神经科学专栏</span>
+    </header>
+
+    <div class="hero">
+      <div class="kicker">Dopamine × Endorphin × Memory</div>
+      <h1>15 种约会项目，<br><em>按"留下回忆的能力"</em>排名</h1>
+      <p class="deck">从神经化学反推：什么样的活动会让大脑分泌大量多巴胺与内啡肽，什么样的活动会被海马体打上"高亮标签"，几年之后还能在你们的对话里被反复提起。</p>
+    </div>
+
+    <!-- Section 1: Primer -->
+    <section>
+      <h2><span class="num">01</span>神经化学速查</h2>
+      <p class="lede">四种关键物质决定一次约会"当下的高潮"与"未来的回忆"。它们各自被不同情境触发，混合得当才有"难忘"。</p>
+      <div class="nt-grid">
+        <div class="nt dop">
+          <div class="name">Dopamine</div>
+          <div class="cn">多巴胺 · 期待与新奇</div>
+          <div class="what">奖赏预测误差。当事情比预期更好、或结果不确定时分泌。它不是"快乐"，是"想要"。</div>
+          <div class="trig">触发：新奇 / 惊喜 / 不确定 / 即将到来的奖赏</div>
+        </div>
+        <div class="nt end">
+          <div class="name">Endorphin</div>
+          <div class="cn">内啡肽 · 自体阿片</div>
+          <div class="what">身体应对压力或疼痛的内源性镇痛剂。带来"舒畅 / 飘"的感觉，能与大笑、辣感、运动后同步出现。</div>
+          <div class="trig">触发：运动 / 辣 / 冷热极端 / 大笑 / 桑拿</div>
+        </div>
+        <div class="nt oxy">
+          <div class="name">Oxytocin</div>
+          <div class="cn">催产素 · 依附感</div>
+          <div class="what">不直接"刺激"，但负责把"我们一起经历了这件事"焊进信任系统。长程亲密关系的胶水。</div>
+          <div class="trig">触发：触碰 / 对视 / 共同照顾 / 脆弱分享</div>
+        </div>
+        <div class="nt nor">
+          <div class="name">Norepinephrine</div>
+          <div class="cn">去甲肾上腺素 · 唤起</div>
+          <div class="what">让心跳加快、瞳孔放大、注意力高度集中。它是"记忆固化"的关键调节剂——高唤起时刻最容易被海马体录下。</div>
+          <div class="trig">触发：恐高 / 速度 / 突发刺激 / 时间紧迫</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Ranking -->
+    <section>
+      <h2><span class="num">02</span>排名 · Top 15</h2>
+      <p class="lede">综合分数 = 多巴胺峰值 × 内啡肽产量 × 唤起度 × 共同性。每个条目给三个评分（D / E / O = 多巴胺 / 内啡肽 / 催产素），满分 10。</p>
+
+      <div class="rank top1">
+        <div class="pos">01</div>
+        <div>
+          <h3>极限运动初体验（跳伞 / 蹦极 / 高空 ziplining）</h3>
+          <p class="why"><strong>为什么排第一：</strong>同时拉满去甲肾上腺素 + 多巴胺 + 内啡肽。心理学经典的"吊桥效应"（Dutton &amp; Aron 1974）就是这个机制——高唤起会被大脑错误归因到身边的人身上。一次跳伞之后五年，你还能精确回忆下落时她/他抓你的手有多紧。</p>
+        </div>
+        <div class="bars">
+          <div class="bar d"><span class="label">D</span><div class="track"><div class="fill" style="width:95%"></div></div><span class="val">9.5</span></div>
+          <div class="bar e"><span class="label">E</span><div class="track"><div class="fill" style="width:90%"></div></div><span class="val">9.0</span></div>
+          <div class="bar o"><span class="label">O</span><div class="track"><div class="fill" style="width:75%"></div></div><span class="val">7.5</span></div>
+        </div>
+      </div>
+
+      <div class="rank top2">
+        <div class="pos">02</div>
+        <div>
+          <h3>第一次一起的短途旅行（陌生城市 2-3 天）</h3>
+          <p class="why"><strong>为什么这么高：</strong>新奇感持续 48-72 小时，每天都有多个小高潮（新菜、新街区、迷路、解决问题）。Aron 的"自我扩展理论"指出，伴侣一起做新且有挑战的事，关系满意度显著提升。旅行是它的工业化版本。</p>
+        </div>
+        <div class="bars">
+          <div class="bar d"><span class="label">D</span><div class="track"><div class="fill" style="width:90%"></div></div><span class="val">9.0</span></div>
+          <div class="bar e"><span class="label">E</span><div class="track"><div class="fill" style="width:55%"></div></div><span class="val">5.5</span></div>
+          <div class="bar o"><span class="label">O</span><div class="track"><div class="fill" style="width:90%"></div></div><span class="val">9.0</span></div>
+        </div>
+      </div>
+
+      <div class="rank top3">
+        <div class="pos">03</div>
+        <div>
+          <h3>过山车 / 大型主题乐园整日</h3>
+          <p class="why"><strong>记忆杀器：</strong>排队等待制造长时间多巴胺爬坡；尖叫和肌肉紧张释放内啡肽；多次"高峰 + 收尾"完美匹配 Kahneman 的<em>峰终定律</em>——你只会记得最爽的几秒钟和回家路上的合影。</p>
+        </div>
+        <div class="bars">
+          <div class="bar d"><span class="label">D</span><div class="track"><div class="fill" style="width:88%"></div></div><span class="val">8.8</span></div>
+          <div class="bar e"><span class="label">E</span><div class="track"><div class="fill" style="width:80%"></div></div><span class="val">8.0</span></div>
+          <div class="bar o"><span class="label">O</span><div class="track"><div class="fill" style="width:70%"></div></div><span class="val">7.0</span></div>
+        </div>
+      </div>
+
+      <div class="rank">
+        <div class="pos">04</div>
+        <div>
+          <h3>喜爱乐手的现场演唱会</h3>
+          <p class="why">演唱会触发"集体欢腾"（collective effervescence），多巴胺从买票那一刻起持续累积。大合唱时的呼吸同步 + 触觉接触 = 催产素的天然温床。<strong>关键：必须是双方都真正喜欢的艺人</strong>，否则一方在受刑。</p>
+        </div>
+        <div class="bars">
+          <div class="bar d"><span class="label">D</span><div class="track"><div class="fill" style="width:85%"></div></div><span class="val">8.5</span></div>
+          <div class="bar e"><span class="label">E</span><div class="track"><div class="fill" style="width:60%"></div></div><span class="val">6.0</span></div>
+          <div class="bar o"><span class="label">O</span><div class="track"><div class="fill" style="width:80%"></div></div><span class="val">8.0</span></div>
+        </div>
+      </div>
+
+      <div class="rank">
+        <div class="pos">05</div>
+        <div>
+          <h3>逃脱密室 / 协作解谜</h3>
+          <p class="why">每解开一个谜题都是一次小型多巴胺奖赏（reward prediction error）；倒计时制造去甲肾上腺素；通关那一刻的击掌是把"我们是一队"焊进记忆的关键时刻。难度选中等偏难——太容易没峰值，太难全程沮丧。</p>
+        </div>
+        <div class="bars">
+          <div class="bar d"><span class="label">D</span><div class="track"><div class="fill" style="width:82%"></div></div><span class="val">8.2</span></div>
+          <div class="bar e"><span class="label">E</span><div class="track"><div class="fill" style="width:40%"></div></div><span class="val">4.0</span></div>
+          <div class="bar o"><span class="label">O</span><div class="track"><div class="fill" style="width:80%"></div></div><span class="val">8.0</span></div>
+        </div>
+      </div>
+
+      <div class="rank">
+        <div class="pos">06</div>
+        <div>
+          <h3>温泉 / 桑拿 + 冷池（北欧式）</h3>
+          <p class="why">高温—冷激的循环是内啡肽的<strong>药理学级</strong>释放器（最近的研究显示能与轻度运动相提并论）。半裸暴露 + 共同身体不适 + 之后的放松 = 信任感的强强组合。</p>
+        </div>
+        <div class="bars">
+          <div class="bar d"><span class="label">D</span><div class="track"><div class="fill" style="width:50%"></div></div><span class="val">5.0</span></div>
+          <div class="bar e"><span class="label">E</span><div class="track"><div class="fill" style="width:90%"></div></div><span class="val">9.0</span></div>
+          <div class="bar o"><span class="label">O</span><div class="track"><div class="fill" style="width:85%"></div></div><span class="val">8.5</span></div>
+        </div>
+      </div>
+
+      <div class="rank">
+        <div class="pos">07</div>
+        <div>
+          <h3>登山看日出 / 长途徒步</h3>
+          <p class="why">运动型内啡肽（"runner's high"）+ 视觉震撼峰值 + 长时间共处建立的同步呼吸节奏。日出/日落的<em>峰终</em>极强——你可能忘了爬了三小时，但记得山顶最后那十分钟。</p>
+        </div>
+        <div class="bars">
+          <div class="bar d"><span class="label">D</span><div class="track"><div class="fill" style="width:65%"></div></div><span class="val">6.5</span></div>
+          <div class="bar e"><span class="label">E</span><div class="track"><div class="fill" style="width:90%"></div></div><span class="val">9.0</span></div>
+          <div class="bar o"><span class="label">O</span><div class="track"><div class="fill" style="width:80%"></div></div><span class="val">8.0</span></div>
+        </div>
+      </div>
+
+      <div class="rank">
+        <div class="pos">08</div>
+        <div>
+          <h3>双人舞蹈课（莎莎 / 摇摆 / 探戈）</h3>
+          <p class="why">同步移动产生的"motor synchrony"已被证明能直接提升好感度；笨拙带来大笑（内啡肽）；身体接触自带催产素。一节课塞满四种神经化学，效率惊人。</p>
+        </div>
+        <div class="bars">
+          <div class="bar d"><span class="label">D</span><div class="track"><div class="fill" style="width:70%"></div></div><span class="val">7.0</span></div>
+          <div class="bar e"><span class="label">E</span><div class="track"><div class="fill" style="width:70%"></div></div><span class="val">7.0</span></div>
+          <div class="bar o"><span class="label">O</span><div class="track"><div class="fill" style="width:90%"></div></div><span class="val">9.0</span></div>
+        </div>
+      </div>
+
+      <div class="rank">
+        <div class="pos">09</div>
+        <div>
+          <h3>极辣餐厅挑战 / 完全陌生菜系首尝</h3>
+          <p class="why">辣椒素直接触发内啡肽（这就是为什么吃完辣会"high"）；陌生菜系的"第一口"是教科书级多巴胺脉冲。便宜、可复制、不需要假期。</p>
+        </div>
+        <div class="bars">
+          <div class="bar d"><span class="label">D</span><div class="track"><div class="fill" style="width:72%"></div></div><span class="val">7.2</span></div>
+          <div class="bar e"><span class="label">E</span><div class="track"><div class="fill" style="width:75%"></div></div><span class="val">7.5</span></div>
+          <div class="bar o"><span class="label">O</span><div class="track"><div class="fill" style="width:55%"></div></div><span class="val">5.5</span></div>
+        </div>
+      </div>
+
+      <div class="rank">
+        <div class="pos">10</div>
+        <div>
+          <h3>脱口秀 / 即兴喜剧现场</h3>
+          <p class="why">大笑 = 内啡肽工厂；优秀的 punchline 本质上是"奖赏预测误差"——这正是多巴胺的发射条件。即兴喜剧因为不可预测性更高，比录播好得多。</p>
+        </div>
+        <div class="bars">
+          <div class="bar d"><span class="label">D</span><div class="track"><div class="fill" style="width:75%"></div></div><span class="val">7.5</span></div>
+          <div class="bar e"><span class="label">E</span><div class="track"><div class="fill" style="width:75%"></div></div><span class="val">7.5</span></div>
+          <div class="bar o"><span class="label">O</span><div class="track"><div class="fill" style="width:60%"></div></div><span class="val">6.0</span></div>
+        </div>
+      </div>
+
+      <div class="rank">
+        <div class="pos">11</div>
+        <div>
+          <h3>初学滑雪 / 冲浪 / 滑板一日</h3>
+          <p class="why">摔倒—爬起—进步的循环每 10 分钟刷一次小奖赏；运动消耗自带内啡肽；新技能掌握感是多巴胺的最爱。<strong>关键</strong>：找教练，不要让一方教另一方——配偶/恋人之间互相教技能是关系灾难高发区。</p>
+        </div>
+        <div class="bars">
+          <div class="bar d"><span class="label">D</span><div class="track"><div class="fill" style="width:78%"></div></div><span class="val">7.8</span></div>
+          <div class="bar e"><span class="label">E</span><div class="track"><div class="fill" style="width:80%"></div></div><span class="val">8.0</span></div>
+          <div class="bar o"><span class="label">O</span><div class="track"><div class="fill" style="width:65%"></div></div><span class="val">6.5</span></div>
+        </div>
+      </div>
+
+      <div class="rank">
+        <div class="pos">12</div>
+        <div>
+          <h3>主队体育赛事现场（关键场次）</h3>
+          <p class="why">比赛结果的不确定性 = 持续 90 分钟的多巴胺过山车；进球/赢球时刻的尖叫释放内啡肽；与几万人同步欢呼建立"集体身份"。<strong>必须是双方都关心的队伍</strong>，否则降到第 20 名以外。</p>
+        </div>
+        <div class="bars">
+          <div class="bar d"><span class="label">D</span><div class="track"><div class="fill" style="width:80%"></div></div><span class="val">8.0</span></div>
+          <div class="bar e"><span class="label">E</span><div class="track"><div class="fill" style="width:55%"></div></div><span class="val">5.5</span></div>
+          <div class="bar o"><span class="label">O</span><div class="track"><div class="fill" style="width:70%"></div></div><span class="val">7.0</span></div>
+        </div>
+      </div>
+
+      <div class="rank">
+        <div class="pos">13</div>
+        <div>
+          <h3>烹饪课 / 一起从零做一桌菜</h3>
+          <p class="why">分工协作 + 共同成就（看见成品） + 食物本身的奖赏。多巴胺中等，但催产素拉满。比第 1-5 名"难忘度"低，但"日常可重复"是它的优势——长程关系靠这种。</p>
+        </div>
+        <div class="bars">
+          <div class="bar d"><span class="label">D</span><div class="track"><div class="fill" style="width:60%"></div></div><span class="val">6.0</span></div>
+          <div class="bar e"><span class="label">E</span><div class="track"><div class="fill" style="width:30%"></div></div><span class="val">3.0</span></div>
+          <div class="bar o"><span class="label">O</span><div class="track"><div class="fill" style="width:85%"></div></div><span class="val">8.5</span></div>
+        </div>
+      </div>
+
+      <div class="rank">
+        <div class="pos">14</div>
+        <div>
+          <h3>夜间观星 / 流星雨露营</h3>
+          <p class="why">"awe"（敬畏）这种情绪被独立证明能拓宽时间感、降低自我中心感、提升亲社会行为。安静 + 黑暗 + 仰望 = 一种特殊的内省式催产素释放。多巴胺低但记忆深。</p>
+        </div>
+        <div class="bars">
+          <div class="bar d"><span class="label">D</span><div class="track"><div class="fill" style="width:45%"></div></div><span class="val">4.5</span></div>
+          <div class="bar e"><span class="label">E</span><div class="track"><div class="fill" style="width:25%"></div></div><span class="val">2.5</span></div>
+          <div class="bar o"><span class="label">O</span><div class="track"><div class="fill" style="width:85%"></div></div><span class="val">8.5</span></div>
+        </div>
+      </div>
+
+      <div class="rank">
+        <div class="pos">15</div>
+        <div>
+          <h3>美术馆 / 博物馆<em>特展</em>（不是常设展）</h3>
+          <p class="why">"特展"二字是关键——稀缺性 + 截止日期 = 多巴胺。能引发讨论的内容让你们交换审美与世界观，比安静地走一圈深得多。常设展退到 40 名外。</p>
+        </div>
+        <div class="bars">
+          <div class="bar d"><span class="label">D</span><div class="track"><div class="fill" style="width:55%"></div></div><span class="val">5.5</span></div>
+          <div class="bar e"><span class="label">E</span><div class="track"><div class="fill" style="width:15%"></div></div><span class="val">1.5</span></div>
+          <div class="bar o"><span class="label">O</span><div class="track"><div class="fill" style="width:65%"></div></div><span class="val">6.5</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Memory mechanisms -->
+    <section>
+      <h2><span class="num">03</span>美好回忆的四个机制</h2>
+      <p class="lede">为什么有些约会几个月后就完全模糊，有些却终生鲜明？大脑只会高亮特定模式的经历。</p>
+
+      <div class="mech">
+        <div class="item">
+          <h4>① 唤起归因（Misattribution of Arousal）</h4>
+          <p>心跳加速时，大脑会找最近的归因对象。Dutton &amp; Aron 1974 年的"摇晃吊桥实验"显示：在不稳定的桥上接受美女问卷的男性，事后回拨电话的比例是普通桥的 4 倍。</p>
+          <span class="cite">→ 制造一些可以"被错认成爱情"的心跳。</span>
+        </div>
+        <div class="item">
+          <h4>② 峰终定律（Peak-End Rule）</h4>
+          <p>Kahneman 发现：我们对一段经历的整体评价 ≈ <b>最高潮的瞬间</b> + <b>结尾的感受</b>。中间多平庸不太重要。</p>
+          <span class="cite">→ 一晚至少安排一个明确高潮（一杯特别的酒、一个突然的礼物），并精心设计收尾的最后 15 分钟。</span>
+        </div>
+        <div class="item">
+          <h4>③ 新奇编码（Novelty &amp; Memory）</h4>
+          <p>海马体对"第一次"的编码效率远超日常。重复 50 次的同一家餐厅，记忆压缩成一个模糊片段；一次全新经历，可以保留细节十年。</p>
+          <span class="cite">→ 即使预算有限，也要每月安排一次"双方都没做过"的事。</span>
+        </div>
+        <div class="item">
+          <h4>④ 自我扩展（Self-Expansion Theory）</h4>
+          <p>Aron 的研究：当伴侣帮你"成为更大的自己"（学新技能、见新世界、解锁新身份），亲密感与激情同步上升。这解释了为什么<em>长期</em>关系最怕停滞。</p>
+          <span class="cite">→ 一起学一门技能，比一起吃一百顿饭更能维持关系热度。</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Recipe -->
+    <section>
+      <h2><span class="num">04</span>"难忘约会"的配方公式</h2>
+      <p class="lede">把上面所有机制压缩成一个可复用的脚本——任何约会按这五步排，命中率显著提高。</p>
+
+      <div class="recipe">
+        <div class="step">Step 01</div>
+        <div class="desc"><b>制造期待。</b> 提前 3-7 天透露 30% 的信息，留 70% 神秘感。期待本身就在分泌多巴胺，且整个等待期都是免费的。</div>
+
+        <div class="step">Step 02</div>
+        <div class="desc"><b>新奇打底。</b> 这次的核心活动必须是双方至少一方没做过的。"老地方再去一次"是关系倦怠的开始。</div>
+
+        <div class="step">Step 03</div>
+        <div class="desc"><b>身体唤起。</b> 主活动选能拉高心率的：运动、刺激、辣、冷热、笑。不要全程坐着说话——大脑会把"今天没什么事发生"的标签贴在这段记忆上。</div>
+
+        <div class="step">Step 04</div>
+        <div class="desc"><b>设计高潮。</b> 一次约会至少一个明确的"峰"。可以是一句精心准备的话、一份小礼物、突然出现的第二地点、一首她/他大学时代的歌响起。</div>
+
+        <div class="step">Step 05</div>
+        <div class="desc"><b>精雕收尾。</b> 最后 15 分钟决定整体记忆。不要在疲惫、堵车、找停车位中结束。提前规划：一杯睡前酒、一个安静的散步、一段独处的沉默。</div>
+      </div>
+    </section>
+
+    <!-- Section 5: Don't do -->
+    <section>
+      <h2><span class="num">05</span>反向清单 · 这些约会不会被记住</h2>
+      <p class="lede">不是"差"，是"中性"——而中性的经历会被大脑直接删除。</p>
+
+      <div class="dont">
+        <div class="x"><b>晚餐 + 电影</b>两人面对的不是彼此而是屏幕；2.5 小时无对话、无新信息、无身体唤起。统计上是被遗忘率最高的约会模式。</div>
+        <div class="x"><b>第三次以后的"同一家高级餐厅"</b>首次的多巴胺已被"预测准确"耗尽；之后只剩平淡的奖赏。</div>
+        <div class="x"><b>对方完全不感兴趣的展览/比赛</b>一方在表演兴致 = 两方都不会有催产素。</div>
+        <div class="x"><b>纯被动消费内容</b>逛街、漫无目的的散步、刷手机。海马体没有可"高亮"的事件标记。</div>
+        <div class="x"><b>过度计划、零余地</b>多巴胺需要意外。每分钟都安排死的约会反而抹掉了所有惊喜窗口。</div>
+        <div class="x"><b>酒精浓度过高的整夜</b>酒精短期内会模拟"放松+亲密"，但显著抑制记忆固化。第二天经常一片模糊。</div>
+      </div>
+    </section>
+
+    <!-- Recap -->
+    <section>
+      <h2><span class="num">06</span>本回合 · 速记</h2>
+      <table class="recap">
+        <thead>
+          <tr>
+            <th>项目 / Project</th>
+            <th>现在到哪里 / Where we are</th>
+            <th>已完成 / Done this turn</th>
+            <th>未完成 / Open / Next</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>约会项目神经科学排名</td>
+            <td>单页编辑稿已出</td>
+            <td>
+              · 4 种神经化学速查<br>
+              · Top 15 约会项目（D/E/O 三轴评分）<br>
+              · 4 个记忆机制 + 5 步配方 + 反向清单
+            </td>
+            <td>
+              · 如果你想，我可以补"按预算 / 季节 / 关系阶段"的二级筛选<br>
+              · 或补"长程关系如何避免边际效用递减"的进阶篇
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <p class="colophon">— The Date Lab · 仅以神经科学为参考；最重要的还是这个人是谁。 —</p>
+
+  </main>
+</div>
+
+<script>
+function saveDoc(){
+  // Clone document, strip toolbar/script so the saved file is clean and offline-safe.
+  const clone = document.documentElement.cloneNode(true);
+  clone.querySelectorAll('.toolbar, script').forEach(el => el.remove());
+  // Lock the saved copy back to non-editable; user can re-toggle in source if needed.
+  const main = clone.querySelector('main');
+  if (main) main.removeAttribute('contenteditable');
+  const html = '<!doctype html>\n' + clone.outerHTML;
+  const blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const stamp = new Date().toISOString().slice(0,10);
+  a.href = url;
+  a.download = '约会项目神经科学排名-' + stamp + '.html';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url), 1000);
+}
+</script>
+</body>
+</html>
