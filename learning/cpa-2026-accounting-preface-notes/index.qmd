@@ -1,0 +1,493 @@
+---
+title: "2026 CPA 会计 · 前言 · 笔记"
+author: "Kevin Guo"
+date: "2026-06-18"
+categories: [CPA, accounting, "中文", study-notes]
+description: "我自己整理的 2026 CPA 会计前言学习笔记 —— 重点、易错点、回忆框架。"
+---
+::: {.callout-note appearance="simple"}
+📄 **Also available as:** [HTML view →](cpa-2026-accounting-preface-notes.html)
+:::
+REVIEW · 复习用
+
+CPA 2026 · 会计
+
+# 前言 · 复习笔记
+
+张敬富 · 应试基础精讲班 · 一张纸看完前言
+
+- **30** 章 / **5** 部分
+- 客观 **50** + 主观 **50** = **100** 分
+- 英文答题第 1 题 **+5 分**
+- 日期：2026/06/12
+
+MIND MAP
+
+## ① 整本书一张图
+
+先把 30 章塞进脑袋里的"五个抽屉"，后面学每章都对得上号。
+
+mindmap root(("CPA 会计
+30 章")) P1\["P1 会计基本理论"\] ch1\["第1章 总论"\] P2\["P2 会计要素核算 15章"\] ch2\["存货 ch2"\] ch3_5\["固定/无形/投房 ch3-5"\] ch6\["长股投+合营 ch6 ⭐"\] ch7\["资产减值 ch7"\] ch8\["负债 ch8 ⭐"\] ch9\["职工薪酬 ch9"\] ch10\["股份支付 ch10"\] ch11\["借款费用 ch11"\] ch12\["或有事项 ch12"\] ch13\["金融工具+保险 ch13 ⭐⭐⭐"\] ch16\["所有者权益 ch16"\] ch17\["收入费用利润 ch17 ⭐"\] ch18\["政府补助 ch18"\] P3\["P3 特殊事项 9章"\] ch14\["租赁 ch14"\] ch15\["持有待售 ch15"\] ch19\["所得税 ch19"\] ch20\["非货币交换 ch20"\] ch21\["债务重组 ch21"\] ch22\["外币折算 ch22"\] ch24\["会计差错 ch24"\] ch25\["日后事项 ch25"\] ch26\["企业合并 ch26 ⭐⭐"\] P4\["P4 财务报告 3章"\] ch23\["财务报告 ch23 ⭐⭐"\] ch27\["合并报表 ch27 ⭐"\] ch28\["每股收益 ch28"\] P5\["P5 其他 2章"\] ch29\["公允价值 ch29"\] ch30\["政府+非营利 ch30 ⭐⭐"\]
+
+⭐ = 2026 年有实质性变化；⭐ 越多变化越大。**13 章金融工具**、**30 章政府非营利**变化最猛，是今年的"新王"。
+
+2026 CHANGES
+
+## ② 2026 年变化速查表
+
+看图说话：哪些章节"新增/修改/删除/没动"，一表搞定。**新增 = 必考**、修改 = 重点关注、没动 ≠ 不考。
+
+### P1 + P2：会计基本理论 + 会计要素核算（16 章）
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>章</th>
+<th>章节</th>
+<th>变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="ch">1</td>
+<td>总论</td>
+<td>新会计工作责任 / 可持续披露例题 / 第七节 <mark>AI 在会计审计</mark> 修文字</td>
+</tr>
+<tr>
+<td class="ch">2</td>
+<td>存货</td>
+<td>无实质变化</td>
+</tr>
+<tr>
+<td class="ch">3</td>
+<td>固定资产</td>
+<td>新例题 修文字</td>
+</tr>
+<tr>
+<td class="ch">4</td>
+<td>无形资产</td>
+<td>新例题 修文字</td>
+</tr>
+<tr>
+<td class="ch">5</td>
+<td>投资性房地产</td>
+<td>新<mark>保险合同准则下投房处理原则</mark></td>
+</tr>
+<tr>
+<td class="ch">6</td>
+<td>长股投与合营 ★</td>
+<td>新非同控合并下买方获得<mark>补偿性资产</mark>原则 新同控合并取得子公司处置<strong>并丧失控制权</strong>时资本公积处理 新例题</td>
+</tr>
+<tr>
+<td class="ch">7</td>
+<td>资产减值</td>
+<td>无实质变化</td>
+</tr>
+<tr>
+<td class="ch">8</td>
+<td>负债 ★</td>
+<td>修增值税定义 / <mark>视同应税交易</mark> / 进项税不予抵扣情形 删差额征税 + 进项不得抵扣→允许抵扣 + 税控设备维护费抵减 新<mark>地方政府专项债券</mark></td>
+</tr>
+<tr>
+<td class="ch">9</td>
+<td>职工薪酬</td>
+<td>无实质变化</td>
+</tr>
+<tr>
+<td class="ch">10</td>
+<td>股份支付</td>
+<td>新例题 修文字</td>
+</tr>
+<tr>
+<td class="ch">11</td>
+<td>借款费用</td>
+<td>无实质变化</td>
+</tr>
+<tr>
+<td class="ch">12</td>
+<td>或有事项</td>
+<td>新<mark>保证类质量保证形成的预计负债列报原则</mark></td>
+</tr>
+<tr>
+<td class="ch">13</td>
+<td>金融工具+保险 ★★★</td>
+<td>新<mark>净额结算</mark>合同处理<br />
+新金融资产/负债确认与终止确认<br />
+新<mark>信用增级</mark>对预期信用损失影响<br />
+新<strong>第八节 保险合同概述</strong><br />
+新例题 修文字</td>
+</tr>
+<tr>
+<td class="ch">16</td>
+<td>所有者权益</td>
+<td>修<mark>复合金融工具</mark>交易费用处理</td>
+</tr>
+<tr>
+<td class="ch">17</td>
+<td>收入费用利润 ★</td>
+<td>新合同履行完毕后<mark>调减商品对价</mark>处理</td>
+</tr>
+<tr>
+<td class="ch">18</td>
+<td>政府补助</td>
+<td>修政府补助的定义</td>
+</tr>
+</tbody>
+</table>
+
+### P3 + P4 + P5：特殊事项 + 财务报告 + 其他（14 章）
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>章</th>
+<th>章节</th>
+<th>变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="ch">14</td>
+<td>租赁</td>
+<td>无实质变化</td>
+</tr>
+<tr>
+<td class="ch">15</td>
+<td>持有待售 / 终止经营</td>
+<td>新分配给所有者的非流动资产/处置组<mark>分配费用</mark> 修终止确认表述</td>
+</tr>
+<tr>
+<td class="ch">19</td>
+<td>所得税</td>
+<td>新例题</td>
+</tr>
+<tr>
+<td class="ch">20</td>
+<td>非货币性资产交换</td>
+<td>无实质变化</td>
+</tr>
+<tr>
+<td class="ch">21</td>
+<td>债务重组</td>
+<td>新受让金融资产<mark>初始公允价值与交易价格差异</mark>处理</td>
+</tr>
+<tr>
+<td class="ch">22</td>
+<td>外币折算</td>
+<td>无实质变化</td>
+</tr>
+<tr>
+<td class="ch">23</td>
+<td>财务报告 ★★</td>
+<td>修列报基本要求 / 资产负债按<mark>流动性列报</mark> / 所有者权益变动表 / 附注主要内容<br />
+新资产负债表中调整或增设项目情形<br />
+新利润表中费用按<mark>功能分类</mark></td>
+</tr>
+<tr>
+<td class="ch">24</td>
+<td>会计政策/估计/差错</td>
+<td>新例题 修文字</td>
+</tr>
+<tr>
+<td class="ch">25</td>
+<td>日后事项</td>
+<td>新日后事项<mark>附注披露</mark></td>
+</tr>
+<tr>
+<td class="ch">26</td>
+<td>企业合并 ★★</td>
+<td>新同控合并取得子公司处置丧失控制权时资本公积处理<br />
+新<mark>补偿性资产的会计处理</mark></td>
+</tr>
+<tr>
+<td class="ch">27</td>
+<td>合并报表 ★</td>
+<td>新处置同控子公司丧失控制权时资本公积处理 删合并现金流量表概述部分</td>
+</tr>
+<tr>
+<td class="ch">28</td>
+<td>每股收益</td>
+<td>无实质变化</td>
+</tr>
+<tr>
+<td class="ch">29</td>
+<td>公允价值计量</td>
+<td>无实质变化</td>
+</tr>
+<tr>
+<td class="ch">30</td>
+<td>政府+非营利 ★★</td>
+<td>删从同级财政取得政府债券资金处理<br />
+新<mark>地方政府专项债券业务</mark><br />
+新非营利组织各类收入定义 / <mark>接受捐赠与政府补助何时确认</mark><br />
+修捐赠资产 / 政府补助收入 / 销售商品收入 / 业务活动成本 / 净资产</td>
+</tr>
+</tbody>
+</table>
+
+📌 三种变化的**优先级**：
+**新增 ＞ 修改 ＞ 删除**（删除的不用学，新增几乎一定考，修改要看是否影响计算）。
+按章节难度排：**ch13 金融工具 ＞ ch26 企业合并 ＞ ch23 财务报告 ＞ ch6 长股投 ＞ ch30 政府非营利**。
+
+EXAM FORMAT
+
+## ③ 题型 · 题量 · 命题特点
+
+考场长什么样、什么题型怎么打分、应试策略一张表。
+
+<table>
+<thead>
+<tr>
+<th>题型</th>
+<th>题量</th>
+<th>每题</th>
+<th>合计</th>
+<th>主/客</th>
+<th>策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>单选</strong></td>
+<td>13</td>
+<td>2 分</td>
+<td>26 分</td>
+<td rowspan="2">客观 50 分</td>
+<td>覆盖广、抓基础</td>
+</tr>
+<tr>
+<td><strong>多选</strong></td>
+<td>12</td>
+<td>2 分</td>
+<td>24 分</td>
+<td>错一个全错，宁少勿多</td>
+</tr>
+<tr>
+<td><strong>计算分析</strong></td>
+<td>2</td>
+<td>9 分</td>
+<td>18 分</td>
+<td rowspan="2">主观 50 分</td>
+<td>第 1 题<mark>英文 +5</mark>、考点集中</td>
+</tr>
+<tr>
+<td><strong>综合</strong></td>
+<td>2</td>
+<td>16 分</td>
+<td>32 分</td>
+<td>差错更正 / 拼盘式 / 阅读量大</td>
+</tr>
+<tr>
+<td colspan="3"><strong>合计</strong></td>
+<td><strong>100 分</strong></td>
+<td>29 题</td>
+<td>60 分及格</td>
+</tr>
+</tbody>
+</table>
+
+#### 客观题
+
+题量稳、范围广、重点恒重 · 逢新必考→ 全章节扫读，新增/修改打星
+
+#### 计算分析题
+
+"计算+分析"并重、考点集中、综合性不强→ 长股投/收入/租赁/金融工具/政府补助 5 大块
+
+#### 综合题
+
+阅读+计算大、综合性强、差错更正或拼盘→ 先标重点信息，再分块作答
+
+STUDY PLAN
+
+## ④ 学习时间线 · 四阶段读书法
+
+考试日期倒推，4 个阶段每段读法完全不一样。
+
+gantt title 备考时间线（以考试日为零点倒推） dateFormat YYYY-MM-DD axisFormat %m月 section 熟读期 教材+习题花大力气理解 :a1, 2026-03-01, 60d section 精读期 不重要的略过、聚焦重点章 :a2, 2026-05-01, 60d section 泛读期 以题带教材、刷套题 :a3, 2026-07-01, 60d section 粗读期 重在理解贯通、查漏补缺 :a4, 2026-08-15, 30d section 考试 机考冲刺 :crit, 2026-09-15, 7d
+
+#### 熟读 · 考前 4-6 月
+
+把陌生→熟悉每个新概念都搞清楚 What/Why/How
+
+#### 精读 · 考前 2-3 月
+
+把熟悉→精通敢于"放弃"次要章节，集中火力
+
+#### 泛读 · 考前 1-2 月
+
+用题串知识做题中遇到不会的章节，回头精读
+
+#### 粗读 · 考前 0.5-1 月
+
+所有点串成网通读笔记 + 错题本，不再啃新东西
+
+### 六大注意事项
+
+|  |  |
+|----|----|
+| ① 心态 | 树立信心，持之以恒，难章节提前做心理准备 |
+| ② 方法 | 注重**理解 / 总结 / 归纳**，重点放在基础知识与新增知识点 |
+| ③ 题型 | 客观题 vs 主观题**分别策略**，不能一套打法到底 |
+| ④ 储备 | 《税法》《财管》基础概念要够用（增值税、现值、折现率） |
+| ⑤ 节奏 | 避免前松后紧，切勿临阵磨枪 |
+| ⑥ 机考 | 熟练用**笔记本电脑作答**，平时刷题就模拟机考环境 |
+
+CORE MATH
+
+## ⑤ 终值 · 现值 · 年金 · 插值法（公式速查）
+
+这是会计/财管全部"折现"题的**基础语言**。前言里教，是因为后面默认你会。
+
+### 5.1 概念地图
+
+flowchart LR A\["货币时间价值
+金钱有时间成本"\] --\> B\["单笔款项"\] A --\> C\["系列款项 = 年金"\] B --\> B1\["终值 F
+P → 未来"\] B --\> B2\["现值 P
+未来 → 现在"\] C --\> C1\["普通年金
+期末后付"\] C --\> C2\["预付年金
+期初先付"\] C --\> C3\["递延年金
+第二期后开始"\] C --\> C4\["永续年金
+无限期"\] B1 -.单利/复利两种.- D\["CPA 默认
+复利"\] B2 -.单利/复利两种.- D style D fill:#fde9b3,stroke:#b88a3a,color:#7a5500 style A fill:#d14841,color:#fff,stroke:#d14841
+
+### 5.2 单利 vs 复利
+
+| 项目     | 单利       | 复利                                         |
+|----------|------------|----------------------------------------------|
+| 计息对象 | 仅**本金** | **本金** + **前期利息**                      |
+| 各期利息 | 相等       | 不等（递增）                                 |
+| 俗称     | —          | "利滚利"、"滚雪球" |
+| CPA 用法 | 极少       | **默认全用复利**                             |
+
+### 5.3 一次性收付款 · 复利公式
+
+终值 FUTURE VALUE
+
+$$F = P(1+i)^n = P \cdot (F/P, i, n)$$
+
+"现在的 P 块钱，n 年后变多少" · 系数 $(F/P, i, n) = (1+i)^n$ 查表得
+
+现值 PRESENT VALUE
+
+$$P = \frac{F}{(1+i)^n} = F \cdot (P/F, i, n)$$
+
+"n 年后要 F 块钱，现在投多少" · 系数 $(P/F, i, n) = \dfrac{1}{(1+i)^n}$ 查表得
+
+### 5.4 四类年金 · 时间轴对照
+
+![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgNzIwIDM2MCIgd2lkdGg9IjEwMCUiPgogIDwhLS0g5pmu6YCa5bm06YeRIC0tPgogIDx0ZXh0IHg9IjIwIiB5PSIzMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2QxNDg0MSI+4pGgIOaZrumAmuW5tOmHke+8iOWQjuS7mO+8iTwvdGV4dD4KICA8bGluZSB4MT0iMjAiIHkxPSI1NSIgeDI9IjcwMCIgeTI9IjU1IiBzdHJva2U9IiMyNTI1MjMiIHN0cm9rZS13aWR0aD0iMiI+PC9saW5lPgogIDxnIGZvbnQtc2l6ZT0iMTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPgogICAgPHRleHQgeD0iMjAiIHk9IjQ4Ij4wPC90ZXh0Pjx0ZXh0IHg9IjE2MCIgeT0iNDgiPjE8L3RleHQ+PHRleHQgeD0iMzAwIiB5PSI0OCI+MjwvdGV4dD48dGV4dCB4PSI0NDAiIHk9IjQ4Ij4zPC90ZXh0Pjx0ZXh0IHg9IjU4MCIgeT0iNDgiPjQ8L3RleHQ+PHRleHQgeD0iNzAwIiB5PSI0OCI+4oCmbjwvdGV4dD4KICA8L2c+CiAgPGc+CiAgICA8bGluZSB4MT0iMTYwIiB5MT0iNjAiIHgyPSIxNjAiIHkyPSI4NSIgc3Ryb2tlPSIjZDE0ODQxIiBzdHJva2Utd2lkdGg9IjIiIG1hcmtlci1lbmQ9InVybCgjYXJyKSI+PC9saW5lPgogICAgPGxpbmUgeDE9IjMwMCIgeTE9IjYwIiB4Mj0iMzAwIiB5Mj0iODUiIHN0cm9rZT0iI2QxNDg0MSIgc3Ryb2tlLXdpZHRoPSIyIiBtYXJrZXItZW5kPSJ1cmwoI2FycikiPjwvbGluZT4KICAgIDxsaW5lIHgxPSI0NDAiIHkxPSI2MCIgeDI9IjQ0MCIgeTI9Ijg1IiBzdHJva2U9IiNkMTQ4NDEiIHN0cm9rZS13aWR0aD0iMiIgbWFya2VyLWVuZD0idXJsKCNhcnIpIj48L2xpbmU+CiAgICA8bGluZSB4MT0iNTgwIiB5MT0iNjAiIHgyPSI1ODAiIHkyPSI4NSIgc3Ryb2tlPSIjZDE0ODQxIiBzdHJva2Utd2lkdGg9IjIiIG1hcmtlci1lbmQ9InVybCgjYXJyKSI+PC9saW5lPgogIDwvZz4KICA8ZyBmb250LXNpemU9IjEwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZDE0ODQxIj4KICAgIDx0ZXh0IHg9IjE2MCIgeT0iOTgiPkE8L3RleHQ+PHRleHQgeD0iMzAwIiB5PSI5OCI+QTwvdGV4dD48dGV4dCB4PSI0NDAiIHk9Ijk4Ij5BPC90ZXh0Pjx0ZXh0IHg9IjU4MCIgeT0iOTgiPkE8L3RleHQ+CiAgPC9nPgoKICA8IS0tIOmihOS7mOW5tOmHkSAtLT4KICA8dGV4dCB4PSIyMCIgeT0iMTMwIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMjQ2YThlIj7ikaEg6aKE5LuY5bm06YeR77yI5YWI5LuY77yJPC90ZXh0PgogIDxsaW5lIHgxPSIyMCIgeTE9IjE1NSIgeDI9IjcwMCIgeTI9IjE1NSIgc3Ryb2tlPSIjMjUyNTIzIiBzdHJva2Utd2lkdGg9IjIiPjwvbGluZT4KICA8ZyBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4KICAgIDx0ZXh0IHg9IjIwIiB5PSIxNDgiPjA8L3RleHQ+PHRleHQgeD0iMTYwIiB5PSIxNDgiPjE8L3RleHQ+PHRleHQgeD0iMzAwIiB5PSIxNDgiPjI8L3RleHQ+PHRleHQgeD0iNDQwIiB5PSIxNDgiPjM8L3RleHQ+PHRleHQgeD0iNTgwIiB5PSIxNDgiPjQ8L3RleHQ+PHRleHQgeD0iNzAwIiB5PSIxNDgiPuKApm48L3RleHQ+CiAgPC9nPgogIDxnPgogICAgPGxpbmUgeDE9IjIwIiB5MT0iMTYwIiB4Mj0iMjAiIHkyPSIxODUiIHN0cm9rZT0iIzI0NmE4ZSIgc3Ryb2tlLXdpZHRoPSIyIiBtYXJrZXItZW5kPSJ1cmwoI2FyckIpIj48L2xpbmU+CiAgICA8bGluZSB4MT0iMTYwIiB5MT0iMTYwIiB4Mj0iMTYwIiB5Mj0iMTg1IiBzdHJva2U9IiMyNDZhOGUiIHN0cm9rZS13aWR0aD0iMiIgbWFya2VyLWVuZD0idXJsKCNhcnJCKSI+PC9saW5lPgogICAgPGxpbmUgeDE9IjMwMCIgeTE9IjE2MCIgeDI9IjMwMCIgeTI9IjE4NSIgc3Ryb2tlPSIjMjQ2YThlIiBzdHJva2Utd2lkdGg9IjIiIG1hcmtlci1lbmQ9InVybCgjYXJyQikiPjwvbGluZT4KICAgIDxsaW5lIHgxPSI0NDAiIHkxPSIxNjAiIHgyPSI0NDAiIHkyPSIxODUiIHN0cm9rZT0iIzI0NmE4ZSIgc3Ryb2tlLXdpZHRoPSIyIiBtYXJrZXItZW5kPSJ1cmwoI2FyckIpIj48L2xpbmU+CiAgICA8bGluZSB4MT0iNTgwIiB5MT0iMTYwIiB4Mj0iNTgwIiB5Mj0iMTg1IiBzdHJva2U9IiMyNDZhOGUiIHN0cm9rZS13aWR0aD0iMiIgbWFya2VyLWVuZD0idXJsKCNhcnJCKSI+PC9saW5lPgogIDwvZz4KICA8ZyBmb250LXNpemU9IjEwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMjQ2YThlIj4KICAgIDx0ZXh0IHg9IjIwIiB5PSIxOTgiPkE8L3RleHQ+PHRleHQgeD0iMTYwIiB5PSIxOTgiPkE8L3RleHQ+PHRleHQgeD0iMzAwIiB5PSIxOTgiPkE8L3RleHQ+PHRleHQgeD0iNDQwIiB5PSIxOTgiPkE8L3RleHQ+PHRleHQgeD0iNTgwIiB5PSIxOTgiPkE8L3RleHQ+CiAgPC9nPgoKICA8IS0tIOmAkuW7tuW5tOmHkSAtLT4KICA8dGV4dCB4PSIyMCIgeT0iMjMwIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjYjg4YTNhIj7ikaIg6YCS5bu25bm06YeR77yIbSDmnJ/pgJLlu7YgKyBuIOacn+aZrumAmu+8iTwvdGV4dD4KICA8bGluZSB4MT0iMjAiIHkxPSIyNTUiIHgyPSI3MDAiIHkyPSIyNTUiIHN0cm9rZT0iIzI1MjUyMyIgc3Ryb2tlLXdpZHRoPSIyIj48L2xpbmU+CiAgPGcgZm9udC1zaXplPSIxMSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+CiAgICA8dGV4dCB4PSIyMCIgeT0iMjQ4Ij4wPC90ZXh0Pjx0ZXh0IHg9IjMwMCIgeT0iMjQ4Ij5tPC90ZXh0Pjx0ZXh0IHg9IjQ0MCIgeT0iMjQ4Ij5tKzE8L3RleHQ+PHRleHQgeD0iNTgwIiB5PSIyNDgiPm0rMjwvdGV4dD48dGV4dCB4PSI3MDAiIHk9IjI0OCI+bStuPC90ZXh0PgogIDwvZz4KICA8cmVjdCB4PSIyMiIgeT0iMjU4IiB3aWR0aD0iMjc4IiBoZWlnaHQ9IjE4IiBmaWxsPSIjZmRlOWIzIiBvcGFjaXR5PSIuNyIgLz4KICA8dGV4dCB4PSIxNjAiIHk9IjI3MiIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2I4OGEzYSI+6YCS5bu25pyfIG3vvIzml6DnjrDph5HmtYE8L3RleHQ+CiAgPGc+CiAgICA8bGluZSB4MT0iNDQwIiB5MT0iMjYwIiB4Mj0iNDQwIiB5Mj0iMjg1IiBzdHJva2U9IiNiODhhM2EiIHN0cm9rZS13aWR0aD0iMiIgbWFya2VyLWVuZD0idXJsKCNhcnJDKSI+PC9saW5lPgogICAgPGxpbmUgeDE9IjU4MCIgeTE9IjI2MCIgeDI9IjU4MCIgeTI9IjI4NSIgc3Ryb2tlPSIjYjg4YTNhIiBzdHJva2Utd2lkdGg9IjIiIG1hcmtlci1lbmQ9InVybCgjYXJyQykiPjwvbGluZT4KICAgIDxsaW5lIHgxPSI3MDAiIHkxPSIyNjAiIHgyPSI3MDAiIHkyPSIyODUiIHN0cm9rZT0iI2I4OGEzYSIgc3Ryb2tlLXdpZHRoPSIyIiBtYXJrZXItZW5kPSJ1cmwoI2FyckMpIj48L2xpbmU+CiAgPC9nPgogIDxnIGZvbnQtc2l6ZT0iMTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNiODhhM2EiPgogICAgPHRleHQgeD0iNDQwIiB5PSIyOTgiPkE8L3RleHQ+PHRleHQgeD0iNTgwIiB5PSIyOTgiPkE8L3RleHQ+PHRleHQgeD0iNzAwIiB5PSIyOTgiPkE8L3RleHQ+CiAgPC9nPgoKICA8IS0tIOawuOe7reW5tOmHkSAtLT4KICA8dGV4dCB4PSIyMCIgeT0iMzMwIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjM2U3MDQ0Ij7ikaMg5rC457ut5bm06YeR77yI5peg6ZmQ5pyf77yJPC90ZXh0PgogIDxsaW5lIHgxPSIyMCIgeTE9IjM1NSIgeDI9IjcwMCIgeTI9IjM1NSIgc3Ryb2tlPSIjMjUyNTIzIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1kYXNoYXJyYXk9IjQgMyI+PC9saW5lPgogIDxnIGZvbnQtc2l6ZT0iMTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMzZTcwNDQiPgogICAgPHRleHQgeD0iMTYwIiB5PSIzNTAiPkE8L3RleHQ+PHRleHQgeD0iMzAwIiB5PSIzNTAiPkE8L3RleHQ+PHRleHQgeD0iNDQwIiB5PSIzNTAiPkE8L3RleHQ+PHRleHQgeD0iNTgwIiB5PSIzNTAiPkE8L3RleHQ+PHRleHQgeD0iNzAwIiB5PSIzNDUiPuKGkiDiiJ48L3RleHQ+CiAgPC9nPgoKICA8ZGVmcz4KICAgIDxtYXJrZXIgaWQ9ImFyciIgbWFya2Vyd2lkdGg9IjYiIG1hcmtlcmhlaWdodD0iNiIgcmVmeD0iMyIgcmVmeT0iMyIgb3JpZW50PSJhdXRvIj48cG9seWdvbiBwb2ludHM9IjAsMCA2LDMgMCw2IiBmaWxsPSIjZDE0ODQxIj48L3BvbHlnb24+PC9tYXJrZXI+CiAgICA8bWFya2VyIGlkPSJhcnJCIiBtYXJrZXJ3aWR0aD0iNiIgbWFya2VyaGVpZ2h0PSI2IiByZWZ4PSIzIiByZWZ5PSIzIiBvcmllbnQ9ImF1dG8iPjxwb2x5Z29uIHBvaW50cz0iMCwwIDYsMyAwLDYiIGZpbGw9IiMyNDZhOGUiPjwvcG9seWdvbj48L21hcmtlcj4KICAgIDxtYXJrZXIgaWQ9ImFyckMiIG1hcmtlcndpZHRoPSI2IiBtYXJrZXJoZWlnaHQ9IjYiIHJlZng9IjMiIHJlZnk9IjMiIG9yaWVudD0iYXV0byI+PHBvbHlnb24gcG9pbnRzPSIwLDAgNiwzIDAsNiIgZmlsbD0iI2I4OGEzYSI+PC9wb2x5Z29uPjwvbWFya2VyPgogIDwvZGVmcz4KPC9zdmc+)
+
+| 类型 | 付款时点 | 现值公式 | 终值公式 |
+|----|----|----|----|
+| ① 普通年金 | 期末 | $P = A \cdot (P/A, i, n)$ | $F = A \cdot (F/A, i, n)$ |
+| ② 预付年金 | 期初 | $P = A \cdot (P/A, i, n) \cdot (1+i)$ | $F = A \cdot (F/A, i, n) \cdot (1+i)$ |
+| ③ 递延年金 (m 递延 + n 付款) | 第 m+1 期起 | $P = A \cdot (P/A, i, n) \cdot (P/F, i, m)$ | $F = A \cdot (F/A, i, n)$ （与普通相同） |
+| ④ 永续年金 | 无限 | $P = \dfrac{A}{i}$ | 不存在 |
+
+两个核心系数（推导用）
+
+$$\text{年金现值系数} \quad (P/A, i, n) = \frac{1-(1+i)^{-n}}{i}$$ $$\text{年金终值系数} \quad (F/A, i, n) = \frac{(1+i)^n - 1}{i}$$
+
+推导思路：把 n 期相同金额 A 的现值/终值用**等比数列求和**压缩成一个公式 $S_n = \dfrac{a_1(1-q^n)}{1-q}$。考试不用记推导，会查系数表就行。
+
+### 5.5 插值法（线性内插）
+
+问题：表上只有 8%、10% 的系数，要求 i=9.12%（卡在中间），怎么办？
+
+flowchart LR A\["遇到不在表上的利率 i"\] --\> B\["找相邻两个表内值
+i₁ 和 i₂"\] B --\> C\["假设这段区间是直线
+（线性近似）"\] C --\> D\["按比例分割：
+(i-i₁)/(i₂-i₁) = (系数-系数₁)/(系数₂-系数₁)"\] D --\> E\["解出 i ✅"\] style A fill:#d14841,color:#fff style E fill:#3e7044,color:#fff
+
+教材例题 · 反推折现率
+
+已知 $(P/F, i, 5) = 0.6472$，求 i。
+查表：$(P/F, 8\\, 5) = 0.6806$，$(P/F, 10\\, 5) = 0.6209$。
+$$\frac{8\\ - i}{8\\ - 10\\} = \frac{0.6806 - 0.6472}{0.6806 - 0.6209}$$ 解得 $\boxed{i \approx 9.12\\}$
+
+💡 现值系数随 i 上升而**下降**，方向一致才能内插。考场上误差 \< 0.5%，够用。
+
+## ⑥ 一页 Cheat Sheet
+
+▌核心系数
+
+`F/P = (1+i)^n`　复利终值
+`P/F = 1/(1+i)^n`　复利现值
+`F/A = [(1+i)^n - 1] / i`　年金终值
+`P/A = [1-(1+i)^-n] / i`　年金现值
+
+▌年金换算口诀
+
+预付：普通 `× (1+i)`　多走一期
+递延：普通 `× (P/F, i, m)`　剥掉递延期
+永续：`A / i`　无限项几何级数
+
+▌2026 三大重点章
+
+ch13 金融工具+保险（★★★ 新最多）
+ch26 企业合并（补偿性资产 ★★）
+ch30 政府+非营利（专项债 + 非营利 ★★）
+
+▌应试策略
+
+单选广撒网、多选宁少勿多
+计算分析第 1 题**英文 +5** 必拿
+综合题**先标重点**再分块写
+新增 = 必考，逢新必考
+临场**会做的先做**，金融工具/合并报表**放后面**
+
+SELF-CHECK
+
+## ⑦ 自测 8 问（合上笔记答一遍）
+
+Q1
+
+2026 年《会计》共多少章？分几部分？
+
+Q2
+
+客观题与主观题各多少分？综合题怎么扣？
+
+Q3
+
+哪一题英文答题加 5 分？加多少？
+
+Q4
+
+第 13 章变化最大的两个新增是什么？
+
+Q5
+
+四阶段读书法的顺序和时长各是？
+
+Q6
+
+终值现值的两个核心系数写一下：(F/P) 和 (P/F)？
+
+Q7
+
+普通年金 vs 预付年金的现值差在哪？写公式。
+
+Q8
+
+(P/F, i, 5)=0.6472，查表两端 8%(0.6806)、10%(0.6209)，i≈？
+
+⏱ **能在 5 分钟内全部答出 = 前言过关**。卡顿 ≥ 2 题，回去看 ② ④ ⑤ 三节。
+
+© 2026 CPA《会计》前言 · 复习笔记 · 单文件可编辑 · 可保存 · 可打印
+
+---
+
+*Original HTML version: [cpa-2026-accounting-preface-notes.html](cpa-2026-accounting-preface-notes.html)*

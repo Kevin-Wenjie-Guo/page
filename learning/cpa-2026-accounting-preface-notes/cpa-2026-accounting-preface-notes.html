@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 CPA《会计》前言 · 复习笔记</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<style>
+:root{
+  --bg:#f7f3ea;
+  --paper:#fffdf8;
+  --ink:#252523;
+  --accent:#d14841;
+  --accent-2:#246a8e;
+  --gold:#b88a3a;
+  --green:#3e7044;
+  --grid:#e5dec9;
+  --muted:#6e6a5e;
+  --hl:#fff48b;
+  --shadow:0 1px 0 rgba(0,0,0,.02), 0 8px 24px -12px rgba(0,0,0,.18);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+  font-family:"Songti SC","Source Han Serif SC", Georgia, serif;
+  line-height:1.7;
+  /* notebook grid paper */
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -1px -1px;
+}
+.bar{
+  position:sticky;top:0;z-index:50;
+  display:flex;gap:8px;align-items:center;
+  padding:9px 16px;
+  background:rgba(247,243,234,.94);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--grid);
+}
+.bar .t{font-family:"PingFang SC",system-ui,sans-serif;font-size:13px;color:var(--muted);margin-right:auto}
+.btn{
+  font-family:"PingFang SC",system-ui,sans-serif;
+  font-size:12px;font-weight:500;padding:6px 12px;border-radius:99px;
+  border:1px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer;
+}
+.btn.s{background:transparent;color:var(--ink)}
+.wrap{max-width:1080px;margin:0 auto;padding:36px 28px 100px}
+
+.cover{
+  background:var(--paper);
+  border:1px solid var(--grid);border-radius:6px;
+  padding:36px 36px 30px;margin-bottom:32px;
+  position:relative;overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.cover::before{
+  content:"";position:absolute;left:0;top:0;width:100%;height:6px;
+  background:linear-gradient(90deg,var(--accent) 0%,var(--gold) 50%,var(--accent-2) 100%);
+}
+.cover .stamp{
+  position:absolute;right:30px;top:30px;
+  border:2px solid var(--accent);color:var(--accent);
+  padding:6px 14px;border-radius:4px;
+  font-family:"PingFang SC",sans-serif;font-size:11px;letter-spacing:.25em;font-weight:700;
+  transform:rotate(-4deg);
+}
+.cover h1{margin:8px 0 4px;font-size:38px;letter-spacing:.02em}
+.cover .sub{font-size:15px;color:var(--muted);font-family:"PingFang SC",sans-serif}
+.cover ul{display:flex;gap:24px;flex-wrap:wrap;list-style:none;padding:0;margin:18px 0 0;
+  font-family:"PingFang SC",sans-serif;font-size:13px;color:var(--muted)}
+.cover ul li b{color:var(--ink)}
+
+.sec{
+  background:var(--paper);
+  border:1px solid var(--grid);
+  border-radius:6px;
+  padding:28px 32px;margin:22px 0;
+  box-shadow:var(--shadow);
+}
+.sec > .tag{
+  display:inline-block;
+  font-family:"PingFang SC",sans-serif;font-size:10px;letter-spacing:.3em;
+  color:var(--accent);font-weight:700;
+  border:1px solid var(--accent);padding:3px 9px;border-radius:2px;margin-bottom:8px;
+}
+.sec h2{margin:4px 0 12px;font-size:24px;letter-spacing:.01em}
+.sec .why{
+  font-family:"PingFang SC",sans-serif;font-size:13px;
+  color:var(--muted);margin-bottom:18px;border-left:3px solid var(--gold);padding-left:12px;
+}
+
+h3{font-size:16px;margin:24px 0 10px;color:var(--accent-2);
+  font-family:"PingFang SC",sans-serif;letter-spacing:.05em}
+h3::before{content:"▍";color:var(--accent);margin-right:4px}
+
+table{width:100%;border-collapse:collapse;margin:10px 0 16px;
+  font-family:"PingFang SC",sans-serif;font-size:13.5px;background:#fff}
+th,td{padding:8px 11px;border:1px solid var(--grid);text-align:left;vertical-align:top}
+th{background:#3c3a35;color:#fdfaf1;font-weight:600;font-size:12px;letter-spacing:.06em}
+tr:nth-child(2n) td{background:#faf6e9}
+td.ch{font-weight:600;background:#fff6e0 !important;width:24%}
+
+.pill{
+  display:inline-block;font-size:10.5px;font-weight:600;
+  padding:1.5px 6px;border-radius:3px;margin-right:4px;
+  font-family:"PingFang SC",sans-serif;
+}
+.pill.new{background:#fde9b3;color:#7a5500}
+.pill.fix{background:#cee0ee;color:#205a7f}
+.pill.del{background:#f1c9c7;color:#922623}
+.pill.no{background:#e0ddd2;color:#5a5648}
+.pill.star{background:var(--accent);color:#fff}
+
+mark{background:linear-gradient(transparent 55%, var(--hl) 55%);padding:0 2px;font-weight:600}
+.note{font-family:"PingFang SC",sans-serif;font-size:13px;color:var(--muted);
+  border-left:3px solid var(--accent-2);padding:8px 14px;background:#f3f0e3;margin:12px 0;border-radius:0 3px 3px 0}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0}
+.card{
+  background:#fff;border:1px solid var(--grid);border-radius:4px;
+  padding:14px 16px;border-top:3px solid var(--accent);
+  font-family:"PingFang SC",sans-serif;font-size:13px;
+}
+.card h4{margin:0 0 6px;font-size:14px;color:var(--accent)}
+.card.b{border-top-color:var(--accent-2)}
+.card.b h4{color:var(--accent-2)}
+.card.g{border-top-color:var(--gold)}
+.card.g h4{color:var(--gold)}
+.card .ex{display:block;margin-top:6px;color:var(--muted);font-size:12px;font-style:italic}
+
+.formula-card{
+  background:linear-gradient(180deg,#fffdf3,#fffaf0);
+  border:1px solid var(--gold);border-radius:6px;
+  padding:16px 20px;margin:14px 0;
+  position:relative;
+}
+.formula-card .ttl{
+  font-family:"PingFang SC",sans-serif;font-size:11px;letter-spacing:.2em;
+  color:var(--gold);font-weight:700;margin-bottom:6px;
+}
+.formula-card .body{font-size:16px}
+.formula-card .hint{
+  margin-top:10px;font-family:"PingFang SC",sans-serif;font-size:12.5px;
+  color:var(--muted);border-top:1px dashed var(--grid);padding-top:8px;
+}
+
+.mermaid{background:#fff;border-radius:6px;padding:14px;margin:14px 0;
+  border:1px solid var(--grid)}
+
+/* timeline svg */
+.timeline-svg{
+  background:#fff;border:1px solid var(--grid);border-radius:4px;
+  padding:10px;margin:12px 0;
+}
+.timeline-svg text{font-family:"PingFang SC",sans-serif;font-size:11px}
+
+.q{
+  background:linear-gradient(90deg,#fff,#fdf8e8);
+  border:1px solid var(--gold);border-left:5px solid var(--gold);
+  padding:12px 16px;margin:14px 0;border-radius:0 4px 4px 0;
+  font-family:"PingFang SC",sans-serif;font-size:13px;
+}
+.q .lbl{font-size:10px;letter-spacing:.25em;color:var(--gold);font-weight:700;margin-bottom:4px}
+
+.cheat{
+  background:var(--ink);color:#fdfaf1;padding:24px 28px;border-radius:6px;margin:22px 0;
+  font-family:"PingFang SC",sans-serif;font-size:13.5px;
+  box-shadow:var(--shadow);
+}
+.cheat h2{color:#fdfaf1;border:none;margin:0 0 14px;font-size:20px}
+.cheat .row{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:10px}
+.cheat code{
+  background:rgba(255,255,255,.08);padding:1px 6px;border-radius:3px;
+  font-family:"JetBrains Mono","Menlo",monospace;font-size:12.5px;
+}
+.cheat .k{color:#ffd76b;font-weight:700}
+
+@media print{
+  .bar{display:none}
+  body{background:#fff;background-image:none}
+  .sec, .cover{break-inside:avoid;page-break-inside:avoid;box-shadow:none}
+}
+footer{text-align:center;font-family:"PingFang SC",sans-serif;font-size:11px;color:var(--muted);margin-top:48px}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <span class="t">📒 2026 CPA · 会计 · 前言复习笔记</span>
+  <button class="btn s" onclick="window.print()">打印 / PDF</button>
+  <button class="btn" onclick="save()">保存 HTML</button>
+</div>
+
+<div class="wrap" id="doc" contenteditable="true">
+
+<!-- COVER -->
+<div class="cover">
+  <span class="stamp">REVIEW · 复习用</span>
+  <div style="font-family:'PingFang SC',sans-serif;font-size:11px;letter-spacing:.3em;color:var(--accent);font-weight:600">CPA 2026 · 会计</div>
+  <h1>前言 · 复习笔记</h1>
+  <div class="sub">张敬富 · 应试基础精讲班 · 一张纸看完前言</div>
+  <ul>
+    <li><b>30</b> 章 / <b>5</b> 部分</li>
+    <li>客观 <b>50</b> + 主观 <b>50</b> = <b>100</b> 分</li>
+    <li>英文答题第 1 题 <b>+5 分</b></li>
+    <li>日期：2026/06/12</li>
+  </ul>
+</div>
+
+<!-- 全局思维导图 -->
+<div class="sec">
+  <span class="tag">MIND MAP</span>
+  <h2>① 整本书一张图</h2>
+  <p class="why">先把 30 章塞进脑袋里的"五个抽屉"，后面学每章都对得上号。</p>
+<div class="mermaid">
+mindmap
+  root(("CPA 会计<br/>30 章"))
+    P1["P1 会计基本理论"]
+      ch1["第1章 总论"]
+    P2["P2 会计要素核算 15章"]
+      ch2["存货 ch2"]
+      ch3_5["固定/无形/投房 ch3-5"]
+      ch6["长股投+合营 ch6 ⭐"]
+      ch7["资产减值 ch7"]
+      ch8["负债 ch8 ⭐"]
+      ch9["职工薪酬 ch9"]
+      ch10["股份支付 ch10"]
+      ch11["借款费用 ch11"]
+      ch12["或有事项 ch12"]
+      ch13["金融工具+保险 ch13 ⭐⭐⭐"]
+      ch16["所有者权益 ch16"]
+      ch17["收入费用利润 ch17 ⭐"]
+      ch18["政府补助 ch18"]
+    P3["P3 特殊事项 9章"]
+      ch14["租赁 ch14"]
+      ch15["持有待售 ch15"]
+      ch19["所得税 ch19"]
+      ch20["非货币交换 ch20"]
+      ch21["债务重组 ch21"]
+      ch22["外币折算 ch22"]
+      ch24["会计差错 ch24"]
+      ch25["日后事项 ch25"]
+      ch26["企业合并 ch26 ⭐⭐"]
+    P4["P4 财务报告 3章"]
+      ch23["财务报告 ch23 ⭐⭐"]
+      ch27["合并报表 ch27 ⭐"]
+      ch28["每股收益 ch28"]
+    P5["P5 其他 2章"]
+      ch29["公允价值 ch29"]
+      ch30["政府+非营利 ch30 ⭐⭐"]
+</div>
+<p class="note">⭐ = 2026 年有实质性变化；⭐ 越多变化越大。<b>13 章金融工具</b>、<b>30 章政府非营利</b>变化最猛，是今年的"新王"。</p>
+</div>
+
+<!-- 2026 变化 -->
+<div class="sec">
+<span class="tag">2026 CHANGES</span>
+<h2>② 2026 年变化速查表</h2>
+<p class="why">看图说话：哪些章节"新增/修改/删除/没动"，一表搞定。<b>新增 = 必考</b>、修改 = 重点关注、没动 ≠ 不考。</p>
+
+<h3>P1 + P2：会计基本理论 + 会计要素核算（16 章）</h3>
+<table>
+<thead><tr><th>章</th><th>章节</th><th>变化</th></tr></thead>
+<tbody>
+<tr><td class="ch">1</td><td>总论</td><td><span class="pill new">新</span>会计工作责任 / 可持续披露例题 / 第七节 <mark>AI 在会计审计</mark> <span class="pill fix">修</span>文字</td></tr>
+<tr><td class="ch">2</td><td>存货</td><td><span class="pill no">无实质变化</span></td></tr>
+<tr><td class="ch">3</td><td>固定资产</td><td><span class="pill new">新</span>例题 <span class="pill fix">修</span>文字</td></tr>
+<tr><td class="ch">4</td><td>无形资产</td><td><span class="pill new">新</span>例题 <span class="pill fix">修</span>文字</td></tr>
+<tr><td class="ch">5</td><td>投资性房地产</td><td><span class="pill new">新</span><mark>保险合同准则下投房处理原则</mark></td></tr>
+<tr><td class="ch">6</td><td>长股投与合营 <span class="pill star">★</span></td><td><span class="pill new">新</span>非同控合并下买方获得<mark>补偿性资产</mark>原则 <span class="pill new">新</span>同控合并取得子公司处置<b>并丧失控制权</b>时资本公积处理 <span class="pill new">新</span>例题</td></tr>
+<tr><td class="ch">7</td><td>资产减值</td><td><span class="pill no">无实质变化</span></td></tr>
+<tr><td class="ch">8</td><td>负债 <span class="pill star">★</span></td><td><span class="pill fix">修</span>增值税定义 / <mark>视同应税交易</mark> / 进项税不予抵扣情形 <span class="pill del">删</span>差额征税 + 进项不得抵扣→允许抵扣 + 税控设备维护费抵减 <span class="pill new">新</span><mark>地方政府专项债券</mark></td></tr>
+<tr><td class="ch">9</td><td>职工薪酬</td><td><span class="pill no">无实质变化</span></td></tr>
+<tr><td class="ch">10</td><td>股份支付</td><td><span class="pill new">新</span>例题 <span class="pill fix">修</span>文字</td></tr>
+<tr><td class="ch">11</td><td>借款费用</td><td><span class="pill no">无实质变化</span></td></tr>
+<tr><td class="ch">12</td><td>或有事项</td><td><span class="pill new">新</span><mark>保证类质量保证形成的预计负债列报原则</mark></td></tr>
+<tr><td class="ch">13</td><td>金融工具+保险 <span class="pill star">★★★</span></td><td>
+  <span class="pill new">新</span><mark>净额结算</mark>合同处理<br>
+  <span class="pill new">新</span>金融资产/负债确认与终止确认<br>
+  <span class="pill new">新</span><mark>信用增级</mark>对预期信用损失影响<br>
+  <span class="pill new">新</span><b>第八节 保险合同概述</b><br>
+  <span class="pill new">新</span>例题 <span class="pill fix">修</span>文字
+</td></tr>
+<tr><td class="ch">16</td><td>所有者权益</td><td><span class="pill fix">修</span><mark>复合金融工具</mark>交易费用处理</td></tr>
+<tr><td class="ch">17</td><td>收入费用利润 <span class="pill star">★</span></td><td><span class="pill new">新</span>合同履行完毕后<mark>调减商品对价</mark>处理</td></tr>
+<tr><td class="ch">18</td><td>政府补助</td><td><span class="pill fix">修</span>政府补助的定义</td></tr>
+</tbody>
+</table>
+
+<h3>P3 + P4 + P5：特殊事项 + 财务报告 + 其他（14 章）</h3>
+<table>
+<thead><tr><th>章</th><th>章节</th><th>变化</th></tr></thead>
+<tbody>
+<tr><td class="ch">14</td><td>租赁</td><td><span class="pill no">无实质变化</span></td></tr>
+<tr><td class="ch">15</td><td>持有待售 / 终止经营</td><td><span class="pill new">新</span>分配给所有者的非流动资产/处置组<mark>分配费用</mark> <span class="pill fix">修</span>终止确认表述</td></tr>
+<tr><td class="ch">19</td><td>所得税</td><td><span class="pill new">新</span>例题</td></tr>
+<tr><td class="ch">20</td><td>非货币性资产交换</td><td><span class="pill no">无实质变化</span></td></tr>
+<tr><td class="ch">21</td><td>债务重组</td><td><span class="pill new">新</span>受让金融资产<mark>初始公允价值与交易价格差异</mark>处理</td></tr>
+<tr><td class="ch">22</td><td>外币折算</td><td><span class="pill no">无实质变化</span></td></tr>
+<tr><td class="ch">23</td><td>财务报告 <span class="pill star">★★</span></td><td>
+  <span class="pill fix">修</span>列报基本要求 / 资产负债按<mark>流动性列报</mark> / 所有者权益变动表 / 附注主要内容<br>
+  <span class="pill new">新</span>资产负债表中调整或增设项目情形<br>
+  <span class="pill new">新</span>利润表中费用按<mark>功能分类</mark>
+</td></tr>
+<tr><td class="ch">24</td><td>会计政策/估计/差错</td><td><span class="pill new">新</span>例题 <span class="pill fix">修</span>文字</td></tr>
+<tr><td class="ch">25</td><td>日后事项</td><td><span class="pill new">新</span>日后事项<mark>附注披露</mark></td></tr>
+<tr><td class="ch">26</td><td>企业合并 <span class="pill star">★★</span></td><td>
+  <span class="pill new">新</span>同控合并取得子公司处置丧失控制权时资本公积处理<br>
+  <span class="pill new">新</span><mark>补偿性资产的会计处理</mark>
+</td></tr>
+<tr><td class="ch">27</td><td>合并报表 <span class="pill star">★</span></td><td><span class="pill new">新</span>处置同控子公司丧失控制权时资本公积处理 <span class="pill del">删</span>合并现金流量表概述部分</td></tr>
+<tr><td class="ch">28</td><td>每股收益</td><td><span class="pill no">无实质变化</span></td></tr>
+<tr><td class="ch">29</td><td>公允价值计量</td><td><span class="pill no">无实质变化</span></td></tr>
+<tr><td class="ch">30</td><td>政府+非营利 <span class="pill star">★★</span></td><td>
+  <span class="pill del">删</span>从同级财政取得政府债券资金处理<br>
+  <span class="pill new">新</span><mark>地方政府专项债券业务</mark><br>
+  <span class="pill new">新</span>非营利组织各类收入定义 / <mark>接受捐赠与政府补助何时确认</mark><br>
+  <span class="pill fix">修</span>捐赠资产 / 政府补助收入 / 销售商品收入 / 业务活动成本 / 净资产
+</td></tr>
+</tbody>
+</table>
+
+<div class="note">📌 三种变化的<b>优先级</b>：<br>
+<b>新增 ＞ 修改 ＞ 删除</b>（删除的不用学，新增几乎一定考，修改要看是否影响计算）。<br>
+按章节难度排：<b>ch13 金融工具 ＞ ch26 企业合并 ＞ ch23 财务报告 ＞ ch6 长股投 ＞ ch30 政府非营利</b>。
+</div>
+</div>
+
+<!-- 题型 -->
+<div class="sec">
+<span class="tag">EXAM FORMAT</span>
+<h2>③ 题型 · 题量 · 命题特点</h2>
+<p class="why">考场长什么样、什么题型怎么打分、应试策略一张表。</p>
+
+<table>
+<thead><tr><th>题型</th><th>题量</th><th>每题</th><th>合计</th><th>主/客</th><th>策略</th></tr></thead>
+<tbody>
+<tr><td><b>单选</b></td><td>13</td><td>2 分</td><td>26 分</td><td rowspan="2" style="background:#eaf1f7">客观 50 分</td><td>覆盖广、抓基础</td></tr>
+<tr><td><b>多选</b></td><td>12</td><td>2 分</td><td>24 分</td><td>错一个全错，宁少勿多</td></tr>
+<tr><td><b>计算分析</b></td><td>2</td><td>9 分</td><td>18 分</td><td rowspan="2" style="background:#f8ece8">主观 50 分</td><td>第 1 题<mark>英文 +5</mark>、考点集中</td></tr>
+<tr><td><b>综合</b></td><td>2</td><td>16 分</td><td>32 分</td><td>差错更正 / 拼盘式 / 阅读量大</td></tr>
+<tr style="background:#3c3a35;color:#fdfaf1"><td colspan="3"><b>合计</b></td><td><b>100 分</b></td><td>29 题</td><td>60 分及格</td></tr>
+</tbody>
+</table>
+
+<div class="cards">
+  <div class="card"><h4>客观题</h4>题量稳、范围广、<mark>重点恒重 · 逢新必考</mark><span class="ex">→ 全章节扫读，新增/修改打星</span></div>
+  <div class="card b"><h4>计算分析题</h4>"计算+分析"并重、考点集中、综合性不强<span class="ex">→ 长股投/收入/租赁/金融工具/政府补助 5 大块</span></div>
+  <div class="card g"><h4>综合题</h4>阅读+计算大、综合性强、差错更正或拼盘<span class="ex">→ 先标重点信息，再分块作答</span></div>
+</div>
+</div>
+
+<!-- 学习方法 -->
+<div class="sec">
+<span class="tag">STUDY PLAN</span>
+<h2>④ 学习时间线 · 四阶段读书法</h2>
+<p class="why">考试日期倒推，4 个阶段每段读法完全不一样。</p>
+
+<div class="mermaid">
+gantt
+    title 备考时间线（以考试日为零点倒推）
+    dateFormat  YYYY-MM-DD
+    axisFormat  %m月
+    section 熟读期
+    教材+习题花大力气理解            :a1, 2026-03-01, 60d
+    section 精读期
+    不重要的略过、聚焦重点章         :a2, 2026-05-01, 60d
+    section 泛读期
+    以题带教材、刷套题               :a3, 2026-07-01, 60d
+    section 粗读期
+    重在理解贯通、查漏补缺           :a4, 2026-08-15, 30d
+    section 考试
+    机考冲刺                         :crit, 2026-09-15, 7d
+</div>
+
+<div class="cards">
+  <div class="card"><h4>熟读 · 考前 4-6 月</h4>把陌生→熟悉<span class="ex">每个新概念都搞清楚 What/Why/How</span></div>
+  <div class="card b"><h4>精读 · 考前 2-3 月</h4>把熟悉→精通<span class="ex">敢于"放弃"次要章节，集中火力</span></div>
+  <div class="card g"><h4>泛读 · 考前 1-2 月</h4>用题串知识<span class="ex">做题中遇到不会的章节，回头精读</span></div>
+  <div class="card"><h4>粗读 · 考前 0.5-1 月</h4>所有点串成网<span class="ex">通读笔记 + 错题本，不再啃新东西</span></div>
+</div>
+
+<h3>六大注意事项</h3>
+<table>
+<tbody>
+<tr><td class="ch">① 心态</td><td>树立信心，<mark>持之以恒</mark>，难章节提前做心理准备</td></tr>
+<tr><td class="ch">② 方法</td><td>注重<b>理解 / 总结 / 归纳</b>，重点放在<mark>基础知识</mark>与<mark>新增知识点</mark></td></tr>
+<tr><td class="ch">③ 题型</td><td>客观题 vs 主观题<b>分别策略</b>，不能一套打法到底</td></tr>
+<tr><td class="ch">④ 储备</td><td>《税法》《财管》基础概念要够用（增值税、现值、折现率）</td></tr>
+<tr><td class="ch">⑤ 节奏</td><td>避免前松后紧，<mark>切勿临阵磨枪</mark></td></tr>
+<tr><td class="ch">⑥ 机考</td><td>熟练用<b>笔记本电脑作答</b>，平时刷题就模拟机考环境</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- 金融数学 -->
+<div class="sec">
+<span class="tag">CORE MATH</span>
+<h2>⑤ 终值 · 现值 · 年金 · 插值法（公式速查）</h2>
+<p class="why">这是会计/财管全部"折现"题的<b>基础语言</b>。前言里教，是因为后面默认你会。</p>
+
+<h3>5.1 概念地图</h3>
+<div class="mermaid">
+flowchart LR
+    A["货币时间价值<br/>金钱有时间成本"] --> B["单笔款项"]
+    A --> C["系列款项 = 年金"]
+    B --> B1["终值 F<br/>P → 未来"]
+    B --> B2["现值 P<br/>未来 → 现在"]
+    C --> C1["普通年金<br/>期末后付"]
+    C --> C2["预付年金<br/>期初先付"]
+    C --> C3["递延年金<br/>第二期后开始"]
+    C --> C4["永续年金<br/>无限期"]
+    B1 -.单利/复利两种.- D["CPA 默认<br/>复利"]
+    B2 -.单利/复利两种.- D
+    style D fill:#fde9b3,stroke:#b88a3a,color:#7a5500
+    style A fill:#d14841,color:#fff,stroke:#d14841
+</div>
+
+<h3>5.2 单利 vs 复利</h3>
+<table>
+<thead><tr><th>项目</th><th>单利</th><th>复利</th></tr></thead>
+<tbody>
+<tr><td>计息对象</td><td>仅<b>本金</b></td><td><b>本金</b> + <b>前期利息</b></td></tr>
+<tr><td>各期利息</td><td>相等</td><td>不等（递增）</td></tr>
+<tr><td>俗称</td><td>—</td><td>"<mark>利滚利</mark>"、"滚雪球"</td></tr>
+<tr><td>CPA 用法</td><td>极少</td><td><b>默认全用复利</b></td></tr>
+</tbody>
+</table>
+
+<h3>5.3 一次性收付款 · 复利公式</h3>
+<div class="formula-card">
+  <div class="ttl">终值 FUTURE VALUE</div>
+  <div class="body">$$F = P(1+i)^n = P \cdot (F/P, i, n)$$</div>
+  <div class="hint">"现在的 P 块钱，n 年后变多少" · 系数 $(F/P, i, n) = (1+i)^n$ 查表得</div>
+</div>
+<div class="formula-card">
+  <div class="ttl">现值 PRESENT VALUE</div>
+  <div class="body">$$P = \frac{F}{(1+i)^n} = F \cdot (P/F, i, n)$$</div>
+  <div class="hint">"n 年后要 F 块钱，现在投多少" · 系数 $(P/F, i, n) = \dfrac{1}{(1+i)^n}$ 查表得</div>
+</div>
+
+<h3>5.4 四类年金 · 时间轴对照</h3>
+
+<div class="timeline-svg">
+<svg viewBox="0 0 720 360" width="100%">
+  <!-- 普通年金 -->
+  <text x="20" y="30" font-weight="700" fill="#d14841">① 普通年金（后付）</text>
+  <line x1="20" y1="55" x2="700" y2="55" stroke="#252523" stroke-width="2"/>
+  <g font-size="11" text-anchor="middle">
+    <text x="20" y="48">0</text><text x="160" y="48">1</text><text x="300" y="48">2</text><text x="440" y="48">3</text><text x="580" y="48">4</text><text x="700" y="48">…n</text>
+  </g>
+  <g>
+    <line x1="160" y1="60" x2="160" y2="85" stroke="#d14841" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="300" y1="60" x2="300" y2="85" stroke="#d14841" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="440" y1="60" x2="440" y2="85" stroke="#d14841" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="580" y1="60" x2="580" y2="85" stroke="#d14841" stroke-width="2" marker-end="url(#arr)"/>
+  </g>
+  <g font-size="10" text-anchor="middle" fill="#d14841">
+    <text x="160" y="98">A</text><text x="300" y="98">A</text><text x="440" y="98">A</text><text x="580" y="98">A</text>
+  </g>
+
+  <!-- 预付年金 -->
+  <text x="20" y="130" font-weight="700" fill="#246a8e">② 预付年金（先付）</text>
+  <line x1="20" y1="155" x2="700" y2="155" stroke="#252523" stroke-width="2"/>
+  <g font-size="11" text-anchor="middle">
+    <text x="20" y="148">0</text><text x="160" y="148">1</text><text x="300" y="148">2</text><text x="440" y="148">3</text><text x="580" y="148">4</text><text x="700" y="148">…n</text>
+  </g>
+  <g>
+    <line x1="20" y1="160" x2="20" y2="185" stroke="#246a8e" stroke-width="2" marker-end="url(#arrB)"/>
+    <line x1="160" y1="160" x2="160" y2="185" stroke="#246a8e" stroke-width="2" marker-end="url(#arrB)"/>
+    <line x1="300" y1="160" x2="300" y2="185" stroke="#246a8e" stroke-width="2" marker-end="url(#arrB)"/>
+    <line x1="440" y1="160" x2="440" y2="185" stroke="#246a8e" stroke-width="2" marker-end="url(#arrB)"/>
+    <line x1="580" y1="160" x2="580" y2="185" stroke="#246a8e" stroke-width="2" marker-end="url(#arrB)"/>
+  </g>
+  <g font-size="10" text-anchor="middle" fill="#246a8e">
+    <text x="20" y="198">A</text><text x="160" y="198">A</text><text x="300" y="198">A</text><text x="440" y="198">A</text><text x="580" y="198">A</text>
+  </g>
+
+  <!-- 递延年金 -->
+  <text x="20" y="230" font-weight="700" fill="#b88a3a">③ 递延年金（m 期递延 + n 期普通）</text>
+  <line x1="20" y1="255" x2="700" y2="255" stroke="#252523" stroke-width="2"/>
+  <g font-size="11" text-anchor="middle">
+    <text x="20" y="248">0</text><text x="300" y="248">m</text><text x="440" y="248">m+1</text><text x="580" y="248">m+2</text><text x="700" y="248">m+n</text>
+  </g>
+  <rect x="22" y="258" width="278" height="18" fill="#fde9b3" opacity=".7"/>
+  <text x="160" y="272" font-size="10" text-anchor="middle" fill="#b88a3a">递延期 m，无现金流</text>
+  <g>
+    <line x1="440" y1="260" x2="440" y2="285" stroke="#b88a3a" stroke-width="2" marker-end="url(#arrC)"/>
+    <line x1="580" y1="260" x2="580" y2="285" stroke="#b88a3a" stroke-width="2" marker-end="url(#arrC)"/>
+    <line x1="700" y1="260" x2="700" y2="285" stroke="#b88a3a" stroke-width="2" marker-end="url(#arrC)"/>
+  </g>
+  <g font-size="10" text-anchor="middle" fill="#b88a3a">
+    <text x="440" y="298">A</text><text x="580" y="298">A</text><text x="700" y="298">A</text>
+  </g>
+
+  <!-- 永续年金 -->
+  <text x="20" y="330" font-weight="700" fill="#3e7044">④ 永续年金（无限期）</text>
+  <line x1="20" y1="355" x2="700" y2="355" stroke="#252523" stroke-width="2" stroke-dasharray="4 3"/>
+  <g font-size="10" text-anchor="middle" fill="#3e7044">
+    <text x="160" y="350">A</text><text x="300" y="350">A</text><text x="440" y="350">A</text><text x="580" y="350">A</text><text x="700" y="345">→ ∞</text>
+  </g>
+
+  <defs>
+    <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#d14841"/></marker>
+    <marker id="arrB" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#246a8e"/></marker>
+    <marker id="arrC" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#b88a3a"/></marker>
+  </defs>
+</svg>
+</div>
+
+<table>
+<thead><tr><th>类型</th><th>付款时点</th><th>现值公式</th><th>终值公式</th></tr></thead>
+<tbody>
+<tr><td>① 普通年金</td><td>期末</td>
+<td>$P = A \cdot (P/A, i, n)$</td>
+<td>$F = A \cdot (F/A, i, n)$</td></tr>
+<tr><td>② 预付年金</td><td>期初</td>
+<td>$P = A \cdot (P/A, i, n) \cdot (1+i)$</td>
+<td>$F = A \cdot (F/A, i, n) \cdot (1+i)$</td></tr>
+<tr><td>③ 递延年金 <small>(m 递延 + n 付款)</small></td><td>第 m+1 期起</td>
+<td>$P = A \cdot (P/A, i, n) \cdot (P/F, i, m)$</td>
+<td>$F = A \cdot (F/A, i, n)$ <small>（与普通相同）</small></td></tr>
+<tr><td>④ 永续年金</td><td>无限</td>
+<td>$P = \dfrac{A}{i}$</td>
+<td>不存在</td></tr>
+</tbody>
+</table>
+
+<div class="formula-card">
+  <div class="ttl">两个核心系数（推导用）</div>
+  <div class="body">
+    $$\text{年金现值系数} \quad (P/A, i, n) = \frac{1-(1+i)^{-n}}{i}$$
+    $$\text{年金终值系数} \quad (F/A, i, n) = \frac{(1+i)^n - 1}{i}$$
+  </div>
+  <div class="hint">推导思路：把 n 期相同金额 A 的现值/终值用<b>等比数列求和</b>压缩成一个公式 $S_n = \dfrac{a_1(1-q^n)}{1-q}$。考试不用记推导，会查系数表就行。</div>
+</div>
+
+<h3>5.5 插值法（线性内插）</h3>
+<p class="why">问题：表上只有 8%、10% 的系数，要求 i=9.12%（卡在中间），怎么办？</p>
+
+<div class="mermaid">
+flowchart LR
+    A["遇到不在表上的利率 i"] --> B["找相邻两个表内值<br/>i₁ 和 i₂"]
+    B --> C["假设这段区间是直线<br/>（线性近似）"]
+    C --> D["按比例分割：<br/>(i-i₁)/(i₂-i₁) = (系数-系数₁)/(系数₂-系数₁)"]
+    D --> E["解出 i ✅"]
+    style A fill:#d14841,color:#fff
+    style E fill:#3e7044,color:#fff
+</div>
+
+<div class="formula-card">
+  <div class="ttl">教材例题 · 反推折现率</div>
+  <div class="body">
+    已知 $(P/F, i, 5) = 0.6472$，求 i。<br>
+    查表：$(P/F, 8\%, 5) = 0.6806$，$(P/F, 10\%, 5) = 0.6209$。<br>
+    $$\frac{8\% - i}{8\% - 10\%} = \frac{0.6806 - 0.6472}{0.6806 - 0.6209}$$
+    解得 $\boxed{i \approx 9.12\%}$
+  </div>
+  <div class="hint">💡 现值系数随 i 上升而<b>下降</b>，方向一致才能内插。考场上误差 &lt; 0.5%，够用。</div>
+</div>
+</div>
+
+<!-- 速记卡 -->
+<div class="cheat">
+<h2>⑥ 一页 Cheat Sheet</h2>
+<div class="row">
+  <div>
+    <div class="k">▌核心系数</div>
+    <code>F/P = (1+i)^n</code>　复利终值<br>
+    <code>P/F = 1/(1+i)^n</code>　复利现值<br>
+    <code>F/A = [(1+i)^n - 1] / i</code>　年金终值<br>
+    <code>P/A = [1-(1+i)^-n] / i</code>　年金现值<br><br>
+
+    <div class="k">▌年金换算口诀</div>
+    预付：普通 <code>× (1+i)</code>　<small>多走一期</small><br>
+    递延：普通 <code>× (P/F, i, m)</code>　<small>剥掉递延期</small><br>
+    永续：<code>A / i</code>　<small>无限项几何级数</small><br>
+  </div>
+  <div>
+    <div class="k">▌2026 三大重点章</div>
+    ch13 金融工具+保险（★★★ 新最多）<br>
+    ch26 企业合并（补偿性资产 ★★）<br>
+    ch30 政府+非营利（专项债 + 非营利 ★★）<br><br>
+
+    <div class="k">▌应试策略</div>
+    单选广撒网、多选宁少勿多<br>
+    计算分析第 1 题<b>英文 +5</b> 必拿<br>
+    综合题<b>先标重点</b>再分块写<br>
+    新增 = 必考，逢新必考<br>
+    临场<b>会做的先做</b>，金融工具/合并报表<b>放后面</b>
+  </div>
+</div>
+</div>
+
+<!-- 自测 -->
+<div class="sec">
+<span class="tag">SELF-CHECK</span>
+<h2>⑦ 自测 8 问（合上笔记答一遍）</h2>
+
+<div class="q"><div class="lbl">Q1</div>2026 年《会计》共多少章？分几部分？</div>
+<div class="q"><div class="lbl">Q2</div>客观题与主观题各多少分？综合题怎么扣？</div>
+<div class="q"><div class="lbl">Q3</div>哪一题英文答题加 5 分？加多少？</div>
+<div class="q"><div class="lbl">Q4</div>第 13 章变化最大的两个新增是什么？</div>
+<div class="q"><div class="lbl">Q5</div>四阶段读书法的顺序和时长各是？</div>
+<div class="q"><div class="lbl">Q6</div>终值现值的两个核心系数写一下：(F/P) 和 (P/F)？</div>
+<div class="q"><div class="lbl">Q7</div>普通年金 vs 预付年金的现值差在哪？写公式。</div>
+<div class="q"><div class="lbl">Q8</div>(P/F, i, 5)=0.6472，查表两端 8%(0.6806)、10%(0.6209)，i≈？</div>
+
+<p class="note">⏱ <b>能在 5 分钟内全部答出 = 前言过关</b>。卡顿 ≥ 2 题，回去看 ② ④ ⑤ 三节。</p>
+</div>
+
+<footer>© 2026 CPA《会计》前言 · 复习笔记 · 单文件可编辑 · 可保存 · 可打印</footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // contenteditable interferes with mermaid render — disable on mermaid blocks
+  document.querySelectorAll('.mermaid').forEach(el => el.setAttribute('contenteditable','false'));
+  mermaid.initialize({
+    startOnLoad: false,
+    securityLevel: 'loose',
+    theme: 'base',
+    themeVariables: {
+      fontFamily: 'PingFang SC, system-ui, sans-serif',
+      primaryColor: '#fffdf3',
+      primaryTextColor: '#252523',
+      primaryBorderColor: '#b88a3a',
+      lineColor: '#7a6e3f',
+      secondaryColor: '#fde9b3',
+      tertiaryColor: '#fff'
+    }
+  });
+  mermaid.run({ querySelector: '.mermaid' }).catch(err => console.error('mermaid:', err));
+});
+</script>
+<script>
+function save(){
+  const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+  const blob=new Blob([html],{type:'text/html;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='2026-CPA-会计-前言-笔记.html';
+  document.body.appendChild(a);a.click();a.remove();
+}
+</script>
+</body>
+</html>
