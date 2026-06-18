@@ -1,0 +1,610 @@
+---
+title: "US GAAP · Chapter 2 · Inventory (Presentation)"
+author: "Kevin Guo"
+date: "2026-06-18"
+categories: [CPA, accounting, US-GAAP, inventory, English]
+description: "Inventory under US GAAP — costing methods (FIFO, LIFO, weighted-avg), LCM/LCNRV, and contrast with IFRS."
+---
+::: {.callout-note appearance="simple"}
+📄 **Also available as:** [HTML view →](us-gaap-ch2-inventory-presentation.html)
+:::
+FASB · ASC 330 · IRS § 263A · SEC Reg S-X 5-02
+
+# Inventory
+
+Recognition, costing, subsequent measurement, write-downs, and disclosure — sourced from FASB Codification, IRS UNICAP rules, and US GAAP authoritative literature. Not derived from the PRC CPA textbook.
+
+14 slides · ← → to navigate Editable · Saves to HTML Self-contained · Offline
+
+01
+
+Scope & Recognition
+
+ASC 330-10-20 · what counts as inventory
+
+02
+
+Initial Cost
+
+ASC 330-10-30 · UNICAP §263A
+
+03
+
+Cost-Flow Assumptions
+
+FIFO · WAVG · Specific ID · LIFO
+
+04
+
+Subsequent Measurement
+
+LCNRV (ASU 2015-11) vs LCM (LIFO)
+
+05
+
+Estimation Methods
+
+Retail · Gross Profit · Standard Cost
+
+06
+
+Disposals & Shrinkage
+
+Physical counts · normal vs abnormal loss
+
+07
+
+Presentation & Disclosure
+
+ASC 330-10-50 · SEC Reg S-X 5-02
+
+08
+
+Synthesis
+
+Comparison to IFRS · audit & SOX hooks
+
+Topic 01 · ASC 330-10-20 · Glossary · Master Glossary
+
+## What qualifies as Inventory under US GAAP
+
+ASC 330-10-20 defines inventory as personal property items held for sale in the ordinary course of business, items in process of production for such sale, or items to be currently consumed in the production of goods or services to be available for sale.
+
+In Scope
+
+Inventory categories
+
+- **Finished Goods** — completed, held for sale
+- **Work-in-Process (WIP)** — partially completed
+- **Raw Materials** — to be consumed in production
+- **Manufacturing Supplies** — directly consumed
+- **Merchandise** — purchased for resale (retail/wholesale)
+- **Goods in transit** when title has passed (FOB shipping point: buyer; FOB destination: seller until delivered)
+- **Consigned goods** — remain on consignor's books, not the consignee's
+
+ASC 330-10-20 · ASC 845-10-30 (transfer of control)
+
+Out of Scope
+
+Not inventory under ASC 330
+
+- **Long-lived assets** held for use → ASC 360 (PP&E)
+- **Self-constructed plant assets** → ASC 360
+- **Service-provider work-in-process** per ASC 606 contract assets → ASC 340-40 contract costs
+- **Spare parts & maintenance materials** for capital equipment, when classified as PP&E components
+- **Biological assets / agricultural produce** at point of harvest → ASC 905 (agriculture)
+- **Investments** in securities held for trading → ASC 320 / 321
+
+ASC 330-10-15 · ASC 905-330 · ASC 340-40-25
+
+Recognition principle
+
+Inventory is recognized when an entity obtains control (ASC 606-10-25-30 mirrored for purchase side: ability to direct use and obtain substantially all remaining benefits, including risk of obsolescence and price decline). Consignment arrangements fail this test for the consignee.
+
+Topic 02 · ASC 330-10-30 · IRC §263A (UNICAP)
+
+## Initial Cost Measurement
+
+ASC 330-10-30-1: "the primary basis of accounting for inventories is cost, which has been defined generally as the price paid or consideration given to acquire an asset." Cost includes all expenditures necessary to bring inventory to its existing condition and location ready for sale.
+
+Capitalizable Costs
+
+What goes into inventory
+
+- Invoice price net of trade and cash discounts
+- Freight-in, insurance in transit, duties, non-recoverable taxes
+- Direct labor and applied manufacturing overhead
+- Allocable fixed production overhead based on normal capacity (ASC 330-10-30-3, FASB Statement 151)
+- Material handling, receiving, inspection costs before "ready for sale"
+
+ASC 330-10-30-1 to 30-8
+
+Period-Expensed
+
+Excluded from inventory cost
+
+- **Abnormal idle facility expense** — excess of actual fixed overhead over normal capacity → COGS (ASC 330-10-30-7)
+- **Abnormal spoilage, freight, handling, waste** → expensed currently
+- **Selling expenses**, general administration
+- **Storage costs** after production complete (unless required for production process)
+- **Advertising** and re-handling of finished goods
+
+ASC 330-10-30-7 · SFAS 151 (2004)
+
+IRC § 263A · Uniform Capitalization (UNICAP)
+
+For tax, the IRS requires capitalization of a broader set of indirect costs than GAAP — including general administrative costs allocable to production. This creates routine book-tax temporary differences (ASC 740 deferred tax). The 2017 TCJA exempts businesses with avg gross receipts ≤ $25M (indexed; $30M for 2024).
+
+### Normal capacity rule (ASC 330-10-30-3)
+
+Allocation of fixed production overhead is based on normal capacity of the production facility — the production expected to be achieved over a number of periods under normal circumstances. The amount allocated to each unit is not increased due to abnormally low production or idle plant. Unallocated overhead is recognized as expense in the period incurred.
+
+Topic 03 · ASC 330-10-30-9 to 30-14 · IRC § 472
+
+## Cost-Flow Assumptions
+
+ASC 330-10-30-9: "cost for inventory purposes may be determined under any one of several assumptions as to the flow of cost factors." Selection is an accounting policy disclosure (ASC 330-10-50-1).
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Method</th>
+<th>Mechanics</th>
+<th>When used</th>
+<th>Rising prices impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Specific Identification</strong></td>
+<td>Each unit's actual cost tracked individually</td>
+<td>Unique, high-value, low-volume goods (cars, art, jewelry); customized inventory</td>
+<td>Most accurate matching</td>
+</tr>
+<tr>
+<td><strong>FIFO</strong> (First-In, First-Out)</td>
+<td>Oldest costs flow to COGS first; newest costs in ending inventory</td>
+<td>Default for most non-LIFO US filers; required under IFRS</td>
+<td>Lower COGS · higher net income · higher ending inventory</td>
+</tr>
+<tr>
+<td><strong>Weighted-Average</strong></td>
+<td>Periodic: avg cost = (BI + purchases) ÷ total units<br />
+Perpetual ("moving average"): recalc after each purchase</td>
+<td>Homogeneous, commingled inventory; commodities</td>
+<td>Smooths COGS · between FIFO and LIFO</td>
+</tr>
+<tr>
+<td><strong>LIFO</strong> (Last-In, First-Out)</td>
+<td>Newest costs to COGS first; oldest costs remain in ending inventory ("LIFO layers")</td>
+<td>US-only (allowed by ASC 330 + IRC § 472); IFRS prohibits</td>
+<td>Higher COGS · lower net income · lower taxes · "LIFO Reserve" disclosed</td>
+</tr>
+</tbody>
+</table>
+
+IRC § 472 · LIFO Conformity Rule
+
+If a taxpayer uses LIFO for tax, it must also use LIFO for primary financial reporting (book conformity). However, the entity must disclose the LIFO reserve so users can recompute as if FIFO were used. LIFO Reserve = FIFO inventory − LIFO inventory.
+
+LIFO Reserve disclosure
+
+SEC Reg S-X Item 5-02 and ASC 330-10-50-1(b) require disclosure of the excess of replacement (or current) cost over LIFO carrying value. Analysts add this back to compare LIFO filers with FIFO peers (e.g., ratio of inventory turnover, gross margin).
+
+LIFO Liquidation
+
+When ending inventory units fall below beginning units, old (low-cost) LIFO layers are matched to current-period revenue, producing an artificial profit spike. SEC SAB Topic 5.NN requires disclosure of "LIFO liquidation effect" when material.
+
+Topic 04 · ASC 330-10-35 · ASU 2015-11 (July 2015)
+
+## Subsequent Measurement — LCNRV vs LCM
+
+In July 2015 FASB issued ASU 2015-11, simplifying inventory measurement: entities not on LIFO or retail inventory method now use **Lower of Cost or Net Realizable Value (LCNRV)**. LIFO and retail method filers remain on the legacy **Lower of Cost or Market (LCM)**.
+
+LCNRV (Post-ASU 2015-11)
+
+For FIFO, average cost, specific ID
+
+**NRV** = Estimated selling price in the ordinary course of business − reasonably predictable costs of completion, disposal, and transportation.
+
+Compare unit-by-unit (or category if individual unit infeasible) cost to NRV. Recognize loss when cost \> NRV; write down to NRV.
+
+Dr. Cost of Goods Sold (or Inventory Loss)
+Cr. Inventory
+
+ASC 330-10-35-1B to 35-7
+
+LCM (Pre-ASU 2015-11 · still LIFO/Retail)
+
+"Middle of three" rule
+
+**Market** = Replacement cost, bounded by:
+**Ceiling** = NRV (selling price − completion/disposal costs)
+**Floor** = NRV − normal profit margin
+
+Inventory carried at lower of cost vs market (the bounded replacement cost).
+
+ASC 330-10-35 (legacy paragraphs for LIFO/retail filers)
+
+### Write-down rules common to both
+
+- Write-down to NRV (or market) creates a new cost basis — ASC 330-10-35-14
+- **Reversal of a prior write-down is PROHIBITED** under US GAAP, unlike IFRS (IAS 2 §33), even if NRV later recovers — ASC 330-10-35-14
+- Write-downs are typically recorded in COGS unless of such magnitude that they must be separately disclosed
+- Material write-downs require disclosure of the amount, the location in the income statement, and the reason (ASC 330-10-50-2)
+
+Key US vs IFRS divergence
+
+IFRS (IAS 2) requires LCNRV for all inventory and requires reversal of prior write-downs (capped at original cost) when conditions reverse. US GAAP prohibits reversal — write-down is permanent and establishes a new cost basis.
+
+Topic 05 · ASC 330-10-30-12 to 30-15 · ASC 270 (interim)
+
+## Estimation Methods — Retail · Gross Profit · Standard Cost
+
+When perpetual inventory tracking is impractical, GAAP allows three estimation techniques — each with distinct applications and limitations.
+
+Retail Inventory Method
+
+For high-volume retail
+
+Maintains records at both cost and retail values. Cost-to-retail ratio is applied to ending inventory at retail.
+
+`Cost % = Cost ÷ Retail`
+`Ending Inv (cost) = Ending Inv (retail) × Cost %`
+
+Variants: Conventional (LCM, includes markups, excludes markdowns in ratio); LIFO Retail; Dollar-Value LIFO Retail.
+
+ASC 330-10-30-12 · IRS §1.471-8
+
+Gross Profit Method
+
+For interim reporting · casualty loss
+
+Uses historical gross margin % to estimate ending inventory from sales:
+
+`COGS = Sales × (1 − GM%)`
+`End Inv = BI + Purchases − COGS`
+
+Not acceptable for annual financial statements — only interim, internal, or estimating inventory destroyed in fires/theft (insurance claims).
+
+ASC 270 (interim) · not GAAP for annual
+
+Standard Cost
+
+For manufacturers
+
+Pre-determined standards for material, labor, overhead. Variances analyzed.
+
+Acceptable under GAAP only if standards are reviewed regularly and adjusted to approximate actual cost (ASC 330-10-30-12). Significant variances must be allocated to inventory and COGS.
+
+ASC 330-10-30-12
+
+### Dollar-Value LIFO (DV LIFO)
+
+For multi-SKU inventories under LIFO. Inventory is grouped into pools; LIFO layers are measured in dollars (not units) using **price indexes** (internal or external — CPI, PPI, or company-specific). Reduces LIFO bookkeeping burden and protects from involuntary LIFO liquidation when individual SKUs change.
+
+ASC 330-10-30-9 to 30-14 · IRS Reg §1.472-8
+
+Topic 06 · ASC 606-10-25 · ASC 845 · ASC 330-10-25
+
+## Transfer of Title, Freight, Consignment
+
+Whether goods belong on the buyer's or seller's balance sheet at period end turns on control transfer under ASC 606-10-25-30 — the same indicators used for revenue recognition.
+
+FOB Shipping Point
+
+Buyer takes title at seller's dock
+
+- Title transfers when goods leave seller's premises
+- **Buyer** includes goods in inventory while in transit
+- **Buyer** pays freight (Freight-In → capitalized into inventory cost)
+- Buyer bears risk of loss in transit
+
+FOB Destination
+
+Seller retains title until delivery
+
+- Title transfers only when goods arrive at buyer
+- **Seller** keeps goods in inventory while in transit
+- **Seller** pays freight (Freight-Out → period expense, selling cost)
+- Seller bears risk of loss in transit
+
+### Consignment arrangements (ASC 606-10-55-79 to 55-80)
+
+Goods on consignment are NOT inventory of the consignee — they remain on the **consignor's** balance sheet. Indicators of consignment include:
+
+- The dealer is not obligated to pay until the product is sold to a third party
+- The entity is able to require return or transfer of the product to another dealer
+- The dealer does not have unconditional obligation to pay (no unconditional sale)
+
+Consignor recognizes revenue only when the consignee sells to the end customer. Cost of consigned goods plus freight to consignee remains capitalized as inventory until sale.
+
+### Right of return (ASC 606-10-32-10)
+
+When customers have a right of return, the seller recognizes revenue net of expected returns and records a refund liability and a corresponding right to recover assets returned (an asset) — measured at the former carrying amount of inventory less expected recovery costs.
+
+Topic 06 · Physical Inventory · ASC 330-10-35 · AS 2510
+
+## Physical Counts, Shrinkage, Obsolescence
+
+ASC 330 does not prescribe a count method, but PCAOB **AS 2510 — Auditing Inventories** requires auditors to observe physical counts. Discrepancies between perpetual records and physical count drive an adjusting entry.
+
+Normal shrinkage
+
+Expected loss from evaporation, breakage, theft within typical limits. Charged to COGS as part of normal operations.
+
+Dr. Cost of Goods Sold
+Cr. Inventory
+
+Abnormal shrinkage / losses
+
+Material losses from casualty, fraud, or other unusual events. Charged to a separate line — Loss on Inventory — and disclosed when material.
+
+Dr. Loss on Inventory (operating, separately stated)
+Cr. Inventory
+
+### Obsolescence reserve (excess and obsolete — "E&O")
+
+Entities typically maintain a contra-inventory reserve calculated by aging buckets (e.g., goods with no demand in last 12/24 months) or specific identification of obsolete SKUs. The reserve estimate is a critical accounting estimate requiring disclosure under SEC Reg S-K Item 303(b)(3) (MD&A) when material.
+
+Dr. Cost of Goods Sold (or Inventory Write-down Expense)
+Cr. Allowance for Obsolescence (contra-inventory)
+
+SAB 100 · "Cookie Jar" reserves
+
+SEC Staff Accounting Bulletin No. 100 warns against using obsolescence reserves to smooth earnings. Reserves must be supported by specific facts and circumstances, not vague "general business risk." Once written down, the reduced carrying amount is a new cost basis — no reversal even if items later become saleable.
+
+### Inventory counts under SOX § 404
+
+Internal controls over inventory existence (cycle counts, year-end physical counts), valuation (LCNRV review, obsolescence reserve methodology), and cutoff (FOB tracking) are key audited control areas. Material weaknesses here often trigger restatements.
+
+Topic 06 · ASC 606 · ASC 705 (COGS)
+
+## Inventory ⇄ Revenue — the recognition handshake
+
+Cost of inventory becomes Cost of Goods Sold when the entity satisfies a performance obligation per ASC 606-10-25-30, i.e., when control transfers to the customer. The matching principle is operationalized through the five-step revenue model.
+
+Step 1
+
+Identify the contract
+ASC 606-10-25-1
+
+→
+
+Step 2
+
+Identify performance obligations
+
+→
+
+Step 3
+
+Determine transaction price
+
+→
+
+Step 4
+
+Allocate price to POs
+
+→
+
+Step 5
+
+Recognize revenue
+(control transfer)
+
+### At control transfer (point-in-time)
+
+Dr. Accounts Receivable / Cash
+Cr. Sales Revenue
+Dr. Cost of Goods Sold
+Cr. Inventory
+
+### Over-time recognition (ASC 606-10-25-27)
+
+For inventory produced under customer-specific contracts where the customer controls WIP as it is produced (e.g., highly customized goods with no alternative use + enforceable right to payment), revenue is recognized over time using an input or output method. WIP is reclassified from inventory to contract asset (ASC 606-10-45-3).
+
+Bill-and-hold (ASC 606-10-55-81 to 55-84)
+
+Revenue can be recognized before physical delivery only if: (a) reason for arrangement is substantive (customer requested); (b) product is identified separately; (c) product is ready for physical transfer; (d) entity cannot use product or direct it to another customer.
+
+Principal vs Agent (ASC 606-10-55-36)
+
+An entity is a principal if it **controls** the good before transfer to the customer — recognizes gross revenue and holds inventory. An agent recognizes net commission and does not record inventory.
+
+Topic 07 · ASC 330-10-50 · SEC Reg S-X Rule 5-02(6) · 10-K
+
+## Balance-sheet presentation & disclosure
+
+SEC Reg S-X Rule 5-02(6) requires public filers to separately disclose major components of inventory by class on the face of the balance sheet (or in notes), along with the basis of valuation.
+
+### Required disclosure components
+
+| Item | Where | Source |
+|----|----|----|
+| Major classes (FG / WIP / RM / supplies) | Balance sheet or notes | Reg S-X 5-02(6)(a) |
+| Basis of valuation (LCNRV / LCM) | Significant accounting policies (Note 1 or 2) | ASC 330-10-50-1 |
+| Cost-flow assumption (FIFO / WAVG / LIFO / specific ID) | Accounting policies | ASC 330-10-50-1 |
+| LIFO Reserve / excess of replacement cost over LIFO | Inventory note | ASC 330-10-50-1(b) · Reg S-X 5-02(6)(c) |
+| LIFO liquidation effect (if material) | Inventory note + MD&A | SEC SAB Topic 5.NN |
+| Write-downs (amount, classification, reason if material) | Inventory note | ASC 330-10-50-2 |
+| Inventory pledged as collateral | Inventory note | ASC 470-10-50 + ASC 860 |
+| Critical accounting estimates: E&O reserve, NRV assumptions | MD&A (Item 303) | Reg S-K 303(b)(3) |
+
+### Income statement classification
+
+- **Cost of goods sold** — primary expense from inventory consumption (ASC 705)
+- **Inventory write-down losses** — typically in COGS; separately disclosed if material
+- **Restructuring of supply chain** — exit and disposal costs (ASC 420) when applicable
+
+Auditor focus — PCAOB AS 2510
+
+Auditors must (a) observe physical counts at year-end (or use cycle-count rollforward with strong ICFR); (b) test costing of selected items to invoices/cost records; (c) assess reasonableness of obsolescence and NRV reserves; (d) evaluate cutoff at period end.
+
+Comparison · ASC 330 vs IAS 2
+
+## US GAAP vs IFRS — five critical divergences
+
+For multi-jurisdictional reporting, the differences below drive most reconciling items between US 10-K and IFRS annual report inventory balances.
+
+| Topic | US GAAP (ASC 330) | IFRS (IAS 2) |
+|----|----|----|
+| LIFO permitted? | Yes — allowed under ASC 330; required for book if used for tax (IRC §472) | No — prohibited (IAS 2 §25) |
+| Subsequent measurement | LCNRV (non-LIFO) post-ASU 2015-11; LCM still allowed for LIFO and retail method | LCNRV for all inventory (IAS 2 §9) |
+| Reversal of write-downs | Prohibited — new cost basis (ASC 330-10-35-14) | Required when conditions reverse, capped at original cost (IAS 2 §33) |
+| Interest capitalization | Generally not for inventory; only for assets produced as discrete projects over substantial period (ASC 835-20-15-5) | For "qualifying assets" only — generally excludes inventory produced in large quantities on repetitive basis (IAS 23 §4) |
+| Same items, single measurement basis? | Different methods (FIFO, LIFO, average) for different inventory items allowed if justified by use | Same cost formula must be applied to all inventories with similar nature and use (IAS 2 §25) |
+
+### Practical reconciliation example
+
+A US LIFO filer reporting under IFRS would: (1) eliminate LIFO entirely → use FIFO or weighted-average; (2) reverse the LIFO reserve through opening retained earnings; (3) re-evaluate prior write-downs for potential reversal; (4) potentially exclude certain interest costs that had been capitalized.
+
+Note
+
+Roughly 15-20% of S&P 500 filers reported some inventory on LIFO as of 2024 (down from over 40% in the 1980s). The decline reflects (a) growing tax pressure to switch, (b) IFRS convergence considerations, and (c) lower inflation reducing LIFO's tax benefit.
+
+Bonus · Technology · AI · Supply Chain
+
+## Technology in inventory accounting & assurance
+
+Modern ERPs (SAP, Oracle, NetSuite, Microsoft Dynamics) maintain perpetual records with real-time cost-flow logic. AI and ML are increasingly used in both preparer and auditor workflows, with new governance considerations.
+
+Preparer side
+
+AI/ML in inventory management
+
+- **Demand forecasting** — ML models predict reorder points, reducing E&O reserves
+- **Dynamic NRV estimation** — pulling marketplace prices, FX, freight indices in real time
+- **Obsolescence detection** — anomaly detection on slow-moving SKUs
+- **Computer-vision physical counts** — drones, robots, RFID combined with image recognition
+- **Predictive shrinkage** — pattern detection across stores/warehouses
+
+Auditor side
+
+Audit data analytics (ADA)
+
+- 100% population analytics on inventory aging, margin by SKU, days-on-hand
+- Computer-assisted audit techniques (CAATs) for cost re-performance
+- Drone-assisted physical observation under PCAOB AS 2510
+- Continuous controls monitoring of cutoff transactions around period-end
+
+PCAOB Spotlight on Auditor Use of Technology (2020)
+
+### Governance requirements (AICPA + PCAOB + NIST AI RMF 1.0)
+
+Data quality
+
+Source data lineage, completeness, accuracy
+
+Model governance
+
+Version control, change management, approval
+
+Validation
+
+Back-testing forecast accuracy, NRV vs realized
+
+Human oversight
+
+Material estimates not fully automated; explainability for material judgments
+
+AICPA Code ET §1.295 — non-attest services
+
+Auditors may not design or implement the client's inventory AI/ML models that drive material accounting estimates — would impair independence. Audit firms separate ADA (audit use) from advisory (client implementation) staff and engagements.
+
+Synthesis · 6 frames + 3 takeaways
+
+## The inventory chapter in one screen
+
+Why
+
+Why inventory matters
+
+For most non-financial companies, inventory is the largest current asset and the dominant driver of working capital, gross margin, and tax expense. Inventory misstatements are a top-3 cause of public-company restatements per Audit Analytics annual reports.
+
+Lens
+
+The 3 measurement gates
+
+1\. **Initial** — capture all costs to "ready for sale" (ASC 330-10-30)
+2. **Subsequent** — write down to NRV when impaired (35)
+3. **Derecognition** — match to revenue at control transfer (ASC 606)
+
+Stuff
+
+The 4 cost-flow choices
+
+Specific ID (unique), FIFO (default), Weighted-Average (commodity), LIFO (US-only tax tool). Choice is policy disclosure; consistency required.
+
+Discipline
+
+The asymmetry
+
+Write-downs hit P&L immediately. Reversals prohibited (US GAAP) — new cost basis. This conservatism matters at impairment points (recessions, obsolete tech).
+
+Expansion
+
+Adjacent standards
+
+ASC 606 (revenue/COGS recognition), ASC 360 (PP&E for self-constructed assets), ASC 740 (book-tax UNICAP differences), ASC 470 (pledged collateral), ASC 845 (consignment).
+
+Tool
+
+SOX & audit hooks
+
+Cycle counts, cutoff procedures, NRV reserves, obsolescence reserves. PCAOB AS 2510 audit; SAB 100 reserve discipline; SEC critical accounting estimate MD&A.
+
+### Three sentences to memorize
+
+**1.** Inventory is held for sale, valued at the lower of cost or NRV, and recognized as COGS when control passes — everything else is mechanics.
+
+**2.** Write-downs are permanent under US GAAP; choose LCNRV unless on LIFO/retail; document the methodology because it's a critical accounting estimate.
+
+**3.** LIFO is a US tax artifact — IFRS bans it. If you see "LIFO Reserve" and "LIFO Liquidation" in the 10-K, the company is filing a US-only return.
+
+Appendix · Self-check · Sources
+
+## 10 self-check questions + source map
+
+Self-check (under 30 seconds each)
+
+1.  Where does ASC 330 say "ready for sale" — and what costs does that include?
+2.  What's the difference between normal idle capacity and abnormal idle capacity? Which is expensed?
+3.  FOB shipping point — who owns inventory in transit?
+4.  What did ASU 2015-11 change, and who is excluded from the change?
+5.  If FIFO ending inventory = $100M and LIFO ending inventory = $70M, what is the LIFO Reserve?
+6.  Can a US GAAP filer reverse an inventory write-down if NRV recovers next year?
+7.  When is the Gross Profit Method allowed in annual financial statements?
+8.  Consigned goods — on whose balance sheet? What ASC 606 paragraph governs?
+9.  What does Reg S-X 5-02(6) require about inventory disclosure?
+10. What is "LIFO Conformity Rule" and which Internal Revenue Code section creates it?
+
+Source map · authoritative US literature
+
+| Topic | Source |
+|----|----|
+| Definition & scope | ASC 330-10-20 (Master Glossary) |
+| Initial cost | ASC 330-10-30-1 to 30-8 · IRC §263A (UNICAP) |
+| Cost flow | ASC 330-10-30-9 to 30-14 · IRC §472 |
+| Subsequent (LCNRV) | ASC 330-10-35 · ASU 2015-11 (July 2015) |
+| Estimation methods | ASC 330-10-30-12 · IRS §1.471-8 (retail) · §1.472-8 (DV LIFO) |
+| Title & consignment | ASC 606-10-25-30 · ASC 606-10-55-79 to 55-84 |
+| Disclosure | ASC 330-10-50 · Reg S-X 5-02(6) · Reg S-K 303 |
+| SEC interpretive | SAB 100 (reserves) · SAB Topic 5.NN (LIFO liquidation) |
+| Audit | PCAOB AS 2510 (inventories) |
+| Independence | AICPA Code ET §1.295 (non-attest) |
+| SOX | SOX §404 ICFR over inventory existence/valuation/cutoff |
+| IFRS contrast | IAS 2 Inventories · IAS 23 Borrowing Costs |
+
+End of deck — press Home to restart · all content editable · Save downloads current state · 14 slides
+
+---
+
+*Original HTML version: [us-gaap-ch2-inventory-presentation.html](us-gaap-ch2-inventory-presentation.html)*

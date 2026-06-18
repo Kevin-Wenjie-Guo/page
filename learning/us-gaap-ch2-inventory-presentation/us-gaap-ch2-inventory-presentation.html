@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>US GAAP · Chapter 2 · Inventory · Presentation</title>
+<style>
+:root{
+  --bg:#0d1117; --panel:#161b22; --panel-2:#1c232c; --line:#2a323d;
+  --text:#e6edf3; --muted:#8b949e; --dim:#6e7681;
+  --crimson:#d23a3a; --steel:#4ea1d3; --gold:#d4a956;
+  --moss:#6ab17e; --violet:#b083d6;
+  --serif:"Source Serif Pro","Charter","Georgia",serif;
+  --sans:"SF Pro Text","Inter","Helvetica Neue",sans-serif;
+  --mono:"SF Mono","JetBrains Mono","Menlo",monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:var(--sans)}
+.toolbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,17,23,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:10px 24px;display:flex;justify-content:space-between;align-items:center;font-size:12px}
+.toolbar .brand{color:var(--crimson);font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.toolbar .counter{color:var(--muted);font-family:var(--mono);font-size:13px}
+.toolbar button{background:var(--crimson);color:#fff;border:0;padding:6px 12px;border-radius:3px;cursor:pointer;font-size:12px;margin-left:6px;font-family:var(--sans);font-weight:600}
+.toolbar button.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.toolbar button:hover{opacity:.85}
+main{padding-top:54px}
+.slide{display:none;min-height:calc(100vh - 54px);padding:48px 64px 80px;max-width:1280px;margin:0 auto}
+.slide.active{display:block;animation:fade .3s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.25em;color:var(--crimson);text-transform:uppercase;font-weight:600;margin-bottom:6px}
+h1{font-family:var(--serif);font-size:64px;line-height:1.05;margin:0 0 14px;letter-spacing:-.01em;font-weight:600}
+h2{font-family:var(--serif);font-size:40px;line-height:1.15;margin:0 0 20px;font-weight:600;letter-spacing:-.005em}
+h3{font-family:var(--serif);font-size:24px;margin:18px 0 10px;color:var(--gold);font-weight:600}
+h4{font-family:var(--sans);font-size:14px;color:var(--steel);margin:14px 0 6px;text-transform:uppercase;letter-spacing:.12em;font-weight:700}
+p{line-height:1.6;font-size:16px;color:var(--text);margin:8px 0}
+.lead{font-size:20px;line-height:1.55;color:var(--text);margin:14px 0 24px;max-width:900px;font-family:var(--serif)}
+.bento{display:grid;gap:14px;margin:18px 0}
+.bento.c2{grid-template-columns:1fr 1fr}
+.bento.c3{grid-template-columns:repeat(3,1fr)}
+.bento.c4{grid-template-columns:repeat(4,1fr)}
+.b{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px 20px}
+.b.crimson{border-top:3px solid var(--crimson)}
+.b.steel{border-top:3px solid var(--steel)}
+.b.gold{border-top:3px solid var(--gold)}
+.b.moss{border-top:3px solid var(--moss)}
+.b.violet{border-top:3px solid var(--violet)}
+.b .lbl{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;margin-bottom:6px;font-weight:700}
+.b .ttl{font-family:var(--serif);font-size:18px;font-weight:600;margin-bottom:8px;line-height:1.3}
+.b p{font-size:14px;line-height:1.55;color:var(--text);margin:4px 0}
+.b ul,.b ol{padding-left:20px;margin:6px 0;font-size:14px;line-height:1.5}
+.b li{margin:4px 0}
+.b code{background:var(--panel-2);padding:1px 5px;border-radius:3px;font-size:12px;color:var(--gold)}
+.cite{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.05em;margin-top:6px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;background:var(--panel)}
+th,td{border:1px solid var(--line);padding:8px 12px;text-align:left;vertical-align:top;color:var(--text)}
+th{background:var(--panel-2);color:var(--gold);font-weight:600;font-family:var(--sans);text-transform:uppercase;letter-spacing:.08em;font-size:11px}
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:18px 0}
+.flow .step{background:var(--panel);border:1px solid var(--line);padding:10px 14px;border-radius:6px;font-size:13px;flex:1;min-width:140px}
+.flow .step .n{font-family:var(--mono);color:var(--crimson);font-weight:700;font-size:11px;letter-spacing:.15em}
+.flow .arr{color:var(--crimson);font-size:20px;font-weight:700}
+.tag{display:inline-block;padding:2px 8px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;border-radius:3px;font-weight:700;text-transform:uppercase}
+.tag.crimson{background:rgba(210,58,58,.15);color:var(--crimson);border:1px solid rgba(210,58,58,.4)}
+.tag.steel{background:rgba(78,161,211,.15);color:var(--steel);border:1px solid rgba(78,161,211,.4)}
+.tag.gold{background:rgba(212,169,86,.15);color:var(--gold);border:1px solid rgba(212,169,86,.4)}
+.tag.moss{background:rgba(106,177,126,.15);color:var(--moss);border:1px solid rgba(106,177,126,.4)}
+.tag.violet{background:rgba(176,131,214,.15);color:var(--violet);border:1px solid rgba(176,131,214,.4)}
+.note{background:rgba(212,169,86,.06);border-left:3px solid var(--gold);padding:10px 16px;margin:14px 0;font-size:14px;border-radius:0 4px 4px 0}
+.note.warn{background:rgba(210,58,58,.06);border-left-color:var(--crimson)}
+.note.tip{background:rgba(78,161,211,.06);border-left-color:var(--steel)}
+.note .l{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--gold);font-weight:700;margin-bottom:4px;text-transform:uppercase}
+.note.warn .l{color:var(--crimson)}
+.note.tip .l{color:var(--steel)}
+.cover{display:flex;flex-direction:column;justify-content:center;min-height:calc(100vh - 54px);text-align:left}
+.cover h1{font-size:96px;letter-spacing:-.02em}
+.cover .sub{font-family:var(--serif);font-size:24px;color:var(--muted);max-width:780px;line-height:1.4;margin-top:18px}
+.cover .meta{margin-top:36px;display:flex;gap:18px;flex-wrap:wrap}
+.cover .meta .chip{background:var(--panel);border:1px solid var(--line);padding:8px 14px;border-radius:24px;font-size:12px;font-family:var(--mono);color:var(--muted)}
+.je{background:var(--panel-2);border-left:3px solid var(--moss);padding:10px 14px;font-family:var(--mono);font-size:12.5px;line-height:1.7;border-radius:0 4px 4px 0;margin:8px 0}
+.je .dr{color:var(--crimson);font-weight:700}
+.je .cr{color:var(--moss);font-weight:700;padding-left:18px}
+.hl{background:rgba(212,169,86,.18);padding:1px 4px;border-radius:2px;color:var(--gold);font-weight:600}
+@media print{
+  .toolbar{display:none}
+  .slide{display:block!important;page-break-after:always;min-height:auto;padding:24px}
+  body{background:#fff;color:#000}
+  h1,h2,h3,h4{color:#000}
+}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <span class="brand">US GAAP · Ch.2 · Inventory</span>
+  <span class="counter"><span id="cur">1</span> / <span id="tot">14</span></span>
+  <span>
+    <button onclick="prev()" class="ghost">←</button>
+    <button onclick="next()" class="ghost">→</button>
+    <button onclick="saveDoc()">💾 Save</button>
+    <button onclick="window.print()" class="ghost">🖨 PDF</button>
+  </span>
+</div>
+
+<main contenteditable="true">
+
+<!-- SLIDE 1 — COVER -->
+<section class="slide active cover">
+  <div class="kicker">FASB · ASC 330 · IRS § 263A · SEC Reg S-X 5-02</div>
+  <h1>Inventory</h1>
+  <div class="sub">Recognition, costing, subsequent measurement, write-downs, and disclosure — sourced from FASB Codification, IRS UNICAP rules, and US GAAP authoritative literature. Not derived from the PRC CPA textbook.</div>
+  <div class="meta">
+    <span class="chip">14 slides · ← → to navigate</span>
+    <span class="chip">Editable · Saves to HTML</span>
+    <span class="chip">Self-contained · Offline</span>
+  </div>
+  <div class="bento c4" style="margin-top:48px">
+    <div class="b crimson"><span class="tag crimson">01</span><div class="ttl">Scope & Recognition</div><p style="font-size:13px;color:var(--muted)">ASC 330-10-20 · what counts as inventory</p></div>
+    <div class="b steel"><span class="tag steel">02</span><div class="ttl">Initial Cost</div><p style="font-size:13px;color:var(--muted)">ASC 330-10-30 · UNICAP §263A</p></div>
+    <div class="b gold"><span class="tag gold">03</span><div class="ttl">Cost-Flow Assumptions</div><p style="font-size:13px;color:var(--muted)">FIFO · WAVG · Specific ID · LIFO</p></div>
+    <div class="b moss"><span class="tag moss">04</span><div class="ttl">Subsequent Measurement</div><p style="font-size:13px;color:var(--muted)">LCNRV (ASU 2015-11) vs LCM (LIFO)</p></div>
+    <div class="b violet"><span class="tag violet">05</span><div class="ttl">Estimation Methods</div><p style="font-size:13px;color:var(--muted)">Retail · Gross Profit · Standard Cost</p></div>
+    <div class="b crimson"><span class="tag crimson">06</span><div class="ttl">Disposals & Shrinkage</div><p style="font-size:13px;color:var(--muted)">Physical counts · normal vs abnormal loss</p></div>
+    <div class="b steel"><span class="tag steel">07</span><div class="ttl">Presentation & Disclosure</div><p style="font-size:13px;color:var(--muted)">ASC 330-10-50 · SEC Reg S-X 5-02</p></div>
+    <div class="b gold"><span class="tag gold">08</span><div class="ttl">Synthesis</div><p style="font-size:13px;color:var(--muted)">Comparison to IFRS · audit & SOX hooks</p></div>
+  </div>
+</section>
+
+<!-- SLIDE 2 — SCOPE & RECOGNITION -->
+<section class="slide">
+  <div class="kicker">Topic 01 · ASC 330-10-20 · Glossary · Master Glossary</div>
+  <h2>What qualifies as Inventory under US GAAP</h2>
+  <p class="lead">ASC 330-10-20 defines inventory as <span class="hl">personal property items held for sale in the ordinary course of business</span>, items in process of production for such sale, or items to be currently consumed in the production of goods or services to be available for sale.</p>
+
+  <div class="bento c2">
+    <div class="b moss">
+      <span class="tag moss">In Scope</span>
+      <div class="ttl">Inventory categories</div>
+      <ul>
+        <li><strong>Finished Goods</strong> — completed, held for sale</li>
+        <li><strong>Work-in-Process (WIP)</strong> — partially completed</li>
+        <li><strong>Raw Materials</strong> — to be consumed in production</li>
+        <li><strong>Manufacturing Supplies</strong> — directly consumed</li>
+        <li><strong>Merchandise</strong> — purchased for resale (retail/wholesale)</li>
+        <li><strong>Goods in transit</strong> when title has passed (FOB shipping point: buyer; FOB destination: seller until delivered)</li>
+        <li><strong>Consigned goods</strong> — remain on <span class="hl">consignor's</span> books, not the consignee's</li>
+      </ul>
+      <div class="cite">ASC 330-10-20 · ASC 845-10-30 (transfer of control)</div>
+    </div>
+    <div class="b crimson">
+      <span class="tag crimson">Out of Scope</span>
+      <div class="ttl">Not inventory under ASC 330</div>
+      <ul>
+        <li><strong>Long-lived assets</strong> held for use → ASC 360 (PP&E)</li>
+        <li><strong>Self-constructed plant assets</strong> → ASC 360</li>
+        <li><strong>Service-provider work-in-process</strong> per ASC 606 contract assets → ASC 340-40 contract costs</li>
+        <li><strong>Spare parts & maintenance materials</strong> for capital equipment, when classified as PP&E components</li>
+        <li><strong>Biological assets / agricultural produce</strong> at point of harvest → ASC 905 (agriculture)</li>
+        <li><strong>Investments</strong> in securities held for trading → ASC 320 / 321</li>
+      </ul>
+      <div class="cite">ASC 330-10-15 · ASC 905-330 · ASC 340-40-25</div>
+    </div>
+  </div>
+
+  <div class="note tip">
+    <div class="l">Recognition principle</div>
+    Inventory is recognized when an entity obtains <span class="hl">control</span> (ASC 606-10-25-30 mirrored for purchase side: ability to direct use and obtain substantially all remaining benefits, including risk of obsolescence and price decline). Consignment arrangements fail this test for the consignee.
+  </div>
+</section>
+
+<!-- SLIDE 3 — INITIAL COST -->
+<section class="slide">
+  <div class="kicker">Topic 02 · ASC 330-10-30 · IRC §263A (UNICAP)</div>
+  <h2>Initial Cost Measurement</h2>
+  <p class="lead">ASC 330-10-30-1: "the primary basis of accounting for inventories is cost, which has been defined generally as the price paid or consideration given to acquire an asset." Cost includes all expenditures necessary to <span class="hl">bring inventory to its existing condition and location ready for sale</span>.</p>
+
+  <div class="bento c2">
+    <div class="b steel">
+      <span class="tag steel">Capitalizable Costs</span>
+      <div class="ttl">What goes into inventory</div>
+      <ul>
+        <li>Invoice price net of trade and cash discounts</li>
+        <li>Freight-in, insurance in transit, duties, non-recoverable taxes</li>
+        <li>Direct labor and applied manufacturing overhead</li>
+        <li>Allocable fixed production overhead based on <span class="hl">normal capacity</span> (ASC 330-10-30-3, FASB Statement 151)</li>
+        <li>Material handling, receiving, inspection costs before "ready for sale"</li>
+      </ul>
+      <div class="cite">ASC 330-10-30-1 to 30-8</div>
+    </div>
+    <div class="b crimson">
+      <span class="tag crimson">Period-Expensed</span>
+      <div class="ttl">Excluded from inventory cost</div>
+      <ul>
+        <li><strong>Abnormal idle facility expense</strong> — excess of actual fixed overhead over normal capacity → COGS (ASC 330-10-30-7)</li>
+        <li><strong>Abnormal spoilage, freight, handling, waste</strong> → expensed currently</li>
+        <li><strong>Selling expenses</strong>, general administration</li>
+        <li><strong>Storage costs</strong> after production complete (unless required for production process)</li>
+        <li><strong>Advertising</strong> and re-handling of finished goods</li>
+      </ul>
+      <div class="cite">ASC 330-10-30-7 · SFAS 151 (2004)</div>
+    </div>
+  </div>
+
+  <div class="note warn">
+    <div class="l">IRC § 263A · Uniform Capitalization (UNICAP)</div>
+    For tax, the IRS requires capitalization of a <span class="hl">broader set of indirect costs</span> than GAAP — including general administrative costs allocable to production. This creates routine book-tax temporary differences (ASC 740 deferred tax). The 2017 TCJA exempts businesses with avg gross receipts ≤ $25M (indexed; $30M for 2024).
+  </div>
+
+  <h3>Normal capacity rule (ASC 330-10-30-3)</h3>
+  <p>Allocation of fixed production overhead is based on <span class="hl">normal capacity</span> of the production facility — the production expected to be achieved over a number of periods under normal circumstances. The amount allocated to each unit is <span class="hl">not increased</span> due to abnormally low production or idle plant. Unallocated overhead is recognized as expense in the period incurred.</p>
+</section>
+
+<!-- SLIDE 4 — COST FLOW ASSUMPTIONS -->
+<section class="slide">
+  <div class="kicker">Topic 03 · ASC 330-10-30-9 to 30-14 · IRC § 472</div>
+  <h2>Cost-Flow Assumptions</h2>
+  <p class="lead">ASC 330-10-30-9: "cost for inventory purposes may be determined under any one of several assumptions as to the flow of cost factors." Selection is an accounting policy disclosure (ASC 330-10-50-1).</p>
+
+  <table>
+    <tr><th>Method</th><th>Mechanics</th><th>When used</th><th>Rising prices impact</th></tr>
+    <tr>
+      <td><strong>Specific Identification</strong></td>
+      <td>Each unit's actual cost tracked individually</td>
+      <td>Unique, high-value, low-volume goods (cars, art, jewelry); customized inventory</td>
+      <td>Most accurate matching</td>
+    </tr>
+    <tr>
+      <td><strong>FIFO</strong> (First-In, First-Out)</td>
+      <td>Oldest costs flow to COGS first; newest costs in ending inventory</td>
+      <td>Default for most non-LIFO US filers; required under IFRS</td>
+      <td>Lower COGS · <span class="hl">higher net income</span> · higher ending inventory</td>
+    </tr>
+    <tr>
+      <td><strong>Weighted-Average</strong></td>
+      <td>Periodic: avg cost = (BI + purchases) ÷ total units<br>Perpetual ("moving average"): recalc after each purchase</td>
+      <td>Homogeneous, commingled inventory; commodities</td>
+      <td>Smooths COGS · between FIFO and LIFO</td>
+    </tr>
+    <tr>
+      <td><strong>LIFO</strong> (Last-In, First-Out)</td>
+      <td>Newest costs to COGS first; oldest costs remain in ending inventory ("LIFO layers")</td>
+      <td>US-only (allowed by ASC 330 + IRC § 472); IFRS prohibits</td>
+      <td>Higher COGS · <span class="hl">lower net income</span> · lower taxes · "LIFO Reserve" disclosed</td>
+    </tr>
+  </table>
+
+  <div class="note warn">
+    <div class="l">IRC § 472 · LIFO Conformity Rule</div>
+    If a taxpayer uses LIFO for tax, it must also use LIFO for <span class="hl">primary financial reporting</span> (book conformity). However, the entity must disclose the LIFO reserve so users can recompute as if FIFO were used. LIFO Reserve = FIFO inventory − LIFO inventory.
+  </div>
+
+  <div class="bento c2">
+    <div class="b gold">
+      <div class="ttl">LIFO Reserve disclosure</div>
+      <p>SEC Reg S-X Item 5-02 and ASC 330-10-50-1(b) require disclosure of the excess of replacement (or current) cost over LIFO carrying value. Analysts add this back to compare LIFO filers with FIFO peers (e.g., ratio of inventory turnover, gross margin).</p>
+    </div>
+    <div class="b moss">
+      <div class="ttl">LIFO Liquidation</div>
+      <p>When ending inventory units fall below beginning units, old (low-cost) LIFO layers are matched to current-period revenue, producing an <span class="hl">artificial profit spike</span>. SEC SAB Topic 5.NN requires disclosure of "LIFO liquidation effect" when material.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 — SUBSEQUENT MEASUREMENT -->
+<section class="slide">
+  <div class="kicker">Topic 04 · ASC 330-10-35 · ASU 2015-11 (July 2015)</div>
+  <h2>Subsequent Measurement — LCNRV vs LCM</h2>
+  <p class="lead">In July 2015 FASB issued <span class="hl">ASU 2015-11</span>, simplifying inventory measurement: entities not on LIFO or retail inventory method now use <strong>Lower of Cost or Net Realizable Value (LCNRV)</strong>. LIFO and retail method filers remain on the legacy <strong>Lower of Cost or Market (LCM)</strong>.</p>
+
+  <div class="bento c2">
+    <div class="b steel">
+      <span class="tag steel">LCNRV (Post-ASU 2015-11)</span>
+      <div class="ttl">For FIFO, average cost, specific ID</div>
+      <p><strong>NRV</strong> = Estimated selling price in the ordinary course of business <span class="hl">−</span> reasonably predictable costs of completion, disposal, and transportation.</p>
+      <p>Compare unit-by-unit (or category if individual unit infeasible) cost to NRV. Recognize loss when cost > NRV; write down to NRV.</p>
+      <div class="je">
+        <span class="dr">Dr. Cost of Goods Sold (or Inventory Loss)</span><br>
+        <span class="cr">Cr. Inventory</span>
+      </div>
+      <div class="cite">ASC 330-10-35-1B to 35-7</div>
+    </div>
+    <div class="b crimson">
+      <span class="tag crimson">LCM (Pre-ASU 2015-11 · still LIFO/Retail)</span>
+      <div class="ttl">"Middle of three" rule</div>
+      <p><strong>Market</strong> = Replacement cost, bounded by:<br>
+      <strong>Ceiling</strong> = NRV (selling price − completion/disposal costs)<br>
+      <strong>Floor</strong> = NRV − normal profit margin</p>
+      <p>Inventory carried at lower of <span class="hl">cost</span> vs <span class="hl">market</span> (the bounded replacement cost).</p>
+      <div class="cite">ASC 330-10-35 (legacy paragraphs for LIFO/retail filers)</div>
+    </div>
+  </div>
+
+  <h3>Write-down rules common to both</h3>
+  <ul>
+    <li>Write-down to NRV (or market) creates a <span class="hl">new cost basis</span> — ASC 330-10-35-14</li>
+    <li><strong>Reversal of a prior write-down is PROHIBITED</strong> under US GAAP, unlike IFRS (IAS 2 §33), even if NRV later recovers — ASC 330-10-35-14</li>
+    <li>Write-downs are typically recorded in COGS unless of such magnitude that they must be separately disclosed</li>
+    <li>Material write-downs require disclosure of the amount, the location in the income statement, and the reason (ASC 330-10-50-2)</li>
+  </ul>
+
+  <div class="note warn">
+    <div class="l">Key US vs IFRS divergence</div>
+    IFRS (IAS 2) requires LCNRV for all inventory and <span class="hl">requires reversal</span> of prior write-downs (capped at original cost) when conditions reverse. US GAAP prohibits reversal — write-down is permanent and establishes a new cost basis.
+  </div>
+</section>
+
+<!-- SLIDE 6 — ESTIMATION METHODS -->
+<section class="slide">
+  <div class="kicker">Topic 05 · ASC 330-10-30-12 to 30-15 · ASC 270 (interim)</div>
+  <h2>Estimation Methods — Retail · Gross Profit · Standard Cost</h2>
+  <p class="lead">When perpetual inventory tracking is impractical, GAAP allows three estimation techniques — each with distinct applications and limitations.</p>
+
+  <div class="bento c3">
+    <div class="b gold">
+      <span class="tag gold">Retail Inventory Method</span>
+      <div class="ttl">For high-volume retail</div>
+      <p>Maintains records at <span class="hl">both cost and retail</span> values. Cost-to-retail ratio is applied to ending inventory at retail.</p>
+      <p><code>Cost % = Cost ÷ Retail</code><br><code>Ending Inv (cost) = Ending Inv (retail) × Cost %</code></p>
+      <p>Variants: Conventional (LCM, includes markups, excludes markdowns in ratio); LIFO Retail; Dollar-Value LIFO Retail.</p>
+      <div class="cite">ASC 330-10-30-12 · IRS §1.471-8</div>
+    </div>
+    <div class="b violet">
+      <span class="tag violet">Gross Profit Method</span>
+      <div class="ttl">For interim reporting · casualty loss</div>
+      <p>Uses historical gross margin % to estimate ending inventory from sales:</p>
+      <p><code>COGS = Sales × (1 − GM%)</code><br><code>End Inv = BI + Purchases − COGS</code></p>
+      <p><span class="hl">Not acceptable</span> for annual financial statements — only interim, internal, or estimating inventory destroyed in fires/theft (insurance claims).</p>
+      <div class="cite">ASC 270 (interim) · not GAAP for annual</div>
+    </div>
+    <div class="b moss">
+      <span class="tag moss">Standard Cost</span>
+      <div class="ttl">For manufacturers</div>
+      <p>Pre-determined standards for material, labor, overhead. Variances analyzed.</p>
+      <p>Acceptable under GAAP <span class="hl">only if standards are reviewed regularly</span> and adjusted to approximate actual cost (ASC 330-10-30-12). Significant variances must be allocated to inventory and COGS.</p>
+      <div class="cite">ASC 330-10-30-12</div>
+    </div>
+  </div>
+
+  <h3>Dollar-Value LIFO (DV LIFO)</h3>
+  <p>For multi-SKU inventories under LIFO. Inventory is grouped into <span class="hl">pools</span>; LIFO layers are measured in dollars (not units) using <strong>price indexes</strong> (internal or external — CPI, PPI, or company-specific). Reduces LIFO bookkeeping burden and protects from involuntary LIFO liquidation when individual SKUs change.</p>
+  <div class="cite">ASC 330-10-30-9 to 30-14 · IRS Reg §1.472-8</div>
+</section>
+
+<!-- SLIDE 7 — TRANSFERS, FREIGHT, CONSIGNMENT -->
+<section class="slide">
+  <div class="kicker">Topic 06 · ASC 606-10-25 · ASC 845 · ASC 330-10-25</div>
+  <h2>Transfer of Title, Freight, Consignment</h2>
+  <p class="lead">Whether goods belong on the buyer's or seller's balance sheet at period end turns on <span class="hl">control transfer</span> under ASC 606-10-25-30 — the same indicators used for revenue recognition.</p>
+
+  <div class="bento c2">
+    <div class="b steel">
+      <span class="tag steel">FOB Shipping Point</span>
+      <div class="ttl">Buyer takes title at seller's dock</div>
+      <ul>
+        <li>Title transfers when goods leave seller's premises</li>
+        <li><strong>Buyer</strong> includes goods in inventory while in transit</li>
+        <li><strong>Buyer</strong> pays freight (Freight-In → capitalized into inventory cost)</li>
+        <li>Buyer bears risk of loss in transit</li>
+      </ul>
+    </div>
+    <div class="b crimson">
+      <span class="tag crimson">FOB Destination</span>
+      <div class="ttl">Seller retains title until delivery</div>
+      <ul>
+        <li>Title transfers only when goods arrive at buyer</li>
+        <li><strong>Seller</strong> keeps goods in inventory while in transit</li>
+        <li><strong>Seller</strong> pays freight (Freight-Out → period expense, selling cost)</li>
+        <li>Seller bears risk of loss in transit</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Consignment arrangements (ASC 606-10-55-79 to 55-80)</h3>
+  <p>Goods on consignment are <span class="hl">NOT</span> inventory of the consignee — they remain on the <strong>consignor's</strong> balance sheet. Indicators of consignment include:</p>
+  <ul>
+    <li>The dealer is not obligated to pay until the product is sold to a third party</li>
+    <li>The entity is able to require return or transfer of the product to another dealer</li>
+    <li>The dealer does not have unconditional obligation to pay (no unconditional sale)</li>
+  </ul>
+  <p>Consignor recognizes revenue only when the consignee sells to the end customer. Cost of consigned goods plus freight to consignee remains capitalized as inventory until sale.</p>
+
+  <h3>Right of return (ASC 606-10-32-10)</h3>
+  <p>When customers have a right of return, the seller recognizes revenue net of expected returns and records a <span class="hl">refund liability</span> and a corresponding <span class="hl">right to recover assets returned</span> (an asset) — measured at the former carrying amount of inventory less expected recovery costs.</p>
+</section>
+
+<!-- SLIDE 8 — SHRINKAGE, COUNTS, OBSOLESCENCE -->
+<section class="slide">
+  <div class="kicker">Topic 06 · Physical Inventory · ASC 330-10-35 · AS 2510</div>
+  <h2>Physical Counts, Shrinkage, Obsolescence</h2>
+  <p class="lead">ASC 330 does not prescribe a count method, but PCAOB <strong>AS 2510 — Auditing Inventories</strong> requires auditors to observe physical counts. Discrepancies between perpetual records and physical count drive an adjusting entry.</p>
+
+  <div class="bento c2">
+    <div class="b crimson">
+      <div class="ttl">Normal shrinkage</div>
+      <p>Expected loss from evaporation, breakage, theft within typical limits. Charged to <span class="hl">COGS</span> as part of normal operations.</p>
+      <div class="je">
+        <span class="dr">Dr. Cost of Goods Sold</span><br>
+        <span class="cr">Cr. Inventory</span>
+      </div>
+    </div>
+    <div class="b steel">
+      <div class="ttl">Abnormal shrinkage / losses</div>
+      <p>Material losses from casualty, fraud, or other unusual events. Charged to a separate line — <span class="hl">Loss on Inventory</span> — and disclosed when material.</p>
+      <div class="je">
+        <span class="dr">Dr. Loss on Inventory (operating, separately stated)</span><br>
+        <span class="cr">Cr. Inventory</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Obsolescence reserve (excess and obsolete — "E&O")</h3>
+  <p>Entities typically maintain a contra-inventory reserve calculated by aging buckets (e.g., goods with no demand in last 12/24 months) or specific identification of obsolete SKUs. The reserve estimate is a <span class="hl">critical accounting estimate</span> requiring disclosure under SEC Reg S-K Item 303(b)(3) (MD&A) when material.</p>
+
+  <div class="je">
+    <span class="dr">Dr. Cost of Goods Sold (or Inventory Write-down Expense)</span><br>
+    <span class="cr">Cr. Allowance for Obsolescence (contra-inventory)</span>
+  </div>
+
+  <div class="note warn">
+    <div class="l">SAB 100 · "Cookie Jar" reserves</div>
+    SEC Staff Accounting Bulletin No. 100 warns against using obsolescence reserves to smooth earnings. Reserves must be supported by <span class="hl">specific facts and circumstances</span>, not vague "general business risk." Once written down, the reduced carrying amount is a new cost basis — no reversal even if items later become saleable.
+  </div>
+
+  <h3>Inventory counts under SOX § 404</h3>
+  <p>Internal controls over inventory existence (cycle counts, year-end physical counts), valuation (LCNRV review, obsolescence reserve methodology), and cutoff (FOB tracking) are key audited control areas. Material weaknesses here often trigger restatements.</p>
+</section>
+
+<!-- SLIDE 9 — REVENUE LINKAGE -->
+<section class="slide">
+  <div class="kicker">Topic 06 · ASC 606 · ASC 705 (COGS)</div>
+  <h2>Inventory ⇄ Revenue — the recognition handshake</h2>
+  <p class="lead">Cost of inventory becomes <span class="hl">Cost of Goods Sold</span> when the entity satisfies a performance obligation per ASC 606-10-25-30, i.e., when control transfers to the customer. The matching principle is operationalized through the five-step revenue model.</p>
+
+  <div class="flow">
+    <div class="step"><div class="n">Step 1</div>Identify the contract<br><span style="font-size:11px;color:var(--muted)">ASC 606-10-25-1</span></div>
+    <div class="arr">→</div>
+    <div class="step"><div class="n">Step 2</div>Identify performance obligations</div>
+    <div class="arr">→</div>
+    <div class="step"><div class="n">Step 3</div>Determine transaction price</div>
+    <div class="arr">→</div>
+    <div class="step"><div class="n">Step 4</div>Allocate price to POs</div>
+    <div class="arr">→</div>
+    <div class="step"><div class="n">Step 5</div>Recognize revenue<br>(control transfer)</div>
+  </div>
+
+  <h3>At control transfer (point-in-time)</h3>
+  <div class="je">
+    <span class="dr">Dr. Accounts Receivable / Cash</span><br>
+    <span class="cr">Cr. Sales Revenue</span><br>
+    <span class="dr">Dr. Cost of Goods Sold</span><br>
+    <span class="cr">Cr. Inventory</span>
+  </div>
+
+  <h3>Over-time recognition (ASC 606-10-25-27)</h3>
+  <p>For inventory produced under customer-specific contracts where the customer controls WIP as it is produced (e.g., highly customized goods with no alternative use + enforceable right to payment), revenue is recognized over time using an input or output method. WIP is reclassified from inventory to <span class="hl">contract asset</span> (ASC 606-10-45-3).</p>
+
+  <div class="bento c2">
+    <div class="b moss">
+      <div class="ttl">Bill-and-hold (ASC 606-10-55-81 to 55-84)</div>
+      <p>Revenue can be recognized before physical delivery only if: (a) reason for arrangement is substantive (customer requested); (b) product is identified separately; (c) product is ready for physical transfer; (d) entity cannot use product or direct it to another customer.</p>
+    </div>
+    <div class="b violet">
+      <div class="ttl">Principal vs Agent (ASC 606-10-55-36)</div>
+      <p>An entity is a principal if it <strong>controls</strong> the good before transfer to the customer — recognizes <span class="hl">gross</span> revenue and holds inventory. An agent recognizes <span class="hl">net</span> commission and does not record inventory.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10 — PRESENTATION & DISCLOSURE -->
+<section class="slide">
+  <div class="kicker">Topic 07 · ASC 330-10-50 · SEC Reg S-X Rule 5-02(6) · 10-K</div>
+  <h2>Balance-sheet presentation & disclosure</h2>
+  <p class="lead">SEC <span class="hl">Reg S-X Rule 5-02(6)</span> requires public filers to separately disclose major components of inventory by class on the face of the balance sheet (or in notes), along with the basis of valuation.</p>
+
+  <h3>Required disclosure components</h3>
+  <table>
+    <tr><th>Item</th><th>Where</th><th>Source</th></tr>
+    <tr><td>Major classes (FG / WIP / RM / supplies)</td><td>Balance sheet or notes</td><td>Reg S-X 5-02(6)(a)</td></tr>
+    <tr><td>Basis of valuation (LCNRV / LCM)</td><td>Significant accounting policies (Note 1 or 2)</td><td>ASC 330-10-50-1</td></tr>
+    <tr><td>Cost-flow assumption (FIFO / WAVG / LIFO / specific ID)</td><td>Accounting policies</td><td>ASC 330-10-50-1</td></tr>
+    <tr><td>LIFO Reserve / excess of replacement cost over LIFO</td><td>Inventory note</td><td>ASC 330-10-50-1(b) · Reg S-X 5-02(6)(c)</td></tr>
+    <tr><td>LIFO liquidation effect (if material)</td><td>Inventory note + MD&A</td><td>SEC SAB Topic 5.NN</td></tr>
+    <tr><td>Write-downs (amount, classification, reason if material)</td><td>Inventory note</td><td>ASC 330-10-50-2</td></tr>
+    <tr><td>Inventory pledged as collateral</td><td>Inventory note</td><td>ASC 470-10-50 + ASC 860</td></tr>
+    <tr><td>Critical accounting estimates: E&O reserve, NRV assumptions</td><td>MD&A (Item 303)</td><td>Reg S-K 303(b)(3)</td></tr>
+  </table>
+
+  <h3>Income statement classification</h3>
+  <ul>
+    <li><strong>Cost of goods sold</strong> — primary expense from inventory consumption (ASC 705)</li>
+    <li><strong>Inventory write-down losses</strong> — typically in COGS; separately disclosed if material</li>
+    <li><strong>Restructuring of supply chain</strong> — exit and disposal costs (ASC 420) when applicable</li>
+  </ul>
+
+  <div class="note tip">
+    <div class="l">Auditor focus — PCAOB AS 2510</div>
+    Auditors must (a) observe physical counts at year-end (or use cycle-count rollforward with strong ICFR); (b) test costing of selected items to invoices/cost records; (c) assess reasonableness of obsolescence and NRV reserves; (d) evaluate cutoff at period end.
+  </div>
+</section>
+
+<!-- SLIDE 11 — US vs IFRS -->
+<section class="slide">
+  <div class="kicker">Comparison · ASC 330 vs IAS 2</div>
+  <h2>US GAAP vs IFRS — five critical divergences</h2>
+  <p class="lead">For multi-jurisdictional reporting, the differences below drive most reconciling items between US 10-K and IFRS annual report inventory balances.</p>
+
+  <table>
+    <tr><th>Topic</th><th>US GAAP (ASC 330)</th><th>IFRS (IAS 2)</th></tr>
+    <tr>
+      <td>LIFO permitted?</td>
+      <td><span class="hl">Yes</span> — allowed under ASC 330; required for book if used for tax (IRC §472)</td>
+      <td><span class="hl">No</span> — prohibited (IAS 2 §25)</td>
+    </tr>
+    <tr>
+      <td>Subsequent measurement</td>
+      <td>LCNRV (non-LIFO) post-ASU 2015-11; LCM still allowed for LIFO and retail method</td>
+      <td>LCNRV for all inventory (IAS 2 §9)</td>
+    </tr>
+    <tr>
+      <td>Reversal of write-downs</td>
+      <td><span class="hl">Prohibited</span> — new cost basis (ASC 330-10-35-14)</td>
+      <td><span class="hl">Required</span> when conditions reverse, capped at original cost (IAS 2 §33)</td>
+    </tr>
+    <tr>
+      <td>Interest capitalization</td>
+      <td>Generally not for inventory; only for assets produced as discrete projects over substantial period (ASC 835-20-15-5)</td>
+      <td>For "qualifying assets" only — generally excludes inventory produced in large quantities on repetitive basis (IAS 23 §4)</td>
+    </tr>
+    <tr>
+      <td>Same items, single measurement basis?</td>
+      <td>Different methods (FIFO, LIFO, average) for different inventory items allowed if justified by use</td>
+      <td>Same cost formula must be applied to all inventories with similar nature and use (IAS 2 §25)</td>
+    </tr>
+  </table>
+
+  <h3>Practical reconciliation example</h3>
+  <p>A US LIFO filer reporting under IFRS would: (1) eliminate LIFO entirely → use FIFO or weighted-average; (2) reverse the LIFO reserve through opening retained earnings; (3) re-evaluate prior write-downs for potential reversal; (4) potentially exclude certain interest costs that had been capitalized.</p>
+
+  <div class="note warn">
+    <div class="l">Note</div>
+    Roughly <span class="hl">15-20%</span> of S&P 500 filers reported some inventory on LIFO as of 2024 (down from over 40% in the 1980s). The decline reflects (a) growing tax pressure to switch, (b) IFRS convergence considerations, and (c) lower inflation reducing LIFO's tax benefit.
+  </div>
+</section>
+
+<!-- SLIDE 12 — TECH & AI -->
+<section class="slide">
+  <div class="kicker">Bonus · Technology · AI · Supply Chain</div>
+  <h2>Technology in inventory accounting & assurance</h2>
+  <p class="lead">Modern ERPs (SAP, Oracle, NetSuite, Microsoft Dynamics) maintain perpetual records with real-time cost-flow logic. AI and ML are increasingly used in both preparer and auditor workflows, with new governance considerations.</p>
+
+  <div class="bento c2">
+    <div class="b steel">
+      <span class="tag steel">Preparer side</span>
+      <div class="ttl">AI/ML in inventory management</div>
+      <ul>
+        <li><strong>Demand forecasting</strong> — ML models predict reorder points, reducing E&O reserves</li>
+        <li><strong>Dynamic NRV estimation</strong> — pulling marketplace prices, FX, freight indices in real time</li>
+        <li><strong>Obsolescence detection</strong> — anomaly detection on slow-moving SKUs</li>
+        <li><strong>Computer-vision physical counts</strong> — drones, robots, RFID combined with image recognition</li>
+        <li><strong>Predictive shrinkage</strong> — pattern detection across stores/warehouses</li>
+      </ul>
+    </div>
+    <div class="b crimson">
+      <span class="tag crimson">Auditor side</span>
+      <div class="ttl">Audit data analytics (ADA)</div>
+      <ul>
+        <li>100% population analytics on inventory aging, margin by SKU, days-on-hand</li>
+        <li>Computer-assisted audit techniques (CAATs) for cost re-performance</li>
+        <li>Drone-assisted physical observation under PCAOB AS 2510</li>
+        <li>Continuous controls monitoring of cutoff transactions around period-end</li>
+      </ul>
+      <div class="cite">PCAOB Spotlight on Auditor Use of Technology (2020)</div>
+    </div>
+  </div>
+
+  <h3>Governance requirements (AICPA + PCAOB + NIST AI RMF 1.0)</h3>
+  <div class="bento c4">
+    <div class="b gold"><div class="ttl" style="font-size:14px">Data quality</div><p style="font-size:13px">Source data lineage, completeness, accuracy</p></div>
+    <div class="b moss"><div class="ttl" style="font-size:14px">Model governance</div><p style="font-size:13px">Version control, change management, approval</p></div>
+    <div class="b violet"><div class="ttl" style="font-size:14px">Validation</div><p style="font-size:13px">Back-testing forecast accuracy, NRV vs realized</p></div>
+    <div class="b steel"><div class="ttl" style="font-size:14px">Human oversight</div><p style="font-size:13px">Material estimates not fully automated; explainability for material judgments</p></div>
+  </div>
+
+  <div class="note tip">
+    <div class="l">AICPA Code ET §1.295 — non-attest services</div>
+    Auditors may not design or implement the client's inventory AI/ML models that drive material accounting estimates — would impair independence. Audit firms separate ADA (audit use) from advisory (client implementation) staff and engagements.
+  </div>
+</section>
+
+<!-- SLIDE 13 — SYNTHESIS -->
+<section class="slide">
+  <div class="kicker">Synthesis · 6 frames + 3 takeaways</div>
+  <h2>The inventory chapter in one screen</h2>
+
+  <div class="bento c3">
+    <div class="b crimson">
+      <span class="tag crimson">Why</span>
+      <div class="ttl">Why inventory matters</div>
+      <p>For most non-financial companies, inventory is the largest current asset and the dominant driver of working capital, gross margin, and tax expense. Inventory misstatements are a top-3 cause of public-company restatements per Audit Analytics annual reports.</p>
+    </div>
+    <div class="b steel">
+      <span class="tag steel">Lens</span>
+      <div class="ttl">The 3 measurement gates</div>
+      <p>1. <strong>Initial</strong> — capture all costs to "ready for sale" (ASC 330-10-30)<br>2. <strong>Subsequent</strong> — write down to NRV when impaired (35)<br>3. <strong>Derecognition</strong> — match to revenue at control transfer (ASC 606)</p>
+    </div>
+    <div class="b gold">
+      <span class="tag gold">Stuff</span>
+      <div class="ttl">The 4 cost-flow choices</div>
+      <p>Specific ID (unique), FIFO (default), Weighted-Average (commodity), LIFO (US-only tax tool). Choice is policy disclosure; consistency required.</p>
+    </div>
+    <div class="b moss">
+      <span class="tag moss">Discipline</span>
+      <div class="ttl">The asymmetry</div>
+      <p>Write-downs hit P&L immediately. Reversals <span class="hl">prohibited</span> (US GAAP) — new cost basis. This conservatism matters at impairment points (recessions, obsolete tech).</p>
+    </div>
+    <div class="b violet">
+      <span class="tag violet">Expansion</span>
+      <div class="ttl">Adjacent standards</div>
+      <p>ASC 606 (revenue/COGS recognition), ASC 360 (PP&E for self-constructed assets), ASC 740 (book-tax UNICAP differences), ASC 470 (pledged collateral), ASC 845 (consignment).</p>
+    </div>
+    <div class="b crimson">
+      <span class="tag crimson">Tool</span>
+      <div class="ttl">SOX & audit hooks</div>
+      <p>Cycle counts, cutoff procedures, NRV reserves, obsolescence reserves. PCAOB AS 2510 audit; SAB 100 reserve discipline; SEC critical accounting estimate MD&A.</p>
+    </div>
+  </div>
+
+  <h3>Three sentences to memorize</h3>
+  <div class="bento c3">
+    <div class="b gold"><p style="font-family:var(--serif);font-size:17px;line-height:1.5;margin:0"><strong>1.</strong> Inventory is held for sale, valued at the lower of cost or NRV, and recognized as COGS when control passes — everything else is mechanics.</p></div>
+    <div class="b moss"><p style="font-family:var(--serif);font-size:17px;line-height:1.5;margin:0"><strong>2.</strong> Write-downs are permanent under US GAAP; choose LCNRV unless on LIFO/retail; document the methodology because it's a critical accounting estimate.</p></div>
+    <div class="b steel"><p style="font-family:var(--serif);font-size:17px;line-height:1.5;margin:0"><strong>3.</strong> LIFO is a US tax artifact — IFRS bans it. If you see "LIFO Reserve" and "LIFO Liquidation" in the 10-K, the company is filing a US-only return.</p></div>
+  </div>
+</section>
+
+<!-- SLIDE 14 — APPENDIX -->
+<section class="slide">
+  <div class="kicker">Appendix · Self-check · Sources</div>
+  <h2>10 self-check questions + source map</h2>
+
+  <div class="bento c2">
+    <div class="b">
+      <div class="ttl">Self-check (under 30 seconds each)</div>
+      <ol style="font-size:14px;line-height:1.7">
+        <li>Where does ASC 330 say "ready for sale" — and what costs does that include?</li>
+        <li>What's the difference between normal idle capacity and abnormal idle capacity? Which is expensed?</li>
+        <li>FOB shipping point — who owns inventory in transit?</li>
+        <li>What did ASU 2015-11 change, and who is excluded from the change?</li>
+        <li>If FIFO ending inventory = $100M and LIFO ending inventory = $70M, what is the LIFO Reserve?</li>
+        <li>Can a US GAAP filer reverse an inventory write-down if NRV recovers next year?</li>
+        <li>When is the Gross Profit Method allowed in annual financial statements?</li>
+        <li>Consigned goods — on whose balance sheet? What ASC 606 paragraph governs?</li>
+        <li>What does Reg S-X 5-02(6) require about inventory disclosure?</li>
+        <li>What is "LIFO Conformity Rule" and which Internal Revenue Code section creates it?</li>
+      </ol>
+    </div>
+    <div class="b">
+      <div class="ttl">Source map · authoritative US literature</div>
+      <table style="font-size:12px">
+        <tr><th>Topic</th><th>Source</th></tr>
+        <tr><td>Definition & scope</td><td>ASC 330-10-20 (Master Glossary)</td></tr>
+        <tr><td>Initial cost</td><td>ASC 330-10-30-1 to 30-8 · IRC §263A (UNICAP)</td></tr>
+        <tr><td>Cost flow</td><td>ASC 330-10-30-9 to 30-14 · IRC §472</td></tr>
+        <tr><td>Subsequent (LCNRV)</td><td>ASC 330-10-35 · ASU 2015-11 (July 2015)</td></tr>
+        <tr><td>Estimation methods</td><td>ASC 330-10-30-12 · IRS §1.471-8 (retail) · §1.472-8 (DV LIFO)</td></tr>
+        <tr><td>Title & consignment</td><td>ASC 606-10-25-30 · ASC 606-10-55-79 to 55-84</td></tr>
+        <tr><td>Disclosure</td><td>ASC 330-10-50 · Reg S-X 5-02(6) · Reg S-K 303</td></tr>
+        <tr><td>SEC interpretive</td><td>SAB 100 (reserves) · SAB Topic 5.NN (LIFO liquidation)</td></tr>
+        <tr><td>Audit</td><td>PCAOB AS 2510 (inventories)</td></tr>
+        <tr><td>Independence</td><td>AICPA Code ET §1.295 (non-attest)</td></tr>
+        <tr><td>SOX</td><td>SOX §404 ICFR over inventory existence/valuation/cutoff</td></tr>
+        <tr><td>IFRS contrast</td><td>IAS 2 Inventories · IAS 23 Borrowing Costs</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <p style="text-align:center;margin-top:32px;color:var(--muted);font-size:13px;font-family:var(--mono)">
+    End of deck — press Home to restart · all content editable · Save downloads current state · 14 slides
+  </p>
+</section>
+
+</main>
+
+<script>
+const slides = Array.from(document.querySelectorAll('.slide'));
+document.getElementById('tot').textContent = slides.length;
+let idx = 0;
+function render(){
+  slides.forEach((s,i)=> s.classList.toggle('active', i===idx));
+  document.getElementById('cur').textContent = (idx+1);
+  window.scrollTo({top:0, behavior:'instant'});
+}
+function goto(i){ idx = Math.max(0, Math.min(slides.length-1, i)); render(); }
+function next(){ goto(idx+1); }
+function prev(){ goto(idx-1); }
+document.addEventListener('keydown', (e)=>{
+  if (e.target && e.target.isContentEditable && e.target !== document.body) return;
+  if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); next(); }
+  else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+  else if (e.key === 'Home') { goto(0); }
+  else if (e.key === 'End') { goto(slides.length-1); }
+});
+function saveDoc(){
+  const html = '<!doctype html>\n' + document.documentElement.outerHTML;
+  const blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const ts = new Date().toISOString().slice(0,10);
+  a.href = url;
+  a.download = `US-GAAP-Chapter2-Inventory-Presentation-${ts}.html`;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+render();
+</script>
+</body>
+</html>
