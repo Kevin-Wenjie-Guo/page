@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Mac 快捷键完全指南 · Windows 迁移者必读</title>
+<style>
+  :root {
+    --bg: #fafaf7;
+    --card: #ffffff;
+    --text: #1d1d1f;
+    --muted: #6e6e73;
+    --accent: #0071e3;
+    --accent-soft: #e8f1fb;
+    --border: #e5e5e7;
+    --warn: #ff9500;
+    --kbd-bg: #f5f5f7;
+    --kbd-border: #d2d2d7;
+    --highlight: #fff3cd;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.7;
+  }
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 40px 24px 120px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  h1 {
+    font-size: 2.4rem;
+    margin: 0 0 8px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 1.05rem;
+  }
+  .edit-banner {
+    background: var(--accent-soft);
+    border: 1px solid #b8d8f5;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .edit-banner button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  .edit-banner button:hover { background: #0058b8; }
+  .edit-banner button.editing { background: var(--warn); }
+
+  .toc {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 26px;
+    margin-bottom: 30px;
+  }
+  .toc h3 { margin: 0 0 12px; font-size: 1rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .toc ol { margin: 0; padding-left: 22px; columns: 2; column-gap: 30px; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  }
+  h2 {
+    font-size: 1.5rem;
+    margin: 0 0 6px;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  h2 .num {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    border-radius: 8px;
+    padding: 2px 10px;
+    font-size: 0.85rem;
+    margin-right: 10px;
+    vertical-align: middle;
+    font-weight: 600;
+  }
+  h3 {
+    font-size: 1.1rem;
+    margin: 24px 0 10px;
+    color: var(--text);
+  }
+  .section-intro {
+    color: var(--muted);
+    margin: 0 0 18px;
+    font-size: 0.98rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 16px;
+    font-size: 0.95rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th {
+    background: #f5f5f7;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  tr:hover td { background: #fafafa; }
+  td.shortcut { white-space: nowrap; width: 38%; }
+  kbd {
+    display: inline-block;
+    background: var(--kbd-bg);
+    border: 1px solid var(--kbd-border);
+    border-bottom-width: 2px;
+    border-radius: 6px;
+    padding: 2px 8px;
+    margin: 0 2px;
+    font-family: "SF Mono", "Menlo", monospace;
+    font-size: 0.88em;
+    color: #333;
+    min-width: 22px;
+    text-align: center;
+  }
+  .tip {
+    background: #fff8e6;
+    border-left: 4px solid var(--warn);
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 6px;
+    font-size: 0.95rem;
+  }
+  .tip strong { color: #b76e00; }
+  .compare-table th:first-child { width: 30%; }
+  .compare-table th:nth-child(2) { width: 35%; }
+  code {
+    background: var(--kbd-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: "SF Mono", "Menlo", monospace;
+    font-size: 0.88em;
+  }
+  .key-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 14px 0 20px;
+    padding: 14px 18px;
+    background: #f5f5f7;
+    border-radius: 10px;
+    font-size: 0.92rem;
+  }
+  .key-legend div { display: flex; align-items: center; gap: 6px; }
+  .symbol {
+    font-size: 1.15em;
+    font-weight: 600;
+    color: var(--accent);
+    font-family: "SF Pro Display", -apple-system, sans-serif;
+  }
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin-top: 30px;
+    padding: 20px;
+  }
+  [contenteditable="true"] {
+    outline: 2px dashed var(--accent);
+    outline-offset: 4px;
+    border-radius: 4px;
+    background: #fffbeb;
+  }
+  @media print {
+    .edit-banner { display: none; }
+    body { background: white; }
+    section { box-shadow: none; page-break-inside: avoid; }
+  }
+  @media (max-width: 640px) {
+    .toc ol { columns: 1; }
+    td.shortcut { white-space: normal; width: 45%; }
+    .container { padding: 20px 12px 80px; }
+    h1 { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>🍎 Mac 快捷键完全指南</h1>
+  <div class="subtitle">从 Windows 迁移到 Mac 的零基础完整手册</div>
+</header>
+
+<div class="edit-banner">
+  <span>✏️ 这是一份可编辑的文档。点右边按钮进入编辑模式，可以直接修改任何文字，加自己的笔记。修改不会自动保存（用 <kbd>⌘</kbd>+<kbd>S</kbd> 可整页保存为本地副本）。</span>
+  <button id="editToggle" onclick="toggleEdit()">开启编辑</button>
+</div>
+
+<div class="toc">
+  <h3>目录</h3>
+  <ol>
+    <li><a href="#sec1">键位认知 · 修饰键含义</a></li>
+    <li><a href="#sec2">Win → Mac 快捷键对照</a></li>
+    <li><a href="#sec3">必会基础快捷键</a></li>
+    <li><a href="#sec4">Finder（文件管理）</a></li>
+    <li><a href="#sec5">复制粘贴 · 高级技巧</a></li>
+    <li><a href="#sec6">截图与录屏</a></li>
+    <li><a href="#sec7">窗口与多任务</a></li>
+    <li><a href="#sec8">浏览器（Safari/Chrome）</a></li>
+    <li><a href="#sec9">文本编辑光标移动</a></li>
+    <li><a href="#sec10">Spotlight · 搜索一切</a></li>
+    <li><a href="#sec11">触控板手势</a></li>
+    <li><a href="#sec12">输入法切换</a></li>
+    <li><a href="#sec13">系统级技巧</a></li>
+    <li><a href="#sec14">Windows 习惯改造清单</a></li>
+    <li><a href="#sec15">推荐设置改动</a></li>
+  </ol>
+</div>
+
+<!-- ========== 1. 键位认知 ========== -->
+<section id="sec1">
+  <h2><span class="num">01</span>键位认知 · 修饰键含义</h2>
+  <p class="section-intro">Mac 的快捷键文档里全是符号，先认住这五个，后面就全看得懂了。</p>
+  <div class="key-legend">
+    <div><span class="symbol">⌘</span> Command（最重要，约等于 Win 的 Ctrl）</div>
+    <div><span class="symbol">⌃</span> Control（次要，类 Unix 操作）</div>
+    <div><span class="symbol">⌥</span> Option / Alt</div>
+    <div><span class="symbol">⇧</span> Shift</div>
+    <div><span class="symbol">⇪</span> Caps Lock</div>
+    <div><span class="symbol">fn</span> Function 键</div>
+    <div><span class="symbol">↩</span> Return / Enter</div>
+    <div><span class="symbol">⌫</span> Delete（向左删）</div>
+    <div><span class="symbol">⌦</span> Forward Delete（向右删，fn+⌫）</div>
+    <div><span class="symbol">⎋</span> Escape</div>
+  </div>
+  <div class="tip">
+    <strong>核心心法：</strong>Windows 上的 <kbd>Ctrl</kbd> 大部分情况下 = Mac 上的 <kbd>⌘ Command</kbd>。
+    把这个映射印进脑子，你已经会用 80% 的快捷键了：复制 <kbd>⌘C</kbd>、粘贴 <kbd>⌘V</kbd>、撤销 <kbd>⌘Z</kbd>、保存 <kbd>⌘S</kbd>、关闭 <kbd>⌘W</kbd>、退出应用 <kbd>⌘Q</kbd>。
+  </div>
+</section>
+
+<!-- ========== 2. Win → Mac 对照 ========== -->
+<section id="sec2">
+  <h2><span class="num">02</span>Win → Mac 快捷键对照表</h2>
+  <p class="section-intro">如果你大脑里全是 Windows 肌肉记忆，这张表是你的"翻译器"。</p>
+  <table class="compare-table">
+    <thead><tr><th>操作</th><th>Windows</th><th>Mac</th></tr></thead>
+    <tbody>
+      <tr><td>复制</td><td><kbd>Ctrl</kbd>+<kbd>C</kbd></td><td><kbd>⌘</kbd>+<kbd>C</kbd></td></tr>
+      <tr><td>粘贴</td><td><kbd>Ctrl</kbd>+<kbd>V</kbd></td><td><kbd>⌘</kbd>+<kbd>V</kbd></td></tr>
+      <tr><td>剪切（文件）</td><td><kbd>Ctrl</kbd>+<kbd>X</kbd></td><td>先 <kbd>⌘</kbd>+<kbd>C</kbd>，粘贴时按 <kbd>⌘</kbd>+<kbd>⌥</kbd>+<kbd>V</kbd></td></tr>
+      <tr><td>撤销 / 重做</td><td><kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Y</kbd></td><td><kbd>⌘</kbd>+<kbd>Z</kbd> / <kbd>⇧</kbd>+<kbd>⌘</kbd>+<kbd>Z</kbd></td></tr>
+      <tr><td>全选</td><td><kbd>Ctrl</kbd>+<kbd>A</kbd></td><td><kbd>⌘</kbd>+<kbd>A</kbd></td></tr>
+      <tr><td>查找</td><td><kbd>Ctrl</kbd>+<kbd>F</kbd></td><td><kbd>⌘</kbd>+<kbd>F</kbd></td></tr>
+      <tr><td>新建文件夹</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd></td><td><kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>N</kbd></td></tr>
+      <tr><td>重命名</td><td><kbd>F2</kbd></td><td>选中后按 <kbd>↩ Return</kbd></td></tr>
+      <tr><td>打开文件</td><td><kbd>Enter</kbd></td><td><kbd>⌘</kbd>+<kbd>O</kbd> 或 <kbd>⌘</kbd>+<kbd>↓</kbd></td></tr>
+      <tr><td>切换应用</td><td><kbd>Alt</kbd>+<kbd>Tab</kbd></td><td><kbd>⌘</kbd>+<kbd>Tab</kbd></td></tr>
+      <tr><td>关闭窗口</td><td><kbd>Ctrl</kbd>+<kbd>W</kbd> / <kbd>Alt</kbd>+<kbd>F4</kbd></td><td><kbd>⌘</kbd>+<kbd>W</kbd>（关窗口）/ <kbd>⌘</kbd>+<kbd>Q</kbd>（退应用）</td></tr>
+      <tr><td>强制退出</td><td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd></td><td><kbd>⌘</kbd>+<kbd>⌥</kbd>+<kbd>⎋ Esc</kbd></td></tr>
+      <tr><td>锁屏</td><td><kbd>Win</kbd>+<kbd>L</kbd></td><td><kbd>⌃</kbd>+<kbd>⌘</kbd>+<kbd>Q</kbd></td></tr>
+      <tr><td>截图</td><td><kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd></td><td><kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>4</kbd></td></tr>
+      <tr><td>资源管理器 / Finder</td><td><kbd>Win</kbd>+<kbd>E</kbd></td><td><kbd>⌘</kbd>+<kbd>⌥</kbd>+<kbd>空格</kbd>（搜索）或点 Dock</td></tr>
+      <tr><td>显示桌面</td><td><kbd>Win</kbd>+<kbd>D</kbd></td><td><kbd>F11</kbd> 或 <kbd>fn</kbd>+<kbd>F11</kbd>，或四指张开</td></tr>
+      <tr><td>地址栏跳转</td><td>资源管理器地址栏</td><td><kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>G</kbd></td></tr>
+      <tr><td>任务管理器</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Esc</kbd></td><td>活动监视器（Spotlight 搜）</td></tr>
+      <tr><td>开始菜单 / 搜索</td><td><kbd>Win</kbd></td><td><kbd>⌘</kbd>+<kbd>空格</kbd>（Spotlight）</td></tr>
+      <tr><td>设置</td><td><kbd>Win</kbd>+<kbd>I</kbd></td><td>左上角 🍎 → 系统设置</td></tr>
+      <tr><td>右键</td><td>右键</td><td>双指点触控板 / <kbd>⌃</kbd>+点击</td></tr>
+      <tr><td>删除文件（不进废纸篓）</td><td><kbd>Shift</kbd>+<kbd>Delete</kbd></td><td><kbd>⌘</kbd>+<kbd>⌥</kbd>+<kbd>⌫</kbd>（先放回收站→清空）</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ========== 3. 基础 ========== -->
+<section id="sec3">
+  <h2><span class="num">03</span>必会基础快捷键</h2>
+  <p class="section-intro">每天都会按到的几十个，闭着眼也要会。</p>
+  <table>
+    <thead><tr><th>快捷键</th><th>作用</th></tr></thead>
+    <tbody>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>C</kbd> / <kbd>V</kbd> / <kbd>X</kbd></td><td>复制 / 粘贴 / 剪切（文本和文件）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>Z</kbd> / <kbd>⇧⌘Z</kbd></td><td>撤销 / 重做</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>A</kbd></td><td>全选</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>S</kbd></td><td>保存</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>F</kbd></td><td>查找</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>G</kbd> / <kbd>⇧⌘G</kbd></td><td>查找下一个 / 上一个</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>W</kbd></td><td>关闭当前窗口/标签页</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>Q</kbd></td><td>彻底退出应用（Mac 关窗口≠关应用！）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>M</kbd></td><td>最小化窗口到 Dock</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>H</kbd></td><td>隐藏当前应用（比最小化更干净）</td></tr>
+      <tr><td class="shortcut"><kbd>⌥</kbd>+<kbd>⌘</kbd>+<kbd>H</kbd></td><td>隐藏其他所有应用（只看当前）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>Tab</kbd></td><td>应用切换器（按住 ⌘ 不放，连续按 Tab）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>`</kbd></td><td>同一应用内的窗口切换（数字键左上角那个 `）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>N</kbd></td><td>新建（窗口/文档/Finder 新窗口）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>T</kbd></td><td>新建标签页</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>P</kbd></td><td>打印</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>,</kbd></td><td>打开当前应用的"偏好设置"（通用规则）</td></tr>
+      <tr><td class="shortcut"><kbd>⌃</kbd>+<kbd>⌘</kbd>+<kbd>Q</kbd></td><td>锁屏</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⌥</kbd>+<kbd>⎋</kbd></td><td>强制退出窗口（卡死应用救星）</td></tr>
+    </tbody>
+  </table>
+  <div class="tip">
+    <strong>⌘W vs ⌘Q：</strong>这是 Mac 新手最大的困惑。关掉浏览器的窗口，浏览器其实还在运行（看 Dock 图标下面的小点）。要彻底退出按 <kbd>⌘Q</kbd>。
+  </div>
+</section>
+
+<!-- ========== 4. Finder ========== -->
+<section id="sec4">
+  <h2><span class="num">04</span>Finder（相当于 Windows 资源管理器）</h2>
+  <table>
+    <thead><tr><th>快捷键</th><th>作用</th></tr></thead>
+    <tbody>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>G</kbd></td><td>前往任意路径（粘贴路径直接跳转，超好用）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>D</kbd></td><td>跳到桌面</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>H</kbd></td><td>跳到用户主目录</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>O</kbd></td><td>跳到"文稿"</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>A</kbd></td><td>跳到"应用程序"</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>.</kbd></td><td>显示/隐藏隐藏文件（开发必备）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>↑</kbd></td><td>返回上层目录</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>↓</kbd></td><td>打开选中项</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>[</kbd> / <kbd>]</kbd></td><td>后退 / 前进</td></tr>
+      <tr><td class="shortcut"><kbd>↩ Return</kbd></td><td>重命名（不是打开！）</td></tr>
+      <tr><td class="shortcut"><kbd>空格键</kbd></td><td>快速预览（Quick Look，神器）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>I</kbd></td><td>查看简介（文件属性）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>D</kbd></td><td>复制副本</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>L</kbd></td><td>创建替身（=Win 的快捷方式）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⌫</kbd></td><td>移到废纸篓</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>⌫</kbd></td><td>清空废纸篓</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>1</kbd>/<kbd>2</kbd>/<kbd>3</kbd>/<kbd>4</kbd></td><td>切换图标 / 列表 / 分栏 / 画廊视图</td></tr>
+      <tr><td class="shortcut"><kbd>⌥⌘P</kbd></td><td>显示底部路径栏</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>/</kbd></td><td>显示状态栏（文件数 / 空间）</td></tr>
+    </tbody>
+  </table>
+  <div class="tip">
+    <strong>必开两个选项：</strong>菜单"显示" → 勾选"显示路径栏"+"显示状态栏"。从此你能像 Win 一样看到路径，并随时知道还剩多少空间。
+  </div>
+</section>
+
+<!-- ========== 5. 复制粘贴 ========== -->
+<section id="sec5">
+  <h2><span class="num">05</span>复制粘贴 · 高级技巧</h2>
+  <p class="section-intro">Mac 没有 Windows 那种"剪切文件"的直接概念，但有更优雅的方式。</p>
+  <table>
+    <thead><tr><th>快捷键</th><th>作用</th></tr></thead>
+    <tbody>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>C</kbd> → <kbd>⌘</kbd>+<kbd>⌥</kbd>+<kbd>V</kbd></td><td><strong>移动文件</strong>（先 Copy，粘贴时加 Option = 剪切粘贴）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⌥</kbd>+<kbd>⇧</kbd>+<kbd>V</kbd></td><td>纯文本粘贴（去掉格式，超常用）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⌃</kbd>+<kbd>空格</kbd></td><td>调出 Emoji 和符号选择器</td></tr>
+      <tr><td class="shortcut">选中文件 + <kbd>⌘</kbd>+<kbd>⌥</kbd>+<kbd>C</kbd></td><td>复制文件的完整路径到剪贴板</td></tr>
+      <tr><td class="shortcut">拖文件时按住 <kbd>⌥</kbd></td><td>拖动 = 复制（图标会出现 +）</td></tr>
+      <tr><td class="shortcut">拖文件时按住 <kbd>⌘</kbd></td><td>拖动 = 移动（即使到其他磁盘）</td></tr>
+      <tr><td class="shortcut">拖文件时按住 <kbd>⌘</kbd>+<kbd>⌥</kbd></td><td>创建替身（快捷方式）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⌥</kbd>+<kbd>D</kbd></td><td>显示/隐藏 Dock</td></tr>
+    </tbody>
+  </table>
+  <div class="tip">
+    <strong>剪贴板历史：</strong>系统自带剪贴板只能存一条。建议装 <strong>Maccy</strong>（免费）或 <strong>Paste</strong>（付费），按 <kbd>⌘⇧V</kbd> 调出剪贴板历史，效率翻倍。
+  </div>
+</section>
+
+<!-- ========== 6. 截图录屏 ========== -->
+<section id="sec6">
+  <h2><span class="num">06</span>截图与录屏</h2>
+  <table>
+    <thead><tr><th>快捷键</th><th>作用</th></tr></thead>
+    <tbody>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>3</kbd></td><td>截全屏</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>4</kbd></td><td>截选区（拖动框选）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>4</kbd> → 按 <kbd>空格</kbd></td><td>截某个窗口（含阴影）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>5</kbd></td><td>截图录屏工具栏（全功能，能录屏）</td></tr>
+      <tr><td class="shortcut">截图时按住 <kbd>⌃</kbd></td><td>截图不存到桌面，直接复制到剪贴板</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>6</kbd></td><td>截 Touch Bar（如果有的话）</td></tr>
+    </tbody>
+  </table>
+  <div class="tip">
+    <strong>截完图立即标注：</strong>截图后右下角会出现缩略图，<strong>点一下</strong>可以直接画箭头、打码、加文字，比 Win 的截图工具流畅得多。
+  </div>
+</section>
+
+<!-- ========== 7. 窗口多任务 ========== -->
+<section id="sec7">
+  <h2><span class="num">07</span>窗口与多任务</h2>
+  <table>
+    <thead><tr><th>快捷键</th><th>作用</th></tr></thead>
+    <tbody>
+      <tr><td class="shortcut"><kbd>⌃</kbd>+<kbd>↑</kbd></td><td>调度中心（所有窗口预览，超有用）</td></tr>
+      <tr><td class="shortcut"><kbd>⌃</kbd>+<kbd>↓</kbd></td><td>当前应用所有窗口</td></tr>
+      <tr><td class="shortcut"><kbd>⌃</kbd>+<kbd>←</kbd> / <kbd>→</kbd></td><td>切换桌面（虚拟桌面/Space）</td></tr>
+      <tr><td class="shortcut"><kbd>⌃</kbd>+<kbd>⌘</kbd>+<kbd>F</kbd></td><td>全屏切换</td></tr>
+      <tr><td class="shortcut">把鼠标移到窗口左上角绿点上</td><td>显示分屏选项（左右分屏/全屏）</td></tr>
+      <tr><td class="shortcut"><kbd>fn</kbd>+<kbd>H</kbd></td><td>显示桌面（在新键盘上）</td></tr>
+      <tr><td class="shortcut"><kbd>F11</kbd></td><td>显示桌面（部分键盘需 fn+F11）</td></tr>
+    </tbody>
+  </table>
+  <div class="tip">
+    <strong>macOS Sequoia (15) 以上：</strong>新增 <strong>窗口贴边吸附</strong>，把窗口拖到屏幕边缘就会像 Win 一样自动分屏。系统设置 → 桌面与 Dock → 窗口管理 中开启。
+  </div>
+</section>
+
+<!-- ========== 8. 浏览器 ========== -->
+<section id="sec8">
+  <h2><span class="num">08</span>浏览器通用（Safari / Chrome / Edge）</h2>
+  <table>
+    <thead><tr><th>快捷键</th><th>作用</th></tr></thead>
+    <tbody>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>T</kbd></td><td>新标签页</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>W</kbd></td><td>关闭标签页</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>T</kbd></td><td>恢复刚关闭的标签页</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⌥</kbd>+<kbd>←</kbd> / <kbd>→</kbd></td><td>切换标签页</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>1</kbd>~<kbd>9</kbd></td><td>跳到第 N 个标签</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>L</kbd></td><td>聚焦地址栏（开始输入网址/搜索）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>R</kbd></td><td>刷新</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>R</kbd></td><td>强制刷新（忽略缓存）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>[</kbd> / <kbd>]</kbd></td><td>后退 / 前进</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>+</kbd> / <kbd>-</kbd></td><td>放大 / 缩小</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>0</kbd></td><td>恢复默认缩放</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>N</kbd></td><td>无痕窗口（Chrome）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>D</kbd></td><td>加书签</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⌥</kbd>+<kbd>I</kbd></td><td>开发者工具</td></tr>
+      <tr><td class="shortcut">空格 / <kbd>⇧</kbd>+空格</td><td>向下 / 向上翻页</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ========== 9. 文本编辑 ========== -->
+<section id="sec9">
+  <h2><span class="num">09</span>文本编辑 · 光标移动</h2>
+  <p class="section-intro">Mac 用 <kbd>⌥</kbd>(按词) 和 <kbd>⌘</kbd>(按行) 替代了 Windows 的 Ctrl+方向键 / Home / End。</p>
+  <table>
+    <thead><tr><th>快捷键</th><th>作用</th></tr></thead>
+    <tbody>
+      <tr><td class="shortcut"><kbd>⌥</kbd>+<kbd>←</kbd> / <kbd>→</kbd></td><td>按"词"跳动</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>←</kbd> / <kbd>→</kbd></td><td>到行首 / 行尾（= Home / End）</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>↑</kbd> / <kbd>↓</kbd></td><td>到文档开头 / 结尾</td></tr>
+      <tr><td class="shortcut">加上 <kbd>⇧</kbd></td><td>同时选中（所有移动键都可加 Shift 选择）</td></tr>
+      <tr><td class="shortcut"><kbd>⌥</kbd>+<kbd>⌫</kbd></td><td>删除前一个词</td></tr>
+      <tr><td class="shortcut"><kbd>⌘</kbd>+<kbd>⌫</kbd></td><td>删除到行首</td></tr>
+      <tr><td class="shortcut"><kbd>fn</kbd>+<kbd>⌫</kbd></td><td>向右删（= Delete 键）</td></tr>
+      <tr><td class="shortcut"><kbd>⌃</kbd>+<kbd>A</kbd></td><td>到行首（Unix 风格，终端里超有用）</td></tr>
+      <tr><td class="shortcut"><kbd>⌃</kbd>+<kbd>E</kbd></td><td>到行尾</td></tr>
+      <tr><td class="shortcut"><kbd>⌃</kbd>+<kbd>K</kbd></td><td>删除光标到行尾</td></tr>
+      <tr><td class="shortcut"><kbd>fn</kbd>+<kbd>↑</kbd> / <kbd>↓</kbd></td><td>翻页（= Page Up/Down）</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ========== 10. Spotlight ========== -->
+<section id="sec10">
+  <h2><span class="num">10</span>Spotlight · 搜索一切</h2>
+  <p class="section-intro">Mac 的灵魂功能，比 Windows 搜索强 10 倍。按 <kbd>⌘</kbd>+<kbd>空格</kbd>，然后输入任何东西。</p>
+  <table>
+    <thead><tr><th>用途</th><th>怎么用</th></tr></thead>
+    <tbody>
+      <tr><td>启动应用</td><td>输入应用名前几个字母 → ↩</td></tr>
+      <tr><td>找文件</td><td>输入文件名</td></tr>
+      <tr><td>计算器</td><td>直接输入算式：<code>234*89.5</code></td></tr>
+      <tr><td>单位换算</td><td><code>100 usd in cny</code>、<code>5 km in miles</code></td></tr>
+      <tr><td>查词</td><td>输入英文单词 → 显示词典释义</td></tr>
+      <tr><td>查天气</td><td><code>weather beijing</code></td></tr>
+      <tr><td>网页搜索</td><td>输入关键词 → ⌘B 用浏览器打开</td></tr>
+      <tr><td>打开系统设置项</td><td>输入"显示器"、"声音"等直接到设置页</td></tr>
+    </tbody>
+  </table>
+  <div class="tip">
+    <strong>更强的替代品：</strong>装 <strong>Raycast</strong>（免费）或 <strong>Alfred</strong>。功能多到爆炸：剪贴板历史、片段（snippets）、窗口管理、快速发邮件……几乎所有 Mac 高手都用。
+  </div>
+</section>
+
+<!-- ========== 11. 触控板 ========== -->
+<section id="sec11">
+  <h2><span class="num">11</span>触控板手势（Mac 的杀手锏）</h2>
+  <p class="section-intro">如果只看快捷键不学手势，等于只用了半个 Mac。</p>
+  <table>
+    <thead><tr><th>手势</th><th>作用</th></tr></thead>
+    <tbody>
+      <tr><td>双指点击</td><td>右键</td></tr>
+      <tr><td>双指上下</td><td>滚动页面</td></tr>
+      <tr><td>双指左右</td><td>浏览器后退/前进</td></tr>
+      <tr><td>双指张开 / 捏合</td><td>缩放</td></tr>
+      <tr><td>三指上滑</td><td>调度中心（所有窗口）</td></tr>
+      <tr><td>三指下滑</td><td>当前应用所有窗口</td></tr>
+      <tr><td>三指左右</td><td>切换全屏应用/桌面</td></tr>
+      <tr><td>四指张开</td><td>显示桌面</td></tr>
+      <tr><td>四指捏合</td><td>打开启动台（所有应用）</td></tr>
+      <tr><td>三指拖动文字</td><td>选中文字（要在系统设置里启用）</td></tr>
+      <tr><td>用力按（Force Touch）</td><td>查词典 / 预览链接</td></tr>
+    </tbody>
+  </table>
+  <div class="tip">
+    <strong>开启三指拖移：</strong>系统设置 → 辅助功能 → 指针控制 → 触控板选项 → 勾选"使用触控板进行拖移"，方式选"三指拖移"。从此选文字、拖窗口、拖文件全用三指，比按下再拖快 3 倍。
+  </div>
+</section>
+
+<!-- ========== 12. 输入法 ========== -->
+<section id="sec12">
+  <h2><span class="num">12</span>输入法切换</h2>
+  <table>
+    <thead><tr><th>快捷键</th><th>作用</th></tr></thead>
+    <tbody>
+      <tr><td class="shortcut"><kbd>⌃</kbd>+<kbd>空格</kbd></td><td>切换上次和当前输入法</td></tr>
+      <tr><td class="shortcut"><kbd>⌃</kbd>+<kbd>⌥</kbd>+<kbd>空格</kbd></td><td>循环切换所有已安装的输入法</td></tr>
+      <tr><td class="shortcut"><kbd>⇧</kbd>（中文输入法中）</td><td>中英文切换（系统拼音）</td></tr>
+      <tr><td class="shortcut">长按字母键</td><td>显示重音字符（如 e → é è ê ë）</td></tr>
+    </tbody>
+  </table>
+  <div class="tip">
+    <strong>推荐输入法：</strong>系统自带"简体拼音"已经很好。如果习惯了 Win 的输入法，可装 <strong>搜狗输入法 Mac 版</strong>或<strong>微信输入法</strong>（无广告、好用）。
+  </div>
+</section>
+
+<!-- ========== 13. 系统级 ========== -->
+<section id="sec13">
+  <h2><span class="num">13</span>系统级技巧</h2>
+  <table>
+    <thead><tr><th>快捷键</th><th>作用</th></tr></thead>
+    <tbody>
+      <tr><td class="shortcut">音量/亮度 + <kbd>⇧⌥</kbd></td><td>1/4 格微调（不是整格跳）</td></tr>
+      <tr><td class="shortcut"><kbd>⌥</kbd>+点击 Wi-Fi 图标</td><td>显示详细网络信息（IP、信道、信号强度）</td></tr>
+      <tr><td class="shortcut"><kbd>⌥</kbd>+点击声音图标</td><td>选择输入/输出设备</td></tr>
+      <tr><td class="shortcut"><kbd>⌥</kbd>+点击右上角图标</td><td>大多数菜单栏图标加 Option 都有隐藏菜单</td></tr>
+      <tr><td class="shortcut">关机时按住 <kbd>⌃</kbd></td><td>跳过"确认重启/关机"对话框</td></tr>
+      <tr><td class="shortcut"><kbd>⌃</kbd>+<kbd>⌘</kbd>+<kbd>空格</kbd></td><td>Emoji 选择器</td></tr>
+      <tr><td class="shortcut">开机按住 <kbd>⌘R</kbd></td><td>进恢复模式（Intel Mac）</td></tr>
+      <tr><td class="shortcut">开机按住电源键</td><td>进恢复模式（Apple Silicon Mac）</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ========== 14. Windows 习惯改造 ========== -->
+<section id="sec14">
+  <h2><span class="num">14</span>Windows 习惯改造清单</h2>
+  <p class="section-intro">这些是 Win 用户最容易踩坑的地方，提前知道少走弯路。</p>
+
+  <h3>1. "关闭"不等于"退出"</h3>
+  Mac 上点红 × 只关窗口，应用还活着。彻底退出按 <kbd>⌘Q</kbd>。看 Dock 图标下方有小点 = 应用正在运行。
+
+  <h3>2. 没有"剪切文件"，用拖拽或 ⌥V</h3>
+  右键看不到"剪切"。要移动文件：<kbd>⌘C</kbd> → <kbd>⌘⌥V</kbd>，或者按住 <kbd>⌘</kbd> 拖动。
+
+  <h3>3. Delete 键的位置不一样</h3>
+  Mac 主键盘的 <kbd>delete</kbd>（⌫）= Win 的 Backspace（向左删）。<br>
+  要向右删（= Win 的 Delete）→ <kbd>fn</kbd>+<kbd>⌫</kbd>。
+
+  <h3>4. 没有最大化按钮</h3>
+  绿点是"全屏"（独立桌面），不是最大化。<br>
+  双击窗口顶部标题栏 → 接近最大化。<br>
+  按住 <kbd>⌥</kbd> 点绿点 → 真正最大化。
+
+  <h3>5. 程序坞 ≠ 任务栏</h3>
+  Dock 上的图标是"快捷启动 + 已开应用"混合。最右边的"废纸篓"= 回收站。把文件夹拖到分隔线右侧 = 类似 Win 的"固定到任务栏"。
+
+  <h3>6. 没有"我的电脑"</h3>
+  Finder 侧边栏点"位置" → 看到所有硬盘。Finder 偏好设置里可以让磁盘显示在桌面上（类似 Win）。
+
+  <h3>7. C 盘 / D 盘 → 一个根目录</h3>
+  Mac 是 Unix 系统，所有东西都在 <code>/</code>（根目录）下。用户文件在 <code>/Users/你的名字/</code>。
+
+  <h3>8. 软件安装 ≠ 双击 .exe</h3>
+  Mac 软件常见三种安装方式：
+  <ul>
+    <li><strong>.dmg</strong>：双击打开后，把图标拖到 Applications 文件夹</li>
+    <li><strong>.pkg</strong>：双击一路下一步（少数情况）</li>
+    <li><strong>App Store</strong>：直接装（最安全）</li>
+  </ul>
+
+  <h3>9. 卸载软件 = 拖到废纸篓</h3>
+  应用程序里找到 App，拖到废纸篓即可。彻底清理残留配置用 <strong>AppCleaner</strong>（免费）。
+
+  <h3>10. 大小写在文件名里不区分（默认 APFS）</h3>
+  和 Win 一样，"File.txt"和"file.txt"算同一个文件。
+
+  <h3>11. 没有注册表</h3>
+  设置都在 <code>~/Library/Preferences/</code> 里，每个应用一个 plist 文件。
+
+  <h3>12. 全角符号别用</h3>
+  中文输入法的"标点"开成英文标点，避免发出去对方看到"，"和"。"。
+</section>
+
+<!-- ========== 15. 推荐设置 ========== -->
+<section id="sec15">
+  <h2><span class="num">15</span>立刻去改的推荐设置</h2>
+  <p class="section-intro">系统默认对 Win 用户不友好的几个地方，建议第一天就改。</p>
+
+  <h3>✅ Finder 必开</h3>
+  <ul>
+    <li>显示 → 显示路径栏</li>
+    <li>显示 → 显示状态栏</li>
+    <li>Finder 偏好设置 → 高级 → "显示所有文件扩展名"</li>
+    <li>Finder 偏好设置 → 边栏 → 勾选"硬盘"显示在侧边栏</li>
+  </ul>
+
+  <h3>✅ 触控板</h3>
+  <ul>
+    <li>系统设置 → 触控板 → 勾选"轻触来点按"（Tap to Click）</li>
+    <li>系统设置 → 辅助功能 → 指针控制 → 触控板选项 → 启用"三指拖移"</li>
+    <li>滚动方向"自然"如果不习惯（Win 用户常觉得反），可以关掉</li>
+  </ul>
+
+  <h3>✅ 键盘</h3>
+  <ul>
+    <li>系统设置 → 键盘 → 键重复"快"，重复前延迟"短"</li>
+    <li>开启"按键重复"（默认按住字母会出选字符菜单，写代码人讨厌）</li>
+    <li>把 Caps Lock 映射成 Control 或 Esc（开发者必做）</li>
+  </ul>
+
+  <h3>✅ Dock</h3>
+  <ul>
+    <li>系统设置 → 桌面与 Dock → 关闭"打开应用时显示动画"（更快）</li>
+    <li>关闭"显示最近使用的应用"（更整洁）</li>
+    <li>位置可以放左边（像 Win 任务栏放下面也行）</li>
+  </ul>
+
+  <h3>✅ 截图保存位置</h3>
+  默认截图都堆在桌面。按 <kbd>⌘⇧5</kbd> → 选项 → 改保存到"文稿/截图"文件夹。
+
+  <h3>✅ 必装软件（Win 移民必备）</h3>
+  <ul>
+    <li><strong>Raycast</strong> 或 <strong>Alfred</strong> — 启动器，全能</li>
+    <li><strong>Rectangle</strong> 或 <strong>Magnet</strong> — 窗口分屏管理（像 Win 11 一样）</li>
+    <li><strong>Maccy</strong> — 剪贴板历史</li>
+    <li><strong>AppCleaner</strong> — 彻底卸载</li>
+    <li><strong>The Unarchiver</strong> — 解压各种格式</li>
+    <li><strong>IINA</strong> — 全能视频播放器（替代暴风/PotPlayer）</li>
+    <li><strong>iStat Menus</strong> — 任务栏显示 CPU/内存/网速</li>
+    <li><strong>Karabiner-Elements</strong> — 键位改键神器（如把 Caps 改 Esc）</li>
+  </ul>
+
+  <h3>✅ 终端基础（懂代码的看）</h3>
+  <code>open .</code> 在 Finder 打开当前目录<br>
+  <code>open -a "App Name"</code> 启动应用<br>
+  <code>pbcopy / pbpaste</code> 命令行拷贝/粘贴
+</section>
+
+<section>
+  <h2>📝 我的笔记（点开启编辑按钮后随便写）</h2>
+  <p>这里留给你记自己常用的、容易忘的。点击右上角的"开启编辑"按钮，然后直接在下方输入：</p>
+  <div style="min-height: 120px; background: #fffbeb; border: 1px dashed #d2d2d7; border-radius: 8px; padding: 16px;">
+    （在这里写笔记...）
+  </div>
+</section>
+
+<footer>
+  💡 Tip：按 <kbd>⌘</kbd>+<kbd>F</kbd> 在本页搜索快捷键 · 按 <kbd>⌘</kbd>+<kbd>P</kbd> 打印或导出 PDF<br>
+  这份文档保存在桌面，随时双击在浏览器打开。
+</footer>
+
+</div>
+
+<script>
+  function toggleEdit() {
+    const body = document.body;
+    const btn = document.getElementById('editToggle');
+    const editable = body.getAttribute('contenteditable') === 'true';
+    if (editable) {
+      body.setAttribute('contenteditable', 'false');
+      btn.textContent = '开启编辑';
+      btn.classList.remove('editing');
+    } else {
+      body.setAttribute('contenteditable', 'true');
+      btn.textContent = '关闭编辑';
+      btn.classList.add('editing');
+      alert('已开启编辑模式：可直接点击任何文字修改。\n\n保存修改：按 ⌘+S 把整页另存为 HTML 文件覆盖原文件，或者复制内容到别处。\n（浏览器不会自动保存修改）');
+    }
+  }
+  // Quick navigation: pressing a number 1-9 jumps to that section
+  document.addEventListener('keydown', (e) => {
+    if (e.target.isContentEditable) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key >= '1' && e.key <= '9') {
+      const sec = document.getElementById('sec' + e.key);
+      if (sec) sec.scrollIntoView({behavior: 'smooth', block: 'start'});
+    }
+  });
+</script>
+</body>
+</html>
