@@ -1,0 +1,25 @@
+---
+title: "Building in public: a new chapter for this site"
+author: "Kevin Guo"
+date: "2026-10-01"
+categories: [reflection, learning, AI]
+description: "A place to share my work, tell the stories behind it, and make my growth easier to follow."
+---
+
+## Why I'm refreshing this site
+
+I want this website to make my work and growth easier to follow. For recruiters and people considering working with me, it should offer a clear view of what I build, how I think, and what I'm learning.
+
+I'm keeping the existing sections as the foundation. Alongside projects and study notes, I plan to share more stories about the decisions, experiments, and lessons behind the work.
+
+## What I want to share
+
+- What I'm building and the problems I'm trying to solve.
+- What I learn along the way, including what doesn't work.
+- How my thinking changes as I gain experience.
+
+My current client work includes forward-deployed engineering (FDE) and AI deployment. I plan to give those services a separate website. This site will remain my personal showcase and a record of my progress.
+
+## A small first step
+
+This post starts that next chapter. I'm building on the static site I already have, hosted on GitHub Pages, and making changes one step at a time.
